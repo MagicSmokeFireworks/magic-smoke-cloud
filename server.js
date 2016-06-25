@@ -27,6 +27,7 @@ http.createServer(function(request, response) {
       body.push(chunk);
     }).on('end', function() {
       body = Buffer.concat(body).toString();
+      response.write("I know it's illegal, but it's the weekend!\n\n");
       response.end(myStatus);
     })
   } else {
