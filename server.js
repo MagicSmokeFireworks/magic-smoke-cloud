@@ -44,14 +44,19 @@ http.createServer(function(request, response) {
       body.push(chunk);
     }).on('end', function() {
       body = Buffer.concat(body).toString();
-      response.write("I know it's illegal, but it's the weekend!\n\n");
-      response.write("Shemale Porn Addiction:\n");
-      response.write("HW Arm: " + spa_sw_arm + "\n");
-      response.write("SW Arm: " + spa_hw_arm + "\n");
+      response.write("<html>\n");
+      response.write("<body>\n");
+      response.write("<h1>I know it's illegal, but it's the weekend!</h1>\n\n");
+      response.write("<h2>Shemale Porn Addiction:</h2>\n");
+      response.write("<div>HW Arm: " + spa_sw_arm + "</div>\n");
+      response.write("<div>SW Arm: " + spa_hw_arm + "</div>\n");
       for (i = 0; i < 8; i++) {
-        response.write("Res"+String(i)+": " + spa_res[i] + "\n");
+        response.write("<div>Res"+String(i)+": " + spa_res[i] + "</div>\n");
       }
-      response.write("WIFI RSSI: " + spa_wifi_rssi + "\n");
+      response.write("<script>var button = document.createElement(\"button\");\nbutton.innerHTML = \"Do Something\";\n");
+      response.write("var body = document.getElementsByTagName(\"body\")[0];\nbody.appendChild(button);\n");
+      response.write("button.addEventListener(\"click\", function() {\nalert(\"did something\");\n});\n</script>\n");
+      response.write("<div>WIFI RSSI: " + spa_wifi_rssi + "</div>\n");
       response.end();
     })
   } else {
