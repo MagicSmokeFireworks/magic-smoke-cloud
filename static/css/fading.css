@@ -1,0 +1,26 @@
+
+.fading {
+	-webkit-animation-duration: 1s;
+	-webkit-animation-name: fading;
+	animation-duration: 1s;
+	animation-name: fading;
+}
+
+@-webkit-keyframes fading {
+	from {
+		color: red;
+	}
+	to {
+		color: blue;
+	}
+}
+
+@keyframes fading {
+	from {
+		color: red;
+	}
+	to {
+		color: blue;
+	}
+}
+

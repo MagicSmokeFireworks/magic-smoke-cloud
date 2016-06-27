@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<style>
+table,th,td {
+	border : 1px solid black;
+	border-collapse: collapse;
+}
+th,td {
+	padding: 5px;
+}
+</style>
+<body>
+	<div id="statusInfo">no data</div>
+	<script>
+var getStatus = function() {
+
+	var xhttp;
+	xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (xhttp.readyState == 4 && xhttp.status == 200) {
+			document.getElementById("statusInfo").innerHTML = xhttp.responseText;
+			setTimeout(getStatus, 1000);
+		}
+	};
+	xhttp.open("GET", "/getstatus", true);
+	xhttp.send();
+};
+getStatus();
+	</script>
+</body>
+</html>
+
