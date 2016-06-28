@@ -10,6 +10,7 @@ th,td {
 }
 </style>
 <body bgcolor="#000000">
+	<div id="debugarea"></div>
 	<div id="statusInfo">no data</div>
 	<script>
 var getStatus = function() {
@@ -26,6 +27,27 @@ var getStatus = function() {
 	xhttp.send();
 };
 getStatus();
+
+var clickFire = function(id,channel) {
+	var xhttp;
+	xhttp = new XMLHttpRequest();
+	xhttp.open("POST", "/fire?id="+id+"&channels="+channel, true);
+	xhttp.send();
+};
+
+var clickArm = function(id) {
+	var xhttp;
+	xhttp = new XMLHttpRequest();
+	xhttp.open("POST", "/arm?id="+id, true);
+	xhttp.send();
+};
+
+var clickDisarm = function(id) {
+	var xhttp;
+	xhttp = new XMLHttpRequest();
+	xhttp.open("POST", "/disarm?id="+id, true);
+	xhttp.send();
+};
 	</script>
 </body>
 </html>

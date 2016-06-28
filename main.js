@@ -1,6 +1,9 @@
 
+
 var express = require('express');
 var app = express();
+
+var net = require('net');
 
 var spa_id = '210043000347343138333038';
 var mm_id = '1f0032000a47353235303037';
@@ -13,7 +16,16 @@ var pitd_id = '3d0025000347353138383138';
 var cr_id = '3b0039000647343339373536';
 var ta_id = '300047001247353236343033';
 
-
+var spa_ip = '';
+var mm_ip = '';
+var dlj_ip = '';
+var fag_ip = '';
+var ntb_ip = '';
+var rd_ip = '';
+var sm_ip = '';
+var pitd_ip = '';
+var cr_ip = '';
+var ta_ip = '';
 
 var spa_sw_arm = 'no data';
 var spa_hw_arm = 'no data';
@@ -75,6 +87,7 @@ app.get('/status', function(req, res) {
 
 app.post('/status', function(req, res) {
 	if (req.headers.id === spa_id) {
+		spa_ip = req.ip;
 		spa_sw_arm = req.headers.sw_arm;
 		spa_hw_arm = req.headers.hw_arm;
 		spa_wifi_rssi = req.headers.wifi_rssi;
@@ -214,40 +227,87 @@ app.get('/getstatus', function(req, res) {
 		message: 'Magic Smoke',
 		block1: {
 			"Shemale Porn Addiction": {
-				swarm: spa_sw_arm, hwarm: spa_hw_arm, rssi: spa_wifi_rssi, res: spa_res
+				id: "spa", swarm: spa_sw_arm, hwarm: spa_hw_arm, rssi: spa_wifi_rssi, res: spa_res
 			},
 			"Moist Molly": {
-				swarm: mm_sw_arm, hwarm: mm_hw_arm, rssi: mm_wifi_rssi, res: mm_res
+				id: "mm", swarm: mm_sw_arm, hwarm: mm_hw_arm, rssi: mm_wifi_rssi, res: mm_res
 			},
 			"Dr. Lee's Jubiration": {
-				swarm: dlj_sw_arm, hwarm: dlj_hw_arm, rssi: dlj_wifi_rssi, res: dlj_res
+				id: "dlj", swarm: dlj_sw_arm, hwarm: dlj_hw_arm, rssi: dlj_wifi_rssi, res: dlj_res
 			},
 			"Fucking Assballs Greg": {
-				swarm: fag_sw_arm, hwarm: fag_hw_arm, rssi: fag_wifi_rssi, res: fag_res
+				id: "fag", swarm: fag_sw_arm, hwarm: fag_hw_arm, rssi: fag_wifi_rssi, res: fag_res
 			},
 			"Not the Bees": {
-				swarm: ntb_sw_arm, hwarm: ntb_hw_arm, rssi: ntb_wifi_rssi, res: ntb_res
+				id: "ntb", swarm: ntb_sw_arm, hwarm: ntb_hw_arm, rssi: ntb_wifi_rssi, res: ntb_res
 			}
 		},
 		block2: {
 			"Resplendent Deuce": {
-				swarm: rd_sw_arm, hwarm: rd_hw_arm, rssi: rd_wifi_rssi, res: rd_res
+				id: "rd", swarm: rd_sw_arm, hwarm: rd_hw_arm, rssi: rd_wifi_rssi, res: rd_res
 			},
 			"Savage Mistress": {
-				swarm: sm_sw_arm, hwarm: sm_hw_arm, rssi: sm_wifi_rssi, res: sm_res
+				id: "sm", swarm: sm_sw_arm, hwarm: sm_hw_arm, rssi: sm_wifi_rssi, res: sm_res
 			},
 			"Pain in the Dick": {
-				swarm: pitd_sw_arm, hwarm: pitd_hw_arm, rssi: pitd_wifi_rssi, res: pitd_res
+				id: "pitd", swarm: pitd_sw_arm, hwarm: pitd_hw_arm, rssi: pitd_wifi_rssi, res: pitd_res
 			},
 			"Clenched Ringpiece": {
-				swarm: cr_sw_arm, hwarm: cr_hw_arm, rssi: cr_wifi_rssi, res: cr_res
+				id: "cr", swarm: cr_sw_arm, hwarm: cr_hw_arm, rssi: cr_wifi_rssi, res: cr_res
 			},
 			"Totes Amazeballs": {
-				swarm: ta_sw_arm, hwarm: ta_hw_arm, rssi: ta_wifi_rssi, res: ta_res
+				id: "ta", swarm: ta_sw_arm, hwarm: ta_hw_arm, rssi: ta_wifi_rssi, res: ta_res
 			}
 		}
 	});
 })
+
+var writeToClient = function(board_id, message) {
+	console.log(board_id);
+	console.log(message);
+	var clientIP = '';
+	if (board_id === 'spa') {
+		clientIP = spa_ip;
+	}
+	console.log(clientIP);
+	if (clientIP === '') {
+	}
+	else {
+		var client = new net.Socket();
+		client.connect(23, clientIP, function() {
+			console.log('connected to ' + board_id);
+			client.write(message);
+		});
+	
+		client.on('data', function(data) {
+			console.log('data: ' + data);
+			client.destroy();
+		});
+		client.on('close', function() {
+			console.log('connection closed');
+		});
+	}
+};
+
+app.post('/arm', function(req, res) {
+	var board_id = req.query.id;
+	writeToClient(board_id, 'arm');
+	res.end();
+});
+
+app.post('/disarm', function(req, res) {
+	console.log('disarm');
+	var board_id = req.query.id;
+	writeToClient(board_id, 'disarm');
+	res.end();
+});
+
+app.post('/fire', function(req, res) {
+	var board_id = req.query.id;
+	var channels = req.query.channels;
+	writeToClient(board_id, 'fire'+channels);
+	res.end();
+});
 
 app.get('/', function(req, res) {
 	res.send('Hello World');

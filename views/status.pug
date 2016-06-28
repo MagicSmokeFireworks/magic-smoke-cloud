@@ -11,18 +11,22 @@ html
 					each val, key in block
 						td(style='width: 20%')
 							h4= key
+							button(onclick="clickArm(\""+val.id+"\")").
+								arm
+							button(onclick="clickDisarm(\""+val.id+"\")").
+								disarm
 							table
 								tr
 									if val.swarm === 'no data'
 										td.rw1sfading= val.swarm
 									else if val.swarm === '1'
-										td= 'SW ARMED'
+										td.highresistance= 'SW ARMED'
 									else
 										td= 'SW DISARM'
 									if val.hwarm === 'no data'
 										td.rw1sfading= val.hwarm
 									else if val.hwarm === 'ARMED'
-										td.yk1sfading.highresistance= 'HW ARMED'
+										td.highresistance= 'HW ARMED'
 									else
 										td= 'HW DISARM'
 									td= val.rssi
@@ -35,5 +39,8 @@ html
 										else if parseInt(val.res[i]) < 1200
 											td.lowresistance= val.res[i]
 										else
-											td.yk1sfading.highresistance= val.res[i]
+											td.highresistance= val.res[i]
+										td
+											button(onclick="clickFire(\""+val.id+"\",\""+i+"\")").
+												fire
 
