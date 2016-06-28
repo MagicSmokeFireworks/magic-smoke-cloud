@@ -3,6 +3,10 @@ div {
 	color: white;
 }
 
+.italics {
+	font-style: italic;
+}
+
 .lowresistance {
 	color: white;
 	background-color: blue;
