@@ -3,25 +3,35 @@ html
 		title= title
 		link(href='/css/fading.css', rel='stylesheet')
 		link(href='/css/res_colors.css', rel='stylesheet')
-	body
+	body.blackpage
 		h1= message
 		each block in [block1, block2]
 			table
 				tr
 					each val, key in block
-						td
+						td(style='width: 20%')
 							h4= key
 							table
 								tr
-									td= val.swarm
-									td= val.hwarm
+									if val.swarm === 'no data'
+										td.rw1sfading= val.swarm
+									else if val.swarm === '1'
+										td= 'SW ARMED'
+									else
+										td= 'SW DISARM'
+									if val.hwarm === 'no data'
+										td.rw1sfading= val.hwarm
+									else if val.hwarm === 'ARMED'
+										td.yk1sfading.highresistance= 'HW ARMED'
+									else
+										td= 'HW DISARM'
 									td= val.rssi
 							table
 								each i in [0,1,2,3,4,5,6,7]
 									tr
 										td= i
 										if val.res[i] === 'no data'
-											td.rw1sfading.nodataresistance= val.res[i]
+											td.rw1sfading= val.res[i]
 										else if parseInt(val.res[i]) < 1200
 											td.lowresistance= val.res[i]
 										else

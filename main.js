@@ -2,6 +2,19 @@
 var express = require('express');
 var app = express();
 
+var spa_id = '210043000347343138333038';
+var mm_id = '1f0032000a47353235303037';
+var dlj_id = '3e0026000a47353235303037';
+var fag_id = '3c002a001847353236343033';
+var ntb_id = '2d003e001847353236343033';
+var rd_id = '440029000347343337373738';
+var sm_id = '2e0036001747353236343033';
+var pitd_id = '3d0025000347353138383138';
+var cr_id = '3b0039000647343339373536';
+var ta_id = '300047001247353236343033';
+
+
+
 var spa_sw_arm = 'no data';
 var spa_hw_arm = 'no data';
 var spa_wifi_rssi = 'no data';
@@ -17,40 +30,40 @@ var dlj_hw_arm = 'no data';
 var dlj_wifi_rssi = 'no data';
 var dlj_res = ['no data', 'no data', 'no data', 'no data', 'no data', 'no data', 'no data', 'no data'];
 
-var fga_sw_arm = 'no data';
-var fga_hw_arm = 'no data';
-var fga_wifi_rssi = 'no data';
-var fga_res = ['no data', 'no data', 'no data', 'no data', 'no data', 'no data', 'no data', 'no data'];
+var fag_sw_arm = 'no data';
+var fag_hw_arm = 'no data';
+var fag_wifi_rssi = 'no data';
+var fag_res = ['no data', 'no data', 'no data', 'no data', 'no data', 'no data', 'no data', 'no data'];
 
 var ntb_sw_arm = 'no data';
 var ntb_hw_arm = 'no data';
 var ntb_wifi_rssi = 'no data';
 var ntb_res = ['no data', 'no data', 'no data', 'no data', 'no data', 'no data', 'no data', 'no data'];
 
-var name6_sw_arm = 'no data';
-var name6_hw_arm = 'no data';
-var name6_wifi_rssi = 'no data';
-var name6_res = ['no data', 'no data', 'no data', 'no data', 'no data', 'no data', 'no data', 'no data'];
+var rd_sw_arm = 'no data';
+var rd_hw_arm = 'no data';
+var rd_wifi_rssi = 'no data';
+var rd_res = ['no data', 'no data', 'no data', 'no data', 'no data', 'no data', 'no data', 'no data'];
 
-var name7_sw_arm = 'no data';
-var name7_hw_arm = 'no data';
-var name7_wifi_rssi = 'no data';
-var name7_res = ['no data', 'no data', 'no data', 'no data', 'no data', 'no data', 'no data', 'no data'];
+var sm_sw_arm = 'no data';
+var sm_hw_arm = 'no data';
+var sm_wifi_rssi = 'no data';
+var sm_res = ['no data', 'no data', 'no data', 'no data', 'no data', 'no data', 'no data', 'no data'];
 
-var name8_sw_arm = 'no data';
-var name8_hw_arm = 'no data';
-var name8_wifi_rssi = 'no data';
-var name8_res = ['no data', 'no data', 'no data', 'no data', 'no data', 'no data', 'no data', 'no data'];
+var pitd_sw_arm = 'no data';
+var pitd_hw_arm = 'no data';
+var pitd_wifi_rssi = 'no data';
+var pitd_res = ['no data', 'no data', 'no data', 'no data', 'no data', 'no data', 'no data', 'no data'];
 
-var name9_sw_arm = 'no data';
-var name9_hw_arm = 'no data';
-var name9_wifi_rssi = 'no data';
-var name9_res = ['no data', 'no data', 'no data', 'no data', 'no data', 'no data', 'no data', 'no data'];
+var cr_sw_arm = 'no data';
+var cr_hw_arm = 'no data';
+var cr_wifi_rssi = 'no data';
+var cr_res = ['no data', 'no data', 'no data', 'no data', 'no data', 'no data', 'no data', 'no data'];
 
-var name10_sw_arm = 'no data';
-var name10_hw_arm = 'no data';
-var name10_wifi_rssi = 'no data';
-var name10_res = ['no data', 'no data', 'no data', 'no data', 'no data', 'no data', 'no data', 'no data'];
+var ta_sw_arm = 'no data';
+var ta_hw_arm = 'no data';
+var ta_wifi_rssi = 'no data';
+var ta_res = ['no data', 'no data', 'no data', 'no data', 'no data', 'no data', 'no data', 'no data'];
 
 app.set('view engine', 'pug');
 
@@ -61,7 +74,7 @@ app.get('/status', function(req, res) {
 })
 
 app.post('/status', function(req, res) {
-	if (req.headers.id === '210043000347343138333038') {
+	if (req.headers.id === spa_id) {
 		spa_sw_arm = req.headers.sw_arm;
 		spa_hw_arm = req.headers.hw_arm;
 		spa_wifi_rssi = req.headers.wifi_rssi;
@@ -74,7 +87,7 @@ app.post('/status', function(req, res) {
 		spa_res[6] = req.headers.r6;
 		spa_res[7] = req.headers.r7;
 	}
-	else if (req.headers.id === 'mm') {
+	else if (req.headers.id === mm_id) {
 		mm_sw_arm = req.headers.sw_arm;
 		mm_hw_arm = req.headers.hw_arm;
 		mm_wifi_rssi = req.headers.wifi_rssi;
@@ -87,7 +100,7 @@ app.post('/status', function(req, res) {
 		mm_res[6] = req.headers.r6;
 		mm_res[7] = req.headers.r7;
 	}
-	else if (req.headers.id === 'dlj') {
+	else if (req.headers.id === dlj_id) {
 		dlj_sw_arm = req.headers.sw_arm;
 		dlj_hw_arm = req.headers.hw_arm;
 		dlj_wifi_rssi = req.headers.wifi_rssi;
@@ -100,20 +113,20 @@ app.post('/status', function(req, res) {
 		dlj_res[6] = req.headers.r6;
 		dlj_res[7] = req.headers.r7;
 	}
-	else if (req.headers.id === 'fga') {
-		fga_sw_arm = req.headers.sw_arm;
-		fga_hw_arm = req.headers.hw_arm;
-		fga_wifi_rssi = req.headers.wifi_rssi;
-		fga_res[0] = req.headers.r0;
-		fga_res[1] = req.headers.r1;
-		fga_res[2] = req.headers.r2;
-		fga_res[3] = req.headers.r3;
-		fga_res[4] = req.headers.r4;
-		fga_res[5] = req.headers.r5;
-		fga_res[6] = req.headers.r6;
-		fga_res[7] = req.headers.r7;
+	else if (req.headers.id === fag_id) {
+		fag_sw_arm = req.headers.sw_arm;
+		fag_hw_arm = req.headers.hw_arm;
+		fag_wifi_rssi = req.headers.wifi_rssi;
+		fag_res[0] = req.headers.r0;
+		fag_res[1] = req.headers.r1;
+		fag_res[2] = req.headers.r2;
+		fag_res[3] = req.headers.r3;
+		fag_res[4] = req.headers.r4;
+		fag_res[5] = req.headers.r5;
+		fag_res[6] = req.headers.r6;
+		fag_res[7] = req.headers.r7;
 	}
-	else if (req.headers.id === 'ntb') {
+	else if (req.headers.id === ntb_id) {
 		ntb_sw_arm = req.headers.sw_arm;
 		ntb_hw_arm = req.headers.hw_arm;
 		ntb_wifi_rssi = req.headers.wifi_rssi;
@@ -126,70 +139,70 @@ app.post('/status', function(req, res) {
 		ntb_res[6] = req.headers.r6;
 		ntb_res[7] = req.headers.r7;
 	}
-	else if (req.headers.id === 'name6') {
-		name6_sw_arm = req.headers.sw_arm;
-		name6_hw_arm = req.headers.hw_arm;
-		name6_wifi_rssi = req.headers.wifi_rssi;
-		name6_res[0] = req.headers.r0;
-		name6_res[1] = req.headers.r1;
-		name6_res[2] = req.headers.r2;
-		name6_res[3] = req.headers.r3;
-		name6_res[4] = req.headers.r4;
-		name6_res[5] = req.headers.r5;
-		name6_res[6] = req.headers.r6;
-		name6_res[7] = req.headers.r7;
+	else if (req.headers.id === rd_id) {
+		rd_sw_arm = req.headers.sw_arm;
+		rd_hw_arm = req.headers.hw_arm;
+		rd_wifi_rssi = req.headers.wifi_rssi;
+		rd_res[0] = req.headers.r0;
+		rd_res[1] = req.headers.r1;
+		rd_res[2] = req.headers.r2;
+		rd_res[3] = req.headers.r3;
+		rd_res[4] = req.headers.r4;
+		rd_res[5] = req.headers.r5;
+		rd_res[6] = req.headers.r6;
+		rd_res[7] = req.headers.r7;
 	}
-	else if (req.headers.id === 'name7') {
-		name7_sw_arm = req.headers.sw_arm;
-		name7_hw_arm = req.headers.hw_arm;
-		name7_wifi_rssi = req.headers.wifi_rssi;
-		name7_res[0] = req.headers.r0;
-		name7_res[1] = req.headers.r1;
-		name7_res[2] = req.headers.r2;
-		name7_res[3] = req.headers.r3;
-		name7_res[4] = req.headers.r4;
-		name7_res[5] = req.headers.r5;
-		name7_res[6] = req.headers.r6;
-		name7_res[7] = req.headers.r7;
+	else if (req.headers.id === sm_id) {
+		sm_sw_arm = req.headers.sw_arm;
+		sm_hw_arm = req.headers.hw_arm;
+		sm_wifi_rssi = req.headers.wifi_rssi;
+		sm_res[0] = req.headers.r0;
+		sm_res[1] = req.headers.r1;
+		sm_res[2] = req.headers.r2;
+		sm_res[3] = req.headers.r3;
+		sm_res[4] = req.headers.r4;
+		sm_res[5] = req.headers.r5;
+		sm_res[6] = req.headers.r6;
+		sm_res[7] = req.headers.r7;
 	}
-	else if (req.headers.id === 'name8') {
-		name8_sw_arm = req.headers.sw_arm;
-		name8_hw_arm = req.headers.hw_arm;
-		name8_wifi_rssi = req.headers.wifi_rssi;
-		name8_res[0] = req.headers.r0;
-		name8_res[1] = req.headers.r1;
-		name8_res[2] = req.headers.r2;
-		name8_res[3] = req.headers.r3;
-		name8_res[4] = req.headers.r4;
-		name8_res[5] = req.headers.r5;
-		name8_res[6] = req.headers.r6;
-		name8_res[7] = req.headers.r7;
+	else if (req.headers.id === pitd_id) {
+		pitd_sw_arm = req.headers.sw_arm;
+		pitd_hw_arm = req.headers.hw_arm;
+		pitd_wifi_rssi = req.headers.wifi_rssi;
+		pitd_res[0] = req.headers.r0;
+		pitd_res[1] = req.headers.r1;
+		pitd_res[2] = req.headers.r2;
+		pitd_res[3] = req.headers.r3;
+		pitd_res[4] = req.headers.r4;
+		pitd_res[5] = req.headers.r5;
+		pitd_res[6] = req.headers.r6;
+		pitd_res[7] = req.headers.r7;
 	}
-	else if (req.headers.id === 'name9') {
-		name9_sw_arm = req.headers.sw_arm;
-		name9_hw_arm = req.headers.hw_arm;
-		name9_wifi_rssi = req.headers.wifi_rssi;
-		name9_res[0] = req.headers.r0;
-		name9_res[1] = req.headers.r1;
-		name9_res[2] = req.headers.r2;
-		name9_res[3] = req.headers.r3;
-		name9_res[4] = req.headers.r4;
-		name9_res[5] = req.headers.r5;
-		name9_res[6] = req.headers.r6;
-		name9_res[7] = req.headers.r7;
+	else if (req.headers.id === cr_id) {
+		cr_sw_arm = req.headers.sw_arm;
+		cr_hw_arm = req.headers.hw_arm;
+		cr_wifi_rssi = req.headers.wifi_rssi;
+		cr_res[0] = req.headers.r0;
+		cr_res[1] = req.headers.r1;
+		cr_res[2] = req.headers.r2;
+		cr_res[3] = req.headers.r3;
+		cr_res[4] = req.headers.r4;
+		cr_res[5] = req.headers.r5;
+		cr_res[6] = req.headers.r6;
+		cr_res[7] = req.headers.r7;
 	}
-	else if (req.headers.id === 'name10') {
-		name10_sw_arm = req.headers.sw_arm;
-		name10_hw_arm = req.headers.hw_arm;
-		name10_wifi_rssi = req.headers.wifi_rssi;
-		name10_res[0] = req.headers.r0;
-		name10_res[1] = req.headers.r1;
-		name10_res[2] = req.headers.r2;
-		name10_res[3] = req.headers.r3;
-		name10_res[4] = req.headers.r4;
-		name10_res[5] = req.headers.r5;
-		name10_res[6] = req.headers.r6;
-		name10_res[7] = req.headers.r7;
+	else if (req.headers.id === ta_id) {
+		ta_sw_arm = req.headers.sw_arm;
+		ta_hw_arm = req.headers.hw_arm;
+		ta_wifi_rssi = req.headers.wifi_rssi;
+		ta_res[0] = req.headers.r0;
+		ta_res[1] = req.headers.r1;
+		ta_res[2] = req.headers.r2;
+		ta_res[3] = req.headers.r3;
+		ta_res[4] = req.headers.r4;
+		ta_res[5] = req.headers.r5;
+		ta_res[6] = req.headers.r6;
+		ta_res[7] = req.headers.r7;
 	}
 	res.end();
 })
@@ -200,37 +213,37 @@ app.get('/getstatus', function(req, res) {
 		title: 'Random!',
 		message: 'Magic Smoke',
 		block1: {
-			spa: {
+			"Shemale Porn Addiction": {
 				swarm: spa_sw_arm, hwarm: spa_hw_arm, rssi: spa_wifi_rssi, res: spa_res
 			},
-			mm: {
+			"Moist Molly": {
 				swarm: mm_sw_arm, hwarm: mm_hw_arm, rssi: mm_wifi_rssi, res: mm_res
 			},
-			dlj: {
+			"Dr. Lee's Jubiration": {
 				swarm: dlj_sw_arm, hwarm: dlj_hw_arm, rssi: dlj_wifi_rssi, res: dlj_res
 			},
-			fga: {
-				swarm: fga_sw_arm, hwarm: fga_hw_arm, rssi: fga_wifi_rssi, res: fga_res
+			"Fucking Assballs Greg": {
+				swarm: fag_sw_arm, hwarm: fag_hw_arm, rssi: fag_wifi_rssi, res: fag_res
 			},
-			ntb: {
+			"Not the Bees": {
 				swarm: ntb_sw_arm, hwarm: ntb_hw_arm, rssi: ntb_wifi_rssi, res: ntb_res
 			}
 		},
 		block2: {
-			name6: {
-				swarm: name6_sw_arm, hwarm: name6_hw_arm, rssi: name6_wifi_rssi, res: name6_res
+			"Resplendent Deuce": {
+				swarm: rd_sw_arm, hwarm: rd_hw_arm, rssi: rd_wifi_rssi, res: rd_res
 			},
-			name7: {
-				swarm: name7_sw_arm, hwarm: name7_hw_arm, rssi: name7_wifi_rssi, res: name7_res
+			"Savage Mistress": {
+				swarm: sm_sw_arm, hwarm: sm_hw_arm, rssi: sm_wifi_rssi, res: sm_res
 			},
-			name8: {
-				swarm: name8_sw_arm, hwarm: name8_hw_arm, rssi: name8_wifi_rssi, res: name8_res
+			"Pain in the Dick": {
+				swarm: pitd_sw_arm, hwarm: pitd_hw_arm, rssi: pitd_wifi_rssi, res: pitd_res
 			},
-			name9: {
-				swarm: name9_sw_arm, hwarm: name9_hw_arm, rssi: name9_wifi_rssi, res: name9_res
+			"Clenched Ringpiece": {
+				swarm: cr_sw_arm, hwarm: cr_hw_arm, rssi: cr_wifi_rssi, res: cr_res
 			},
-			name10: {
-				swarm: name10_sw_arm, hwarm: name10_hw_arm, rssi: name10_wifi_rssi, res: name10_res
+			"Totes Amazeballs": {
+				swarm: ta_sw_arm, hwarm: ta_hw_arm, rssi: ta_wifi_rssi, res: ta_res
 			}
 		}
 	});
@@ -240,7 +253,7 @@ app.get('/', function(req, res) {
 	res.send('Hello World');
 })
 
-var server = app.listen(8081, function() {
+var server = app.listen(8080, function() {
 
 	var host = server.address().address;
 	var port = server.address().port;

@@ -1,4 +1,8 @@
 
+div {
+	color: white;
+}
+
 .lowresistance {
 	color: white;
 	background-color: blue;
@@ -12,5 +16,9 @@
 .nodataresistance {
 	color: white;
 	background-color: red;
+}
+
+.blackpage {
+	background-color: black;
 }
 
