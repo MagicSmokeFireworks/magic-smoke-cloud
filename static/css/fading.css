@@ -1,12 +1,62 @@
 
-.fading {
+.yk1sfading {
 	-webkit-animation-duration: 1s;
-	-webkit-animation-name: fading;
+	-webkit-animation-name: yk1sfading;
 	animation-duration: 1s;
-	animation-name: fading;
+	animation-name: yk1sfading;
 }
 
-@-webkit-keyframes fading {
+@-webkit-keyframes yk1sfading {
+	from {
+		color: yellow;
+	}
+	to {
+		color: black;
+	}
+}
+
+@keyframes yk1sfading {
+	from {
+		color: yellow;
+	}
+	to {
+		color: black;
+	}
+}
+
+.rw1sfading {
+	-webkit-animation-duration: 1s;
+	-webkit-animation-name: rw1sfading;
+	animation-duration: 1s;
+	animation-name: rw1sfading;
+}
+
+@-webkit-keyframes rw1sfading {
+	from {
+		color: red;
+	}
+	to {
+		color: white;
+	}
+}
+
+@keyframes rw1sfading {
+	from {
+		color: red;
+	}
+	to {
+		color: white;
+	}
+}
+
+.rb1sfading {
+	-webkit-animation-duration: 1s;
+	-webkit-animation-name: rb1sfading;
+	animation-duration: 1s;
+	animation-name: rb1sfading;
+}
+
+@-webkit-keyframes rb1sfading {
 	from {
 		color: red;
 	}
@@ -15,7 +65,7 @@
 	}
 }
 
-@keyframes fading {
+@keyframes rb1sfading {
 	from {
 		color: red;
 	}

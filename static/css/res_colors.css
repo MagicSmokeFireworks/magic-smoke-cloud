@@ -1,0 +1,16 @@
+
+.lowresistance {
+	color: white;
+	background-color: blue;
+}
+
+.highresistance {
+	color: black;
+	background-color: yellow;
+}
+
+.nodataresistance {
+	color: white;
+	background-color: red;
+}
+

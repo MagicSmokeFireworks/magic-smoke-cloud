@@ -2,27 +2,28 @@ html
 	head
 		title= title
 		link(href='/css/fading.css', rel='stylesheet')
+		link(href='/css/res_colors.css', rel='stylesheet')
 	body
-		h1.fading= message
-		table
-			tr
-				td(style='width: 5%').
-					0
-				td(style='width: 95%')
-					table(style='width: 100%')
-						tr
-							td
-								table(style='width: 100%')
+		h1= message
+		each block in [block1, block2]
+			table
+				tr
+					each val, key in block
+						td
+							h4= key
+							table
+								tr
+									td= val.swarm
+									td= val.hwarm
+									td= val.rssi
+							table
+								each i in [0,1,2,3,4,5,6,7]
 									tr
-										td.
-											left field - flood red
-									tr
-										td.
-											center field - white sparkles
-									tr
-										td.
-											right field - flood red
-							td(style='align=center').
-								fire
-
+										td= i
+										if val.res[i] === 'no data'
+											td.rw1sfading.nodataresistance= val.res[i]
+										else if parseInt(val.res[i]) < 1200
+											td.lowresistance= val.res[i]
+										else
+											td.yk1sfading.highresistance= val.res[i]
 
