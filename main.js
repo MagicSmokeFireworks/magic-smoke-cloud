@@ -232,7 +232,7 @@ app.post('/status', function(req, res) {
 app.get('/getstatus', function(req, res) {
 	res.render('status',
 	{
-		title: 'Random!',
+		title: 'Magic Smoke Status',
 		message: 'Magic Smoke',
 		block1: {
 			"Shemale Porn Addiction": {
@@ -346,7 +346,7 @@ app.post('/fire', function(req, res) {
 });
 
 app.get('/', function(req, res) {
-	res.send('Hello World');
+	res.render('home');
 })
 
 var server = app.listen(8080, function() {
