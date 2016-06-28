@@ -101,6 +101,7 @@ app.post('/status', function(req, res) {
 		spa_res[7] = req.headers.r7;
 	}
 	else if (req.headers.id === mm_id) {
+		mm_ip = req.ip;
 		mm_sw_arm = req.headers.sw_arm;
 		mm_hw_arm = req.headers.hw_arm;
 		mm_wifi_rssi = req.headers.wifi_rssi;
@@ -114,6 +115,7 @@ app.post('/status', function(req, res) {
 		mm_res[7] = req.headers.r7;
 	}
 	else if (req.headers.id === dlj_id) {
+		dlj_ip = req.ip;
 		dlj_sw_arm = req.headers.sw_arm;
 		dlj_hw_arm = req.headers.hw_arm;
 		dlj_wifi_rssi = req.headers.wifi_rssi;
@@ -127,6 +129,7 @@ app.post('/status', function(req, res) {
 		dlj_res[7] = req.headers.r7;
 	}
 	else if (req.headers.id === fag_id) {
+		fag_ip = req.ip;
 		fag_sw_arm = req.headers.sw_arm;
 		fag_hw_arm = req.headers.hw_arm;
 		fag_wifi_rssi = req.headers.wifi_rssi;
@@ -140,6 +143,7 @@ app.post('/status', function(req, res) {
 		fag_res[7] = req.headers.r7;
 	}
 	else if (req.headers.id === ntb_id) {
+		ntb_ip = req.ip;
 		ntb_sw_arm = req.headers.sw_arm;
 		ntb_hw_arm = req.headers.hw_arm;
 		ntb_wifi_rssi = req.headers.wifi_rssi;
@@ -153,6 +157,7 @@ app.post('/status', function(req, res) {
 		ntb_res[7] = req.headers.r7;
 	}
 	else if (req.headers.id === rd_id) {
+		rd_ip = req.ip;
 		rd_sw_arm = req.headers.sw_arm;
 		rd_hw_arm = req.headers.hw_arm;
 		rd_wifi_rssi = req.headers.wifi_rssi;
@@ -166,6 +171,7 @@ app.post('/status', function(req, res) {
 		rd_res[7] = req.headers.r7;
 	}
 	else if (req.headers.id === sm_id) {
+		sm_ip = req.ip;
 		sm_sw_arm = req.headers.sw_arm;
 		sm_hw_arm = req.headers.hw_arm;
 		sm_wifi_rssi = req.headers.wifi_rssi;
@@ -179,6 +185,7 @@ app.post('/status', function(req, res) {
 		sm_res[7] = req.headers.r7;
 	}
 	else if (req.headers.id === pitd_id) {
+		pitd_ip = req.ip;
 		pitd_sw_arm = req.headers.sw_arm;
 		pitd_hw_arm = req.headers.hw_arm;
 		pitd_wifi_rssi = req.headers.wifi_rssi;
@@ -192,6 +199,7 @@ app.post('/status', function(req, res) {
 		pitd_res[7] = req.headers.r7;
 	}
 	else if (req.headers.id === cr_id) {
+		cr_ip = req.ip;
 		cr_sw_arm = req.headers.sw_arm;
 		cr_hw_arm = req.headers.hw_arm;
 		cr_wifi_rssi = req.headers.wifi_rssi;
@@ -205,6 +213,7 @@ app.post('/status', function(req, res) {
 		cr_res[7] = req.headers.r7;
 	}
 	else if (req.headers.id === ta_id) {
+		ta_ip = req.ip;
 		ta_sw_arm = req.headers.sw_arm;
 		ta_hw_arm = req.headers.hw_arm;
 		ta_wifi_rssi = req.headers.wifi_rssi;
@@ -268,6 +277,33 @@ var writeToClient = function(board_id, message) {
 	var clientIP = '';
 	if (board_id === 'spa') {
 		clientIP = spa_ip;
+	}
+	else if (board_up === 'mm') {
+		clientIP = mm_ip;
+	}
+	else if (board_up === 'dlj') {
+		clientIP = dlj_ip;
+	}
+	else if (board_up === 'fag') {
+		clientIP = fag_ip;
+	}
+	else if (board_up === 'ntb') {
+		clientIP = ntb_ip;
+	}
+	else if (board_up === 'rd') {
+		clientIP = rd_ip;
+	}
+	else if (board_up === 'sm') {
+		clientIP = sm_ip;
+	}
+	else if (board_up === 'pitd') {
+		clientIP = pitd_ip;
+	}
+	else if (board_up === 'cr') {
+		clientIP = cr_ip;
+	}
+	else if (board_up === 'ta') {
+		clientIP = ta_ip;
 	}
 	console.log(clientIP);
 	if (clientIP === '') {
