@@ -278,31 +278,31 @@ var writeToClient = function(board_id, message) {
 	if (board_id === 'spa') {
 		clientIP = spa_ip;
 	}
-	else if (board_up === 'mm') {
+	else if (board_id === 'mm') {
 		clientIP = mm_ip;
 	}
-	else if (board_up === 'dlj') {
+	else if (board_id === 'dlj') {
 		clientIP = dlj_ip;
 	}
-	else if (board_up === 'fag') {
+	else if (board_id === 'fag') {
 		clientIP = fag_ip;
 	}
-	else if (board_up === 'ntb') {
+	else if (board_id === 'ntb') {
 		clientIP = ntb_ip;
 	}
-	else if (board_up === 'rd') {
+	else if (board_id === 'rd') {
 		clientIP = rd_ip;
 	}
-	else if (board_up === 'sm') {
+	else if (board_id === 'sm') {
 		clientIP = sm_ip;
 	}
-	else if (board_up === 'pitd') {
+	else if (board_id === 'pitd') {
 		clientIP = pitd_ip;
 	}
-	else if (board_up === 'cr') {
+	else if (board_id === 'cr') {
 		clientIP = cr_ip;
 	}
-	else if (board_up === 'ta') {
+	else if (board_id === 'ta') {
 		clientIP = ta_ip;
 	}
 	console.log(clientIP);
