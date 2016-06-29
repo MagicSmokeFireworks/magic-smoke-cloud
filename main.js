@@ -1,4 +1,7 @@
 
+var fs = require("fs");
+var contents = fs.readFileSync("show_config.json");
+var show_config = JSON.parse(contents);
 
 var express = require('express');
 var app = express();
@@ -344,6 +347,10 @@ app.post('/fire', function(req, res) {
 	writeToClient(board_id, 'fire'+channels);
 	res.end();
 });
+
+app.get('/show', function(req, res) {
+	res.render('show', show_config);
+})
 
 app.get('/', function(req, res) {
 	res.render('home');
