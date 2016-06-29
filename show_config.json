@@ -1,0 +1,59 @@
+{
+	"spa": {
+		"located": "left field",
+		"effects": [
+			"type1",
+			"type2",
+			"type6"]
+	},
+	"ta": {
+		"located": "center field",
+		"effects": [
+			"type1",
+			"type2",
+			"type6"]
+	},
+	"ntb": {
+		"located": "right field",
+		"effects": [
+			"type1",
+			"type2",
+			"type6"]
+	},
+	"groups": {
+		"a": {
+			"comment": "comment one",
+			"channels": {
+				"a": {
+					"id": "spa", "channel": 0
+				},
+				"b": {
+					"id": "ta", "channel": 2
+				},
+				"c": {
+					"id": "ntb", "channel": 1
+				}
+			}
+		},
+		"b": {
+			"comment": "",
+			"channels": {
+				"a": {
+					"id": "ta", "channel": 1
+				}
+			}
+		},
+		"c": {
+			"comment": "last",
+			"channels": {
+				"a": {
+					"id": "spa", "channel": 1
+				},
+				"b": {
+					"id": "ntb", "channel": 0
+				}
+			}
+		}
+	}
+}
+
