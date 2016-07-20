@@ -1,20 +1,20 @@
 {
 	"spa": {
-		"located": "left field",
+		"location": "left field",
 		"effects": [
 			"type1",
 			"type2",
 			"type6"]
 	},
 	"ta": {
-		"located": "center field",
+		"location": "center field",
 		"effects": [
 			"type1",
 			"type2",
 			"type6"]
 	},
 	"ntb": {
-		"located": "right field",
+		"location": "right field",
 		"effects": [
 			"type1",
 			"type2",

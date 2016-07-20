@@ -5,42 +5,41 @@ html
 		link(href='/css/res_colors.css', rel='stylesheet')
 	body.blackpage
 		h1= message
-		each block in [block1, block2]
+		each board in data
 			table
 				tr
-					each val, key in block
-						td(style='width: 20%')
-							h4= key
-							button(onclick="clickArm(\""+val.id+"\")").
-								arm
-							button(onclick="clickDisarm(\""+val.id+"\")").
-								disarm
-							table
+					td(style='width: 20%')
+						h4= board.name
+						button(onclick="clickArm(\""+board.id+"\")").
+							arm
+						button(onclick="clickDisarm(\""+board.id+"\")").
+							disarm
+						table
+							tr
+								if board.swarm === 'no data'
+									td.rw1sfading= board.swarm
+								else if board.swarm === '1'
+									td.highresistance= 'SW ARMED'
+								else
+									td= 'SW DISARM'
+								if board.hwarm === 'no data'
+									td.rw1sfading= board.hwarm
+								else if board.hwarm === 'ARMED'
+									td.highresistance= 'HW ARMED'
+								else
+									td= 'HW DISARM'
+								td= board.rssi
+						table
+							each i in [0,1,2,3,4,5,6,7]
 								tr
-									if val.swarm === 'no data'
-										td.rw1sfading= val.swarm
-									else if val.swarm === '1'
-										td.highresistance= 'SW ARMED'
+									td= i
+									if board.res[i] === 'no data'
+										td.rw1sfading= board.res[i]
+									else if parseInt(board.res[i]) < 1200
+										td.lowresistance= board.res[i]
 									else
-										td= 'SW DISARM'
-									if val.hwarm === 'no data'
-										td.rw1sfading= val.hwarm
-									else if val.hwarm === 'ARMED'
-										td.highresistance= 'HW ARMED'
-									else
-										td= 'HW DISARM'
-									td= val.rssi
-							table
-								each i in [0,1,2,3,4,5,6,7]
-									tr
-										td= i
-										if val.res[i] === 'no data'
-											td.rw1sfading= val.res[i]
-										else if parseInt(val.res[i]) < 1200
-											td.lowresistance= val.res[i]
-										else
-											td.highresistance= val.res[i]
-										td
-											button(onclick="clickFire(\""+val.id+"\",\""+i+"\")").
-												fire
+										td.highresistance= board.res[i]
+									td
+										button(onclick="clickFire(\""+board.id+"\",\""+i+"\")").
+											fire
 

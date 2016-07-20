@@ -2,19 +2,13 @@ html
 	head
 		title.
 			show
+		link(href='/css/fading.css', rel='stylesheet')
 		link(href='/css/res_colors.css', rel='stylesheet')
-		script.
-			function groupClick(channels) {
-				for (key in channels) {
-					console.log(channels[key].id);
-					console.log(channels[key].channel);
-				}
-			}
 	body
 		h1.
 			show
 		table
-			each group, index in groups
+			each group, index in show.groups
 				tr
 					td(style='width: 5%')= index
 					td(style='width: 95%')
@@ -26,18 +20,27 @@ html
 									table(style='width: 100%')
 										each channel in group.channels
 											tr
-												if channel.id === 'spa'
-													td= 'spa'
-													td= spa.located
-													td= spa.effects[channel.channel]
-												else if channel.id === 'ta'
-													td= 'ta'
-													td= ta.located
-													td= ta.effects[channel.channel]
-												else if channel.id === 'ntb'
-													td= 'ntb'
-													td= ntb.located
-													td= ntb.effects[channel.channel]
+												td= show[channel.id].location
+												td= show[channel.id].effects[channel.channel]
+												td= data[channel.id].name
+												if data[channel.id].swarm === 'no data'
+													td.rw1sfading= 'no data'
+												else if data[channel.id].swarm === '1'
+													td.lowresistance= 'SW ARMED'
+												else
+													td.highresistance= 'SW DISARM'
+												if data[channel.id].hwarm === 'no data'
+													td.rw1sfading= 'no data'
+												else if data[channel.id].hwarm === '1'
+													td.lowresistance= 'HW ARMED'
+												else
+													td.highresistance= 'HW DISARM'
+												if data[channel.id].res[channel.channel] === 'no data'
+													td.rw1sfading= 'no data'
+												else if parseInt(data[channel.id].res[channel.channel]) < 1200
+													td.lowresistance= data[channel.id].res[channel.channel]
+												else
+													td.highresistance= data[channel.id].res[channel.channel]
 								td(style='align=center')
 									button(onclick="groupClick("+JSON.stringify(group.channels)+")") go
 
