@@ -1,28 +1,51 @@
 html
-	head
-		title= title
-		link(href='/css/fading.css', rel='stylesheet')
-	body
-		h1.fading= message
-		table
-			tr
-				td(style='width: 5%').
-					0
-				td(style='width: 95%')
-					table(style='width: 100%')
-						tr
-							td
-								table(style='width: 100%')
-									tr
-										td.
-											left field - flood red
-									tr
-										td.
-											center field - white sparkles
-									tr
-										td.
-											right field - flood red
-							td(style='align=center').
-								fire
+    head
+        title.
+            show
+        link(href='/css/fading.css', rel='stylesheet')
+        link(href='/css/res_colors.css', rel='stylesheet')
+    body
+        h1.
+            show
+        button(onclick="clickArmAll()").
+            arm
+        button(onclick="clickDisarmAll()").
+            disarm
+        table
+            each group, index in show.groups
+                tr
+                    td(style='width: 5%')= index
+                    td(style='width: 95%')
+                        table(style='width: 100%')
+                            tr
+                                td= group.comment
+                            tr
+                                td
+                                    table(style='width: 100%')
+                                        each channel in group.channels
+                                            tr
+                                                td= show[channel.id].location
+                                                td= show[channel.id].effects[channel.channel]
+                                                td= data[channel.id].name
+                                                if data[channel.id].swarm === 'no data'
+                                                    td.rw1sfading= 'no data'
+                                                else if data[channel.id].swarm === '1'
+                                                    td.lowresistance= 'SW ARMED'
+                                                else
+                                                    td.highresistance= 'SW DISARM'
+                                                if data[channel.id].hwarm === 'no data'
+                                                    td.rw1sfading= 'no data'
+                                                else if data[channel.id].hwarm === 'ARMED'
+                                                    td.lowresistance= 'HW ARMED'
+                                                else
+                                                    td.highresistance= 'HW DISARM'
+                                                if data[channel.id].res[channel.channel] === 'no data'
+                                                    td.rw1sfading= 'no data'
+                                                else if parseInt(data[channel.id].res[channel.channel]) < 1200
+                                                    td.lowresistance= data[channel.id].res[channel.channel]
+                                                else
+                                                    td.highresistance= data[channel.id].res[channel.channel]
+                                td(style='align=center')
+                                    button(onclick="groupClick(\""+index+"\")") go
 
 
