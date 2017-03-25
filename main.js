@@ -58,6 +58,7 @@ app.post('/status', function(req, res) {
 			data[key].res[5] = req.headers.r5;
 			data[key].res[6] = req.headers.r6;
 			data[key].res[7] = req.headers.r7;
+			data[key].statusTime = Date.now();
 		}
 	}
 	res.end();
@@ -68,6 +69,7 @@ app.get('/getstatus', function(req, res) {
 	{
 		title: 'Magic Smoke Status',
 		message: 'Magic Smoke',
+		serverTime: Date.now(),
 		data: data
 	});
 })

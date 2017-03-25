@@ -5,11 +5,13 @@ html
         link(href='/css/res_colors.css', rel='stylesheet')
     body.blackpage
         h1= message
+        h2= serverTime
         each board in data
             table
                 tr
                     td(style='width: 20%')
                         h4= board.name
+                        h5= board.statusTime
                         button(onclick="clickArm(\""+board.refid+"\")").
                             arm
                         button(onclick="clickDisarm(\""+board.refid+"\")").
