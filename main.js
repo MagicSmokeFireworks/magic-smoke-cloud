@@ -47,6 +47,7 @@ app.post('/status', function(req, res) {
 	for (key in data) {
 		if (req.headers.id === data[key].id) {
 			data[key].ip = req.ip;
+			data[key].firmver = req.headers.fver;
 			data[key].swarm = req.headers.sw_arm;
 			data[key].hwarm = req.headers.hw_arm;
 			data[key].rssi = req.headers.wifi_rssi;
@@ -58,6 +59,14 @@ app.post('/status', function(req, res) {
 			data[key].res[5] = req.headers.r5;
 			data[key].res[6] = req.headers.r6;
 			data[key].res[7] = req.headers.r7;
+			data[key].firecount[0] = req.headers.fc0;
+			data[key].firecount[1] = req.headers.fc1;
+			data[key].firecount[2] = req.headers.fc2;
+			data[key].firecount[3] = req.headers.fc3;
+			data[key].firecount[4] = req.headers.fc4;
+			data[key].firecount[5] = req.headers.fc5;
+			data[key].firecount[6] = req.headers.fc6;
+			data[key].firecount[7] = req.headers.fc7;
 			data[key].statusTime = Date.now();
 		}
 	}

@@ -19,7 +19,7 @@ var getStatus = function() {
 	xhttp.onreadystatechange = function() {
 		if (xhttp.readyState == 4 && xhttp.status == 200) {
 			document.getElementById("statusInfo").innerHTML = xhttp.responseText;
-			setTimeout(getStatus, 2000);
+			setTimeout(getStatus, 500);
 		}
 	};
 	xhttp.open("GET", "/getstatus", true);
