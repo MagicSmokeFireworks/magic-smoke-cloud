@@ -10,6 +10,9 @@ var app = express();
 
 var net = require('net');
 
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+
 var writeToClient = function(board_id, message) {
 	console.log(board_id);
 	console.log(message);
@@ -34,6 +37,13 @@ var writeToClient = function(board_id, message) {
 		});
 	}
 };
+
+io.on('connection', function(socket){
+	console.log('a user connected');
+	socket.on('disconnect', function(){
+		console.log('user disconnected');
+	});
+});
 
 app.set('view engine', 'pug');
 
@@ -71,6 +81,7 @@ app.post('/status', function(req, res) {
 		}
 	}
 	res.end();
+	io.emit('fresh data', { for: 'everyone' });
 })
 
 app.get('/getstatus', function(req, res) {
@@ -151,12 +162,17 @@ app.get('/', function(req, res) {
 	res.render('home');
 })
 
-var server = app.listen(8080, function() {
+//var server = app.listen(8080, function() {
+//
+//	var host = server.address().address;
+//	var port = server.address().port;
+//
+//	console.log("Listening at http://%s:%s", host, port);
+//
+//})
 
-	var host = server.address().address;
-	var port = server.address().port;
+http.listen(8080, function(){
+	console.log("Listening on *:8080");
+});
 
-	console.log("Listening at http://%s:%s", host, port);
-
-})
 

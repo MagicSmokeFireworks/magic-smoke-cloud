@@ -11,6 +11,13 @@ th,td {
 </style>
 <body bgcolor="#000000">
 	<div id="statusInfo">no data</div>
+	<script src="/socket.io/socket.io.js"></script>
+	<script>
+		var socket = io();
+		socket.on('fresh data', function(){
+			getStatus();
+		});
+	</script>
 	<script>
 var getStatus = function() {
 
@@ -19,7 +26,7 @@ var getStatus = function() {
 	xhttp.onreadystatechange = function() {
 		if (xhttp.readyState == 4 && xhttp.status == 200) {
 			document.getElementById("statusInfo").innerHTML = xhttp.responseText;
-			setTimeout(getStatus, 500);
+			//setTimeout(getStatus, 500);
 		}
 	};
 	xhttp.open("GET", "/getstatus", true);
