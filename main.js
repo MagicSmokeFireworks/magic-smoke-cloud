@@ -77,6 +77,7 @@ app.post('/status', function(req, res) {
 			data[key].firecount[5] = req.headers.fc5;
 			data[key].firecount[6] = req.headers.fc6;
 			data[key].firecount[7] = req.headers.fc7;
+			data[key].cmdcount = req.headers.cc;
 			data[key].statusTime = Date.now();
 		}
 	}

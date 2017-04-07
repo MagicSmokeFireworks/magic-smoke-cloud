@@ -10,6 +10,7 @@
 		"hwarm": "no data",
 		"rssi": "no data",
 		"firecount": ["0", "0", "0", "0", "0", "0", "0", "0"],
+		"cmdcount": "0",
 		"res": ["no data", "no data", "no data", "no data", "no data", "no data", "no data", "no data"]
 	},
 	"mm": {
@@ -23,6 +24,7 @@
 		"hwarm": "no data",
 		"rssi": "no data",
 		"firecount": ["0", "0", "0", "0", "0", "0", "0", "0"],
+		"cmdcount": "0",
 		"res": ["no data", "no data", "no data", "no data", "no data", "no data", "no data", "no data"]
 	},
 	"dlj": {
@@ -36,6 +38,7 @@
 		"hwarm": "no data",
 		"rssi": "no data",
 		"firecount": ["0", "0", "0", "0", "0", "0", "0", "0"],
+		"cmdcount": "0",
 		"res": ["no data", "no data", "no data", "no data", "no data", "no data", "no data", "no data"]
 	},
 	"fag": {
@@ -49,6 +52,7 @@
 		"hwarm": "no data",
 		"rssi": "no data",
 		"firecount": ["0", "0", "0", "0", "0", "0", "0", "0"],
+		"cmdcount": "0",
 		"res": ["no data", "no data", "no data", "no data", "no data", "no data", "no data", "no data"]
 	},
 	"ntb": {
@@ -62,6 +66,7 @@
 		"hwarm": "no data",
 		"rssi": "no data",
 		"firecount": ["0", "0", "0", "0", "0", "0", "0", "0"],
+		"cmdcount": "0",
 		"res": ["no data", "no data", "no data", "no data", "no data", "no data", "no data", "no data"]
 	},
 	"rd": {
@@ -75,6 +80,7 @@
 		"hwarm": "no data",
 		"rssi": "no data",
 		"firecount": ["0", "0", "0", "0", "0", "0", "0", "0"],
+		"cmdcount": "0",
 		"res": ["no data", "no data", "no data", "no data", "no data", "no data", "no data", "no data"]
 	},
 	"sm": {
@@ -88,6 +94,7 @@
 		"hwarm": "no data",
 		"rssi": "no data",
 		"firecount": ["0", "0", "0", "0", "0", "0", "0", "0"],
+		"cmdcount": "0",
 		"res": ["no data", "no data", "no data", "no data", "no data", "no data", "no data", "no data"]
 	},
 	"pitd": {
@@ -101,6 +108,7 @@
 		"hwarm": "no data",
 		"rssi": "no data",
 		"firecount": ["0", "0", "0", "0", "0", "0", "0", "0"],
+		"cmdcount": "0",
 		"res": ["no data", "no data", "no data", "no data", "no data", "no data", "no data", "no data"]
 	},
 	"cr": {
@@ -114,6 +122,7 @@
 		"hwarm": "no data",
 		"rssi": "no data",
 		"firecount": ["0", "0", "0", "0", "0", "0", "0", "0"],
+		"cmdcount": "0",
 		"res": ["no data", "no data", "no data", "no data", "no data", "no data", "no data", "no data"]
 	},
 	"ta": {
@@ -127,6 +136,7 @@
 		"hwarm": "no data",
 		"rssi": "no data",
 		"firecount": ["0", "0", "0", "0", "0", "0", "0", "0"],
+		"cmdcount": "0",
 		"res": ["no data", "no data", "no data", "no data", "no data", "no data", "no data", "no data"]
 	}
 }

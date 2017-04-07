@@ -8,6 +8,19 @@ table,th,td {
 th,td {
 	padding: 5px;
 }
+.timediff {
+	background-color: green;
+	animation-name: example;
+	animation-duration: 0.7s;
+	animation-delay: 2.5s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+
+@keyframes example {
+	from {background-color: yellow;}
+	to {background-color: red;}
+}
 </style>
 <body bgcolor="#000000">
 	<div id="statusInfo">no data</div>
