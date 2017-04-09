@@ -2,8 +2,10 @@
 var fs = require("fs");
 var contents = fs.readFileSync("show.json");
 var show = JSON.parse(contents);
-var contents = fs.readFileSync("data.json");
-var data = JSON.parse(contents);
+var contents = fs.readFileSync("boardinfo.json");
+var boardinfo = JSON.parse(contents);
+var contents = fs.readFileSync("telemetry.json");
+var telemetry = JSON.parse(contents);
 
 var express = require('express');
 var app = express();
@@ -17,7 +19,7 @@ var writeToClient = function(board_id, message) {
 	console.log(board_id);
 	console.log(message);
 	var clientIP = '';
-	clientIP = data[board_id].ip;
+	clientIP = telemetry[board_id].ip;
 	console.log(clientIP);
 	if (clientIP === '') {
 	}
@@ -54,44 +56,43 @@ app.get('/status', function(req, res) {
 })
 
 app.post('/status', function(req, res) {
-	for (key in data) {
-		if (req.headers.id === data[key].id) {
-			data[key].ip = req.ip;
-			data[key].firmver = req.headers.fver;
-			data[key].swarm = req.headers.sw_arm;
-			data[key].hwarm = req.headers.hw_arm;
-			data[key].rssi = req.headers.wifi_rssi;
-			data[key].res[0] = req.headers.r0;
-			data[key].res[1] = req.headers.r1;
-			data[key].res[2] = req.headers.r2;
-			data[key].res[3] = req.headers.r3;
-			data[key].res[4] = req.headers.r4;
-			data[key].res[5] = req.headers.r5;
-			data[key].res[6] = req.headers.r6;
-			data[key].res[7] = req.headers.r7;
-			data[key].firecount[0] = req.headers.fc0;
-			data[key].firecount[1] = req.headers.fc1;
-			data[key].firecount[2] = req.headers.fc2;
-			data[key].firecount[3] = req.headers.fc3;
-			data[key].firecount[4] = req.headers.fc4;
-			data[key].firecount[5] = req.headers.fc5;
-			data[key].firecount[6] = req.headers.fc6;
-			data[key].firecount[7] = req.headers.fc7;
-			data[key].cmdcount = req.headers.cc;
-			data[key].statusTime = Date.now();
+	var sname = "";
+	for (key in boardinfo) {
+		if (req.headers.id === boardinfo[key].id) {
+			sname = key;
 		}
 	}
+	telemetry[sname].ip = req.ip;
+	telemetry[sname].firmver = req.headers.fver;
+	telemetry[sname].swarm = req.headers.sw_arm;
+	telemetry[sname].hwarm = req.headers.hw_arm;
+	telemetry[sname].rssi = req.headers.wifi_rssi;
+	telemetry[sname].res[0] = req.headers.r0;
+	telemetry[sname].res[1] = req.headers.r1;
+	telemetry[sname].res[2] = req.headers.r2;
+	telemetry[sname].res[3] = req.headers.r3;
+	telemetry[sname].res[4] = req.headers.r4;
+	telemetry[sname].res[5] = req.headers.r5;
+	telemetry[sname].res[6] = req.headers.r6;
+	telemetry[sname].res[7] = req.headers.r7;
+	telemetry[sname].firecount[0] = req.headers.fc0;
+	telemetry[sname].firecount[1] = req.headers.fc1;
+	telemetry[sname].firecount[2] = req.headers.fc2;
+	telemetry[sname].firecount[3] = req.headers.fc3;
+	telemetry[sname].firecount[4] = req.headers.fc4;
+	telemetry[sname].firecount[5] = req.headers.fc5;
+	telemetry[sname].firecount[6] = req.headers.fc6;
+	telemetry[sname].firecount[7] = req.headers.fc7;
+	telemetry[sname].cmdcount = req.headers.cc;
 	res.end();
-	io.emit('fresh data', { for: 'everyone' });
+	io.emit('fresh data', sname, telemetry[sname]);
 })
 
 app.get('/getstatus', function(req, res) {
 	res.render('status',
 	{
-		title: 'Magic Smoke Status',
-		message: 'Magic Smoke',
-		serverTime: Date.now(),
-		data: data
+		boardinfo: boardinfo,
+		telemetry: telemetry
 	});
 })
 
@@ -113,8 +114,8 @@ app.post('/arm', function(req, res) {
 });
 
 app.post('/armall', function(req, res) {
-    for(board_id in data) {
-        writeToClient(data[board_id].refid, 'arm');
+    for(board in boardinfo) {
+        writeToClient(board.sname, 'arm');
     }
     res.end();
 });
@@ -127,8 +128,8 @@ app.post('/disarm', function(req, res) {
 });
 
 app.post('/disarmall', function(req, res) {
-    for(board_id in data) {
-        writeToClient(data[board_id].refid, 'disarm');
+    for(board in boardinfo) {
+        writeToClient(board.sname, 'disarm');
     }
     res.end();
 });

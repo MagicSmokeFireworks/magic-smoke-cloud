@@ -4,6 +4,8 @@
 	-webkit-animation-name: yk1sfading;
 	animation-duration: 1s;
 	animation-name: yk1sfading;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
 }
 
 @-webkit-keyframes yk1sfading {
@@ -29,6 +31,8 @@
 	-webkit-animation-name: rw1sfading;
 	animation-duration: 1s;
 	animation-name: rw1sfading;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
 }
 
 @-webkit-keyframes rw1sfading {
@@ -54,6 +58,8 @@
 	-webkit-animation-name: rb1sfading;
 	animation-duration: 1s;
 	animation-name: rb1sfading;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
 }
 
 @-webkit-keyframes rb1sfading {

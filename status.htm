@@ -26,9 +26,32 @@ th,td {
 	<div id="statusInfo">no data</div>
 	<script src="/socket.io/socket.io.js"></script>
 	<script>
+		var x = setInterval(function() {
+			var z = document.getElementsByClassName("datatimer");
+			for (var i = 0; i < z.length; i++) {
+				var dt = parseFloat(z[i].innerHTML);
+				dt = dt + 0.1;
+				z[i].innerHTML = dt.toFixed(1);
+			}
+		}, 100);
+
 		var socket = io();
-		socket.on('fresh data', function(){
-			getStatus();
+		socket.on('fresh data', function(sname, telemetry){
+			var y = document.getElementById(sname);
+			y.getElementsByClassName("datatimer")[0].innerHTML = "0";
+			y.getElementsByClassName("firmver")[0].innerHTML = telemetry["firmver"];
+			y.getElementsByClassName("swarm")[0].innerHTML = telemetry["swarm"];
+			y.getElementsByClassName("hwarm")[0].innerHTML = telemetry["hwarm"];
+			y.getElementsByClassName("rssi")[0].innerHTML = telemetry["rssi"];
+			y.getElementsByClassName("cmdcount")[0].innerHTML = telemetry["cmdcount"];
+			var res = y.getElementsByClassName("res");
+			for (var i = 0; i < res.length; i++) {
+				res[i].innerHTML = telemetry["res"][i];
+			}
+			var firecount = y.getElementsByClassName("firecount");
+			for (var i = 0; i < firecount.length; i++) {
+				firecount[i].innerHTML = telemetry["firecount"][i];
+			}
 		});
 	</script>
 	<script>
@@ -38,6 +61,7 @@ var getStatus = function() {
 	xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
 		if (xhttp.readyState == 4 && xhttp.status == 200) {
+			timercounter = 0;
 			document.getElementById("statusInfo").innerHTML = xhttp.responseText;
 			//setTimeout(getStatus, 500);
 		}

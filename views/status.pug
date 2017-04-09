@@ -1,49 +1,33 @@
 html
     head
-        title= title
+        title= "Magic Smoke Status"
         link(href='/css/fading.css', rel='stylesheet')
         link(href='/css/res_colors.css', rel='stylesheet')
-    body.blackpage
-        h1= message
-        each board in data
-            table.timediff
+    body
+        h1= "Magic Smoke"
+        each board in boardinfo
+            table(id=board.sname)
                 tr
                     td(style='width: 20%')
                         h4= board.name
-                        h5= board.firmver
-                        h5= board.statusTime - serverTime
-                        button(onclick="clickArm(\""+board.refid+"\")").
+                        h5(class="firmver")= telemetry[board.sname].firmver
+                        h5(class="datatimer")= 0
+                        button(onclick="clickArm(\""+board.sname+"\")").
                             arm
-                        button(onclick="clickDisarm(\""+board.refid+"\")").
+                        button(onclick="clickDisarm(\""+board.sname+"\")").
                             disarm
                         table
                             tr
-                                if board.swarm === 'no data'
-                                    td.rw1sfading= board.swarm
-                                else if board.swarm === '1'
-                                    td.highresistance= 'SW ARMED'
-                                else
-                                    td= 'SW DISARM'
-                                if board.hwarm === 'no data'
-                                    td.rw1sfading= board.hwarm
-                                else if board.hwarm === 'ARMED'
-                                    td.highresistance= 'HW ARMED'
-                                else
-                                    td= 'HW DISARM'
-                                td= board.rssi
-                                td= board.cmdcount
+                                td(class="swarm")= telemetry[board.sname].swarm
+                                td(class="hwarm")= telemetry[board.sname].hwarm
+                                td(class="rssi")= telemetry[board.sname].rssi
+                                td(class="cmdcount")= telemetry[board.sname].cmdcount
                         table
                             each i in [0,1,2,3,4,5,6,7]
                                 tr
                                     td= i
-                                    if board.res[i] === 'no data'
-                                        td.rw1sfading= board.res[i]
-                                    else if parseInt(board.res[i]) < 1200
-                                        td.lowresistance= board.res[i]
-                                    else
-                                        td.highresistance= board.res[i]
+                                    td(class="res")= telemetry[board.sname].res[i]
                                     td
-                                        button(onclick="clickFire(\""+board.refid+"\",\""+i+"\")").
+                                        button(onclick="clickFire(\""+board.sname+"\",\""+i+"\")").
                                             fire
-
-                                    td= board.firecount[i]
+                                    td(class="firecount")= telemetry[board.sname].firecount[i]
