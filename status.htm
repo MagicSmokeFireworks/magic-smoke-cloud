@@ -37,20 +37,54 @@ th,td {
 
 		var socket = io();
 		socket.on('fresh data', function(sname, telemetry){
+			// reset telemetry timer
 			var y = document.getElementById(sname);
 			y.getElementsByClassName("datatimer")[0].innerHTML = "0";
-			y.getElementsByClassName("firmver")[0].innerHTML = telemetry["firmver"];
-			y.getElementsByClassName("swarm")[0].innerHTML = telemetry["swarm"];
-			y.getElementsByClassName("hwarm")[0].innerHTML = telemetry["hwarm"];
-			y.getElementsByClassName("rssi")[0].innerHTML = telemetry["rssi"];
-			y.getElementsByClassName("cmdcount")[0].innerHTML = telemetry["cmdcount"];
-			var res = y.getElementsByClassName("res");
-			for (var i = 0; i < res.length; i++) {
-				res[i].innerHTML = telemetry["res"][i];
+
+			// firmware version
+			firmver = document.getElementById(sname+"_firmver");
+			firmver.innerHTML = telemetry["firmver"];
+
+			// software arm
+			swarm = document.getElementById(sname+"_swarm");
+			if (telemetry["swarm"] == "no data") {
+				swarm.innerHTML = "no data";
 			}
-			var firecount = y.getElementsByClassName("firecount");
-			for (var i = 0; i < firecount.length; i++) {
-				firecount[i].innerHTML = telemetry["firecount"][i];
+			else if (telemetry["swarm"] == "0") {
+				swarm.innerHTML = "SW DISARMED";
+			}
+			else {
+				swarm.innerHTML = "SW ARMED";
+			}
+
+			// hardware arm
+			hwarm = document.getElementById(sname+"_hwarm");
+			hwarm.innerHTML = telemetry["hwarm"];
+
+			// wifi rssi
+			rssi = document.getElementById(sname+"_rssi");
+			if (parseInt(telemetry["rssi"]) < -60) {
+				rssi.className = "rb1sfading";
+			}
+			else {
+				rssi.className = "";
+			}
+			rssi.innerHTML = telemetry["rssi"];
+
+			// command count
+			cmdcount = document.getElementById(sname+"_cmdcount");
+			cmdcount.innerHTML = telemetry["cmdcount"];
+
+			// resistance measurements
+			for (var i = 0; i < 8; i++) {
+				var res = document.getElementById(sname+"_res"+i);
+				res.innerHTML = telemetry["res"][i];
+			}
+
+			// fire counts
+			for (var i = 0; i < 8; i++) {
+				var firecount = document.getElementById(sname+"_firecount"+i);
+				firecount.innerHTML = telemetry["firecount"][i];
 			}
 		});
 	</script>

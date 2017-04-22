@@ -6,28 +6,26 @@ html
     body
         h1= "Magic Smoke"
         each board in boardinfo
-            table(id=board.sname)
-                tr
-                    td(style='width: 20%')
-                        h4= board.name
-                        h5(class="firmver")= telemetry[board.sname].firmver
-                        h5(class="datatimer")= 0
-                        button(onclick="clickArm(\""+board.sname+"\")").
-                            arm
-                        button(onclick="clickDisarm(\""+board.sname+"\")").
-                            disarm
-                        table
-                            tr
-                                td(class="swarm")= telemetry[board.sname].swarm
-                                td(class="hwarm")= telemetry[board.sname].hwarm
-                                td(class="rssi")= telemetry[board.sname].rssi
-                                td(class="cmdcount")= telemetry[board.sname].cmdcount
-                        table
-                            each i in [0,1,2,3,4,5,6,7]
-                                tr
-                                    td= i
-                                    td(class="res")= telemetry[board.sname].res[i]
-                                    td
-                                        button(onclick="clickFire(\""+board.sname+"\",\""+i+"\")").
-                                            fire
-                                    td(class="firecount")= telemetry[board.sname].firecount[i]
+            div(id=board.sname)
+                h4= board.name
+                h5(id=board.sname+"_firmver")= telemetry[board.sname].firmver
+                h5(class="datatimer")= 0
+                button(onclick="clickArm(\""+board.sname+"\")").
+                    arm
+                button(onclick="clickDisarm(\""+board.sname+"\")").
+                    disarm
+                table
+                    tr
+                        td(id=board.sname+"_swarm")= telemetry[board.sname].swarm
+                        td(id=board.sname+"_hwarm")= telemetry[board.sname].hwarm
+                        td(id=board.sname+"_rssi")= telemetry[board.sname].rssi
+                        td(id=board.sname+"_cmdcount")= telemetry[board.sname].cmdcount
+                table
+                    each i in [0,1,2,3,4,5,6,7]
+                        tr
+                            td= i
+                            td(id=board.sname+"_res"+i)= telemetry[board.sname].res[i]
+                            td
+                                button(onclick="clickFire(\""+board.sname+"\",\""+i+"\")").
+                                    fire
+                            td(id=board.sname+"_firecount"+i)= telemetry[board.sname].firecount[i]
