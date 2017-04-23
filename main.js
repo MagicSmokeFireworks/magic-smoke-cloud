@@ -127,6 +127,13 @@ app.post('/disarm', function(req, res) {
 	res.end();
 });
 
+app.post('/identify', function(req, res) {
+	console.log('identify');
+	var board_id = req.query.id;
+	writeToClient(board_id, 'identify');
+	res.end();
+});
+
 app.post('/disarmall', function(req, res) {
     for(board in boardinfo) {
         writeToClient(board.sname, 'disarm');
