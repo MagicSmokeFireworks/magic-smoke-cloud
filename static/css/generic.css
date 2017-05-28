@@ -1,0 +1,33 @@
+
+table,th,td {
+	border : 1px solid gray;
+	border-collapse: collapse;
+}
+
+th,td {
+	padding: 5px;
+	color: white;
+}
+
+body {
+	color: white;
+}
+
+a {
+	color: hotpink;
+}
+
+.timediff {
+	background-color: green;
+	animation-name: example;
+	animation-duration: 0.7s;
+	animation-delay: 2.5s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+
+@keyframes example {
+	from {background-color: yellow;}
+	to {background-color: red;}
+}
+

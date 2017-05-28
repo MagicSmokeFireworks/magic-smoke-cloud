@@ -1,0 +1,73 @@
+html
+    head
+        title= boardinfo[boardid].name
+        link(href='/css/fading.css', rel='stylesheet')
+        link(href='/css/res_colors.css', rel='stylesheet')
+        link(href='/css/generic.css', rel='stylesheet')
+        script(src='/javascripts/datatimer.js')
+        script(src='/socket.io/socket.io.js')
+        script(src='/javascripts/socket_hookups.js')
+        script(src='/javascripts/commands.js')
+    body(bgcolor="#000000")
+        h1= boardinfo[boardid].name
+        div(class="datatimer")= 0
+        button(onclick="clickIdentify(\""+boardid+"\")") Identify
+        table
+            thead
+                tr
+                    th ID
+                    th Comments
+                    th Firmware Version
+                    th IP
+                    th RSSI
+            tbody
+                tr
+                    td= boardinfo[boardid].id
+                    td= boardinfo[boardid].comments
+                    td= telemetry[boardid].firmver
+                    td= telemetry[boardid].ip
+                    td(id=boardid+"_rssi")= telemetry[boardid].rssi
+
+        table
+            thead
+                tr
+                    th Command Count Sent
+                    th Command Count Received
+            tbody
+                tr
+                    td(id=boardid+"_cmdcount_predict")= predictions[boardid].cmdcount
+                    td(id=boardid+"_cmdcount")= telemetry[boardid].cmdcount
+
+        button(onclick="clickArm(\""+boardid+"\")") Arm
+        button(onclick="clickDisarm(\""+boardid+"\")") Disarm
+        table
+            thead
+                tr
+                    th SW Arm Commanded
+                    th SW Arm Actual
+                    th HW Arm Actual
+            tbody
+                tr
+                    td(id=boardid+"_swarm_predict")= predictions[boardid].swarm
+                    td(id=boardid+"_swarm")= telemetry[boardid].swarm
+                    td(id=boardid+"_hwarm")= telemetry[boardid].hwarm
+
+        table
+            thead
+                tr
+                    th Channel
+                    th Resistance Predicted
+                    th Resistance Actual
+                    th Fire Count Sent
+                    th Fire Count Received
+                    th Fire Command
+            tbody
+                each i in [0,1,2,3,4,5,6,7]
+                    tr
+                        td= i
+                        td(id=boardid+"_res"+i+"_predict")= predictions[boardid].res[i]
+                        td(id=boardid+"_res"+i)= telemetry[boardid].res[i]
+                        td(id=boardid+"_firecount"+i+"_predict")= predictions[boardid].firecount[i]
+                        td(id=boardid+"_firecount"+i)= telemetry[boardid].firecount[i]
+                        td
+                            button(onclick="clickFire(\""+boardid+"\",\""+i+"\")") Fire

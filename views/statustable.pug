@@ -1,0 +1,47 @@
+html
+    head
+        title= "Magic Smoke Status"
+        link(href='/css/fading.css', rel='stylesheet')
+        link(href='/css/res_colors.css', rel='stylesheet')
+        link(href='/css/generic.css', rel='stylesheet')
+    body
+        h1= "Magic Smoke"
+        table
+            thead
+                tr
+                    th Board Name
+                    th Identify
+                    th Firmware Ver.
+                    th Timer
+                    th RSSI
+                    th (dis)arm
+                    th SW Arm
+                    th HW Arm
+                    th Cmd Count Diff
+                    th CH.0 Fire Cmd Diff
+                    th CH.1 Fire Cmd Diff
+                    th CH.2 Fire Cmd Diff
+                    th CH.3 Fire Cmd Diff
+                    th CH.4 Fire Cmd Diff
+                    th CH.5 Fire Cmd Diff
+                    th CH.6 Fire Cmd Diff
+                    th CH.7 Fire Cmd Diff
+            tbody
+                each board in boardinfo
+                    tr
+                        td(id=board.sname)
+                            a(href="/board/"+board.sname) #{ board.name }
+                        td
+                            button(onclick="clickIdentify(\""+board.sname+"\")") Identify
+                        td(id=board.sname+"_firmver")= telemetry[board.sname].firmver
+                        td(class="datatimer")= 0
+                        td(id=board.sname+"_rssi")= telemetry[board.sname].rssi
+                        td
+                            button(onclick="clickArm(\""+board.sname+"\")") Arm
+                            button(onclick="clickDisarm(\""+board.sname+"\")") Disarm
+                        td(id=board.sname+"_swarm")= telemetry[board.sname].swarm
+                        td(id=board.sname+"_hwarm")= telemetry[board.sname].hwarm
+                        td(id=board.sname+"_cmdcount")= telemetry[board.sname].cmdcount
+                        each i in [0,1,2,3,4,5,6,7]
+                            td(id=board.sname+"_firecount"+i)= telemetry[board.sname].firecount[i]
+

@@ -6,6 +6,8 @@ var contents = fs.readFileSync("boardinfo.json");
 var boardinfo = JSON.parse(contents);
 var contents = fs.readFileSync("telemetry.json");
 var telemetry = JSON.parse(contents);
+var contents = fs.readFileSync("predictions.json");
+var predictions = JSON.parse(contents);
 
 var express = require('express');
 var app = express();
@@ -89,10 +91,21 @@ app.post('/status', function(req, res) {
 })
 
 app.get('/getstatus', function(req, res) {
-	res.render('status',
+	res.render('statustable',
 	{
 		boardinfo: boardinfo,
-		telemetry: telemetry
+		telemetry: telemetry,
+		predictions: predictions
+	});
+})
+
+app.get('/board/:boardid', function(req, res) {
+	res.render('board',
+	{
+		boardid: req.params.boardid,
+		boardinfo: boardinfo,
+		telemetry: telemetry,
+		predictions: predictions
 	});
 })
 
@@ -111,13 +124,21 @@ app.post('/arm', function(req, res) {
 	var board_id = req.query.id;
 	writeToClient(board_id, 'arm');
 	res.end();
+
+	predictions[board_id].swarm = 1;
+	predictions[board_id].cmdcount = parseInt(predictions[board_id].cmdcount) + 1;
+	io.emit('fresh predicts', board_id, predictions[board_id]);
 });
 
 app.post('/armall', function(req, res) {
     for(board in boardinfo) {
         writeToClient(board.sname, 'arm');
+        predictions[board.sname].swarm = 1;
+        predictions[board.sname].cmdcount = parseInt(predictions[board.sname].cmdcount) + 1;
+        io.emit('fresh predicts', board.sname, predictions[board.sname]);
     }
     res.end();
+
 });
 
 app.post('/disarm', function(req, res) {
@@ -125,6 +146,10 @@ app.post('/disarm', function(req, res) {
 	var board_id = req.query.id;
 	writeToClient(board_id, 'disarm');
 	res.end();
+
+	predictions[board_id].swarm = 0;
+	predictions[board_id].cmdcount = parseInt(predictions[board_id].cmdcount) + 1;
+	io.emit('fresh predicts', board_id, predictions[board_id]);
 });
 
 app.post('/identify', function(req, res) {
@@ -132,11 +157,17 @@ app.post('/identify', function(req, res) {
 	var board_id = req.query.id;
 	writeToClient(board_id, 'identify');
 	res.end();
+
+	predictions[board_id].cmdcount = parseInt(predictions[board_id].cmdcount) + 1;
+	io.emit('fresh predicts', board_id, predictions[board_id]);
 });
 
 app.post('/disarmall', function(req, res) {
     for(board in boardinfo) {
         writeToClient(board.sname, 'disarm');
+        predictions[board.sname].swarm = 0;
+        predictions[board.sname].cmdcount = parseInt(predictions[board.sname].cmdcount) + 1;
+        io.emit('fresh predicts', board.sname, predictions[board.sname]);
     }
     res.end();
 });
@@ -146,6 +177,14 @@ app.post('/fire', function(req, res) {
 	var channels = req.query.channels;
 	writeToClient(board_id, 'fire'+channels);
 	res.end();
+
+	var len = channels.length;
+	for( var i = 0; i < len; i++) {
+		var channel = channels[i];
+		predictions[board_id].firecount[channel] = parseInt(predictions[board_id].firecount[channel]) + 1;
+	}
+	predictions[board_id].cmdcount = parseInt(predictions[board_id].cmdcount) + 1;
+	io.emit('fresh predicts', board_id, predictions[board_id]);
 });
 
 app.post('/firegroup', function(req, res) {
@@ -163,6 +202,13 @@ app.post('/firegroup', function(req, res) {
     }
     for(board_id in to_fire) {
         writeToClient(board_id, 'fire'+to_fire[board_id]);
+	var len = to_fire[board_id].length;
+	for( var i = 0; i < len; i++) {
+		var channel = to_fire[board_id][i];
+		predictions[board_id].firecount[channel] = parseInt(predictions[board_id].firecount[channel]) + 1;
+	}
+	predictions[board_id].cmdcount = parseInt(predictions[board_id].cmdcount) + 1;
+	io.emit('fresh predicts', board_id, predictions[board_id]);
     }
     res.end();
 });
