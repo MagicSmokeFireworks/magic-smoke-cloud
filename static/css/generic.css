@@ -1,24 +1,221 @@
 
-table,th,td {
-	border : 1px solid gray;
-	border-collapse: collapse;
+html,
+html * {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: Gotham, Helvetica Neue, Helvetica, Arial, sans-serif;
+	letter-spacing: .05em;
 }
 
-th,td {
-	padding: 5px;
-	color: white;
+header {
+	z-index: 1000;
+	width: 100%;
+	top: 0px;
+	padding: 1.5em;
+	position: fixed;
+	text-align: center;
+	background-color: black;
+	background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
 
-body {
-	color: white;
+.logo {
+	position: relative;
+	display: block;
+	float: right;
+	width: 15em;
+	padding: 0em 2em 0em 2em;
 }
 
-a {
+nav {
+	position: relative;
+	z-index: 400;
+	display: block !important;
+	padding: 1em;
+	opacity: .95;
+	background: none;
+}
+
+nav ul {
+	list-style-type: none;
+	margin: 0;
+}
+
+nav ul li {
+	display: inline-block;
+	margin-bottom: 0;
+	margin-left: 1em;
+	margin-right: 1em;
+}
+
+nav ul li a {
+	font-size: .85em;
+	padding-bottom: .5em;
+	text-decoration: none;
+	letter-spacing: .15em;
+	text-transform: uppercase;
+	color: #fff;
+	-webkit-transition: color .3s;
+	transition: color .3s;
+}
+
+nav ul li a:hover {
+	outline: none;
+	border-bottom: 1px solid white;
 	color: hotpink;
 }
 
-.timediff {
-	background-color: green;
+.hero {
+	position: relative;
+	height: 54vw;
+}
+
+.hero-content {
+	position: absolute;
+	/*z-index: 20000;*/
+	padding-top: 9em;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+}
+
+.commands {
+	display: inline-block;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.button {
+	background-color: #1F1F1F;
+	border: 2px solid #4F4F4F;
+	border-radius: 20px;
+	color: white;
+	padding: 15px 32px;
+	margin-left: 2em;
+	margin-right: 2em;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	letter-spacing: .1em;
+	-webkit-transition: border .3s;
+	transition: border .3s;
+	-webkit-transition: background-color .3s;
+	transition: background-color .3s;
+}
+
+.button:hover {
+	border: 2px solid hotpink;
+}
+
+.button:active {
+	background-color: yellow;
+}
+
+.button:focus {
+	outline: 0;
+}
+
+.buttonsmall {
+	background-color: #1F1F1F;
+	border: 2px solid #4F4F4F;
+	border-radius: 17px;
+	color: white;
+	padding: 10px 25px;
+	margin-left: 1.5em;
+	margin-right: 1.5em;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	letter-spacing: .1em;
+	-webkit-transition: border .3s;
+	transition: border .3s;
+	-webkit-transition: background-color .3s;
+}
+
+.buttonsmall:hover {
+	border: 2px solid hotpink;
+}
+
+.buttonsmall:active {
+	background-color: yellow;
+}
+
+.buttonsmall:focus {
+	outline: 0;
+}
+
+.command_counts div {
+	display: inline-block;
+	padding: 5px;
+	letter-spacing: .05em;
+}
+
+.channel_status {
+	padding: 10px;
+}
+
+.channel_status div {
+	display: inline-block;
+	padding: 5px;
+	margin-top: 0.5em;
+}
+
+h1 {
+	font-size: 3em;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+}
+
+h2 {
+	font-size: 2em;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	padding: 10px;
+}
+
+h3 {
+	font-size: 1.5em;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	padding: 10px;
+}
+
+table {
+	margin-left: auto;
+	margin-right: auto;
+	padding: 1em;
+}
+
+th {
+	padding: 0em 2em 0em 2em;
+	width: 10%;
+}
+
+td {
+	text-align: center
+}
+
+body {
+	background-image: url("/images/subtle_dots_big.png");
+	background-color: black;
+	color: white;
+}
+
+hr {
+	display: block;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	margin-left: auto;
+	margin-right: auto;
+	border-style: inset;
+	border-width: 1px;
+}
+
+.datatimer {
+	background-color: none;
 	animation-name: example;
 	animation-duration: 0.7s;
 	animation-delay: 2.5s;
@@ -30,4 +227,34 @@ a {
 	from {background-color: yellow;}
 	to {background-color: red;}
 }
+
+.board_name {
+	font-size: .85em;
+	text-transform: uppercase;
+	text-decoration: none;
+	letter-spacing: .15em;
+	color: #ffaacc;
+	-webkit-transition: color .3s;
+	transition: color .3s;
+}
+
+.board_name:hover {
+	outline: none;
+	border-bottom: 1px solid white;
+	color: hotpink;
+}
+
+.status_table {
+	border-collapse: collapse;
+}
+
+.board_name_head {
+	width: 20%;
+}
+
+.status_table tbody tr td {
+	padding: 1em;
+	border-bottom: 1px solid white;
+}
+
 

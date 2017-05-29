@@ -54,7 +54,13 @@ app.set('view engine', 'pug');
 app.use(express.static('static'));
 
 app.get('/status', function(req, res) {
-	res.sendFile(__dirname + "/" + "status.htm");
+	res.render('statustable',
+	{
+		boardinfo: boardinfo,
+		show: show,
+		telemetry: telemetry,
+		predictions: predictions
+	});
 })
 
 app.post('/status', function(req, res) {
@@ -104,6 +110,7 @@ app.get('/board/:boardid', function(req, res) {
 	{
 		boardid: req.params.boardid,
 		boardinfo: boardinfo,
+		show: show,
 		telemetry: telemetry,
 		predictions: predictions
 	});
