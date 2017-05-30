@@ -117,7 +117,12 @@ app.get('/board/:boardid', function(req, res) {
 })
 
 app.get('/show', function(req, res) {
-	res.sendFile(__dirname + "/" + "show.htm");
+	res.render('show', {
+		boardinfo: boardinfo,
+		show: show,
+		telemetry: telemetry,
+		predictions: predictions
+	});
 })
 
 app.get('/getshow', function(req, res) {
@@ -139,10 +144,10 @@ app.post('/arm', function(req, res) {
 
 app.post('/armall', function(req, res) {
     for(board in boardinfo) {
-        writeToClient(board.sname, 'arm');
-        predictions[board.sname].swarm = 1;
-        predictions[board.sname].cmdcount = parseInt(predictions[board.sname].cmdcount) + 1;
-        io.emit('fresh predicts', board.sname, predictions[board.sname]);
+        writeToClient(board, 'arm');
+        predictions[board].swarm = 1;
+        predictions[board].cmdcount = parseInt(predictions[board].cmdcount) + 1;
+        io.emit('fresh predicts', board, predictions[board]);
     }
     res.end();
 
@@ -171,10 +176,10 @@ app.post('/identify', function(req, res) {
 
 app.post('/disarmall', function(req, res) {
     for(board in boardinfo) {
-        writeToClient(board.sname, 'disarm');
-        predictions[board.sname].swarm = 0;
-        predictions[board.sname].cmdcount = parseInt(predictions[board.sname].cmdcount) + 1;
-        io.emit('fresh predicts', board.sname, predictions[board.sname]);
+        writeToClient(board, 'disarm');
+        predictions[board].swarm = 0;
+        predictions[board].cmdcount = parseInt(predictions[board].cmdcount) + 1;
+        io.emit('fresh predicts', board, predictions[board]);
     }
     res.end();
 });

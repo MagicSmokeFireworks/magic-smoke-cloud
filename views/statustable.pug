@@ -17,6 +17,11 @@ html
                         a(href="/") home
                     li
                         a(href="/status") status
+                    li(class="dropdown")
+                        a(href="#") boards
+                        div(class="dropdown-content")
+                            each board in boardinfo
+                                a(href="/board/"+board.sname) #{ board.name }
                     li
                         a(href="/show") show
         main

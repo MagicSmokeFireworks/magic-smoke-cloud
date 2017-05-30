@@ -11,13 +11,18 @@ html
 
     body
         header
-            h1= "Board Info"
+            h1 Magic Smoke Board Info
             nav
                 ul
                     li
                         a(href="/") home
                     li
                         a(href="/status") status
+                    li(class="dropdown")
+                        a(href="#") boards
+                        div(class="dropdown-content")
+                            each board in boardinfo
+                                a(href="/board/"+board.sname) #{ board.name }
                     li
                         a(href="/show") show
         main
@@ -43,7 +48,12 @@ html
                         tbody
                             tr
                                 td(class="datatimer")= 0
-                                td(id=boardid+"_swarm_predict")= predictions[boardid].swarm
+
+                                if predictions[boardid].swarm == 0
+                                    td(id=boardid+"_swarm_predict")= "SW DISARMED"
+                                else
+                                    td(id=boardid+"_swarm_predict")= "SW ARMED"
+
                                 td(id=boardid+"_swarm")= telemetry[boardid].swarm
                                 td(id=boardid+"_hwarm")= telemetry[boardid].hwarm
                                 td(id=boardid+"_rssi")= telemetry[boardid].rssi
