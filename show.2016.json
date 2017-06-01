@@ -1,0 +1,434 @@
+{
+	"spa": {
+		"location": "bell right",
+		"effects": [
+			"3 bell10",
+			"3 bell9",
+			"3 bell8",
+			"3 bell7",
+			"3 bell3",
+			"3 bell4",
+			"3 bell6",
+			"3 bell5"]
+	},
+	"mm": {
+		"location": "bell center",
+		"effects": [
+			"3 bell11",
+			"3 bell12",
+			"3 bell13",
+			"3 bell14",
+			"3 bell15",
+			"3 bell16",
+			"3 bell17",
+			"3 bell18"]
+	},
+	"dlj": {
+		"location": "R1",
+		"effects": [
+			"7",
+			"8",
+			"9",
+			"13",
+			"3 bell0",
+			"12",
+			"5",
+			"10"]
+	},
+    "fag": {
+		"location": "L1",
+		"effects": [
+			"3 bell29",
+			"3 bell28",
+			"8",
+			"7",
+			"10",
+			"9",
+			"12",
+			"5"]
+    },
+    "ntb": {
+		"location": "center front extras",
+		"effects": [
+			"19+ baby maker 30 pt1",
+			"19+ baby maker 30 pt2",
+			"11 (pp) baby maker 60",
+			"4 bellagio inner",
+			"none",
+			"none",
+			"none",
+			"none"]
+    },
+    "rd": {
+		"location": "C2",
+		"effects": [
+			"13",
+			"14",
+			"18",
+			"15",
+			"17",
+			"16",
+			"19 (pp)",
+			"none"]
+    },
+    "sm": {
+		"location": "C1",
+		"effects": [
+			"none",
+			"none",
+			"10",
+			"12",
+			"9",
+			"8",
+			"5",
+			"7"]
+    },
+    "pitd": {
+		"location": "bell left",
+		"effects": [
+			"3 bell19",
+			"3 bell20",
+			"3 bell21",
+			"3 bell22",
+			"3 bell23",
+			"3 bell24",
+			"3 bell25",
+			"3 bell26"]
+    },
+    "cr": {
+		"location": "L2",
+		"effects": [
+			"3 bell27",
+			"19 (pp)",
+			"17",
+			"13",
+			"18",
+			"16",
+			"14",
+			"15"]
+    },
+    "ta": {
+		"location": "R2",
+		"effects": [
+			"18",
+			"15",
+			"16",
+			"14",
+			"19 (pp)",
+			"17",
+			"3 bell1",
+			"3 bell2"]
+    },
+	"groups": {
+		"3": {
+			"comment": "3 outer bellagio (music timing)",
+			"channels": {
+				"bell0": {
+					"id": "dlj", "channel": "4"
+				},
+				"bell1": {
+					"id": "ta", "channel": "6"
+				},
+				"bell2": {
+					"id": "ta", "channel": "7"
+				},
+				"bell3": {
+					"id": "spa", "channel": "4"
+				},
+				"bell4": {
+					"id": "spa", "channel": "5"
+				},
+				"bell5": {
+					"id": "spa", "channel": "6"
+				},
+				"bell6": {
+					"id": "spa", "channel": "7"
+				},
+				"bell7": {
+					"id": "spa", "channel": "3"
+				},
+				"bell8": {
+					"id": "spa", "channel": "2"
+				},
+				"bell9": {
+					"id": "spa", "channel": "1"
+				},
+				"bell10": {
+					"id": "spa", "channel": "0"
+				},
+				"bell11": {
+					"id": "mm", "channel": "0"
+				},
+				"bell12": {
+					"id": "mm", "channel": "1"
+				},
+				"bell13": {
+					"id": "mm", "channel": "2"
+				},
+				"bell14": {
+					"id": "mm", "channel": "3"
+				},
+				"bell15": {
+					"id": "mm", "channel": "4"
+				},
+				"bell16": {
+					"id": "mm", "channel": "5"
+				},
+				"bell17": {
+					"id": "mm", "channel": "6"
+				},
+				"bell18": {
+					"id": "mm", "channel": "7"
+				},
+				"bell19": {
+					"id": "pitd", "channel": "0"
+				},
+				"bell20": {
+					"id": "pitd", "channel": "1"
+				},
+				"bell21": {
+					"id": "pitd", "channel": "2"
+				},
+				"bell22": {
+					"id": "pitd", "channel": "3"
+				},
+				"bell23": {
+					"id": "pitd", "channel": "4"
+				},
+				"bell24": {
+					"id": "pitd", "channel": "5"
+				},
+				"bell25": {
+					"id": "pitd", "channel": "6"
+				},
+				"bell26": {
+					"id": "pitd", "channel": "7"
+				},
+				"bell27": {
+					"id": "cr", "channel": "0"
+				},
+				"bell28": {
+					"id": "fag", "channel": "1"
+				},
+				"bell29": {
+					"id": "fag", "channel": "0"
+				}
+			}
+		},
+		"4": {
+			"comment": "4 inner belagio (music timing?)",
+			"channels": {
+				"ib": {
+					"id": "ntb", "channel": "3"
+				}
+			}
+		},
+        "5": {
+            "comment": "5",
+            "channels": {
+                "R": {
+                    "id": "dlj", "channel": "6"
+                },
+                "C": {
+                    "id": "sm", "channel": "6"
+                },
+                "L": {
+                    "id": "fag", "channel": "7"
+                }
+            }
+        },
+        "7": {
+            "comment": "(Joe has 6) 7",
+            "channels": {
+                "R": {
+                    "id": "dlj", "channel": "0"
+                },
+                "C": {
+                    "id": "sm", "channel": "7"
+                },
+                "L": {
+                    "id": "fag", "channel": "3"
+                }
+            }
+        },
+        "8": {
+            "comment": "8",
+            "channels": {
+                "R": {
+                    "id": "dlj", "channel": "1"
+                },
+                "C": {
+                    "id": "sm", "channel": "5"
+                },
+                "L": {
+                    "id": "fag", "channel": "2"
+                }
+            }
+        },
+        "9": {
+            "comment": "9",
+            "channels": {
+                "R": {
+                    "id": "dlj", "channel": "2"
+                },
+                "C": {
+                    "id": "sm", "channel": "4"
+                },
+                "L": {
+                    "id": "fag", "channel": "5"
+                }
+            }
+        },
+        "10": {
+            "comment": "10",
+            "channels": {
+                "R": {
+                    "id": "dlj", "channel": "7"
+                },
+                "C": {
+                    "id": "sm", "channel": "2"
+                },
+                "L": {
+                    "id": "fag", "channel": "4"
+                }
+            }
+        },
+        "11": {
+            "comment": "11 (pp) baby maker 60",
+            "channels": {
+                "bm": {
+                    "id": "ntb", "channel": "2"
+                }
+            }
+        },
+        "12": {
+            "comment": "12",
+            "channels": {
+                "R": {
+                    "id": "dlj", "channel": "5"
+                },
+                "C": {
+                    "id": "sm", "channel": "3"
+                },
+                "L": {
+                    "id": "fag", "channel": "6"
+                }
+            }
+        },
+        "13": {
+            "comment": "13",
+            "channels": {
+                "R": {
+                    "id": "dlj", "channel": "3"
+                },
+                "C": {
+                    "id": "rd", "channel": "0"
+                },
+                "L": {
+                    "id": "cr", "channel": "3"
+                }
+            }
+        },
+        "14": {
+            "comment": "14",
+            "channels": {
+                "R": {
+                    "id": "ta", "channel": "3"
+                },
+                "C": {
+                    "id": "rd", "channel": "1"
+                },
+                "L": {
+                    "id": "cr", "channel": "6"
+                }
+            }
+        },
+        "15": {
+            "comment": "15",
+            "channels": {
+                "R": {
+                    "id": "ta", "channel": "1"
+                },
+                "C": {
+                    "id": "rd", "channel": "3"
+                },
+                "L": {
+                    "id": "cr", "channel": "7"
+                }
+            }
+        },
+        "16": {
+            "comment": "16",
+            "channels": {
+                "R": {
+                    "id": "ta", "channel": "2"
+                },
+                "C": {
+                    "id": "rd", "channel": "5"
+                },
+                "L": {
+                    "id": "cr", "channel": "5"
+                }
+            }
+        },
+        "17": {
+            "comment": "17",
+            "channels": {
+                "R": {
+                    "id": "ta", "channel": "5"
+                },
+                "C": {
+                    "id": "rd", "channel": "4"
+                },
+                "L": {
+                    "id": "cr", "channel": "2"
+                }
+            }
+        },
+        "18": {
+            "comment": "18",
+            "channels": {
+                "R": {
+                    "id": "ta", "channel": "0"
+                },
+                "C": {
+                    "id": "rd", "channel": "2"
+                },
+                "L": {
+                    "id": "cr", "channel": "4"
+                }
+            }
+        },
+        "19": {
+            "comment": "19",
+            "channels": {
+                "R": {
+                    "id": "ta", "channel": "4"
+                },
+                "C": {
+                    "id": "rd", "channel": "6"
+                },
+                "L": {
+                    "id": "cr", "channel": "1"
+                }
+            }
+        },
+        "bm30a": {
+            "comment": "after 19 call audible",
+            "channels": {
+                "bm": {
+                    "id": "ntb", "channel": "0"
+                }
+            }
+        },
+        "bm30b": {
+            "comment": "after 19 call audible",
+            "channels": {
+                "bm": {
+                    "id": "ntb", "channel": "1"
+                }
+            }
+        }
+	}
+}
+

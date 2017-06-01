@@ -12,6 +12,7 @@ for board_sname in boardinfo:
     telemetry[board_sname] = {}
     telemetry[board_sname]['firmver'] = 'no data'
     telemetry[board_sname]['ip'] = ''
+    telemetry[board_sname]['connection'] = 'never'
     telemetry[board_sname]['swarm'] = 'no data'
     telemetry[board_sname]['hwarm'] = 'no data'
     telemetry[board_sname]['rssi'] = 'no data'

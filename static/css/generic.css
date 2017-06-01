@@ -220,17 +220,58 @@ hr {
 	border-width: 1px;
 }
 
-.datatimer {
+.normal_status {
+	text-transform: uppercase;
+	max-width: 175px;
+	margin: auto;
+	border-radius: 20px;
+	color: white;
 	background-color: none;
-	animation-name: example;
+}
+
+.good_status {
+	text-transform: uppercase;
+	max-width: 175px;
+	margin: auto;
+	border-radius: 20px;
+	color: black;
+	font-weight: bold;
+	background-color: #13CC2F;
+}
+
+.warning_status {
+	text-transform: uppercase;
+	max-width: 175px;
+	margin: auto;
+	border-radius: 20px;
+	color: black;
+	font-weight: bold;
+	animation-name: bg_white2yellow;
 	animation-duration: 0.7s;
-	animation-delay: 2.5s;
 	animation-iteration-count: infinite;
 	animation-direction: alternate;
 }
 
-@keyframes example {
-	from {background-color: yellow;}
+.error_status {
+	text-transform: uppercase;
+	max-width: 175px;
+	margin: auto;
+	border-radius: 20px;
+	color: black;
+	font-weight: bold;
+	animation-name: bg_white2red;
+	animation-duration: 0.7s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+
+@keyframes bg_white2yellow{
+	from {background-color: white;}
+	to {background-color: yellow;}
+}
+
+@keyframes bg_white2red{
+	from {background-color: white;}
 	to {background-color: red;}
 }
 

@@ -4,7 +4,6 @@ html
         link(href='/css/fading.css', rel='stylesheet')
         link(href='/css/res_colors.css', rel='stylesheet')
         link(href='/css/generic.css', rel='stylesheet')
-        script(src='/javascripts/datatimer.js')
         script(src='/socket.io/socket.io.js')
         script(src='/javascripts/socket_hookups.js')
         script(src='/javascripts/commands.js')
@@ -35,9 +34,83 @@ html
                         th Connection Status
                 tbody
                     tr
-                        td All Armed
-                        td(class="highresistance") Partial
-                        td All Good
+                        td
+                            - var armcount = 0
+                            - var disarmcount = 0
+                            - var nodatacount = 0
+                            - var swarm_val = "No Data"
+                            - var swarm_class = "error_status"
+                            for board in boardinfo
+                                if board.sname in show
+                                    if telemetry[board.sname].swarm == 0
+                                        - disarmcount = disarmcount + 1
+                                    else if telemetry[board.sname].swarm == 1
+                                        - armcount = armcount + 1
+                                    else
+                                        - nodatacount = nodatacount + 1
+                            if nodatacount > 0
+                                - swarm_val = "No Data"
+                                - swarm_class = "error_status"
+                            else if armcount == 0
+                                - swarm_val = "All Disarmed"
+                                - swarm_class = "warning_status"
+                            else if disarmcount == 0
+                                - swarm_val = "All Armed"
+                                - swarm_class = "good_status"
+                            else
+                                - swarm_val = "Partial"
+                                - swarm_class = "warning_status"
+                            div(class=swarm_class)= swarm_val
+
+                        td
+                            - var armcount = 0
+                            - var disarmcount = 0
+                            - var nodatacount = 0
+                            - var hwarm_val = "No Data"
+                            - var hwarm_class = "error_status"
+                            for board in boardinfo
+                                if board.sname in show
+                                    if telemetry[board.sname].hwarm == "DISARMED"
+                                        - disarmcount = disarmcount + 1
+                                    else if telemetry[board.sname].hwarm == "ARMED"
+                                        - armcount = armcount + 1
+                                    else
+                                        - nodatacount = nodatacount + 1
+                            if nodatacount > 0
+                                - hwarm_val = "No Data"
+                                - hwarm_class = "error_status"
+                            else if armcount == 0
+                                - hwarm_val = "All Disarmed"
+                                - hwarm_class = "warning_status"
+                            else if disarmcount == 0
+                                - hwarm_val = "All Armed"
+                                - hwarm_class = "good_status"
+                            else
+                                - hwarm_val = "Partial"
+                                - hwarm_class = "warning_status"
+                            div(class=hwarm_class)= hwarm_val
+
+                        td
+                            - var conns = 0
+                            - var noconns = 0
+                            - var conn_val = "No Connections"
+                            - var conn_class = "error_status"
+                            for board in boardinfo
+                                if board.sname in show
+                                    if telemetry[board.sname].connection == 'active'
+                                        - conns = conns + 1
+                                    else
+                                        - noconns = noconns + 1
+                            if conns == 0
+                                - conn_val = "No Connections"
+                                - conn_class = "error_status"
+                            else if noconns == 0
+                                - conn_val = "Good Connections"
+                                - conn_class = "good_status"
+                            else
+                                - conn_val = noconns + " Bad Connection(s)"
+                                - conn_class = "warning_status"
+                            div(id="show_conn_status" class=conn_class)= conn_val
             hr
 
         main
@@ -63,10 +136,14 @@ html
                                                             td= show[channel.id].location
                                                             td= show[channel.id].effects[channel.channel]
                                                             td= telemetry[channel.id].name
-                                                            if telemetry[channel.id].swarm === 'no data'
-                                                                td.rw1sfading= 'Not Ready'
-                                                            else
-                                                                td.highresistance= 'Ready'
+
+                                                            td
+                                                                - var showstatus_val = "not ready"
+                                                                - var showstatus_class = "error_status"
+                                                                if telemetry[channel.id].swarm == 1
+                                                                    - showstatus_val = "ready"
+                                                                    - var showstatus_class = "good_status"
+                                                                div(id=channel.id+"_showstatus"+channel.channel class=showstatus_class)= showstatus_val
                                             td(style='align=center')
                                                 button(class="buttonsmall" onclick="groupClick(\""+index+"\")") go
 

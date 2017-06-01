@@ -42,6 +42,74 @@ var writeToClient = function(board_id, message) {
 	}
 };
 
+var get_cmdstatus = function(board) {
+	var cmdcount = telemetry[board].cmdcount;
+	var cmdcount_predict = predictions[board].cmdcount;
+	var cmdstatus = "no data";
+	var cmdstatus_status = "error_status";
+	if (cmdcount != "no data") {
+		if (cmdcount == cmdcount_predict) {
+			cmdstatus = "good";
+			cmdstatus_status = "normal_status";
+		}
+		else {
+			cmdstatus = (cmdcount_predict - cmdcount) + " Lost";
+			cmdstatus_status = "warning_status";
+		}
+	}
+	return [cmdstatus, cmdstatus_status];
+};
+
+var get_channelstatus = function(board, channel) {
+	var channelstatus = "no data";
+	var channelstatus_status = "error_status";
+	var configured = false;
+	// TODO determine channel status based on show config, resistance, and fire counts
+	for (group in show["groups"]) {
+		for (schannel in show["groups"][group]["channels"]) {
+			console.log(schannel);
+			if ( (show["groups"][group]["channels"][schannel]["id"] == board) && (show["groups"][group]["channels"][schannel]["channel"] == channel) ) {
+				configured = true;
+			}
+		}
+	}
+	if (configured) {
+		if (telemetry[board].firecount[channel] == 'no data') {
+			channelstatus = "no data";
+			channelstatus_status = "error_status";
+		}
+		else if (telemetry[board].firecount[channel] == 0) {
+			if (telemetry[board].res[channel] > 2500) {
+				channelstatus = "no match?";
+				channelstatus_status = "warning_status";
+			}
+			else if (telemetry[board].res[channel] < 800) {
+				channelstatus = "low imp match?";
+				channelstatus_status = "warning_status";
+			}
+			else {
+				channelstatus = "good match imp";
+				channelstatus_status = "good_status";
+			}
+		}
+		else {
+			if (telemetry[board].res[channel] > 2500) {
+				channelstatus = "fired";
+				channelstatus_status = "normal_status";
+			}
+			else {
+				channelstatus = "fired. low imp?";
+				channelstatus_status = "warning_status";
+			}
+		}
+	}
+	else {
+		channelstatus = "no config";
+		channelstatus_status = "normal_status";
+	}
+	return [channelstatus, channelstatus_status];
+};
+
 io.on('connection', function(socket){
 	console.log('a user connected');
 	socket.on('disconnect', function(){
@@ -59,9 +127,28 @@ app.get('/status', function(req, res) {
 		boardinfo: boardinfo,
 		show: show,
 		telemetry: telemetry,
-		predictions: predictions
+		predictions: predictions,
+		get_cmdstatus: get_cmdstatus,
+		get_channelstatus: get_channelstatus
 	});
 })
+
+var timeouts = {};
+for (board in boardinfo) {
+	timeouts[board] = 0.0;
+}
+
+var timeoutInterval = setInterval(function() {
+	for (board in boardinfo) {
+		timeouts[board] = timeouts[board] + 0.1;
+		if (timeouts[board] > 4.0) {
+			if (telemetry[board].connection == "active") {
+				telemetry[board].connection = "inactive";
+				io.emit('fresh data', boardinfo, telemetry, predictions, show);
+			}
+		}
+	}
+}, 100);
 
 app.post('/status', function(req, res) {
 	var sname = "";
@@ -70,6 +157,8 @@ app.post('/status', function(req, res) {
 			sname = key;
 		}
 	}
+	timeouts[sname] = 0;
+	telemetry[sname].connection = "active";
 	telemetry[sname].ip = req.ip;
 	telemetry[sname].firmver = req.headers.fver;
 	telemetry[sname].swarm = req.headers.sw_arm;
@@ -93,7 +182,7 @@ app.post('/status', function(req, res) {
 	telemetry[sname].firecount[7] = req.headers.fc7;
 	telemetry[sname].cmdcount = req.headers.cc;
 	res.end();
-	io.emit('fresh data', sname, telemetry[sname]);
+	io.emit('fresh data', boardinfo, telemetry, predictions, show);
 })
 
 app.get('/getstatus', function(req, res) {
@@ -112,7 +201,9 @@ app.get('/board/:boardid', function(req, res) {
 		boardinfo: boardinfo,
 		show: show,
 		telemetry: telemetry,
-		predictions: predictions
+		predictions: predictions,
+		get_cmdstatus: get_cmdstatus,
+		get_channelstatus: get_channelstatus
 	});
 })
 
@@ -139,7 +230,7 @@ app.post('/arm', function(req, res) {
 
 	predictions[board_id].swarm = 1;
 	predictions[board_id].cmdcount = parseInt(predictions[board_id].cmdcount) + 1;
-	io.emit('fresh predicts', board_id, predictions[board_id]);
+	io.emit('fresh predicts', boardinfo, predictions, telemetry, show);
 });
 
 app.post('/armall', function(req, res) {
@@ -147,7 +238,7 @@ app.post('/armall', function(req, res) {
         writeToClient(board, 'arm');
         predictions[board].swarm = 1;
         predictions[board].cmdcount = parseInt(predictions[board].cmdcount) + 1;
-        io.emit('fresh predicts', board, predictions[board]);
+        io.emit('fresh predicts', boardinfo, predictions, telemetry, show);
     }
     res.end();
 
@@ -161,7 +252,7 @@ app.post('/disarm', function(req, res) {
 
 	predictions[board_id].swarm = 0;
 	predictions[board_id].cmdcount = parseInt(predictions[board_id].cmdcount) + 1;
-	io.emit('fresh predicts', board_id, predictions[board_id]);
+	io.emit('fresh predicts', boardinfo, predictions, telemetry, show);
 });
 
 app.post('/identify', function(req, res) {
@@ -171,7 +262,7 @@ app.post('/identify', function(req, res) {
 	res.end();
 
 	predictions[board_id].cmdcount = parseInt(predictions[board_id].cmdcount) + 1;
-	io.emit('fresh predicts', board_id, predictions[board_id]);
+	io.emit('fresh predicts', boardinfo, predictions, telemetry, show);
 });
 
 app.post('/disarmall', function(req, res) {
@@ -179,7 +270,7 @@ app.post('/disarmall', function(req, res) {
         writeToClient(board, 'disarm');
         predictions[board].swarm = 0;
         predictions[board].cmdcount = parseInt(predictions[board].cmdcount) + 1;
-        io.emit('fresh predicts', board, predictions[board]);
+        io.emit('fresh predicts', boardinfo, predictions, telemetry, show);
     }
     res.end();
 });
@@ -196,7 +287,7 @@ app.post('/fire', function(req, res) {
 		predictions[board_id].firecount[channel] = parseInt(predictions[board_id].firecount[channel]) + 1;
 	}
 	predictions[board_id].cmdcount = parseInt(predictions[board_id].cmdcount) + 1;
-	io.emit('fresh predicts', board_id, predictions[board_id]);
+	io.emit('fresh predicts', boardinfo, predictions, telemetry, show);
 });
 
 app.post('/firegroup', function(req, res) {
@@ -220,7 +311,7 @@ app.post('/firegroup', function(req, res) {
 		predictions[board_id].firecount[channel] = parseInt(predictions[board_id].firecount[channel]) + 1;
 	}
 	predictions[board_id].cmdcount = parseInt(predictions[board_id].cmdcount) + 1;
-	io.emit('fresh predicts', board_id, predictions[board_id]);
+	io.emit('fresh predicts', boardinfo, predictions, telemetry, show);
     }
     res.end();
 });
