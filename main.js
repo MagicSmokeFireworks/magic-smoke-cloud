@@ -39,6 +39,9 @@ var writeToClient = function(board_id, message) {
 		client.on('close', function() {
 			console.log('connection closed');
 		});
+		client.on('error', function(err) {
+			console.log('error: ' + err.message);
+		});
 	}
 };
 
@@ -67,7 +70,6 @@ var get_channelstatus = function(board, channel) {
 	// TODO determine channel status based on show config, resistance, and fire counts
 	for (group in show["groups"]) {
 		for (schannel in show["groups"][group]["channels"]) {
-			console.log(schannel);
 			if ( (show["groups"][group]["channels"][schannel]["id"] == board) && (show["groups"][group]["channels"][schannel]["channel"] == channel) ) {
 				configured = true;
 			}
@@ -122,7 +124,7 @@ app.set('view engine', 'pug');
 app.use(express.static('static'));
 
 app.get('/status', function(req, res) {
-	res.render('statustable',
+	res.render('status',
 	{
 		boardinfo: boardinfo,
 		show: show,
@@ -185,15 +187,6 @@ app.post('/status', function(req, res) {
 	io.emit('fresh data', boardinfo, telemetry, predictions, show);
 })
 
-app.get('/getstatus', function(req, res) {
-	res.render('statustable',
-	{
-		boardinfo: boardinfo,
-		telemetry: telemetry,
-		predictions: predictions
-	});
-})
-
 app.get('/board/:boardid', function(req, res) {
 	res.render('board',
 	{
@@ -213,13 +206,6 @@ app.get('/show', function(req, res) {
 		show: show,
 		telemetry: telemetry,
 		predictions: predictions
-	});
-})
-
-app.get('/getshow', function(req, res) {
-	res.render('show', {
-		data: data,
-		show: show
 	});
 })
 

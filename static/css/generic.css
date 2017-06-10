@@ -19,6 +19,18 @@ header {
 	background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
 
+.show-header {
+	position: relative;
+}
+
+.show-topper {
+	z-index: 2000;
+	position: fixed;
+	height: 100%;
+	width: 15%;
+	top: 0px;
+}
+
 .logo {
 	position: relative;
 	display: block;
@@ -195,13 +207,26 @@ table {
 	padding: 1em;
 }
 
+.show-table {
+	font-size: 0.8em;
+}
+
+.show-table tbody tr td {
+	font-size: 0.8em;
+	padding: 1px 20px 1px 20px;
+}
+
 th {
 	padding: 0em 2em 0em 2em;
 	width: 10%;
 }
 
 td {
-	text-align: center
+	text-align: center;
+}
+
+.td-go-button {
+	text-align: left;
 }
 
 body {

@@ -1,4 +1,70 @@
 
+var get_cmdstatus = function(board, telemetry, predictions) {
+	var cmdcount = telemetry[board].cmdcount;
+        var cmdcount_predict = predictions[board].cmdcount;
+        var cmdstatus = "no data";
+        var cmdstatus_status = "error_status";
+        if (cmdcount != "no data") {
+                if (cmdcount == cmdcount_predict) {
+                        cmdstatus = "good";
+                        cmdstatus_status = "normal_status";
+                }
+                else {
+                        cmdstatus = (cmdcount_predict - cmdcount) + " Lost";
+                        cmdstatus_status = "warning_status";
+                }
+        }
+        return [cmdstatus, cmdstatus_status];
+};
+
+var get_channelstatus = function(board, channel, telemetry, show) {
+	var channelstatus = "no data";
+	var channelstatus_status = "error_status";
+	var configured = false;
+	for (group in show["groups"]) {
+		for (schannel in show["groups"][group]["channels"]) {
+			if ( (show["groups"][group]["channels"][schannel]["id"] == board) && (show["groups"][group]["channels"][schannel]["channel"] == channel) ) {
+				configured = true;
+			}
+		}
+	}
+	if (configured) {
+		if (telemetry[board].firecount[channel] == 'no data') {
+			channelstatus = "no data";
+			channelstatus_status = "error_status";
+		}
+		else if (telemetry[board].firecount[channel] == 0) {
+			if (telemetry[board].res[channel] > 2500) {
+                                channelstatus = "no match?";
+                                channelstatus_status = "warning_status";
+                        }
+                        else if (telemetry[board].res[channel] < 800) {
+                                channelstatus = "low imp match?";
+                                channelstatus_status = "warning_status";
+                        }
+                        else {
+                                channelstatus = "good match imp";
+                                channelstatus_status = "good_status";
+                        }
+		}
+		else {
+			if (telemetry[board].res[channel] > 2500) {
+                                channelstatus = "fired";
+                                channelstatus_status = "normal_status";
+                        }
+                        else {
+                                channelstatus = "fired. low imp?";
+                                channelstatus_status = "warning_status";
+                        }
+		}
+	}
+	else {
+		channelstatus = "no config";
+		channelstatus_status = "normal_status";
+	}
+	return [channelstatus, channelstatus_status];
+};
+
 var socket = io();
 
 socket.on('fresh data', function(boardinfo, telemetry, predictions, show) {
@@ -147,10 +213,12 @@ socket.on('fresh data', function(boardinfo, telemetry, predictions, show) {
 		}
 
 		// command status
-		/*var cmdstatus_array = get_cmdstatus(board);
+		var cmdstatus_array = get_cmdstatus(board, telemetry, predictions);
 		cmdstatus = document.getElementById(board+"_cmdstatus");
-		cmdstatus.className = cmdstatus_array[1];
-		cmdstatus.innerHTML = cmdstatus_array[0];*/
+		if (cmdstatus != null) {
+			cmdstatus.className = cmdstatus_array[1];
+			cmdstatus.innerHTML = cmdstatus_array[0];
+		}
 
 		// resistance measurements
 		for (var i = 0; i < 8; i++) {
@@ -169,12 +237,14 @@ socket.on('fresh data', function(boardinfo, telemetry, predictions, show) {
 		}
 
 		// channel status
-		/*for (var i = 0; i < 8; i++) {
-			var channelstatus_array = get_channelstatus(board, i);
-			channelstatus = document.getElementById(board+"_channelstatus");
-			channelstatus.className = channelstatus_array[1];
-			channelstatus.innerHTML = channelstatus_array[0];
-		}*/
+		for (var i = 0; i < 8; i++) {
+			var channelstatus_array = get_channelstatus(board, i, telemetry, show);
+			channelstatus = document.getElementById(board+"_channelstatus"+i);
+			if (channelstatus != null) {
+				channelstatus.className = channelstatus_array[1];
+				channelstatus.innerHTML = channelstatus_array[0];
+			}
+		}
 	}
 
 	// show connection status

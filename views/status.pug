@@ -3,31 +3,87 @@ html
         title= "Magic Smoke Status"
         link(href='/css/fading.css', rel='stylesheet')
         link(href='/css/res_colors.css', rel='stylesheet')
+        link(href='/css/generic.css', rel='stylesheet')
+        script(src='/javascripts/datatimer.js')
+        script(src='/socket.io/socket.io.js')
+        script(src='/javascripts/socket_hookups.js')
+        script(src='/javascripts/commands.js')
     body
-        h1= "Magic Smoke"
-        each board in boardinfo
-            div(id=board.sname)
-                h4= board.name
-                h5(id=board.sname+"_firmver")= telemetry[board.sname].firmver
-                h5(class="datatimer")= 0
-                button(onclick="clickArm(\""+board.sname+"\")").
-                    arm
-                button(onclick="clickDisarm(\""+board.sname+"\")").
-                    disarm
-                button(onclick="clickIdentify(\""+board.sname+"\")").
-                    identify
-                table
-                    tr
-                        td(id=board.sname+"_swarm")= telemetry[board.sname].swarm
-                        td(id=board.sname+"_hwarm")= telemetry[board.sname].hwarm
-                        td(id=board.sname+"_rssi")= telemetry[board.sname].rssi
-                        td(id=board.sname+"_cmdcount")= telemetry[board.sname].cmdcount
-                table
-                    each i in [0,1,2,3,4,5,6,7]
-                        tr
-                            td= i
-                            td(id=board.sname+"_res"+i)= telemetry[board.sname].res[i]
-                            td
-                                button(onclick="clickFire(\""+board.sname+"\",\""+i+"\")").
-                                    fire
-                            td(id=board.sname+"_firecount"+i)= telemetry[board.sname].firecount[i]
+        header
+            h1= "Magic Smoke Status"
+            nav
+                ul
+                    li
+                        a(href="/") home
+                    li
+                        a(href="/status") status
+                    li(class="dropdown")
+                        a(href="#") boards
+                        div(class="dropdown-content")
+                            each board in boardinfo
+                                a(href="/board/"+board.sname) #{ board.name }
+                    li
+                        a(href="/show") show
+        main
+            section(class="hero")
+                div(class="hero-content")
+
+                    hr
+
+                    table(class="status_table")
+                        thead
+                            tr
+                                th(class="board_name_head") 
+                                th Connection Status
+                                th Arm Status
+                                th Command Status
+                                th CH.0 Status
+                                th CH.1 Status
+                                th CH.2 Status
+                                th CH.3 Status
+                                th CH.4 Status
+                                th CH.5 Status
+                                th CH.6 Status
+                                th CH.7 Status
+                        tbody
+                            each board in boardinfo
+                                if board.sname in show
+                                    tr
+                                        td
+                                            a(class="board_name" href="/board/"+board.sname) #{ board.name }
+                                        td
+                                            div(id=board.sname+"_connstatus" class="error_status")= telemetry[board.sname].connection
+                                        td
+                                            - var swarm = telemetry[board.sname].swarm
+                                            - var swarm_status = "error_status"
+                                            if swarm == 0
+                                                - swarm = "SW DISARMED"
+                                                - swarm_class = "warning_status"
+                                            else if swarm == 1
+                                                - swarm = "SW ARMED"
+                                                - swarm_class = "warning_status"
+                                            if telemetry[board.sname].swarm == predictions[board.sname].swarm
+                                                - swarm_class = "normal_status"
+                                            div(class=swarm_status id=board.sname+"_swarm")= swarm
+
+                                            - var hwarm = telemetry[board.sname].hwarm
+                                            - var hwarm_status = "error_status"
+                                            if hwarm == 0
+                                                - hwarm = "HW DISARMED"
+                                                - hwarm_class = "normal_status"
+                                            else if hwarm == 1
+                                                - hwarm = "HW ARMED"
+                                                - hwarm_class = "normal_status"
+                                            div(class=hwarm_status id=board.sname+"_hwarm")= hwarm
+
+                                        td
+                                            - var cmdstatus
+                                            - cmdstatus = get_cmdstatus(board.sname)
+                                            div(class=cmdstatus[1] id=board.sname+"_cmdstatus")= cmdstatus[0]
+
+                                        each i in [0,1,2,3,4,5,6,7]
+                                            td
+                                                - var channelstatus
+                                                - channelstatus = get_channelstatus(board.sname, i)
+                                                div(class=channelstatus[1] id=board.sname+"_channelstatus"+i)= channelstatus[0]
+
