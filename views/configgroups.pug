@@ -36,7 +36,7 @@ html
 							thead
 								tr
 									th Group Identifier
-									th Group Description
+									th(class="wide_th") Group Description
 									th 
 							tbody
 								each group in show.groups
@@ -46,7 +46,7 @@ html
 										td
 											input(class="group_desc" type="text" name="group_desc[]" value=group.desc)
 										td
-											button(type="button" class="buttonsmall" onclick="deleteGroup(\"group_row_"+group.id+"\")") Delete group #{ group.id }
+											button(type="button" class="buttontiny" onclick="deleteGroup(\"group_row_"+group.id+"\")") Delete group #{ group.id }
 						button(type="button" class="button" onclick="addNewGroup()") Add new group
 						input(class="button" type="submit" value="Save group configurations")
 										

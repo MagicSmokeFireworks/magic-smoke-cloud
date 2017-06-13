@@ -41,14 +41,14 @@ html
 								thead
 									tr
 										th Channel Number
-										th Group Identifier
-										th Effect Description
+										th(class="wide_th") Group Identifier
+										th(class="wide_th") Effect Description
 								tbody
 									each i in [0,1,2,3,4,5,6,7]
 										tr
 											td= i
 											td
-												select(name="group[]")
+												select(class="group_select" name="group[]")
 													if show.boards[board.sname].channels[i].group == ""
 														option(value="" selected="true") None
 													else

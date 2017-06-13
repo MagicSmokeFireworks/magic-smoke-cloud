@@ -165,6 +165,37 @@ nav ul li a:hover {
 	outline: 0;
 }
 
+.buttontiny{
+	background-color: #1F1F1F;
+	border: 2px solid #4F4F4F;
+	border-radius: 17px;
+	color: white;
+	padding: 10px 25px;
+	margin-left: 1em;
+	margin-right: 1em;
+	margin-top: 2em;
+	margin-bottom: 2em;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 12px;
+	letter-spacing: .1em;
+	-webkit-transition: border .3s, background-color .3s;
+	transition: border .3s, background-color .3s;
+}
+
+.buttontiny:hover {
+	border: 2px solid hotpink;
+}
+
+.buttontiny:active {
+	background-color: yellow;
+}
+
+.buttontiny:focus {
+	outline: 0;
+}
+
 .command_counts div {
 	display: inline-block;
 	padding: 5px;
@@ -219,6 +250,10 @@ table {
 th {
 	padding: 0em 2em 0em 2em;
 	width: 10%;
+}
+
+.wide_th {
+	width: 50%;
 }
 
 td {
@@ -358,7 +393,6 @@ input[type="text"] {
 	appearance: none;
 	box-shadow: none;
 	border-radius: none;
-	border: solid 1px white;
 
 	background: transparent;
 	color: white;
@@ -381,4 +415,26 @@ input[type="text"]:focus {
 	border: solid 1px hotpink;
 	box-shadow: 0 0 5px 1px hotpink;
 }
+
+.group_select {
+	width: 80%;
+	background: transparent;
+	color: white;
+	padding: 10px;
+	border: solid 1px #4f4f4f;
+	letter-spacing: .1em;
+	font-size: 0.9em;
+	outline: none;
+}
+
+.group_select:focus {
+	border: solid 1px hotpink;
+	box-shadow: 0 0 5px 1px hotpink;
+}
+
+.group_select option {
+	background: black;
+	color: white;
+}
+
 
