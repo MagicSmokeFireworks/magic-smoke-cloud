@@ -1,0 +1,56 @@
+html
+	head
+		title Configure Groups
+		link(href='/css/fading.css', rel='stylesheet')
+		link(href='/css/res_colors.css', rel='stylesheet')
+		link(href='/css/generic.css', rel='stylesheet')
+		script(src='/javascripts/datatimer.js')
+		script(src='/socket.io/socket.io.js')
+		script(src='/javascripts/socket_hookups.js')
+		script(src='/javascripts/commands.js')
+
+	body
+		header
+			h1 Configure Groups
+			nav
+				ul
+					li
+						a(href="/") home
+					li
+						a(href="/status") status
+					li(class="dropdown")
+						a(href="#") boards
+						div(class="dropdown-content")
+							each board in boardinfo
+								a(href="/board/"+board.sname) #{ board.name }
+					li
+						a(href="/show") show
+		main
+			section(class="hero")
+				div(class="hero-content")
+
+					hr
+
+					form(method="post")
+						table(id="group_table")
+							thead
+								tr
+									th Group Identifier
+									th Group Description
+									th 
+							tbody
+								each group in show.groups
+									tr(id="group_row_"+group.id)
+										td
+											input(type="text" name="group_id[]" value=group.id)
+										td
+											input(class="group_desc" type="text" name="group_desc[]" value=group.desc)
+										td
+											button(type="button" class="buttonsmall" onclick="deleteGroup(\"group_row_"+group.id+"\")") Delete group #{ group.id }
+						button(type="button" class="button" onclick="addNewGroup()") Add new group
+						input(class="button" type="submit" value="Save group configurations")
+										
+							
+					hr
+						
+

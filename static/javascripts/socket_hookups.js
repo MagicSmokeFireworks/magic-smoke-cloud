@@ -20,15 +20,7 @@ var get_cmdstatus = function(board, telemetry, predictions) {
 var get_channelstatus = function(board, channel, telemetry, show) {
 	var channelstatus = "no data";
 	var channelstatus_status = "error_status";
-	var configured = false;
-	for (group in show["groups"]) {
-		for (schannel in show["groups"][group]["channels"]) {
-			if ( (show["groups"][group]["channels"][schannel]["id"] == board) && (show["groups"][group]["channels"][schannel]["channel"] == channel) ) {
-				configured = true;
-			}
-		}
-	}
-	if (configured) {
+	if (show.boards[board].channels[channel].group != "") {
 		if (telemetry[board].firecount[channel] == 'no data') {
 			channelstatus = "no data";
 			channelstatus_status = "error_status";

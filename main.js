@@ -17,6 +17,10 @@ var net = require('net');
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
 var writeToClient = function(board_id, message) {
 	console.log(board_id);
 	console.log(message);
@@ -66,16 +70,7 @@ var get_cmdstatus = function(board) {
 var get_channelstatus = function(board, channel) {
 	var channelstatus = "no data";
 	var channelstatus_status = "error_status";
-	var configured = false;
-	// TODO determine channel status based on show config, resistance, and fire counts
-	for (group in show["groups"]) {
-		for (schannel in show["groups"][group]["channels"]) {
-			if ( (show["groups"][group]["channels"][schannel]["id"] == board) && (show["groups"][group]["channels"][schannel]["channel"] == channel) ) {
-				configured = true;
-			}
-		}
-	}
-	if (configured) {
+	if (show.boards[board].channels[channel].group != "") {
 		if (telemetry[board].firecount[channel] == 'no data') {
 			channelstatus = "no data";
 			channelstatus_status = "error_status";
@@ -200,6 +195,46 @@ app.get('/board/:boardid', function(req, res) {
 	});
 })
 
+app.get('/configgroups', function(req, res) {
+	res.render('configgroups',
+	{
+		boardinfo: boardinfo,
+		show: show
+	});
+})
+
+app.post('/configgroups', function(req, res) {
+	console.log('post to configgroups.');
+	show.groups = [];
+	for(var i = 0; i < req.body["group_id[]"].length; i++) {
+		show.groups.push({"id": req.body["group_id[]"][i], "desc": req.body["group_desc[]"][i]});
+	}
+	var json = JSON.stringify(show);
+	fs.writeFile('show.json', json, 'utf8');
+	res.redirect('/configgroups');
+})
+
+app.get('/configboards', function(req, res) {
+	res.render('configboards',
+	{
+		boardinfo: boardinfo,
+		show: show
+	});
+})
+
+app.post('/configboards', function(req, res) {
+	console.log('post to configboards.');
+	var boardid = req.body.boardid;
+	show.boards[boardid].location = req.body.location;
+	for(var i = 0; i < 8; i++) {
+		show.boards[boardid].channels[i].group = req.body["group[]"][i];
+		show.boards[boardid].channels[i].effect = req.body["effect[]"][i];
+	}
+	var json = JSON.stringify(show);
+	fs.writeFile('show.json', json, 'utf8');
+	res.redirect('/configboards');
+})
+
 app.get('/show', function(req, res) {
 	res.render('show', {
 		boardinfo: boardinfo,
@@ -278,32 +313,28 @@ app.post('/fire', function(req, res) {
 
 app.post('/firegroup', function(req, res) {
     var group_id = req.query.groupid;
-    var to_fire = {};
-    for(channel in show.groups[group_id].channels) {
-        var chid = show.groups[group_id].channels[channel].id;
-        var chch = show.groups[group_id].channels[channel].channel;
-        if(String(to_fire[chid]) === 'undefined') {
-            to_fire[chid] = chch;
-        }
-        else {
-            to_fire[chid] = to_fire[chid] + chch;
-        }
+	for(board_id in show.boards) {
+		var chch = "";
+		for(channel in show.boards[board_id].channels) {
+			if( show.boards[board_id].channels[channel].group == group_id ) {
+				chch = chch + channel;
+				predictions[board_id].firecount[channel] = parseInt(predictions[board_id].firecount[channel]) + 1;
+			}
+		}
+		if (chch != "") {
+        	writeToClient(board_id, 'fire'+chch);
+			predictions[board_id].cmdcount = parseInt(predictions[board_id].cmdcount) + 1;
+		}
     }
-    for(board_id in to_fire) {
-        writeToClient(board_id, 'fire'+to_fire[board_id]);
-	var len = to_fire[board_id].length;
-	for( var i = 0; i < len; i++) {
-		var channel = to_fire[board_id][i];
-		predictions[board_id].firecount[channel] = parseInt(predictions[board_id].firecount[channel]) + 1;
-	}
-	predictions[board_id].cmdcount = parseInt(predictions[board_id].cmdcount) + 1;
 	io.emit('fresh predicts', boardinfo, predictions, telemetry, show);
-    }
     res.end();
 });
 
 app.get('/', function(req, res) {
-	res.render('home');
+	res.render('home',
+	{
+		boardinfo: boardinfo
+	});
 })
 
 //var server = app.listen(8080, function() {

@@ -32,7 +32,7 @@ html
                     hr
 
                     h2= boardinfo[boardid].name
-                    div Location: #{ show[boardid].location }
+                    div Location: #{ show.boards[boardid].location }
                     div(class="commands")
                         button(class="button" onclick="clickIdentify(\""+boardid+"\")") Identify
                         button(class="button" onclick="clickArm(\""+boardid+"\")") Arm
@@ -131,14 +131,8 @@ html
                             each i in [0,1,2,3,4,5,6,7]
                                 tr
                                     td= "Channel "+i
-                                    td= show[boardid].effects[i]
-                                    - var groupchannel = "No Group"
-                                    each group in show.groups
-                                        each channel in group.channels
-                                            if channel.id === boardid
-                                                if channel.channel == i
-                                                    - groupchannel = group.comment
-                                    td= groupchannel
+                                    td= show.boards[boardid].channels[i].effect
+                                    td= show.boards[boardid].channels[i].group
 
                                     td
                                         - var res = telemetry[boardid].res[i]

@@ -353,3 +353,32 @@ hr {
 	display: block;
 }
 
+input[type="text"] {
+	margin: 5px;
+	appearance: none;
+	box-shadow: none;
+	border-radius: none;
+	border: solid 1px white;
+
+	background: transparent;
+	color: white;
+	padding: 10px;
+	border: solid 1px #4f4f4f;
+	transition: box-shadow 0.3s, border 0.3s;
+}
+
+.group_desc {
+	width: 100%;
+}
+
+.effect_desc {
+	width: 100%;
+}
+
+input[type="text"]:focus {
+	outline: none;
+
+	border: solid 1px hotpink;
+	box-shadow: 0 0 5px 1px hotpink;
+}
+

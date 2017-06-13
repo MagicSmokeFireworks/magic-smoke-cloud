@@ -1,13 +1,38 @@
 html
 	head
-		title.
-			Magic Smoke
+		title Magic Smoke
 		link(href='/css/fading.css', rel='stylesheet')
 		link(href='/css/res_colors.css', rel='stylesheet')
-	body.blackpage
-		div(style='text-align: center')
-			a(href="/status")
-				img(src="/images/msmoke_logo.png")
-			div.italics
-				h1.
-					I know it's illegal, but it's the weekend
+		link(href='/css/generic.css', rel='stylesheet')
+	body
+		header
+			h1= "Magic Smoke"
+			nav
+				ul
+					li
+						a(href="/") home
+					li
+						a(href="/status") status
+					li(class="dropdown")
+						a(href="#") boards
+						div(class="dropdown-content")
+							each board in boardinfo
+								a(href="/board/"+board.sname) #{ board.name }
+					li
+						a(href="/show") show
+		main
+			section(class="hero")
+				div(class="hero-content")
+
+					hr
+
+					div
+						a(href="/status")
+							img(src="/images/msmoke_logo.png")
+					div
+						a(class="button" href="/configgroups") Configure Groups
+						a(class="button" href="/configboards") Configure Boards
+					hr
+					div.italics
+						h2.
+							I know it's illegal, but it's the weekend

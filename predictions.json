@@ -1,63 +1,242 @@
 {
-	"spa": {
-		"swarm": "0",
-		"firecount": ["0", "0", "0", "0", "0", "0", "0", "0"],
-		"cmdcount": "0",
-		"res": ["none", "none", "none", "none", "none", "none", "none", "none"]
-	},
-	"mm": {
-		"swarm": "0",
-		"firecount": ["0", "0", "0", "0", "0", "0", "0", "0"],
-		"cmdcount": "0",
-		"res": ["none", "none", "none", "none", "none", "none", "none", "none"]
-	},
-	"dlj": {
-		"swarm": "0",
-		"firecount": ["0", "0", "0", "0", "0", "0", "0", "0"],
-		"cmdcount": "0",
-		"res": ["none", "none", "none", "none", "none", "none", "none", "none"]
-	},
-	"fag": {
-		"swarm": "0",
-		"firecount": ["0", "0", "0", "0", "0", "0", "0", "0"],
-		"cmdcount": "0",
-		"res": ["none", "none", "none", "none", "none", "none", "none", "none"]
-	},
-	"ntb": {
-		"swarm": "0",
-		"firecount": ["0", "0", "0", "0", "0", "0", "0", "0"],
-		"cmdcount": "0",
-		"res": ["none", "none", "none", "none", "none", "none", "none", "none"]
-	},
-	"rd": {
-		"swarm": "0",
-		"firecount": ["0", "0", "0", "0", "0", "0", "0", "0"],
-		"cmdcount": "0",
-		"res": ["none", "none", "none", "none", "none", "none", "none", "none"]
-	},
-	"sm": {
-		"swarm": "0",
-		"firecount": ["0", "0", "0", "0", "0", "0", "0", "0"],
-		"cmdcount": "0",
-		"res": ["none", "none", "none", "none", "none", "none", "none", "none"]
-	},
-	"pitd": {
-		"swarm": "0",
-		"firecount": ["0", "0", "0", "0", "0", "0", "0", "0"],
-		"cmdcount": "0",
-		"res": ["none", "none", "none", "none", "none", "none", "none", "none"]
-	},
-	"cr": {
-		"swarm": "0",
-		"firecount": ["0", "0", "0", "0", "0", "0", "0", "0"],
-		"cmdcount": "0",
-		"res": ["none", "none", "none", "none", "none", "none", "none", "none"]
-	},
-	"ta": {
-		"swarm": "0",
-		"firecount": ["0", "0", "0", "0", "0", "0", "0", "0"],
-		"cmdcount": "0",
-		"res": ["none", "none", "none", "none", "none", "none", "none", "none"]
-	}
+    "mm": {
+        "firecount": [
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0"
+        ], 
+        "swarm": "0", 
+        "cmdcount": "0", 
+        "res": [
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none"
+        ]
+    }, 
+    "dlj": {
+        "firecount": [
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0"
+        ], 
+        "swarm": "0", 
+        "cmdcount": "0", 
+        "res": [
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none"
+        ]
+    }, 
+    "fag": {
+        "firecount": [
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0"
+        ], 
+        "swarm": "0", 
+        "cmdcount": "0", 
+        "res": [
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none"
+        ]
+    }, 
+    "rd": {
+        "firecount": [
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0"
+        ], 
+        "swarm": "0", 
+        "cmdcount": "0", 
+        "res": [
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none"
+        ]
+    }, 
+    "sm": {
+        "firecount": [
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0"
+        ], 
+        "swarm": "0", 
+        "cmdcount": "0", 
+        "res": [
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none"
+        ]
+    }, 
+    "spa": {
+        "firecount": [
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0"
+        ], 
+        "swarm": "0", 
+        "cmdcount": "0", 
+        "res": [
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none"
+        ]
+    }, 
+    "cr": {
+        "firecount": [
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0"
+        ], 
+        "swarm": "0", 
+        "cmdcount": "0", 
+        "res": [
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none"
+        ]
+    }, 
+    "ntb": {
+        "firecount": [
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0"
+        ], 
+        "swarm": "0", 
+        "cmdcount": "0", 
+        "res": [
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none"
+        ]
+    }, 
+    "pitd": {
+        "firecount": [
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0"
+        ], 
+        "swarm": "0", 
+        "cmdcount": "0", 
+        "res": [
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none"
+        ]
+    }, 
+    "ta": {
+        "firecount": [
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0"
+        ], 
+        "swarm": "0", 
+        "cmdcount": "0", 
+        "res": [
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none"
+        ]
+    }
 }
-

@@ -7,6 +7,9 @@ with open('boardinfo.json') as boardinfo_json:
 
 telemetry = {}
 predictions = {}
+show = {}
+show['groups'] = []
+show['boards'] = {}
 
 for board_sname in boardinfo:
     telemetry[board_sname] = {}
@@ -26,9 +29,16 @@ for board_sname in boardinfo:
     predictions[board_sname]['firecount'] = ['0']*8
     predictions[board_sname]['res'] = ['none']*8
 
+    show['boards'][board_sname] = {}
+    show['boards'][board_sname]['location'] = 'inactive'
+    show['boards'][board_sname]['channels'] = [{"group": "", "effect": ""}]*8
+
 with open('telemetry.json', 'w') as telemetry_json:
     json.dump(telemetry, telemetry_json, indent=4)
 
 with open('predictions.json', 'w') as predictions_json:
     json.dump(predictions, predictions_json, indent=4)
+
+with open('show.json', 'w') as show_json:
+    json.dump(show, show_json, indent=4)
 

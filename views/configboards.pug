@@ -1,0 +1,67 @@
+html
+	head
+		title Configure Boards
+		link(href='/css/fading.css', rel='stylesheet')
+		link(href='/css/res_colors.css', rel='stylesheet')
+		link(href='/css/generic.css', rel='stylesheet')
+		script(src='/javascripts/datatimer.js')
+		script(src='/socket.io/socket.io.js')
+		script(src='/javascripts/socket_hookups.js')
+		script(src='/javascripts/commands.js')
+
+	body
+		header
+			h1 Configure Boards
+			nav
+				ul
+					li
+						a(href="/") home
+					li
+						a(href="/status") status
+					li(class="dropdown")
+						a(href="#") boards
+						div(class="dropdown-content")
+							each board in boardinfo
+								a(href="/board/"+board.sname) #{ board.name }
+					li
+						a(href="/show") show
+		main
+			section(class="hero")
+				div(class="hero-content")
+
+					hr
+					each board in boardinfo
+						h2= board.name
+
+						form(method="post")
+							input(type="hidden" name="boardid" value=board.sname)
+							div Location:
+								input(type="text" name="location" value=show.boards[board.sname].location)
+							table(id=board.sname+"_board_table")
+								thead
+									tr
+										th Channel Number
+										th Group Identifier
+										th Effect Description
+								tbody
+									each i in [0,1,2,3,4,5,6,7]
+										tr
+											td= i
+											td
+												select(name="group[]")
+													if show.boards[board.sname].channels[i].group == ""
+														option(value="" selected="true") None
+													else
+														option(value="") None
+													each group in show.groups
+														if show.boards[board.sname].channels[i].group == group.id
+															option(value=group.id selected="true") #{ group.id }: #{ group.desc }
+														else
+															option(value=group.id) #{ group.id }: #{ group.desc }
+											td
+												input(class="effect_desc" type="text" name="effect[]" value=show.boards[board.sname].channels[i].effect)
+							input(class="button" type="submit" value="Save configuration for " + board.name)
+										
+						hr
+						
+

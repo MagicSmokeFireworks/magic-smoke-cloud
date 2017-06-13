@@ -48,3 +48,39 @@ var clickIdentify = function(id) {
         xhttp.send();
 };
 
+var addBoard = function(id) {
+	var xhttp;
+	xhttp = new XMLHttpRequest();
+	xhttp.open("POST", "/configshow?id="+id, true);
+	xhttp.send();
+};
+
+var addNewGroup = function() {
+
+	var table = document.getElementById("group_table");
+
+	var row = table.insertRow(-1);
+
+	var cell0 = row.insertCell(0);
+	var cell1 = row.insertCell(1);
+	var cell2 = row.insertCell(2);
+
+	cell0.innerHTML = "<input type=\"text\" name=\"group_id[]\" value=\"none\" />";
+	cell1.innerHTML = "<input class=\"group_desc\" type=\"text\" name=\"group_desc[]\" value=\"none\" />";
+
+	cell2.innerHTML = "";
+};
+
+var deleteGroup = function(rowid) {
+
+	var table = document.getElementById("group_table");
+
+	var row = document.getElementById(rowid);
+
+	table.deleteRow(row.rowIndex);
+};
+
+var saveGroups = function() {
+	
+};
+
