@@ -1,1 +1,375 @@
-{"boards":{"mm":{"channels":[{"group":"3","effect":"h"},{"group":"3","effect":"x"},{"group":"","effect":""},{"group":"2","effect":"g"},{"group":"2","effect":"y"},{"group":"","effect":""},{"group":"1","effect":"i"},{"group":"1","effect":"z"}],"location":"right field"},"dlj":{"channels":[{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""}],"location":"inactive"},"fag":{"channels":[{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""}],"location":"inactive"},"rd":{"channels":[{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""}],"location":"inactive"},"sm":{"channels":[{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""}],"location":"inactive"},"spa":{"channels":[{"group":"1","effect":"a"},{"group":"1","effect":"b"},{"group":"2","effect":"c"},{"group":"2","effect":"d"},{"group":"3","effect":"e"},{"group":"2","effect":"Fffg"},{"group":"","effect":""},{"group":"","effect":""}],"location":"left field"},"cr":{"channels":[{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""}],"location":"inactive"},"ntb":{"channels":[{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""}],"location":"inactive"},"pitd":{"channels":[{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""}],"location":"inactive"},"ta":{"channels":[{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""},{"group":"","effect":""}],"location":"inactive"}},"groups":[{"id":"1","desc":"beginning"},{"id":"2","desc":"whatever"},{"id":"3","desc":"continue"}]}
+{
+    "boards": {
+        "mm": {
+            "channels": [
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }
+            ], 
+            "location": "inactive"
+        }, 
+        "dlj": {
+            "channels": [
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }
+            ], 
+            "location": "inactive"
+        }, 
+        "fag": {
+            "channels": [
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }
+            ], 
+            "location": "inactive"
+        }, 
+        "rd": {
+            "channels": [
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }
+            ], 
+            "location": "inactive"
+        }, 
+        "sm": {
+            "channels": [
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }
+            ], 
+            "location": "inactive"
+        }, 
+        "spa": {
+            "channels": [
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }
+            ], 
+            "location": "inactive"
+        }, 
+        "cr": {
+            "channels": [
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }
+            ], 
+            "location": "inactive"
+        }, 
+        "ntb": {
+            "channels": [
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }
+            ], 
+            "location": "inactive"
+        }, 
+        "pitd": {
+            "channels": [
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }
+            ], 
+            "location": "inactive"
+        }, 
+        "ta": {
+            "channels": [
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }
+            ], 
+            "location": "inactive"
+        }
+    }, 
+    "groups": []
+}
