@@ -191,7 +191,7 @@
             "none"
         ]
     }, 
-    "spa": {
+    "dbp": {
         "firecount": [
             "0", 
             "0", 
@@ -215,7 +215,7 @@
             "none"
         ]
     }, 
-    "cr": {
+    "spa": {
         "firecount": [
             "0", 
             "0", 
@@ -456,6 +456,30 @@
         ]
     }, 
     "ntb": {
+        "firecount": [
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0"
+        ], 
+        "swarm": "0", 
+        "cmdcount": "0", 
+        "res": [
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none"
+        ]
+    }, 
+    "cr": {
         "firecount": [
             "0", 
             "0", 

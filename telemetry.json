@@ -231,7 +231,7 @@
         ], 
         "rssi": "no data"
     }, 
-    "spa": {
+    "dbp": {
         "firecount": [
             "no data", 
             "no data", 
@@ -260,7 +260,7 @@
         ], 
         "rssi": "no data"
     }, 
-    "cr": {
+    "spa": {
         "firecount": [
             "no data", 
             "no data", 
@@ -551,6 +551,35 @@
         "rssi": "no data"
     }, 
     "ntb": {
+        "firecount": [
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data"
+        ], 
+        "ip": "", 
+        "hwarm": "no data", 
+        "swarm": "no data", 
+        "connection": "never", 
+        "firmver": "no data", 
+        "cmdcount": "no data", 
+        "res": [
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data"
+        ], 
+        "rssi": "no data"
+    }, 
+    "cr": {
         "firecount": [
             "no data", 
             "no data", 

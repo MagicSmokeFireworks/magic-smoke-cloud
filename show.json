@@ -296,7 +296,7 @@
             ], 
             "location": "inactive"
         }, 
-        "spa": {
+        "dbp": {
             "channels": [
                 {
                     "group": "", 
@@ -333,7 +333,7 @@
             ], 
             "location": "inactive"
         }, 
-        "cr": {
+        "spa": {
             "channels": [
                 {
                     "group": "", 
@@ -704,6 +704,43 @@
             "location": "inactive"
         }, 
         "ntb": {
+            "channels": [
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }
+            ], 
+            "location": "inactive"
+        }, 
+        "cr": {
             "channels": [
                 {
                     "group": "", 
