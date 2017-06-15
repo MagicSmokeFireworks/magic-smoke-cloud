@@ -154,32 +154,38 @@ app.post('/status', function(req, res) {
 			sname = key;
 		}
 	}
-	timeouts[sname] = 0;
-	telemetry[sname].connection = "active";
-	telemetry[sname].ip = req.ip;
-	telemetry[sname].firmver = req.headers.fver;
-	telemetry[sname].swarm = req.headers.sw_arm;
-	telemetry[sname].hwarm = req.headers.hw_arm;
-	telemetry[sname].rssi = req.headers.wifi_rssi;
-	telemetry[sname].res[0] = req.headers.r0;
-	telemetry[sname].res[1] = req.headers.r1;
-	telemetry[sname].res[2] = req.headers.r2;
-	telemetry[sname].res[3] = req.headers.r3;
-	telemetry[sname].res[4] = req.headers.r4;
-	telemetry[sname].res[5] = req.headers.r5;
-	telemetry[sname].res[6] = req.headers.r6;
-	telemetry[sname].res[7] = req.headers.r7;
-	telemetry[sname].firecount[0] = req.headers.fc0;
-	telemetry[sname].firecount[1] = req.headers.fc1;
-	telemetry[sname].firecount[2] = req.headers.fc2;
-	telemetry[sname].firecount[3] = req.headers.fc3;
-	telemetry[sname].firecount[4] = req.headers.fc4;
-	telemetry[sname].firecount[5] = req.headers.fc5;
-	telemetry[sname].firecount[6] = req.headers.fc6;
-	telemetry[sname].firecount[7] = req.headers.fc7;
-	telemetry[sname].cmdcount = req.headers.cc;
-	res.end();
-	io.emit('fresh data', boardinfo, telemetry, predictions, show);
+	if (sname === "") {
+		console.log("Unknown board id sending status packet: " + req.headers.id);
+		res.end();
+	}
+	else {
+		timeouts[sname] = 0;
+		telemetry[sname].connection = "active";
+		telemetry[sname].ip = req.ip;
+		telemetry[sname].firmver = req.headers.fver;
+		telemetry[sname].swarm = req.headers.sw_arm;
+		telemetry[sname].hwarm = req.headers.hw_arm;
+		telemetry[sname].rssi = req.headers.wifi_rssi;
+		telemetry[sname].res[0] = req.headers.r0;
+		telemetry[sname].res[1] = req.headers.r1;
+		telemetry[sname].res[2] = req.headers.r2;
+		telemetry[sname].res[3] = req.headers.r3;
+		telemetry[sname].res[4] = req.headers.r4;
+		telemetry[sname].res[5] = req.headers.r5;
+		telemetry[sname].res[6] = req.headers.r6;
+		telemetry[sname].res[7] = req.headers.r7;
+		telemetry[sname].firecount[0] = req.headers.fc0;
+		telemetry[sname].firecount[1] = req.headers.fc1;
+		telemetry[sname].firecount[2] = req.headers.fc2;
+		telemetry[sname].firecount[3] = req.headers.fc3;
+		telemetry[sname].firecount[4] = req.headers.fc4;
+		telemetry[sname].firecount[5] = req.headers.fc5;
+		telemetry[sname].firecount[6] = req.headers.fc6;
+		telemetry[sname].firecount[7] = req.headers.fc7;
+		telemetry[sname].cmdcount = req.headers.cc;
+		res.end();
+		io.emit('fresh data', boardinfo, telemetry, predictions, show);
+	}
 })
 
 app.get('/board/:boardid', function(req, res) {

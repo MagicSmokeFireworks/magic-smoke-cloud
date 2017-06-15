@@ -1,5 +1,5 @@
 {
-    "mm": {
+    "cm": {
         "firecount": [
             "no data", 
             "no data", 
@@ -28,7 +28,7 @@
         ], 
         "rssi": "no data"
     }, 
-    "dlj": {
+    "af": {
         "firecount": [
             "no data", 
             "no data", 
@@ -57,7 +57,7 @@
         ], 
         "rssi": "no data"
     }, 
-    "fag": {
+    "tts": {
         "firecount": [
             "no data", 
             "no data", 
@@ -86,7 +86,7 @@
         ], 
         "rssi": "no data"
     }, 
-    "rd": {
+    "cb": {
         "firecount": [
             "no data", 
             "no data", 
@@ -115,7 +115,94 @@
         ], 
         "rssi": "no data"
     }, 
-    "sm": {
+    "pos": {
+        "firecount": [
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data"
+        ], 
+        "ip": "", 
+        "hwarm": "no data", 
+        "swarm": "no data", 
+        "connection": "never", 
+        "firmver": "no data", 
+        "cmdcount": "no data", 
+        "res": [
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data"
+        ], 
+        "rssi": "no data"
+    }, 
+    "pop": {
+        "firecount": [
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data"
+        ], 
+        "ip": "", 
+        "hwarm": "no data", 
+        "swarm": "no data", 
+        "connection": "never", 
+        "firmver": "no data", 
+        "cmdcount": "no data", 
+        "res": [
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data"
+        ], 
+        "rssi": "no data"
+    }, 
+    "cd": {
+        "firecount": [
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data"
+        ], 
+        "ip": "", 
+        "hwarm": "no data", 
+        "swarm": "no data", 
+        "connection": "never", 
+        "firmver": "no data", 
+        "cmdcount": "no data", 
+        "res": [
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data"
+        ], 
+        "rssi": "no data"
+    }, 
+    "gc": {
         "firecount": [
             "no data", 
             "no data", 
@@ -202,7 +289,7 @@
         ], 
         "rssi": "no data"
     }, 
-    "ntb": {
+    "dlj": {
         "firecount": [
             "no data", 
             "no data", 
@@ -231,7 +318,65 @@
         ], 
         "rssi": "no data"
     }, 
-    "pitd": {
+    "ll": {
+        "firecount": [
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data"
+        ], 
+        "ip": "", 
+        "hwarm": "no data", 
+        "swarm": "no data", 
+        "connection": "never", 
+        "firmver": "no data", 
+        "cmdcount": "no data", 
+        "res": [
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data"
+        ], 
+        "rssi": "no data"
+    }, 
+    "rd": {
+        "firecount": [
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data"
+        ], 
+        "ip": "", 
+        "hwarm": "no data", 
+        "swarm": "no data", 
+        "connection": "never", 
+        "firmver": "no data", 
+        "cmdcount": "no data", 
+        "res": [
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data"
+        ], 
+        "rssi": "no data"
+    }, 
+    "rf": {
         "firecount": [
             "no data", 
             "no data", 
@@ -261,6 +406,267 @@
         "rssi": "no data"
     }, 
     "ta": {
+        "firecount": [
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data"
+        ], 
+        "ip": "", 
+        "hwarm": "no data", 
+        "swarm": "no data", 
+        "connection": "never", 
+        "firmver": "no data", 
+        "cmdcount": "no data", 
+        "res": [
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data"
+        ], 
+        "rssi": "no data"
+    }, 
+    "fs": {
+        "firecount": [
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data"
+        ], 
+        "ip": "", 
+        "hwarm": "no data", 
+        "swarm": "no data", 
+        "connection": "never", 
+        "firmver": "no data", 
+        "cmdcount": "no data", 
+        "res": [
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data"
+        ], 
+        "rssi": "no data"
+    }, 
+    "ba": {
+        "firecount": [
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data"
+        ], 
+        "ip": "", 
+        "hwarm": "no data", 
+        "swarm": "no data", 
+        "connection": "never", 
+        "firmver": "no data", 
+        "cmdcount": "no data", 
+        "res": [
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data"
+        ], 
+        "rssi": "no data"
+    }, 
+    "ooc": {
+        "firecount": [
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data"
+        ], 
+        "ip": "", 
+        "hwarm": "no data", 
+        "swarm": "no data", 
+        "connection": "never", 
+        "firmver": "no data", 
+        "cmdcount": "no data", 
+        "res": [
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data"
+        ], 
+        "rssi": "no data"
+    }, 
+    "jh": {
+        "firecount": [
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data"
+        ], 
+        "ip": "", 
+        "hwarm": "no data", 
+        "swarm": "no data", 
+        "connection": "never", 
+        "firmver": "no data", 
+        "cmdcount": "no data", 
+        "res": [
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data"
+        ], 
+        "rssi": "no data"
+    }, 
+    "ntb": {
+        "firecount": [
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data"
+        ], 
+        "ip": "", 
+        "hwarm": "no data", 
+        "swarm": "no data", 
+        "connection": "never", 
+        "firmver": "no data", 
+        "cmdcount": "no data", 
+        "res": [
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data"
+        ], 
+        "rssi": "no data"
+    }, 
+    "fag": {
+        "firecount": [
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data"
+        ], 
+        "ip": "", 
+        "hwarm": "no data", 
+        "swarm": "no data", 
+        "connection": "never", 
+        "firmver": "no data", 
+        "cmdcount": "no data", 
+        "res": [
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data"
+        ], 
+        "rssi": "no data"
+    }, 
+    "mm": {
+        "firecount": [
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data"
+        ], 
+        "ip": "", 
+        "hwarm": "no data", 
+        "swarm": "no data", 
+        "connection": "never", 
+        "firmver": "no data", 
+        "cmdcount": "no data", 
+        "res": [
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data"
+        ], 
+        "rssi": "no data"
+    }, 
+    "sm": {
+        "firecount": [
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data"
+        ], 
+        "ip": "", 
+        "hwarm": "no data", 
+        "swarm": "no data", 
+        "connection": "never", 
+        "firmver": "no data", 
+        "cmdcount": "no data", 
+        "res": [
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data", 
+            "no data"
+        ], 
+        "rssi": "no data"
+    }, 
+    "pitd": {
         "firecount": [
             "no data", 
             "no data", 

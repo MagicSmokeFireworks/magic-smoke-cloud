@@ -1,21 +1,51 @@
 {
-	"spa": {
-		"id": "210043000347343138333038",
-		"name": "Shemale Porn Addiction",
-		"sname": "spa",
+	"af": {
+		"id": "",
+		"name": "Alternative Facts",
+		"sname": "af",
 		"comments": ""
 	},
-	"mm": {
-		"id": "1f0032000a47353235303037",
-		"name": "Moist Molly",
-		"sname": "mm",
+	"ba": {
+		"id": "",
+		"name": "Ball Ache",
+		"sname": "ba",
+		"comments": ""
+	},
+	"cb": {
+		"id": "",
+		"name": "Clickbait",
+		"sname": "cb",
+		"comments": ""
+	},
+	"cd": {
+		"id": "",
+		"name": "Chubby Despot",
+		"sname": "cd",
+		"comments": ""
+	},
+	"cm": {
+		"id": "",
+		"name": "Clit Mouse",
+		"sname": "cm",
+		"comments": ""
+	},
+	"cr": {
+		"id": "3b0039000647343339373536",
+		"name": "Clenched Ringpiece",
+		"sname": "cr",
+		"comments": "Bad battery LED."
+	},
+	"dbp": {
+		"id": "",
+		"name": "Disingenuous Blog Post",
+		"sname": "dbp",
 		"comments": ""
 	},
 	"dlj": {
 		"id": "3e0026000a47353235303037",
 		"name": "Dr. Lee's Jubiration",
 		"sname": "dlj",
-		"comments": "C1 exploded off the board."
+		"comments": "C1 exploded off the board. Vreg suspected failed."
 	},
 	"fag": {
 		"id": "3c002a001847353236343033",
@@ -23,22 +53,46 @@
 		"sname": "fag",
 		"comments": ""
 	},
+	"fs": {
+		"id": "",
+		"name": "Fan Service",
+		"sname": "fs",
+		"comments": ""
+	},
+	"gc": {
+		"id": "",
+		"name": "Going Cyclic",
+		"sname": "gc",
+		"comments": ""
+	},
+	"jh": {
+		"id": "",
+		"name": "Jailhouse Hooch",
+		"sname": "jh",
+		"comments": ""
+	},
+	"ll": {
+		"id": "",
+		"name": "Lipid Labia",
+		"sname": "ll",
+		"comments": ""
+	},
+	"mm": {
+		"id": "1f0032000a47353235303037",
+		"name": "Moist Molly",
+		"sname": "mm",
+		"comments": "So moist."
+	},
 	"ntb": {
 		"id": "2d003e001847353236343033",
 		"name": "Not the Bees",
 		"sname": "ntb",
 		"comments": ""
 	},
-	"rd": {
-		"id": "440029000347343337373738",
-		"name": "Resplendent Deuce",
-		"sname": "rd",
-		"comments": ""
-	},
-	"sm": {
-		"id": "2e0036001747353236343033",
-		"name": "Savage Mistress",
-		"sname": "sm",
+	"ooc": {
+		"id": "",
+		"name": "Orgy of Cannibalism",
+		"sname": "ooc",
 		"comments": ""
 	},
 	"pitd": {
@@ -47,17 +101,53 @@
 		"sname": "pitd",
 		"comments": "Armed LED broken."
 	},
-	"cr": {
-		"id": "3b0039000647343339373536",
-		"name": "Clenched Ringpiece",
-		"sname": "cr",
-		"comments": "Bad battery LED."
+	"pop": {
+		"id": "",
+		"name": "Psychosis on Parade",
+		"sname": "pop",
+		"comments": ""
+	},
+	"pos": {
+		"id": "",
+		"name": "Prodigy of Sin",
+		"sname": "pos",
+		"comments": ""
+	},
+	"rd": {
+		"id": "440029000347343337373738",
+		"name": "Resplendent Deuce",
+		"sname": "rd",
+		"comments": ""
+	},
+	"rf": {
+		"id": "",
+		"name": "Reciprocity Failure",
+		"sname": "rf",
+		"comments": ""
+	},
+	"sm": {
+		"id": "2e0036001747353236343033",
+		"name": "Savage Mistress",
+		"sname": "sm",
+		"comments": ""
+	},
+	"spa": {
+		"id": "210043000347343138333038",
+		"name": "Shemale Porn Addiction",
+		"sname": "spa",
+		"comments": ""
 	},
 	"ta": {
 		"id": "300047001247353236343033",
 		"name": "Totes Amazeballs",
 		"sname": "ta",
 		"comments": "No working LEDs?"
+	},
+	"tts": {
+		"id": "",
+		"name": "Thirst Trap Selfie",
+		"sname": "tts",
+		"comments": ""
 	}
 }
 
