@@ -1,8 +1,11 @@
 {
   "name": "magic-smoke-cloud",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "I know it's illegal, but it's the weekend",
   "dependencies": {
-    "socket.io": "^1.7.3"
+    "socket.io": "^1.7.3",
+    "body-parser": "^1.17.2",
+    "express": "^4.14.0",
+    "pug": "^1.11.0"
   }
 }
