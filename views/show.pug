@@ -61,7 +61,7 @@ html
 								else
 									- swarm_val = "Partial"
 									- swarm_class = "warning_status"
-								div(class=swarm_class)= swarm_val
+								div(id="show_swarm_status" class=swarm_class)= swarm_val
 	
 				table
 					thead
@@ -95,7 +95,7 @@ html
 								else
 									- hwarm_val = "Partial"
 									- hwarm_class = "warning_status"
-								div(class=hwarm_class)= hwarm_val
+								div(id="show_hwarm_status" class=hwarm_class)= hwarm_val
 	
 				table
 					thead
@@ -134,7 +134,7 @@ html
 						table(class="show-table")
 							thead
 								th
-								th= group.desc
+								th #{ group.id } : #{ group.desc }
 								th
 							tbody
 								tr
@@ -146,7 +146,7 @@ html
 													each channel, chnum in board.channels
 														if channel.group == group.id
 															tr
-																td= boardid
+																td= boardinfo[boardid].name
 																td Channel #{ chnum }
 																td= board.location
 																td= channel.effect

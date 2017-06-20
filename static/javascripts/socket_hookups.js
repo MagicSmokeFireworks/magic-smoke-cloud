@@ -248,18 +248,40 @@ socket.on('fresh data', function(boardinfo, telemetry, predictions, show) {
 		}
 	}
 
-	// show connection status
+	// show arm and connection status
+	var swarms = 0;
+	var noswarms = 0;
+	var swarm_val = "unknown";
+	var swarm_class = "error_status";
+	var hwarms = 0;
+	var nohwarms = 0;
+	var hwarm_val = "unknown";
+	var hwarm_class = "error_status";
 	var conns = 0;
 	var noconns = 0;
 	var conn_val = "No Connections";
 	var conn_class = "error_status";
 	for (board in boardinfo) {
-		if (board in show) {
+		if (show.boards[board].location != "inactive") {
 			if (telemetry[board].connection == "active") {
 				conns = conns + 1;
 			}
 			else {
 				noconns = noconns + 1;
+			}
+
+			if (telemetry[board].swarm == "1") {
+				swarms = swarms + 1;
+			}
+			else {
+				noswarms = noswarms + 1;
+			}
+
+			if (telemetry[board].hwarm == "ARMED") {
+				hwarms = hwarms + 1;
+			}
+			else {
+				nohwarms = nohwarms + 1;
 			}
 		}
 	}
@@ -279,6 +301,42 @@ socket.on('fresh data', function(boardinfo, telemetry, predictions, show) {
 	if (showconnstatus != null) {
 		showconnstatus.className = conn_class;
 		showconnstatus.innerHTML = conn_val;
+	}
+
+	if (swarms == 0) {
+		swarm_val = "ALL DISARMED";
+		swarm_class = "error_status";
+	}
+	else if (noswarms == 0) {
+		swarm_val = "ALL ARMED";
+		swarm_class = "good_status";
+	}
+	else {
+		swarm_val = swarms + " ARMED; " + noswarms + " DISARMED";
+		swarm_class = "warning_status";
+	}
+	var showswarmstatus = document.getElementById("show_swarm_status");
+	if (showswarmstatus != null) {
+		showswarmstatus.className = swarm_class;
+		showswarmstatus.innerHTML = swarm_val;
+	}
+
+	if (hwarms == 0) {
+		hwarm_val = "ALL DISARMED";
+		hwarm_class = "error_status";
+	}
+	else if (nohwarms == 0) {
+		hwarm_val = "ALL ARMED";
+		hwarm_class = "good_status";
+	}
+	else {
+		hwarm_val = hwarms + " ARMED; " + nohwarms + " DISARMED";
+		hwarm_class = "warning_status";
+	}
+	var showhwarmstatus = document.getElementById("show_hwarm_status");
+	if (showhwarmstatus != null) {
+		showhwarmstatus.className = hwarm_class;
+		showhwarmstatus.innerHTML = hwarm_val;
 	}
 });
 
