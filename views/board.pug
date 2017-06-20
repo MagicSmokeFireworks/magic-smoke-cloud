@@ -99,7 +99,13 @@ html
                                     - var rssi = telemetry[boardid].rssi
                                     - var rssi_class = "error_status"
                                     if rssi != 'no data'
-                                        if rssi < -60
+                                        if rssi == 1
+                                            - rssi_class = "error_status"
+                                            - rssi = "WiFi Chip Error"
+                                        else if rssi == 2
+                                            - rssi_class = "error_status"
+                                            - rssi = "Time-out Error"
+                                        else if rssi < -60
                                             - rssi_class = "warning_status"
                                         else
                                             - rssi_class = "normal_status"

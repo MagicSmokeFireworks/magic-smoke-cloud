@@ -135,9 +135,18 @@ socket.on('fresh data', function(boardinfo, telemetry, predictions, show) {
 
 		// wifi rssi
 		var rssi = document.getElementById(board+"_rssi");
+		var rssi_val = telemetry[board]["rssi"];
 		if (rssi != null) {
 			if (parseInt(telemetry[board]["rssi"]) < -60) {
 				rssi.className = "warning_status";
+			}
+			else if (parseInt(telemetry[board]["rssi"]) == 1) {
+				rssi.className = "error_status";
+				rssi_val = "WiFi Chip Error";
+			}
+			else if (parseInt(telemetry[board]["rssi"]) == 2) {
+				rssi.className = "error_status";
+				rssi_val = "Time-out Error";
 			}
 			else if (telemetry[board]["rssi"] == "no data") {
 				rssi.className = "error_status";
@@ -145,7 +154,7 @@ socket.on('fresh data', function(boardinfo, telemetry, predictions, show) {
 			else  {
 				rssi.className = "normal_status";
 			}
-			rssi.innerHTML = telemetry[board]["rssi"];
+			rssi.innerHTML = rssi_val;
 		}
 
 		// command count
