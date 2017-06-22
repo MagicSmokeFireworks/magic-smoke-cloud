@@ -437,4 +437,7 @@ input[type="text"]:focus {
 	color: white;
 }
 
+.hiddenrow {
+	display: none;
+}
 

@@ -84,3 +84,26 @@ var saveGroups = function() {
 	
 };
 
+var toggleShowAll = function() {
+	var showallbutton = document.getElementById("toggleshowall");
+	if (showallbutton != null) {
+		showallbutton.id = "toggleshowhide";
+		showallbutton.innerHTML = "Hide Non-configured Boards";
+		var nonconfigrows = document.getElementsByClassName("nonconfigrow");
+		var i;
+		for (i = 0; i < nonconfigrows.length; i++) {
+			nonconfigrows[i].classList.remove("hiddenrow");
+		}
+	}
+	else {
+		var showhidebutton = document.getElementById("toggleshowhide");
+		showhidebutton.id = "toggleshowall";
+		showhidebutton.innerHTML = "Show all Boards";
+		var nonconfigrows = document.getElementsByClassName("nonconfigrow");
+		var i;
+		for (i = 0; i < nonconfigrows.length; i++) {
+			nonconfigrows[i].classList.add("hiddenrow");
+		}
+	}
+};
+
