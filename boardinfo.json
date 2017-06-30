@@ -1,30 +1,30 @@
 {
 	"af": {
-		"id": "",
+		"id": "2e0021000f47353136383631",
 		"name": "Alternative Facts",
 		"sname": "af",
 		"comments": ""
 	},
 	"ba": {
-		"id": "",
+		"id": "350027001447353136383631",
 		"name": "Ball Ache",
 		"sname": "ba",
 		"comments": ""
 	},
 	"cb": {
-		"id": "",
+		"id": "4d0055000c51353532383735",
 		"name": "Clickbait",
 		"sname": "cb",
 		"comments": ""
 	},
 	"cd": {
-		"id": "",
+		"id": "41003a000f47353136383631",
 		"name": "Chubby Despot",
 		"sname": "cd",
 		"comments": ""
 	},
 	"cm": {
-		"id": "",
+		"id": "300042000a47353137323334",
 		"name": "Clit Mouse",
 		"sname": "cm",
 		"comments": ""
@@ -36,7 +36,7 @@
 		"comments": "Bad battery LED."
 	},
 	"dbp": {
-		"id": "",
+		"id": "1f0033000c47353136383631",
 		"name": "Disingenuous Blog Post",
 		"sname": "dbp",
 		"comments": ""
@@ -54,25 +54,25 @@
 		"comments": ""
 	},
 	"fs": {
-		"id": "",
+		"id": "230040000c47353136383631",
 		"name": "Fan Service",
 		"sname": "fs",
 		"comments": ""
 	},
 	"gc": {
-		"id": "",
+		"id": "35002b000f47353136383631",
 		"name": "Going Cyclic",
 		"sname": "gc",
 		"comments": ""
 	},
 	"jh": {
-		"id": "",
+		"id": "360030000f47353136383631",
 		"name": "Jailhouse Hooch",
 		"sname": "jh",
 		"comments": ""
 	},
 	"ll": {
-		"id": "",
+		"id": "2f001b001447353136383631",
 		"name": "Lipid Labia",
 		"sname": "ll",
 		"comments": ""
@@ -90,7 +90,7 @@
 		"comments": ""
 	},
 	"ooc": {
-		"id": "",
+		"id": "28001a001047353136383631",
 		"name": "Orgy of Cannibalism",
 		"sname": "ooc",
 		"comments": ""
@@ -102,13 +102,13 @@
 		"comments": "Armed LED broken."
 	},
 	"pop": {
-		"id": "",
+		"id": "30002b001447353136383631",
 		"name": "Psychosis on Parade",
 		"sname": "pop",
 		"comments": ""
 	},
 	"pos": {
-		"id": "",
+		"id": "20003b001651353530333533",
 		"name": "Prodigy of Sin",
 		"sname": "pos",
 		"comments": ""
@@ -120,7 +120,7 @@
 		"comments": ""
 	},
 	"rf": {
-		"id": "",
+		"id": "3d0035001347353136383631",
 		"name": "Reciprocity Failure",
 		"sname": "rf",
 		"comments": ""
@@ -144,7 +144,7 @@
 		"comments": "No working LEDs?"
 	},
 	"tts": {
-		"id": "",
+		"id": "3b001d000c47343432313031",
 		"name": "Thirst Trap Selfie",
 		"sname": "tts",
 		"comments": ""
