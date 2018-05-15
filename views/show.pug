@@ -25,9 +25,13 @@ html
 						a(href="/show") show
 			div(class="show-topper")
 				hr
-				button(class="buttonsmall" onclick="clickArmAll()") Arm All
-				hr
-				button(class="buttonsmall" onclick="clickDisarmAll()") Disarm All
+				table
+					tbody
+						tr
+							td
+								button(class="buttonsmall" onclick="clickArmAll()") Arm All
+							td
+								button(class="buttonsmall" onclick="clickDisarmAll()") Disarm All
 				hr
 				table
 					thead
@@ -124,6 +128,22 @@ html
 									- conn_val = noconns + " Bad Connection(s)"
 									- conn_class = "warning_status"
 								div(id="show_conn_status" class=conn_class)= conn_val
+				hr
+				table
+					thead
+						tr
+							th Show Clock
+					tbody
+						tr
+							td
+								div(id="show_clock" class="show_clock")= show_clock
+				table
+					tbody
+						tr
+							td
+								button(class="buttonsmall" onclick="clickStartClock()") Start Show
+							td
+								button(class="buttonsmall" onclick="clickStopClock()") Pause Show
 				hr
 
 		main

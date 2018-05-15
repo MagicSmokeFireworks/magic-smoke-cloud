@@ -41,6 +41,20 @@ var clickDisarmAll = function() {
         xhttp.send();
 };
 
+var clickStartClock = function() {
+		var xhttp;
+		xhttp = new XMLHttpRequest();
+		xhttp.open("POST", "/startclock", true);
+		xhttp.send();
+};
+
+var clickStopClock = function() {
+		var xhttp;
+		xhttp = new XMLHttpRequest();
+		xhttp.open("POST", "/stopclock", true);
+		xhttp.send();
+};
+
 var clickIdentify = function(id) {
         var xhttp;
         xhttp = new XMLHttpRequest();

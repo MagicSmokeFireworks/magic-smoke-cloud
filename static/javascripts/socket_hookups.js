@@ -407,4 +407,12 @@ socket.on('fresh predicts', function(boardinfo, predictions, telemetry, show) {
 	}
 });
 
+socket.on('tick clock', function(show_clock_val) {
+	var show_clock = document.getElementById("show_clock");
+	if (show_clock != null) {
+		show_clock.innerHTML = show_clock_val;
+	}
+});
+
+
 

@@ -325,6 +325,13 @@ hr {
 	animation-direction: alternate;
 }
 
+.show_clock {
+	margin: auto;
+	border-radius: 20px;
+	font-weight: bold;
+	font-size: 2em;
+}
+
 @keyframes bg_white2yellow{
 	from {background-color: white;}
 	to {background-color: yellow;}

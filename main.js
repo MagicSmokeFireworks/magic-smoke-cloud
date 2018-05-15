@@ -147,6 +147,27 @@ var timeoutInterval = setInterval(function() {
 	}
 }, 100);
 
+var show_clock = 0;
+var clock_running = false;
+var tickingClock = setInterval(function() {
+	if (clock_running == true) {
+		show_clock = show_clock + 0.1;
+		io.emit('tick clock', show_clock.toFixed(1));
+	}
+}, 100);
+
+app.post('/startclock', function(req, res) {
+	clock_running = true;
+	res.end();
+	console.log('starting clock');
+})
+
+app.post('/stopclock', function(req, res) {
+	clock_running = false;
+	res.end();
+	console.log('stopping clock');
+})
+
 app.post('/status', function(req, res) {
 	var sname = "";
 	for (key in boardinfo) {
@@ -245,6 +266,7 @@ app.get('/show', function(req, res) {
 	res.render('show', {
 		boardinfo: boardinfo,
 		show: show,
+		show_clock: show_clock.toFixed(1),
 		telemetry: telemetry,
 		predictions: predictions
 	});
