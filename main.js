@@ -15,7 +15,6 @@ var app = express();
 var net = require('net');
 
 var http = require('http').Server(app);
-var httpbase = require('http');
 
 var io = require('socket.io')(http);
 
@@ -32,46 +31,25 @@ var writeToClient = function(board_id, message) {
 	console.log(clientIP);
 	console.log(clientPort);
 	if (clientIP === '') {
+		console.log('no IP known for ' + board_id);
 	}
 	else {
-		if (clientPort !== 23) {
-			var post_options = {
-				host: clientIP,
-				port: clientPort,
-				path: '/' + message,
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/x-www-form-urlencoded',
-					'Content-Length': 0
-				}
-			};
-			var post_req = httpbase.request(post_options, function(res) {
-				res.setEncoding('utf8');
-				res.on('data', function(chunk) {
-					console.log('Response: ' + chunk);
-				});
-			});
-			post_req.write("");
-			post_req.end();
-		}
-		else {
-			var client = new net.Socket();
-			client.connect(clientPort, clientIP, function() {
-				console.log('connected to ' + board_id);
-				client.write(message);
-			});
-		
-			client.on('data', function(data) {
-				console.log('data: ' + data);
-				client.destroy();
-			});
-			client.on('close', function() {
-				console.log('connection closed');
-			});
-			client.on('error', function(err) {
-				console.log('error: ' + err.message);
-			});
-		}
+		var client = new net.Socket();
+		client.connect(clientPort, clientIP, function() {
+			console.log('connected to ' + board_id);
+			client.write(message);
+		});
+	
+		client.on('data', function(data) {
+			console.log('data: ' + data);
+			client.destroy();
+		});
+		client.on('close', function() {
+			console.log('connection closed');
+		});
+		client.on('error', function(err) {
+			console.log('error: ' + err.message);
+		});
 	}
 };
 
