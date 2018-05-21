@@ -150,8 +150,9 @@ html
 			section(class="hero")
 				div(class="hero-content")
 				
+					hr(id="now_bar")
 					each group in show.groups
-						table(class="show-table")
+						table(id=group.id class="show-table")
 							thead
 								th
 								th #{ group.id } : #{ group.desc }

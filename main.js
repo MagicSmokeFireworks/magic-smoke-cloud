@@ -156,6 +156,29 @@ var clock_running = false;
 var tickingClock = setInterval(function() {
 	if (clock_running == true) {
 		show_clock = show_clock + 0.1;
+		for (var i = 0; i < show.groups.length; i++) {
+			var group_time = parseFloat(show.groups[i].id);
+			if (group_time > (show_clock - 0.09)) {
+				if (group_time < (show_clock + 0.09)) {
+					// fire group
+					var group_id = show.groups[i].id;
+					for(board_id in show.boards) {
+						var chch = "";
+						for(channel in show.boards[board_id].channels) {
+							if( show.boards[board_id].channels[channel].group == group_id ) {
+								chch = chch + channel;
+								predictions[board_id].firecount[channel] = parseInt(predictions[board_id].firecount[channel]) + 1;
+							}
+						}
+						if (chch != "") {
+							writeToClient(board_id, 'fire'+chch);
+							predictions[board_id].cmdcount = parseInt(predictions[board_id].cmdcount) + 1;
+						}
+					}
+					io.emit('fresh predicts', boardinfo, predictions, telemetry, show);
+				}
+			}
+		}
 		io.emit('tick clock', show_clock.toFixed(1));
 	}
 }, 100);

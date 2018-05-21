@@ -412,6 +412,20 @@ socket.on('tick clock', function(show_clock_val) {
 	if (show_clock != null) {
 		show_clock.innerHTML = show_clock_val;
 	}
+
+	var now_bar = document.getElementById("now_bar");
+	var groups = document.getElementsByClassName("show-table");
+	var inserted = false;
+	for (var i = 0; i < groups.length; i++) {
+		if (parseFloat(groups[i].id) > show_clock_val) {
+			now_bar.parentNode.insertBefore(now_bar, groups[i]);
+			inserted = true;
+			break;
+		}
+	}
+	if (inserted == false) {
+		now_bar.parentNode.insertBefore(now_bar, null);
+	}
 });
 
 
