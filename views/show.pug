@@ -150,18 +150,32 @@ html
 			section(class="hero")
 				div(class="hero-content")
 				
-					hr(id="now_bar")
+					div(id="now_bar")
+						hr
+						div(class="upcoming-group") Show Clock: 0.0
 					each group in show.groups
 						table(id=group.id class="show-table")
 							thead
 								th
-								th #{ group.id } : #{ group.desc }
+								th
+									table
+										thead
+											th Group Time
+											th Countdown
+											th Description
+										tbody
+											tr
+												td= group.id
+												td
+													div(id="countdown_"+group.id class="normal_status")= "T-"+group.id
+												td= group.desc
+
 								th
 							tbody
 								tr
 									td
 									td
-										table
+										table(id="group_table_"+group.id class="table")
 											tbody
 												each board, boardid in show.boards
 													each channel, chnum in board.channels
@@ -180,5 +194,6 @@ html
 																		- var showstatus_class = "good_status"
 																	div(id=boardid+"_showstatus"+chnum class=showstatus_class)= showstatus_val
 									td(class="td-go-button")
-										button(class="buttonsmall" onclick="groupClick(\""+group.id+"\")") go
+										button(class="buttonsmall" onclick="groupClick(\""+group.id+"\")") fire
+										button(class="buttonsmall" onclick="jumpToGroup(\""+group.id+"\")") jump to
 

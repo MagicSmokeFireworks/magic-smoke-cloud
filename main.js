@@ -179,7 +179,7 @@ var tickingClock = setInterval(function() {
 				}
 			}
 		}
-		io.emit('tick clock', show_clock.toFixed(1));
+		io.emit('tick clock', show_clock.toFixed(1), false);
 	}
 }, 100);
 
@@ -389,6 +389,13 @@ app.post('/firegroup', function(req, res) {
     }
 	io.emit('fresh predicts', boardinfo, predictions, telemetry, show);
     res.end();
+});
+
+app.post('/jumptogroup', function(req, res) {
+	var group_id = req.query.groupid;
+	show_clock = parseFloat(group_id)-0.1;
+	io.emit('tick clock', show_clock.toFixed(1), true);
+	res.end();
 });
 
 app.get('/', function(req, res) {

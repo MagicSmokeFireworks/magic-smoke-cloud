@@ -168,8 +168,18 @@ socket.on('fresh data', function(boardinfo, telemetry, predictions, show) {
 			var showstatus = document.getElementById(board+"_showstatus"+i);
 			if (showstatus != null) {
 				if (telemetry[board]["firecount"][i] > 0) {
-					showstatus.innerHTML = "Fired";
-					showstatus.className = "";
+					if (telemetry[board]["res"][i] > 2500) {
+						showstatus.innerHTML = "Fired";
+						showstatus.className = "normal_status";
+					}
+					else if (telemetry[board]["res"][i] < 800) {
+						showstatus.innerHTML = "Fired. Low?";
+						showstatus.className = "normal_status";
+					}
+					else {
+						showstatus.innerHTML = "Fired. Low?";
+						showstatus.className = "warning_status";
+					}
 				}
 				else if (telemetry[board]["connection"] != "active") {
 					showstatus.innerHTML = "No Conn";
@@ -184,8 +194,19 @@ socket.on('fresh data', function(boardinfo, telemetry, predictions, show) {
 					showstatus.className = "warning_status";
 				}
 				else {
-					showstatus.innerHTML = "Ready";
-					showstatus.className = "good_status";
+					// 2500, 800
+					if (telemetry[board]["res"][i] > 2500) {
+						showstatus.innerHTML = "Ready. High?";
+						showstatus.className = "good_status";
+					}
+					else if (telemetry[board]["res"][i] < 700) {
+						showstatus.innerHTML = "Ready. Low?";
+						showstatus.className = "good_status";
+					}
+					else {
+						showstatus.innerHTML = "Ready";
+						showstatus.className = "good_status";
+					}
 				}
 			}
 		}
@@ -407,13 +428,14 @@ socket.on('fresh predicts', function(boardinfo, predictions, telemetry, show) {
 	}
 });
 
-socket.on('tick clock', function(show_clock_val) {
+socket.on('tick clock', function(show_clock_val, jump) {
 	var show_clock = document.getElementById("show_clock");
 	if (show_clock != null) {
 		show_clock.innerHTML = show_clock_val;
 	}
 
 	var now_bar = document.getElementById("now_bar");
+	now_bar.children[1].innerHTML = "Show Clock: " + show_clock_val;
 	var groups = document.getElementsByClassName("show-table");
 	var inserted = false;
 	for (var i = 0; i < groups.length; i++) {
@@ -425,6 +447,49 @@ socket.on('tick clock', function(show_clock_val) {
 	}
 	if (inserted == false) {
 		now_bar.parentNode.insertBefore(now_bar, null);
+	}
+
+	for (var i = 0; i < groups.length; i ++) {
+		var countdown = show_clock_val - parseFloat(groups[i].id);
+		countdown = countdown.toFixed(1);
+		var cdel = document.getElementById("countdown_"+groups[i].id);
+		var grouptable = document.getElementById("group_table_"+groups[i].id);
+		if (cdel != null) {
+			if (countdown < 0) {
+				cdel.innerHTML = "T"+countdown;
+			}
+			else {
+				cdel.innerHTML = "T+"+countdown;
+				if ((countdown < 0.09) && (jump == false)) {
+					//cdel.className = "group_fired_status";
+					grouptable.className = "group-fired-table";
+					var children = grouptable.getElementsByTagName('*');
+					for (var k = 0; k < children.length; k++) {
+						if (children[k].id.includes("showstatus")) {
+							children[k].innerHTML = "firing...";
+							children[k].className = "firing_status";
+						}
+					}
+				}
+				else {
+					//cdel.className = "normal_status";
+					if (countdown > 0.5) {
+						grouptable.className = "table";
+					}
+					if (countdown > 2.5) {
+						var children = grouptable.getElementsByTagName('*');
+						for (var k = 0; k < children.length; k++) {
+							if (children[k].id.includes("showstatus")) {
+								if (children[k].innerHTML == "firing...") {
+									children[k].innerHTML = "BAD FIRE";
+									children[k].className = "error_status";
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 });
 

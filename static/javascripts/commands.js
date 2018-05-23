@@ -13,6 +13,13 @@ var groupClick = function(group) {
 	xhttp.send();
 };
 
+var jumpToGroup = function(group) {
+	var xhttp;
+	xhttp = new XMLHttpRequest();
+	xhttp.open("POST", "/jumptogroup?groupid="+group, true);
+	xhttp.send();
+};
+
 var clickArm = function(id) {
         var xhttp;
         xhttp = new XMLHttpRequest();

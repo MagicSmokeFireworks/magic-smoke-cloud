@@ -247,6 +247,13 @@ table {
 	padding: 1px 20px 1px 20px;
 }
 
+.group-fired-table {
+	animation-name: bg_pink2none;
+	animation-duration: 0.5s;
+	animation-iteration-count: 1;
+	animation-direction: alternate;
+}
+
 th {
 	padding: 0em 2em 0em 2em;
 	width: 10%;
@@ -325,11 +332,46 @@ hr {
 	animation-direction: alternate;
 }
 
+.firing_status {
+	text-transform: uppercase;
+	max-width: 175px;
+	margin: auto;
+	border-radius: 20px;
+	color: black;
+	font-weight: bold;
+	animation-name: bg_pink2yellow;
+	animation-duration: 2.5s;
+	animation-iteration-count: 1;
+	animation-direction: alternate;
+}
+
+.group_fired_status {
+	text-transform: uppercase;
+	max-width: 175px;
+	margin: auto;
+	border-radius: 20px;
+	color: white;
+	font-weight: bold;
+	animation-name: bg_pink2none;
+	animation-duration: 0.5s;
+	animation-iteration-count: 1;
+	animation-direction: alternate;
+}
+
 .show_clock {
 	margin: auto;
 	border-radius: 20px;
 	font-weight: bold;
 	font-size: 2em;
+}
+
+.upcoming-group {
+	background: rgba(255, 105, 180, 0.2);
+}
+
+@keyframes bg_pink2yellow {
+	from {background-color: hotpink;}
+	to {background-color: yellow;}
 }
 
 @keyframes bg_white2yellow{
@@ -340,6 +382,11 @@ hr {
 @keyframes bg_white2red{
 	from {background-color: white;}
 	to {background-color: red;}
+}
+
+@keyframes bg_pink2none{
+	from {background-color: hotpink;}
+	to {background-color: none;}
 }
 
 .board_name {
