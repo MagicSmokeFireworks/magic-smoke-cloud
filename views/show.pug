@@ -132,11 +132,19 @@ html
 				table
 					thead
 						tr
+							th
 							th Show Clock
+							th
 					tbody
 						tr
 							td
+							td
 								div(id="show_clock" class="show_clock")= show_clock
+							td
+								div
+									button(class="clockbutton" onclick="clickClockPlus()")= "+"
+								div
+									button(class="clockbutton" onclick="clickClockMinus()")= "-"
 				table
 					tbody
 						tr

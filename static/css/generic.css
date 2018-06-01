@@ -27,7 +27,7 @@ header {
 	z-index: 2000;
 	position: fixed;
 	height: 100%;
-	width: 15%;
+	width: 20%;
 	top: 0px;
 }
 
@@ -162,6 +162,39 @@ nav ul li a:hover {
 }
 
 .buttonsmall:focus {
+	outline: 0;
+}
+
+.clockbutton {
+	background-color: #1F1F1F;
+	border: 2px solid #4F4F4F;
+	border-radius: 5px;
+	color: white;
+	height: 30px;
+	width: 30px;
+	padding: 2px 5px;
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 20px;
+	letter-spacing: .1em;
+	-webkit-transition: border .3s, background-color .3s;
+	transition: border .3s, background-color .3s;
+}
+
+.clockbutton:hover {
+	border: 2px solid hotpink;
+}
+
+.clockbutton:active {
+	background-color: yellow;
+}
+
+.clockbutton:focus {
 	outline: 0;
 }
 
@@ -340,7 +373,7 @@ hr {
 	color: black;
 	font-weight: bold;
 	animation-name: bg_pink2yellow;
-	animation-duration: 2.5s;
+	animation-duration: 4s;
 	animation-iteration-count: 1;
 	animation-direction: alternate;
 }

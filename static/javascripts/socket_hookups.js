@@ -192,6 +192,10 @@ socket.on('fresh data', function(boardinfo, telemetry, predictions, show) {
 				else if (telemetry[board]["swarm"] != 1) {
 					showstatus.innerHTML = "SW Disarmed";
 					showstatus.className = "warning_status";
+				} 
+				else if (showstatus.innerHTML == "BAD FIRE") {
+				}
+				else if (showstatus.innerHTML == "firing...") {
 				}
 				else {
 					// 2500, 800
@@ -457,6 +461,15 @@ socket.on('tick clock', function(show_clock_val, jump) {
 		if (cdel != null) {
 			if (countdown < 0) {
 				cdel.innerHTML = "T"+countdown;
+				var children = grouptable.getElementsByTagName('*');
+				for (var k = 0; k < children.length; k++) {
+					if (children[k].id.includes("showstatus")) {
+						if ((children[k].innerHTML == "firing...") || (children[k].innerHTML == "BAD FIRE")) {
+							children[k].innerHTML = "try again?";
+							children[k].className = "warning_status";
+						}
+					}
+				}
 			}
 			else {
 				cdel.innerHTML = "T+"+countdown;
@@ -476,7 +489,7 @@ socket.on('tick clock', function(show_clock_val, jump) {
 					if (countdown > 0.5) {
 						grouptable.className = "table";
 					}
-					if (countdown > 2.5) {
+					if (countdown > 4) {
 						var children = grouptable.getElementsByTagName('*');
 						for (var k = 0; k < children.length; k++) {
 							if (children[k].id.includes("showstatus")) {

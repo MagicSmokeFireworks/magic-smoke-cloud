@@ -187,13 +187,28 @@ app.post('/startclock', function(req, res) {
 	clock_running = true;
 	res.end();
 	console.log('starting clock');
-})
+});
 
 app.post('/stopclock', function(req, res) {
 	clock_running = false;
 	res.end();
 	console.log('stopping clock');
-})
+});
+
+app.post('/clockplus', function(req, res) {
+	show_clock = show_clock + 0.1;
+	res.end();
+	io.emit('tick clock', show_clock.toFixed(1), true);
+});
+
+app.post('/clockminus', function(req, res) {
+	show_clock = show_clock - 0.1;
+	if (show_clock < 0) {
+		show_clock = 0;
+	}
+	res.end();
+	io.emit('tick clock', show_clock.toFixed(1), true);
+});
 
 app.post('/status', function(req, res) {
 	var sname = "";

@@ -62,6 +62,20 @@ var clickStopClock = function() {
 		xhttp.send();
 };
 
+var clickClockPlus = function() {
+		var xhttp;
+		xhttp = new XMLHttpRequest();
+		xhttp.open("POST", "/clockplus", true);
+		xhttp.send();
+};
+
+var clickClockMinus = function() {
+		var xhttp;
+		xhttp = new XMLHttpRequest();
+		xhttp.open("POST", "/clockminus", true);
+		xhttp.send();
+};
+
 var clickIdentify = function(id) {
         var xhttp;
         xhttp = new XMLHttpRequest();
