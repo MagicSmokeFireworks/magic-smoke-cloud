@@ -23,6 +23,12 @@ html
 								a(href="/board/"+board.sname) #{ board.name }
 					li
 						a(href="/show") show
+					li(class="dropdown")
+						a(href="#") Configure Boards
+						div(class="dropdown-content")
+							each board in boardinfo
+								a(href="/configboards/"+board.sname) #{ board.name }
+
 			div(class="config-sider")
 				hr
 				h3 Add New Group
@@ -49,10 +55,11 @@ html
 		main
 			section(class="hero")
 				div(class="config-hero")
-				
+
 					table(id="group_table")
 						thead
 							tr
+								th Group ID
 								th Time
 								th Description
 								th(class="minwidth")
@@ -60,7 +67,8 @@ html
 						tbody
 							each group in show.groups
 								tr(id="group_row_"+group.id class="config_group_row")
-									td= group.id
+									td(class="config_group_id")= group.id
+									td= group.time
 									td= group.desc
 									td(class="minwidth")
 										button(class="buttontiny" onclick="clickGroupEdit(\""+group.id+"\")") Edit

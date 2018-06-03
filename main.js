@@ -157,7 +157,7 @@ var tickingClock = setInterval(function() {
 	if (clock_running == true) {
 		show_clock = show_clock + 0.1;
 		for (var i = 0; i < show.groups.length; i++) {
-			var group_time = parseFloat(show.groups[i].id);
+			var group_time = parseFloat(show.groups[i].time);
 			if (group_time > (show_clock - 0.09)) {
 				if (group_time < (show_clock + 0.09)) {
 					// fire group
@@ -180,6 +180,9 @@ var tickingClock = setInterval(function() {
 			}
 		}
 		io.emit('tick clock', show_clock.toFixed(1), false);
+	}
+	else {
+		io.emit('tick clock', show_clock.toFixed(1), true);
 	}
 }, 100);
 
@@ -278,56 +281,83 @@ app.get('/configgroups', function(req, res) {
 	});
 });
 
-app.post('/configgroups', function(req, res) {
+var splice_group = function(id, time, desc) {
 	var insert_index = show.groups.length;
 	for (var i = 0; i < show.groups.length; i++) {
-		if (parseFloat(show.groups[i].id) > parseFloat(req.body["time"])) {
+		if (parseFloat(show.groups[i].time) > parseFloat(time)) {
 			insert_index = i;
 			break;
 		}
 	}
-	show.groups.splice(insert_index, 0, {"id": req.body["time"], "desc": req.body["group_desc"]});
+	var fixedtime = parseFloat(time).toFixed(1);
+	show.groups.splice(insert_index, 0, {"id": id, "time": fixedtime, "desc": desc});
+};
+
+var get_unique_id = function() {
+	var id = Math.floor(Math.random() * 1000000);
+	for (var i = 0; i < show.groups.length; i++) {
+		var group_id = parseInt(show.groups[i].id);
+		if (id == group_id) {
+			return get_unique_id();
+		}
+	}
+	return id;
+};
+
+var add_group = function(time, desc) {
+	var new_id = get_unique_id();
+	splice_group(new_id, time, desc);
+};
+
+var delete_group = function(id) {
+	for (var i = 0; i < show.groups.length; i++) {
+		if (show.groups[i].id == id) {
+			show.groups.splice(i,1);
+			break;
+		}
+	}
+};
+
+app.post('/configgroups', function(req, res) {
+	var time = req.body["time"];
+	var desc = req.body["group_desc"];
+	add_group(time, desc);
+	var json = JSON.stringify(show);
+	fs.writeFile('show.json', json, 'utf8');
 	res.redirect('/configgroups');
 });
 
 app.post('/configgroupssave', function(req, res) {
 	var group_id = req.query.id;
+	var group_time = req.query.time;
 	var group_desc = req.query.desc;
-	console.log(group_id);
-	console.log(group_desc);
 	res.end();
-	var insert_index = show.groups.length;
-	for (var i = 0; i < show.groups.length; i++) {
-		if (parseFloat(show.groups[i].id) > parseFloat(group_id)) {
-			insert_index = i;
-			break;
-		}
-	}
-	show.groups.splice(insert_index, 0, {"id": group_id, "desc": group_desc});
+
+	delete_group(group_id);
+	splice_group(group_id, group_time, group_desc);
+	var json = JSON.stringify(show);
+	fs.writeFile('show.json', json, 'utf8');
 });
 
 app.post('/configgroupsdelete', function(req, res) {
 	var group_id = req.query.id;
 	res.end();
-	for (var i = 0; i < show.groups.length; i++) {
-		if (show.groups[i].id == group_id) {
-			show.groups.splice(i,1);
-			break;
-		}
-	}
+	delete_group(group_id);
+	var json = JSON.stringify(show);
+	fs.writeFile('show.json', json, 'utf8');
 });
 
-app.get('/configboards', function(req, res) {
+app.get('/configboards/:boardid', function(req, res) {
 	res.render('configboards',
 	{
+		boardid: req.params.boardid,
 		boardinfo: boardinfo,
 		show: show
 	});
 })
 
-app.post('/configboards', function(req, res) {
-	console.log('post to configboards.');
-	var boardid = req.body.boardid;
+app.post('/configboards/:boardid', function(req, res) {
+	var boardid = req.params.boardid;
 	show.boards[boardid].location = req.body.location;
 	for(var i = 0; i < 8; i++) {
 		show.boards[boardid].channels[i].group = req.body["group[]"][i];
@@ -335,7 +365,7 @@ app.post('/configboards', function(req, res) {
 	}
 	var json = JSON.stringify(show);
 	fs.writeFile('show.json', json, 'utf8');
-	res.redirect('/configboards');
+	res.redirect('/configboards/'+boardid);
 })
 
 app.get('/show', function(req, res) {
@@ -435,8 +465,8 @@ app.post('/firegroup', function(req, res) {
 });
 
 app.post('/jumptogroup', function(req, res) {
-	var group_id = req.query.groupid;
-	show_clock = parseFloat(group_id)-0.1;
+	var group_time = req.query.grouptime;
+	show_clock = parseFloat(group_time)-0.1;
 	io.emit('tick clock', show_clock.toFixed(1), true);
 	res.end();
 });

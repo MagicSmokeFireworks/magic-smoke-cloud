@@ -443,7 +443,8 @@ socket.on('tick clock', function(show_clock_val, jump) {
 	var groups = document.getElementsByClassName("show-table");
 	var inserted = false;
 	for (var i = 0; i < groups.length; i++) {
-		if (parseFloat(groups[i].id) > show_clock_val) {
+		var grouptime = document.getElementById("time_"+groups[i].id).innerHTML;
+		if (parseFloat(grouptime) > show_clock_val) {
 			now_bar.parentNode.insertBefore(now_bar, groups[i]);
 			inserted = true;
 			break;
@@ -454,7 +455,8 @@ socket.on('tick clock', function(show_clock_val, jump) {
 	}
 
 	for (var i = 0; i < groups.length; i ++) {
-		var countdown = show_clock_val - parseFloat(groups[i].id);
+		var grouptime = document.getElementById("time_"+groups[i].id).innerHTML;
+		var countdown = show_clock_val - parseFloat(grouptime);
 		countdown = countdown.toFixed(1);
 		var cdel = document.getElementById("countdown_"+groups[i].id);
 		var grouptable = document.getElementById("group_table_"+groups[i].id);

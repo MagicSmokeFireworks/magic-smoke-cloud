@@ -24,43 +24,50 @@ html
 								a(href="/board/"+board.sname) #{ board.name }
 					li
 						a(href="/show") show
+					li
+						a(href="/configgroups") groups
+					li(class="dropdown")
+						a(href="#") Configure Boards
+						div(class="dropdown-content")
+							each board in boardinfo
+								a(href="/configboards/"+board.sname) #{ board.name }
 		main
 			section(class="hero")
 				div(class="hero-content")
 
 					hr
-					each board in boardinfo
-						h2= board.name
+					h2= boardinfo[boardid].name
 
-						form(method="post")
-							input(type="hidden" name="boardid" value=board.sname)
-							div Location:
-								input(type="text" name="location" value=show.boards[board.sname].location)
-							table(id=board.sname+"_board_table")
-								thead
+
+					form(method="post")
+						input(type="hidden" name="boardid" value=boardinfo[boardid].sname)
+						div Location:
+							input(type="text" name="location" value=show.boards[boardinfo[boardid].sname].location)
+						table(id=boardinfo[boardid].sname+"_board_table")
+							thead
+								tr
+									th Channel Number
+									th(class="wide_th") Group Identifier
+									th(class="wide_th") Effect Description
+							tbody
+								each i in [0,1,2,3,4,5,6,7]
 									tr
-										th Channel Number
-										th(class="wide_th") Group Identifier
-										th(class="wide_th") Effect Description
-								tbody
-									each i in [0,1,2,3,4,5,6,7]
-										tr
-											td= i
-											td
-												select(class="group_select" name="group[]")
-													if show.boards[board.sname].channels[i].group == ""
-														option(value="" selected="true") None
+										td= i
+										td
+											select(class="group_select" name="group[]")
+												if show.boards[boardinfo[boardid].sname].channels[i].group == ""
+													option(value="" selected="true") None
+												else
+													option(value="") None
+												each group in show.groups
+													if show.boards[boardinfo[boardid].sname].channels[i].group == group.id
+														option(value=group.id selected="true") ID:#{ group.id } Time:#{ group.time } (#{ group.desc })
 													else
-														option(value="") None
-													each group in show.groups
-														if show.boards[board.sname].channels[i].group == group.id
-															option(value=group.id selected="true") #{ group.id }: #{ group.desc }
-														else
-															option(value=group.id) #{ group.id }: #{ group.desc }
-											td
-												input(class="effect_desc" type="text" name="effect[]" value=show.boards[board.sname].channels[i].effect)
-							input(class="button" type="submit" value="Save configuration for " + board.name)
-										
-						hr
+														option(value=group.id) ID:#{ group.id } Time:#{ group.time} (#{ group.desc })
+										td
+											input(class="effect_desc" type="text" name="effect[]" value=show.boards[boardinfo[boardid].sname].channels[i].effect)
+						input(class="button" type="submit" value="Save configuration for " + boardinfo[boardid].name)
+									
+					hr
 						
 

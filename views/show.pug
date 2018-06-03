@@ -160,7 +160,7 @@ html
 				
 					div(id="now_bar")
 						hr
-						div(class="upcoming-group") Show Clock: 0.0
+						div(class="upcoming-group")= "Show Clock: " + show_clock
 					each group in show.groups
 						table(id=group.id class="show-table")
 							thead
@@ -173,9 +173,9 @@ html
 											th Description
 										tbody
 											tr
-												td= group.id
+												td(id="time_"+group.id)= group.time
 												td
-													div(id="countdown_"+group.id class="normal_status")= "T-"+group.id
+													div(id="countdown_"+group.id class="normal_status")= "T-"+group.time
 												td= group.desc
 
 								th
@@ -203,5 +203,5 @@ html
 																	div(id=boardid+"_showstatus"+chnum class=showstatus_class)= showstatus_val
 									td(class="td-go-button")
 										button(class="buttonsmall" onclick="groupClick(\""+group.id+"\")") fire
-										button(class="buttonsmall" onclick="jumpToGroup(\""+group.id+"\")") jump to
+										button(class="buttonsmall" onclick="jumpToGroup(\""+group.time+"\")") jump to
 

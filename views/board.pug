@@ -163,6 +163,9 @@ html
                                         button(class="buttonsmall" onclick="clickFire(\""+boardid+"\",\""+i+"\")") Fire Channel #{ i }
 
                     hr
+                    div
+                        a(class="button" href="/configboards/"+boardid) Configure
+                    hr
 
                     h3= "comments"
                     p= boardinfo[boardid].comments

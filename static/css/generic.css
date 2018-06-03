@@ -74,7 +74,7 @@ nav ul {
 
 nav ul li {
 	display: inline-block;
-	margin-bottom: 0;
+	margin-bottom: 0.5em;
 	margin-left: 1em;
 	margin-right: 1em;
 }
@@ -91,6 +91,41 @@ nav ul li a {
 }
 
 nav ul li a:hover {
+	outline: none;
+	border-bottom: 1px solid white;
+	color: hotpink;
+}
+
+.navlike {
+	position: relative;
+	z-index: 400;
+	display: block !important;
+	padding: 1em;
+	opacity: .95;
+	background: none;
+	list-style-type: none;
+	margin: 0;
+}
+
+.navlike td {
+	display: inline-block;
+	margin-bottom: 0;
+	margin-left: 1em;
+	margin-right: 1em;
+}
+
+.navlike td a {
+	font-size: .85em;
+	padding-bottom: .5em;
+	text-decoration: none;
+	letter-spacing: .15em;
+	text-transform: uppercase;
+	color: #fff;
+	-webkit-transition: color .3s;
+	transition: color .3s;
+}
+
+.navlike td a:hover {
 	outline: none;
 	border-bottom: 1px solid white;
 	color: hotpink;
@@ -321,6 +356,11 @@ td {
 
 .config_group_row {
 	color: white;
+}
+
+.config_group_id {
+	color: gray;
+	font-size: 0.7em;
 }
 
 .minwidth {

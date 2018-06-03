@@ -25,13 +25,21 @@ html
 				div(class="hero-content")
 
 					hr
+					table
+						tbody
+							tr(class="navlike")
+								td
+									a(href="/configgroups") Configure Groups
+								td(class="dropdown")
+									a(href="#") Configure Boards
+									div(class="dropdown-content")
+										each board in boardinfo
+											a(href="/configboards/"+board.sname) #{ board.name }
 
+					hr
 					div
 						a(href="/status")
 							img(src="/images/msmoke_logo.png")
-					div
-						a(class="button" href="/configgroups") Configure Groups
-						a(class="button" href="/configboards") Configure Boards
 					hr
 					div.italics
 						h2.
