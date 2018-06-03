@@ -4,11 +4,9 @@ html
 		link(href='/css/fading.css', rel='stylesheet')
 		link(href='/css/res_colors.css', rel='stylesheet')
 		link(href='/css/generic.css', rel='stylesheet')
-		script(src='/javascripts/datatimer.js')
 		script(src='/socket.io/socket.io.js')
 		script(src='/javascripts/socket_hookups.js')
 		script(src='/javascripts/commands.js')
-
 	body
 		header
 			h1 Configure Groups
@@ -25,32 +23,47 @@ html
 								a(href="/board/"+board.sname) #{ board.name }
 					li
 						a(href="/show") show
+			div(class="config-sider")
+				hr
+				h3 Add New Group
+				form(method="post")
+					table
+						thead
+							tr
+								th= "Time"
+						tbody
+							tr
+								td
+									input(class="group_time" type="text" name="time" value="0.0")
+					table
+						thead
+							tr
+								th= "Description"
+						tbody
+							tr
+								td
+									input(class="group_desc" type="text" name="group_desc" value="")
+					input(class="buttonsmall" type="submit" value="Add")
+				hr
+
 		main
 			section(class="hero")
-				div(class="hero-content")
-
-					hr
-
-					form(method="post")
-						table(id="group_table")
-							thead
-								tr
-									th Group Identifier
-									th(class="wide_th") Group Description
-									th 
-							tbody
-								each group in show.groups
-									tr(id="group_row_"+group.id)
-										td
-											input(type="text" name="group_id[]" value=group.id)
-										td
-											input(class="group_desc" type="text" name="group_desc[]" value=group.desc)
-										td
-											button(type="button" class="buttontiny" onclick="deleteGroup(\"group_row_"+group.id+"\")") Delete group #{ group.id }
-						button(type="button" class="button" onclick="addNewGroup()") Add new group
-						input(class="button" type="submit" value="Save group configurations")
-										
-							
-					hr
-						
+				div(class="config-hero")
+				
+					table(id="group_table")
+						thead
+							tr
+								th Time
+								th Description
+								th(class="minwidth")
+								th(class="minwidth")
+						tbody
+							each group in show.groups
+								tr(id="group_row_"+group.id class="config_group_row")
+									td= group.id
+									td= group.desc
+									td(class="minwidth")
+										button(class="buttontiny" onclick="clickGroupEdit(\""+group.id+"\")") Edit
+									td(class="minwidth")
+										button(class="buttontiny" onclick="clickGroupDelete(\""+group.id+"\")") Delete
 

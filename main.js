@@ -276,18 +276,46 @@ app.get('/configgroups', function(req, res) {
 		boardinfo: boardinfo,
 		show: show
 	});
-})
+});
 
 app.post('/configgroups', function(req, res) {
-	console.log('post to configgroups.');
-	show.groups = [];
-	for(var i = 0; i < req.body["group_id[]"].length; i++) {
-		show.groups.push({"id": req.body["group_id[]"][i], "desc": req.body["group_desc[]"][i]});
+	var insert_index = show.groups.length;
+	for (var i = 0; i < show.groups.length; i++) {
+		if (parseFloat(show.groups[i].id) > parseFloat(req.body["time"])) {
+			insert_index = i;
+			break;
+		}
 	}
-	var json = JSON.stringify(show);
-	fs.writeFile('show.json', json, 'utf8');
+	show.groups.splice(insert_index, 0, {"id": req.body["time"], "desc": req.body["group_desc"]});
 	res.redirect('/configgroups');
-})
+});
+
+app.post('/configgroupssave', function(req, res) {
+	var group_id = req.query.id;
+	var group_desc = req.query.desc;
+	console.log(group_id);
+	console.log(group_desc);
+	res.end();
+	var insert_index = show.groups.length;
+	for (var i = 0; i < show.groups.length; i++) {
+		if (parseFloat(show.groups[i].id) > parseFloat(group_id)) {
+			insert_index = i;
+			break;
+		}
+	}
+	show.groups.splice(insert_index, 0, {"id": group_id, "desc": group_desc});
+});
+
+app.post('/configgroupsdelete', function(req, res) {
+	var group_id = req.query.id;
+	res.end();
+	for (var i = 0; i < show.groups.length; i++) {
+		if (show.groups[i].id == group_id) {
+			show.groups.splice(i,1);
+			break;
+		}
+	}
+});
 
 app.get('/configboards', function(req, res) {
 	res.render('configboards',

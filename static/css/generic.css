@@ -31,6 +31,25 @@ header {
 	top: 0px;
 }
 
+.config-sider {
+	z-index: 2000;
+	position: fixed;
+	height: 100%;
+	width: 20%;
+	top: 5em;
+}
+
+.config-hero {
+	position: absolute;
+	/*z-index: 20000;*/
+	padding-top: 9em;
+	left: 20%;
+	top: 0;
+	bottom: 0;
+	width: 80%;
+	text-align: center;
+}
+
 .logo {
 	position: relative;
 	display: block;
@@ -300,6 +319,15 @@ td {
 	text-align: center;
 }
 
+.config_group_row {
+	color: white;
+}
+
+.minwidth {
+	width: 1%;
+	white-space: nowrap;
+}
+
 .td-go-button {
 	text-align: left;
 }
@@ -486,6 +514,11 @@ input[type="text"] {
 	padding: 10px;
 	border: solid 1px #4f4f4f;
 	transition: box-shadow 0.3s, border 0.3s;
+}
+
+.group_time {
+	text-align: center;
+	width: 10em;
 }
 
 .group_desc {

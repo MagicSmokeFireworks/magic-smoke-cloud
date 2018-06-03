@@ -90,6 +90,65 @@ var addBoard = function(id) {
 	xhttp.send();
 };
 
+var clickGroupEdit = function(groupid) {
+
+	var table = document.getElementById("group_table");
+	var row = document.getElementById("group_row_"+groupid);
+	var time = row.cells[0].innerHTML;
+	var desc = row.cells[1].innerHTML;
+	var index = row.rowIndex;
+
+	table.deleteRow(index);
+	var newrow = table.insertRow(index);
+	newrow.id = "group_row_"+groupid;
+	newrow.insertCell(0);
+	newrow.insertCell(1);
+	newrow.insertCell(2);
+	newrow.insertCell(3);
+
+	newrow.cells[0].innerHTML = "<input class=\"group_time\" id=\"input_group_time\" type=\"text\" name=\"time\" value=\""+time+"\" />";
+	newrow.cells[1].innerHTML = "<input class=\"group_desc\" id=\"input_group_desc\" type=\"text\" name=\"group_desc\" value=\""+desc+"\" />";
+	//newrow.cells[2].innerHTML = "<button class=\"buttontiny\" onclick=\"clickGroupSave(\\\"5.0\\\")\" >Save</button>";
+	newrow.cells[2].innerHTML = '<button class="buttontiny" onclick=\'clickGroupSave(\"'+time+'\")\' >Save</button>';
+	newrow.cells[3].innerHTML = "<button class=\"buttontiny\" onclick=\"window.location.reload()\" >Cancel</button>";
+};
+
+var clickGroupSave = function(groupid) {
+
+	var table = document.getElementById("group_table");
+	var row = document.getElementById("group_row_"+groupid);
+
+	var time = document.getElementById("input_group_time").value;
+	var desc = document.getElementById("input_group_desc").value;
+	var index = row.rowIndex;
+
+	table.deleteRow(row.rowIndex);
+
+	var xhttp;
+	xhttp = new XMLHttpRequest();
+	xhttp.open("POST", "/configgroupsdelete?id="+groupid, true);
+	xhttp.send();
+
+	var xhttp;
+	xhttp = new XMLHttpRequest();
+	xhttp.open("POST", "/configgroupssave?id="+time+"&desc="+encodeURIComponent(desc).replace(/%20/g,'+'), true);
+	xhttp.send();
+
+	window.location.reload();
+};
+
+var clickGroupDelete = function(groupid) {
+
+	var table = document.getElementById("group_table");
+	var row = document.getElementById("group_row_"+groupid);
+	table.deleteRow(row.rowIndex);
+
+	var xhttp;
+	xhttp = new XMLHttpRequest();
+	xhttp.open("POST", "/configgroupsdelete?id="+groupid, true);
+	xhttp.send();
+};
+
 var addNewGroup = function() {
 
 	var table = document.getElementById("group_table");
