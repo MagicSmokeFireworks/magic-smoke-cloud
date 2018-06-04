@@ -28,7 +28,7 @@ header {
 	position: fixed;
 	height: 100%;
 	width: 20%;
-	top: 0px;
+	top: 5em;
 }
 
 .config-sider {
@@ -37,6 +37,17 @@ header {
 	height: 100%;
 	width: 20%;
 	top: 5em;
+}
+
+.show-hero {
+	position: absolute;
+	/*z-index: 20000;*/
+	padding-top: 9em;
+	left: 20%;
+	top: 0;
+	bottom: 0;
+	width: 80%;
+	text-align: center;
 }
 
 .config-hero {
@@ -467,7 +478,8 @@ hr {
 }
 
 .upcoming-group {
-	background: rgba(255, 105, 180, 0.2);
+	font-size: 1.2em;
+	background: rgba(255, 105, 180, 0.4);
 }
 
 @keyframes bg_pink2yellow {

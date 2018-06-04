@@ -156,7 +156,7 @@ html
 
 		main
 			section(class="hero")
-				div(class="hero-content")
+				div(class="show-hero")
 				
 					div(id="now_bar")
 						hr
@@ -164,7 +164,6 @@ html
 					each group in show.groups
 						table(id=group.id class="show-table")
 							thead
-								th
 								th
 									table
 										thead
@@ -181,7 +180,6 @@ html
 								th
 							tbody
 								tr
-									td
 									td
 										table(id="group_table_"+group.id class="table")
 											tbody
