@@ -37,6 +37,12 @@ html
 											a(href="/configboards/"+board.sname) #{ board.name }
 
 					hr
+					form(action="showupload" method="post" enctype="multipart/form-data")
+						input(class="buttontiny" type="file" name="filetoupload")
+						input(class="buttontiny" type="submit" value="Upload a Show File")
+					hr
+					a(class="buttontiny" href="/downloadshow") Download Show File
+					hr
 					div
 						a(href="/status")
 							img(src="/images/msmoke_logo.png")

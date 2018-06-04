@@ -439,65 +439,67 @@ socket.on('tick clock', function(show_clock_val, jump) {
 	}
 
 	var now_bar = document.getElementById("now_bar");
-	now_bar.children[1].innerHTML = "Show Clock: " + show_clock_val;
-	var groups = document.getElementsByClassName("show-table");
-	var inserted = false;
-	for (var i = 0; i < groups.length; i++) {
-		var grouptime = document.getElementById("time_"+groups[i].id).innerHTML;
-		if (parseFloat(grouptime) > show_clock_val) {
-			now_bar.parentNode.insertBefore(now_bar, groups[i]);
-			inserted = true;
-			break;
-		}
-	}
-	if (inserted == false) {
-		now_bar.parentNode.insertBefore(now_bar, null);
-	}
-
-	for (var i = 0; i < groups.length; i ++) {
-		var grouptime = document.getElementById("time_"+groups[i].id).innerHTML;
-		var countdown = show_clock_val - parseFloat(grouptime);
-		countdown = countdown.toFixed(1);
-		var cdel = document.getElementById("countdown_"+groups[i].id);
-		var grouptable = document.getElementById("group_table_"+groups[i].id);
-		if (cdel != null) {
-			if (countdown < 0) {
-				cdel.innerHTML = "T"+countdown;
-				var children = grouptable.getElementsByTagName('*');
-				for (var k = 0; k < children.length; k++) {
-					if (children[k].id.includes("showstatus")) {
-						if ((children[k].innerHTML == "firing...") || (children[k].innerHTML == "BAD FIRE")) {
-							children[k].innerHTML = "try again?";
-							children[k].className = "warning_status";
-						}
-					}
-				}
+	if (now_bar != null) {
+		now_bar.children[1].innerHTML = "Show Clock: " + show_clock_val;
+		var groups = document.getElementsByClassName("show-table");
+		var inserted = false;
+		for (var i = 0; i < groups.length; i++) {
+			var grouptime = document.getElementById("time_"+groups[i].id).innerHTML;
+			if (parseFloat(grouptime) > show_clock_val) {
+				now_bar.parentNode.insertBefore(now_bar, groups[i]);
+				inserted = true;
+				break;
 			}
-			else {
-				cdel.innerHTML = "T+"+countdown;
-				if ((countdown < 0.09) && (jump == false)) {
-					//cdel.className = "group_fired_status";
-					grouptable.className = "group-fired-table";
+		}
+		if (inserted == false) {
+			now_bar.parentNode.insertBefore(now_bar, null);
+		}
+
+		for (var i = 0; i < groups.length; i ++) {
+			var grouptime = document.getElementById("time_"+groups[i].id).innerHTML;
+			var countdown = show_clock_val - parseFloat(grouptime);
+			countdown = countdown.toFixed(1);
+			var cdel = document.getElementById("countdown_"+groups[i].id);
+			var grouptable = document.getElementById("group_table_"+groups[i].id);
+			if (cdel != null) {
+				if (countdown < 0) {
+					cdel.innerHTML = "T"+countdown;
 					var children = grouptable.getElementsByTagName('*');
 					for (var k = 0; k < children.length; k++) {
 						if (children[k].id.includes("showstatus")) {
-							children[k].innerHTML = "firing...";
-							children[k].className = "firing_status";
+							if ((children[k].innerHTML == "firing...") || (children[k].innerHTML == "BAD FIRE")) {
+								children[k].innerHTML = "try again?";
+								children[k].className = "warning_status";
+							}
 						}
 					}
 				}
 				else {
-					//cdel.className = "normal_status";
-					if (countdown > 0.5) {
-						grouptable.className = "table";
-					}
-					if (countdown > 4) {
+					cdel.innerHTML = "T+"+countdown;
+					if ((countdown < 0.09) && (jump == false)) {
+						//cdel.className = "group_fired_status";
+						grouptable.className = "group-fired-table";
 						var children = grouptable.getElementsByTagName('*');
 						for (var k = 0; k < children.length; k++) {
 							if (children[k].id.includes("showstatus")) {
-								if (children[k].innerHTML == "firing...") {
-									children[k].innerHTML = "BAD FIRE";
-									children[k].className = "error_status";
+								children[k].innerHTML = "firing...";
+								children[k].className = "firing_status";
+							}
+						}
+					}
+					else {
+						//cdel.className = "normal_status";
+						if (countdown > 0.5) {
+							grouptable.className = "table";
+						}
+						if (countdown > 4) {
+							var children = grouptable.getElementsByTagName('*');
+							for (var k = 0; k < children.length; k++) {
+								if (children[k].id.includes("showstatus")) {
+									if (children[k].innerHTML == "firing...") {
+										children[k].innerHTML = "BAD FIRE";
+										children[k].className = "error_status";
+									}
 								}
 							}
 						}

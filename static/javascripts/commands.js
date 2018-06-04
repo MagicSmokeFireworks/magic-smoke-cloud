@@ -83,6 +83,13 @@ var clickIdentify = function(id) {
         xhttp.send();
 };
 
+var downloadShowFile = function() {
+	var xhttp;
+	xhttp = new XMLHttpRequest();
+	xhttp.open("GET", "/downloadshow", true);
+	xhttp.send();
+};
+
 var addBoard = function(id) {
 	var xhttp;
 	xhttp = new XMLHttpRequest();

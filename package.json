@@ -6,6 +6,7 @@
     "socket.io": "^1.7.3",
     "body-parser": "^1.17.2",
     "express": "^4.14.0",
-    "pug": "^1.11.0"
+    "pug": "^1.11.0",
+    "formidable": "^1.2.1"
   }
 }

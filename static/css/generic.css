@@ -185,6 +185,7 @@ nav ul li a:hover {
 	display: inline-block;
 	font-size: 16px;
 	letter-spacing: .1em;
+	cursor: pointer;
 	-webkit-transition: border .3s, background-color .3s;
 	transition: border .3s, background-color .3s;
 }
@@ -214,6 +215,7 @@ nav ul li a:hover {
 	display: inline-block;
 	font-size: 16px;
 	letter-spacing: .1em;
+	cursor: pointer;
 	-webkit-transition: border .3s, background-color .3s;
 	transition: border .3s, background-color .3s;
 }
@@ -247,6 +249,7 @@ nav ul li a:hover {
 	display: inline-block;
 	font-size: 20px;
 	letter-spacing: .1em;
+	cursor: pointer;
 	-webkit-transition: border .3s, background-color .3s;
 	transition: border .3s, background-color .3s;
 }
@@ -278,6 +281,7 @@ nav ul li a:hover {
 	display: inline-block;
 	font-size: 12px;
 	letter-spacing: .1em;
+	cursor: pointer;
 	-webkit-transition: border .3s, background-color .3s;
 	transition: border .3s, background-color .3s;
 }

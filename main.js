@@ -18,6 +18,8 @@ var http = require('http').Server(app);
 
 var io = require('socket.io')(http);
 
+var formidable = require('formidable');
+
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -476,7 +478,26 @@ app.get('/', function(req, res) {
 	{
 		boardinfo: boardinfo
 	});
-})
+});
+
+app.post('/showupload', function(req, res) {
+	var form = formidable.IncomingForm();
+	form.parse(req, function(err, fields, files) {
+		console.log(files.filetoupload.path);
+		//var oldpath = files.filetoupload.path;
+		//var newpath = 'show.json';
+		//fs.rename(oldpath, newpath, function (err) {
+		//	if (err) throw err;
+		//	res.redirect('/');
+		//});
+	});
+});
+
+app.get('/downloadshow', function(req, res) {
+	console.log('download show');
+	var file = 'show.json';
+	res.download(file);
+});
 
 //var server = app.listen(8080, function() {
 //
