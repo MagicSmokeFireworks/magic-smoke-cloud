@@ -137,7 +137,13 @@ html
                                 tr
                                     td= "Channel "+i
                                     td= show.boards[boardid].channels[i].effect
-                                    td= show.boards[boardid].channels[i].group
+                                    td
+                                        - var groupid = show.boards[boardid].channels[i].group
+                                        - var groupstr = groupid
+                                        each group in show.groups
+                                            if group.id == groupid
+                                                - groupstr = group.time + " (" + group.desc + ")"
+                                        div= groupstr
 
                                     td
                                         - var res = telemetry[boardid].res[i]
