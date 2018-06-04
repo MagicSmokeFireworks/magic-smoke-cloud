@@ -484,12 +484,14 @@ app.post('/showupload', function(req, res) {
 	var form = formidable.IncomingForm();
 	form.parse(req, function(err, fields, files) {
 		console.log(files.filetoupload.path);
-		//var oldpath = files.filetoupload.path;
-		//var newpath = 'show.json';
-		//fs.rename(oldpath, newpath, function (err) {
-		//	if (err) throw err;
-		//	res.redirect('/');
-		//});
+		var oldpath = files.filetoupload.path;
+		var newpath = 'show.json';
+		fs.rename(oldpath, newpath, function (err) {
+			if (err) throw err;
+			var contents = fs.readFileSync("show.json");
+			show = JSON.parse(contents);
+			res.redirect('/');
+		});
 	});
 });
 
