@@ -27,30 +27,62 @@ app.use(bodyParser.urlencoded({ extended: false }));
 var writeToClient = function(board_id, message) {
 	console.log(board_id);
 	console.log(message);
+	predictions[board_id].last_cmd = message;
 	var clientIP = '';
 	clientIP = telemetry[board_id].ip;
 	clientPort = telemetry[board_id].port;
 	console.log(clientIP);
 	console.log(clientPort);
 	if (clientIP === '') {
-		console.log('no IP known for ' + board_id);
+        predictions[board_id].last_cmd_status = "noip";
+		console.log(board_id + ': no IP known');
+		io.emit('fresh predicts', boardinfo, predictions, telemetry, show);
 	}
 	else {
 		var client = new net.Socket();
 		client.connect(clientPort, clientIP, function() {
-			console.log('connected to ' + board_id);
+        predictions[board_id].last_cmd_status = "noip";
+        	predictions[board_id].last_cmd_status = "conn";
+			console.log(board_id + ': connected');
 			client.write(message);
 		});
 	
 		client.on('data', function(data) {
-			console.log('data: ' + data);
+			console.log(board_id + ': data: ' + data);
+			if (data == message) {
+				console.log(board_id + ': command received');
+        		predictions[board_id].last_cmd_status = "repeated";
+			}
 			client.destroy();
 		});
 		client.on('close', function() {
-			console.log('connection closed');
+			console.log(board_id + ': connection closed');
+			if (predictions[board_id].last_cmd_status == "conn") {
+        		predictions[board_id].last_cmd_status = "error"; 
+			}
+			else if (predictions[board_id].last_cmd_status == "repeated") {
+				predictions[board_id].cmdcount = parseInt(predictions[board_id].cmdcount) + 1;
+				var last_cmd = predictions[board_id].last_cmd;
+				if (last_cmd == "disarm") {
+	        		predictions[board_id].swarm = 0;
+				}
+				else if (last_cmd == "arm") {
+	        		predictions[board_id].swarm = 1;
+				}
+				else if(last_cmd.startsWith("fire")) {
+					var channels = last_cmd.substring(4);
+					var len = channels.length;
+					for( var i = 0; i < len; i++) {
+						var channel = channels[i];
+						predictions[board_id].firecount[channel] = parseInt(predictions[board_id].firecount[channel]) + 1;
+					}
+				}
+			}
+			io.emit('fresh predicts', boardinfo, predictions, telemetry, show);
 		});
 		client.on('error', function(err) {
-			console.log('error: ' + err.message);
+			console.log(board_id + ': error: ' + err.message);
+        	predictions[board_id].last_cmd_status = "error"; 
 		});
 	}
 };
@@ -169,15 +201,12 @@ var tickingClock = setInterval(function() {
 						for(channel in show.boards[board_id].channels) {
 							if( show.boards[board_id].channels[channel].group == group_id ) {
 								chch = chch + channel;
-								predictions[board_id].firecount[channel] = parseInt(predictions[board_id].firecount[channel]) + 1;
 							}
 						}
 						if (chch != "") {
 							writeToClient(board_id, 'fire'+chch);
-							predictions[board_id].cmdcount = parseInt(predictions[board_id].cmdcount) + 1;
 						}
 					}
-					io.emit('fresh predicts', boardinfo, predictions, telemetry, show);
 				}
 			}
 		}
@@ -382,20 +411,14 @@ app.get('/show', function(req, res) {
 
 app.post('/arm', function(req, res) {
 	var board_id = req.query.id;
-	writeToClient(board_id, 'arm');
 	res.end();
 
-	predictions[board_id].swarm = 1;
-	predictions[board_id].cmdcount = parseInt(predictions[board_id].cmdcount) + 1;
-	io.emit('fresh predicts', boardinfo, predictions, telemetry, show);
+	writeToClient(board_id, 'arm');
 });
 
 app.post('/armall', function(req, res) {
     for(board in boardinfo) {
         writeToClient(board, 'arm');
-        predictions[board].swarm = 1;
-        predictions[board].cmdcount = parseInt(predictions[board].cmdcount) + 1;
-        io.emit('fresh predicts', boardinfo, predictions, telemetry, show);
     }
     res.end();
 
@@ -404,30 +427,22 @@ app.post('/armall', function(req, res) {
 app.post('/disarm', function(req, res) {
 	console.log('disarm');
 	var board_id = req.query.id;
-	writeToClient(board_id, 'disarm');
 	res.end();
 
-	predictions[board_id].swarm = 0;
-	predictions[board_id].cmdcount = parseInt(predictions[board_id].cmdcount) + 1;
-	io.emit('fresh predicts', boardinfo, predictions, telemetry, show);
+	writeToClient(board_id, 'disarm');
 });
 
 app.post('/identify', function(req, res) {
 	console.log('identify');
 	var board_id = req.query.id;
-	writeToClient(board_id, 'identify');
 	res.end();
 
-	predictions[board_id].cmdcount = parseInt(predictions[board_id].cmdcount) + 1;
-	io.emit('fresh predicts', boardinfo, predictions, telemetry, show);
+	writeToClient(board_id, 'identify');
 });
 
 app.post('/disarmall', function(req, res) {
     for(board in boardinfo) {
         writeToClient(board, 'disarm');
-        predictions[board].swarm = 0;
-        predictions[board].cmdcount = parseInt(predictions[board].cmdcount) + 1;
-        io.emit('fresh predicts', boardinfo, predictions, telemetry, show);
     }
     res.end();
 });
@@ -435,16 +450,9 @@ app.post('/disarmall', function(req, res) {
 app.post('/fire', function(req, res) {
 	var board_id = req.query.id;
 	var channels = req.query.channels;
-	writeToClient(board_id, 'fire'+channels);
 	res.end();
 
-	var len = channels.length;
-	for( var i = 0; i < len; i++) {
-		var channel = channels[i];
-		predictions[board_id].firecount[channel] = parseInt(predictions[board_id].firecount[channel]) + 1;
-	}
-	predictions[board_id].cmdcount = parseInt(predictions[board_id].cmdcount) + 1;
-	io.emit('fresh predicts', boardinfo, predictions, telemetry, show);
+	writeToClient(board_id, 'fire'+channels);
 });
 
 app.post('/firegroup', function(req, res) {
@@ -454,15 +462,12 @@ app.post('/firegroup', function(req, res) {
 		for(channel in show.boards[board_id].channels) {
 			if( show.boards[board_id].channels[channel].group == group_id ) {
 				chch = chch + channel;
-				predictions[board_id].firecount[channel] = parseInt(predictions[board_id].firecount[channel]) + 1;
 			}
 		}
 		if (chch != "") {
         	writeToClient(board_id, 'fire'+chch);
-			predictions[board_id].cmdcount = parseInt(predictions[board_id].cmdcount) + 1;
 		}
     }
-	io.emit('fresh predicts', boardinfo, predictions, telemetry, show);
     res.end();
 });
 

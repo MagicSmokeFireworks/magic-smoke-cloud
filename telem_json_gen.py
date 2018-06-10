@@ -25,6 +25,8 @@ for board_sname in boardinfo:
 
     predictions[board_sname] = {}
     predictions[board_sname]['swarm'] = '0'
+    predictions[board_sname]['last_cmd'] = ''
+    predictions[board_sname]['last_cmd_status'] = ''
     predictions[board_sname]['cmdcount'] = '0'
     predictions[board_sname]['firecount'] = ['0']*8
     predictions[board_sname]['res'] = ['none']*8
