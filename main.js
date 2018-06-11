@@ -39,6 +39,7 @@ var writeToClient = function(board_id, message) {
 		io.emit('fresh predicts', boardinfo, predictions, telemetry, show);
 	}
 	else {
+		predictions[board_id].cmdrequests = parseInt(predictions[board_id].cmdrequests) + 1;
 		var client = new net.Socket();
 		client.connect(clientPort, clientIP, function() {
         predictions[board_id].last_cmd_status = "noip";
@@ -61,7 +62,7 @@ var writeToClient = function(board_id, message) {
         		predictions[board_id].last_cmd_status = "error"; 
 			}
 			else if (predictions[board_id].last_cmd_status == "repeated") {
-				predictions[board_id].cmdcount = parseInt(predictions[board_id].cmdcount) + 1;
+				predictions[board_id].cmdresponses = parseInt(predictions[board_id].cmdresponses) + 1;
 				var last_cmd = predictions[board_id].last_cmd;
 				if (last_cmd == "disarm") {
 	        		predictions[board_id].swarm = 0;
@@ -89,7 +90,7 @@ var writeToClient = function(board_id, message) {
 
 var get_cmdstatus = function(board) {
 	var cmdcount = telemetry[board].cmdcount;
-	var cmdcount_predict = predictions[board].cmdcount;
+	var cmdcount_predict = predictions[board].cmdresponses;
 	var cmdstatus = "no data";
 	var cmdstatus_status = "error_status";
 	if (cmdcount != "no data") {

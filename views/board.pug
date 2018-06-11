@@ -112,11 +112,14 @@ html
 
                     div(class="command_counts")
                         div
-                            div(id=boardid+"_cmdcount_predict")= predictions[boardid].cmdcount
-                            div= " Command(s) Sent. "
+                            div(id=boardid+"_cmdrequests")= predictions[boardid].cmdrequests
+                            div= " Command Requests. "
+                        div
+                            div(id=boardid+"_cmdresponses")= predictions[boardid].cmdresponses
+                            div= " Command Responses. "
                         div
                             div(id=boardid+"_cmdcount")= telemetry[boardid].cmdcount
-                            div= " Command(s) Received."
+                            div= " Command(s) Counted."
 
                     hr
 

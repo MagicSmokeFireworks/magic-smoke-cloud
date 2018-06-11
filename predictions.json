@@ -13,7 +13,8 @@
         "swarm": "0", 
         "last_cmd": "0", 
         "last_cmd_status": "0", 
-        "cmdcount": "0", 
+        "cmdrequests": "0", 
+        "cmdresponses": "0", 
         "res": [
             "none", 
             "none", 
@@ -39,7 +40,8 @@
         "swarm": "0", 
         "last_cmd": "0", 
         "last_cmd_status": "0", 
-        "cmdcount": "0", 
+        "cmdrequests": "0", 
+        "cmdresponses": "0", 
         "res": [
             "none", 
             "none", 
@@ -65,7 +67,8 @@
         "swarm": "0", 
         "last_cmd": "0", 
         "last_cmd_status": "0", 
-        "cmdcount": "0", 
+        "cmdrequests": "0", 
+        "cmdresponses": "0", 
         "res": [
             "none", 
             "none", 
@@ -91,7 +94,8 @@
         "swarm": "0", 
         "last_cmd": "0", 
         "last_cmd_status": "0", 
-        "cmdcount": "0", 
+        "cmdrequests": "0", 
+        "cmdresponses": "0", 
         "res": [
             "none", 
             "none", 
@@ -117,7 +121,8 @@
         "swarm": "0", 
         "last_cmd": "0", 
         "last_cmd_status": "0", 
-        "cmdcount": "0", 
+        "cmdrequests": "0", 
+        "cmdresponses": "0", 
         "res": [
             "none", 
             "none", 
@@ -143,7 +148,8 @@
         "swarm": "0", 
         "last_cmd": "0", 
         "last_cmd_status": "0", 
-        "cmdcount": "0", 
+        "cmdrequests": "0", 
+        "cmdresponses": "0", 
         "res": [
             "none", 
             "none", 
@@ -169,7 +175,8 @@
         "swarm": "0", 
         "last_cmd": "0", 
         "last_cmd_status": "0", 
-        "cmdcount": "0", 
+        "cmdrequests": "0", 
+        "cmdresponses": "0", 
         "res": [
             "none", 
             "none", 
@@ -195,7 +202,8 @@
         "swarm": "0", 
         "last_cmd": "0", 
         "last_cmd_status": "0", 
-        "cmdcount": "0", 
+        "cmdrequests": "0", 
+        "cmdresponses": "0", 
         "res": [
             "none", 
             "none", 
@@ -221,7 +229,8 @@
         "swarm": "0", 
         "last_cmd": "0", 
         "last_cmd_status": "0", 
-        "cmdcount": "0", 
+        "cmdrequests": "0", 
+        "cmdresponses": "0", 
         "res": [
             "none", 
             "none", 
@@ -247,7 +256,8 @@
         "swarm": "0", 
         "last_cmd": "0", 
         "last_cmd_status": "0", 
-        "cmdcount": "0", 
+        "cmdrequests": "0", 
+        "cmdresponses": "0", 
         "res": [
             "none", 
             "none", 
@@ -273,7 +283,8 @@
         "swarm": "0", 
         "last_cmd": "0", 
         "last_cmd_status": "0", 
-        "cmdcount": "0", 
+        "cmdrequests": "0", 
+        "cmdresponses": "0", 
         "res": [
             "none", 
             "none", 
@@ -299,7 +310,8 @@
         "swarm": "0", 
         "last_cmd": "0", 
         "last_cmd_status": "0", 
-        "cmdcount": "0", 
+        "cmdrequests": "0", 
+        "cmdresponses": "0", 
         "res": [
             "none", 
             "none", 
@@ -325,7 +337,8 @@
         "swarm": "0", 
         "last_cmd": "0", 
         "last_cmd_status": "0", 
-        "cmdcount": "0", 
+        "cmdrequests": "0", 
+        "cmdresponses": "0", 
         "res": [
             "none", 
             "none", 
@@ -351,7 +364,8 @@
         "swarm": "0", 
         "last_cmd": "0", 
         "last_cmd_status": "0", 
-        "cmdcount": "0", 
+        "cmdrequests": "0", 
+        "cmdresponses": "0", 
         "res": [
             "none", 
             "none", 
@@ -377,7 +391,8 @@
         "swarm": "0", 
         "last_cmd": "0", 
         "last_cmd_status": "0", 
-        "cmdcount": "0", 
+        "cmdrequests": "0", 
+        "cmdresponses": "0", 
         "res": [
             "none", 
             "none", 
@@ -403,7 +418,8 @@
         "swarm": "0", 
         "last_cmd": "0", 
         "last_cmd_status": "0", 
-        "cmdcount": "0", 
+        "cmdrequests": "0", 
+        "cmdresponses": "0", 
         "res": [
             "none", 
             "none", 
@@ -429,7 +445,8 @@
         "swarm": "0", 
         "last_cmd": "0", 
         "last_cmd_status": "0", 
-        "cmdcount": "0", 
+        "cmdrequests": "0", 
+        "cmdresponses": "0", 
         "res": [
             "none", 
             "none", 
@@ -455,7 +472,8 @@
         "swarm": "0", 
         "last_cmd": "0", 
         "last_cmd_status": "0", 
-        "cmdcount": "0", 
+        "cmdrequests": "0", 
+        "cmdresponses": "0", 
         "res": [
             "none", 
             "none", 
@@ -481,7 +499,8 @@
         "swarm": "0", 
         "last_cmd": "0", 
         "last_cmd_status": "0", 
-        "cmdcount": "0", 
+        "cmdrequests": "0", 
+        "cmdresponses": "0", 
         "res": [
             "none", 
             "none", 
@@ -507,7 +526,8 @@
         "swarm": "0", 
         "last_cmd": "0", 
         "last_cmd_status": "0", 
-        "cmdcount": "0", 
+        "cmdrequests": "0", 
+        "cmdresponses": "0", 
         "res": [
             "none", 
             "none", 
@@ -533,7 +553,8 @@
         "swarm": "0", 
         "last_cmd": "0", 
         "last_cmd_status": "0", 
-        "cmdcount": "0", 
+        "cmdrequests": "0", 
+        "cmdresponses": "0", 
         "res": [
             "none", 
             "none", 
@@ -559,7 +580,8 @@
         "swarm": "0", 
         "last_cmd": "0", 
         "last_cmd_status": "0", 
-        "cmdcount": "0", 
+        "cmdrequests": "0", 
+        "cmdresponses": "0", 
         "res": [
             "none", 
             "none", 
@@ -585,7 +607,8 @@
         "swarm": "0", 
         "last_cmd": "0", 
         "last_cmd_status": "0", 
-        "cmdcount": "0", 
+        "cmdrequests": "0", 
+        "cmdresponses": "0", 
         "res": [
             "none", 
             "none", 
@@ -611,7 +634,8 @@
         "swarm": "0", 
         "last_cmd": "0", 
         "last_cmd_status": "0", 
-        "cmdcount": "0", 
+        "cmdrequests": "0", 
+        "cmdresponses": "0", 
         "res": [
             "none", 
             "none", 
@@ -637,7 +661,8 @@
         "swarm": "0", 
         "last_cmd": "0", 
         "last_cmd_status": "0", 
-        "cmdcount": "0", 
+        "cmdrequests": "0", 
+        "cmdresponses": "0", 
         "res": [
             "none", 
             "none", 

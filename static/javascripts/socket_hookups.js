@@ -1,7 +1,7 @@
 
 var get_cmdstatus = function(board, telemetry, predictions) {
 	var cmdcount = telemetry[board].cmdcount;
-        var cmdcount_predict = predictions[board].cmdcount;
+        var cmdcount_predict = predictions[board].cmdresponses;
         var cmdstatus = "no data";
         var cmdstatus_status = "error_status";
         if (cmdcount != "no data") {
@@ -395,9 +395,13 @@ socket.on('fresh predicts', function(boardinfo, predictions, telemetry, show) {
 	
 
 		// command count
-		cmdcount = document.getElementById(board+"_cmdcount_predict");
+		cmdcount = document.getElementById(board+"_cmdrequests");
 		if (cmdcount != null) {
-			cmdcount.innerHTML = predictions[board]["cmdcount"];
+			cmdcount.innerHTML = predictions[board]["cmdrequests"];
+		}
+		cmdcount = document.getElementById(board+"_cmdresponses");
+		if (cmdcount != null) {
+			cmdcount.innerHTML = predictions[board]["cmdresponses"];
 		}
 
 		// command status
