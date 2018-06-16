@@ -33,6 +33,16 @@ var writeToClient = function(board_id, message) {
 	clientPort = telemetry[board_id].port;
 	console.log(clientIP);
 	console.log(clientPort);
+
+	if (message.startsWith("fire")) {
+		var channels = message.substring(4);
+		var len = channels.length;
+		for( var i = 0; i < len; i++) {
+			var channel = channels[i];
+			predictions[board_id].trycount[channel] = parseInt(predictions[board_id].trycount[channel]) + 1;
+		}
+	}
+
 	if (clientIP === '') {
         predictions[board_id].last_cmd_status = "noip";
 		console.log(board_id + ': no IP known');
@@ -42,7 +52,6 @@ var writeToClient = function(board_id, message) {
 		predictions[board_id].cmdrequests = parseInt(predictions[board_id].cmdrequests) + 1;
 		var client = new net.Socket();
 		client.connect(clientPort, clientIP, function() {
-        predictions[board_id].last_cmd_status = "noip";
         	predictions[board_id].last_cmd_status = "conn";
 			console.log(board_id + ': connected');
 			client.write(message);
@@ -80,6 +89,7 @@ var writeToClient = function(board_id, message) {
 				}
 			}
 			io.emit('fresh predicts', boardinfo, predictions, telemetry, show);
+			io.emit('fresh data', boardinfo, telemetry, predictions, show);
 		});
 		client.on('error', function(err) {
 			console.log(board_id + ': error: ' + err.message);

@@ -159,9 +159,9 @@ html
 				div(class="show-hero")
 				
 					div(id="now_bar")
-						hr
 						div(class="upcoming-group")= "Show Clock: " + show_clock
 					each group in show.groups
+						hr
 						table(id=group.id class="show-table")
 							thead
 								th
@@ -176,8 +176,10 @@ html
 												td
 													div(id="countdown_"+group.id class="normal_status")= "T-"+group.time
 												td= group.desc
+												td(class="td-go-button")
+													button(class="buttonsmall" onclick="groupClick(\""+group.id+"\")") fire
+													button(class="buttonsmall" onclick="jumpToGroup(\""+group.time+"\")") jump to
 
-								th
 							tbody
 								tr
 									td
@@ -193,13 +195,14 @@ html
 																td= channel.effect
 
 																td
+																	div(id=boardid+"_showstatus_pred"+chnum class=showstatus_pred_class)= "NOT FIRED"
+																td
+																	div(id=boardid+"_showstatus_res"+chnum class=showstatus_res_class)= "NO MATCH"
+																td
 																	- var showstatus_val = "not ready"
 																	- var showstatus_class = "error_status"
 																	if telemetry[boardid].swarm == 1
 																		- showstatus_val = "ready"
 																		- var showstatus_class = "good_status"
 																	div(id=boardid+"_showstatus"+chnum class=showstatus_class)= showstatus_val
-									td(class="td-go-button")
-										button(class="buttonsmall" onclick="groupClick(\""+group.id+"\")") fire
-										button(class="buttonsmall" onclick="jumpToGroup(\""+group.time+"\")") jump to
 

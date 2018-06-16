@@ -215,6 +215,86 @@ socket.on('fresh data', function(boardinfo, telemetry, predictions, show) {
 			}
 		}
 
+		// show status fire command
+		for (var i = 0; i < 8; i++) {
+			var ssfire = document.getElementById(board+"_showstatus_pred"+i);
+			if (ssfire != null) {
+				var isTried = (predictions[board]["trycount"][i] > 0);
+				var isFired = (predictions[board]["firecount"][i] > 0);
+
+				if (isTried) {
+					if (isFired) {
+						ssfire.innerHTML = "Good Cmd";
+						ssfire.className = "normal_status";
+					}
+					else {
+						ssfire.innerHTML = "Bad Cmd";
+						ssfire.className = "error_status";
+					}
+				}
+				else {
+					ssfire.innerHTML = "Not Fired";
+					ssfire.className = "good_status";
+				}
+			}
+		}
+
+		// show status resistance
+		for (var i = 0; i < 8; i++) {
+			var ssres = document.getElementById(board+"_showstatus_res"+i);
+			if (ssres != null) {
+				var isFired = (telemetry[board]["firecount"][i] > 0);
+				var isConn = (telemetry[board]["connection"] == "active");
+
+				if (telemetry[board]["res"][i] == "no data") {
+					ssres.innerHTML = "No Data";
+					ssres.className = "error_status";
+				}
+				else if (telemetry[board]["res"][i] > 2500) {
+					if (isFired) {
+						ssres.innerHTML = "Open";
+						ssres.className = "normal_status";
+					}
+					else if (isConn) {
+						ssres.innerHTML = "High Res";
+						ssres.className = "warning_status";
+					}
+					else {
+						ssres.innerHTML = "Stale: High Res";
+						ssres.className = "warning_status";
+					}
+				}
+				else if (telemetry[board]["res"][i] < 700) {
+					if (isFired) {
+						ssres.innerHTML = "Low Res";
+						ssres.className = "warning_status";
+					}
+					else if (isConn) {
+						ssres.innerHTML = "Low Res";
+						ssres.className = "warning_status";
+					}
+					else {
+						ssres.innerHTML = "Stale: Low Res";
+						ssres.className = "warning_status";
+					}
+				}
+				else {
+					if (isFired) {
+						ssres.innerHTML = "Match Res";
+						ssres.className = "error_status";
+					}
+					else if (isConn) {
+						ssres.innerHTML = "Good Match";
+						ssres.className = "good_status";
+					}
+					else {
+						ssres.innerHTML = "Stale: Good Match";
+						ssres.className = "warning_status";
+					}
+				}
+			}
+		}
+
 		// connection status
 		var connstatus = document.getElementById(board+"_connstatus");
 		if (connstatus != null) {
@@ -444,7 +524,7 @@ socket.on('tick clock', function(show_clock_val, jump) {
 
 	var now_bar = document.getElementById("now_bar");
 	if (now_bar != null) {
-		now_bar.children[1].innerHTML = "Show Clock: " + show_clock_val;
+		now_bar.children[0].innerHTML = "Show Clock: " + show_clock_val;
 		var groups = document.getElementsByClassName("show-table");
 		var inserted = false;
 		for (var i = 0; i < groups.length; i++) {
