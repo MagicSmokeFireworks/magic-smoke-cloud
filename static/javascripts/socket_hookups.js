@@ -168,18 +168,8 @@ socket.on('fresh data', function(boardinfo, telemetry, predictions, show) {
 			var showstatus = document.getElementById(board+"_showstatus"+i);
 			if (showstatus != null) {
 				if (telemetry[board]["firecount"][i] > 0) {
-					if (telemetry[board]["res"][i] > 2500) {
-						showstatus.innerHTML = "Fired";
-						showstatus.className = "normal_status";
-					}
-					else if (telemetry[board]["res"][i] < 800) {
-						showstatus.innerHTML = "Fired. Low?";
-						showstatus.className = "normal_status";
-					}
-					else {
-						showstatus.innerHTML = "Fired. Low?";
-						showstatus.className = "warning_status";
-					}
+					showstatus.innerHTML = "Fired";
+					showstatus.className = "normal_status";
 				}
 				else if (telemetry[board]["connection"] != "active") {
 					showstatus.innerHTML = "No Conn";
@@ -198,19 +188,8 @@ socket.on('fresh data', function(boardinfo, telemetry, predictions, show) {
 				else if (showstatus.innerHTML == "firing...") {
 				}
 				else {
-					// 2500, 800
-					if (telemetry[board]["res"][i] > 2500) {
-						showstatus.innerHTML = "Ready. High?";
-						showstatus.className = "good_status";
-					}
-					else if (telemetry[board]["res"][i] < 700) {
-						showstatus.innerHTML = "Ready. Low?";
-						showstatus.className = "good_status";
-					}
-					else {
-						showstatus.innerHTML = "Ready";
-						showstatus.className = "good_status";
-					}
+					showstatus.innerHTML = "Ready";
+					showstatus.className = "good_status";
 				}
 			}
 		}
