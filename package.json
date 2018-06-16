@@ -3,10 +3,11 @@
   "version": "1.2.0",
   "description": "I know it's illegal, but it's the weekend",
   "dependencies": {
-    "socket.io": "^1.7.3",
     "body-parser": "^1.17.2",
     "express": "^4.14.0",
+    "formidable": "^1.2.1",
+    "mongodb": "^3.0.10",
     "pug": "^2.0.0",
-    "formidable": "^1.2.1"
+    "socket.io": "^1.7.3"
   }
 }

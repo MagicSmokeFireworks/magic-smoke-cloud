@@ -25,6 +25,24 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+var db = null;
+var eventlog = null;
+
+var log_generic_event = function(event_doc) {
+	eventlog.insertOne(event_doc, function(err, r) {
+		assert.equal(null, err);
+		assert.equal(1, r.insertedCount);
+	});
+};
+
+var log_event = function(event_type) {
+	log_generic_event({"time": Date.now(), "event": event_type});
+};
+
+var log_clock_event = function(clock_event) {
+	log_generic_event({"time": Date.now(), "event": "clock", "clock_event": clock_event, "clock_value": show_clock});
+};
+
 var populate_resistance_predictions = function() {
 	for (boardid in show.boards) {
 		for(var i = 0; i < 8; i++) {
@@ -177,9 +195,7 @@ var tickingClock = setInterval(function() {
 			}
 		}
 		io.emit('tick clock', show_clock.toFixed(1), false);
-	}
-	else {
-		//io.emit('tick clock', show_clock.toFixed(1), true);
+		log_clock_event("tick");
 	}
 }, 100);
 
@@ -187,18 +203,21 @@ app.post('/startclock', function(req, res) {
 	clock_running = true;
 	res.end();
 	console.log('starting clock');
+	log_clock_event("start");
 });
 
 app.post('/stopclock', function(req, res) {
 	clock_running = false;
 	res.end();
 	console.log('stopping clock');
+	log_clock_event("stop");
 });
 
 app.post('/clockplus', function(req, res) {
 	show_clock = show_clock + 0.1;
 	res.end();
 	io.emit('tick clock', show_clock.toFixed(1), true);
+	log_clock_event("plus");
 });
 
 app.post('/clockminus', function(req, res) {
@@ -208,6 +227,7 @@ app.post('/clockminus', function(req, res) {
 	}
 	res.end();
 	io.emit('tick clock', show_clock.toFixed(1), true);
+	log_clock_event("minus");
 });
 
 app.post('/status', function(req, res) {
@@ -448,7 +468,11 @@ app.post('/firegroup', function(req, res) {
 app.post('/jumptogroup', function(req, res) {
 	var group_time = req.query.grouptime;
 	show_clock = parseFloat(group_time)-0.1;
+	if (show_clock < 0) {
+		show_clock = 0;
+	}
 	io.emit('tick clock', show_clock.toFixed(1), true);
+	log_clock_event("jump");
 	res.end();
 });
 
@@ -491,8 +515,28 @@ app.get('/downloadshow', function(req, res) {
 //
 //})
 
-http.listen(8080, function(){
-	console.log("Listening on *:8080");
+const MongoClient = require('mongodb').MongoClient;
+const assert = require('assert');
+
+// mongo connection URL
+const mongoURL = 'mongodb://localhost:27017';
+
+// mongo database name
+const dbName = 'magicsmoke';
+
+// connect to the mongodb server
+MongoClient.connect(mongoURL, function(err, client) {
+	assert.equal(null, err);
+	console.log("Connected successfully to mongodb server");
+
+	db = client.db(dbName);
+	eventlog = db.collection('test2');
+
+	http.listen(8080, function(){
+		console.log("Listening on *:8080");
+	});
+
+	//client.close();
 });
 
 
