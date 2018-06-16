@@ -41,32 +41,7 @@ html
 					tbody
 						tr
 							td
-								- var armcount = 0
-								- var disarmcount = 0
-								- var nodatacount = 0
-								- var swarm_val = "No Data"
-								- var swarm_class = "error_status"
-								for board in boardinfo
-									if show.boards[board.sname].location != "inactive"
-										if telemetry[board.sname].swarm == 0
-											- disarmcount = disarmcount + 1
-										else if telemetry[board.sname].swarm == 1
-											- armcount = armcount + 1
-										else
-											- nodatacount = nodatacount + 1
-								if nodatacount > 0
-									- swarm_val = "No Data"
-									- swarm_class = "error_status"
-								else if armcount == 0
-									- swarm_val = "All Disarmed"
-									- swarm_class = "warning_status"
-								else if disarmcount == 0
-									- swarm_val = "All Armed"
-									- swarm_class = "good_status"
-								else
-									- swarm_val = "Partial"
-									- swarm_class = "warning_status"
-								div(id="show_swarm_status" class=swarm_class)= swarm_val
+								div(id="show_swarm_status" class="normal_status")= "unknown"
 	
 				table
 					thead
@@ -75,32 +50,7 @@ html
 					tbody
 						tr
 							td
-								- var armcount = 0
-								- var disarmcount = 0
-								- var nodatacount = 0
-								- var hwarm_val = "No Data"
-								- var hwarm_class = "error_status"
-								for board in boardinfo
-									if show.boards[board.sname].location != "inactive"
-										if telemetry[board.sname].hwarm == "DISARMED"
-											- disarmcount = disarmcount + 1
-										else if telemetry[board.sname].hwarm == "ARMED"
-											- armcount = armcount + 1
-										else
-											- nodatacount = nodatacount + 1
-								if nodatacount > 0
-									- hwarm_val = "No Data"
-									- hwarm_class = "error_status"
-								else if armcount == 0
-									- hwarm_val = "All Disarmed"
-									- hwarm_class = "warning_status"
-								else if disarmcount == 0
-									- hwarm_val = "All Armed"
-									- hwarm_class = "good_status"
-								else
-									- hwarm_val = "Partial"
-									- hwarm_class = "warning_status"
-								div(id="show_hwarm_status" class=hwarm_class)= hwarm_val
+								div(id="show_hwarm_status" class="normal_status")= "unknown"
 	
 				table
 					thead
@@ -109,26 +59,7 @@ html
 					tbody
 						tr
 							td
-								- var conns = 0
-								- var noconns = 0
-								- var conn_val = "No Connections"
-								- var conn_class = "error_status"
-								for board in boardinfo
-									if show.boards[board.sname].location != "inactive"
-										if telemetry[board.sname].connection == 'active'
-											- conns = conns + 1
-										else
-											- noconns = noconns + 1
-								if conns == 0
-									- conn_val = "No Connections"
-									- conn_class = "error_status"
-								else if noconns == 0
-									- conn_val = "Good Connections"
-									- conn_class = "good_status"
-								else
-									- conn_val = noconns + " Bad Connection(s)"
-									- conn_class = "warning_status"
-								div(id="show_conn_status" class=conn_class)= conn_val
+								div(id="show_conn_status" class="normal_status")= "unknown"
 				hr
 				table
 					thead
@@ -194,18 +125,12 @@ html
 																td Channel #{ chnum }
 																td= board.location
 																td= channel.effect
-
 																td
 																	div(id=boardid+"_showstatus_pred"+chnum class=showstatus_pred_class)= "NOT FIRED"
 																td
 																	div(id=boardid+"_showstatus_res"+chnum class=showstatus_res_class)= "NO MATCH"
 																td
-																	- var showstatus_val = "not ready"
-																	- var showstatus_class = "error_status"
-																	if telemetry[boardid].swarm == 1
-																		- showstatus_val = "ready"
-																		- var showstatus_class = "good_status"
-																	div(id=boardid+"_showstatus"+chnum class=showstatus_class)= showstatus_val
+																	div(id=boardid+"_showstatus"+chnum class="normal_status")= "unknown"
 				script.
 					var boardinfo = !{JSON.stringify(boardinfo)};
 					var telemetry = !{JSON.stringify(telemetry)};
