@@ -9,17 +9,6 @@ var telemetry = JSON.parse(contents);
 var contents = fs.readFileSync("predictions.json");
 var predictions = JSON.parse(contents);
 
-// populate resistance predictions with current show contents
-for (boardid in show.boards) {
-	for(var i = 0; i < 8; i++) {
-		if (show.boards[boardid].channels[i].group != "") {
-			predictions[boardid].res[i] = "match";
-		}
-		else {
-			predictions[boardid].res[i] = "open";
-		}
-	}
-}
 
 var express = require('express');
 var app = express();
@@ -35,6 +24,20 @@ var formidable = require('formidable');
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+var populate_resistance_predictions = function() {
+	for (boardid in show.boards) {
+		for(var i = 0; i < 8; i++) {
+			if (show.boards[boardid].channels[i].group != "") {
+				predictions[boardid].res[i] = "match";
+			}
+			else {
+				predictions[boardid].res[i] = "open";
+			}
+		}
+	}
+};
+populate_resistance_predictions();
 
 var writeToClient = function(board_id, message) {
 	console.log(board_id);
@@ -317,6 +320,7 @@ app.post('/configgroups', function(req, res) {
 	var json = JSON.stringify(show);
 	fs.writeFile('show.json', json, 'utf8');
 	res.redirect('/configgroups');
+	io.emit('fresh data', boardinfo, telemetry, predictions, show);
 });
 
 app.post('/configgroupssave', function(req, res) {
@@ -329,6 +333,7 @@ app.post('/configgroupssave', function(req, res) {
 	splice_group(group_id, group_time, group_desc);
 	var json = JSON.stringify(show);
 	fs.writeFile('show.json', json, 'utf8');
+	io.emit('fresh data', boardinfo, telemetry, predictions, show);
 });
 
 app.post('/configgroupsdelete', function(req, res) {
@@ -337,6 +342,7 @@ app.post('/configgroupsdelete', function(req, res) {
 	delete_group(group_id);
 	var json = JSON.stringify(show);
 	fs.writeFile('show.json', json, 'utf8');
+	io.emit('fresh data', boardinfo, telemetry, predictions, show);
 });
 
 app.get('/configboards/:boardid', function(req, res) {
@@ -364,6 +370,7 @@ app.post('/configboards/:boardid', function(req, res) {
 	var json = JSON.stringify(show);
 	fs.writeFile('show.json', json, 'utf8');
 	res.redirect('/configboards/'+boardid);
+	io.emit('fresh data', boardinfo, telemetry, predictions, show);
 })
 
 app.get('/show', function(req, res) {
@@ -462,7 +469,9 @@ app.post('/showupload', function(req, res) {
 			if (err) throw err;
 			var contents = fs.readFileSync("show.json");
 			show = JSON.parse(contents);
+			populate_resistance_predictions();
 			res.redirect('/');
+			io.emit('fresh data', boardinfo, telemetry, predictions, show);
 		});
 	});
 });

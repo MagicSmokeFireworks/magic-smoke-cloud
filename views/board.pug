@@ -99,14 +99,15 @@ html
                             each i in [0,1,2,3,4,5,6,7]
                                 tr
                                     td= "Channel "+i
-                                    td= show.boards[boardid].channels[i].effect
+                                    td
+                                        div(id=boardid+"_effect"+i)= show.boards[boardid].channels[i].effect
                                     td
                                         - var groupid = show.boards[boardid].channels[i].group
                                         - var groupstr = groupid
                                         each group in show.groups
                                             if group.id == groupid
                                                 - groupstr = group.time + " (" + group.desc + ")"
-                                        div= groupstr
+                                        div(id=boardid+"_groupstr"+i)= groupstr
 
                                     td
                                         div(class="normal_status" id=boardid+"_res"+i)= res

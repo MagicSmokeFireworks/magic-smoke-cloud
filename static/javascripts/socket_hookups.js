@@ -307,6 +307,32 @@ var fresh_data = function(boardinfo, telemetry, predictions, show) {
 			cmdstatus.innerHTML = cmdstatus_array[0];
 		}
 
+		// channel effects
+		for (var i = 0; i < 8; i++) {
+			var effect = document.getElementById(board+"_effect"+i);
+			if (effect != null) {
+				effect.innerHTML = show["boards"][board]["channels"][i]["effect"];
+			}
+		}
+
+		// channel groupstr
+		for (var i = 0; i < 8; i++) {
+			var groupstr = document.getElementById(board+"_groupstr"+i);
+			if (groupstr != null) {
+				var groupid = show["boards"][board]["channels"][i]["group"];
+				var groupstring = groupid;
+				for (groupindex in show["groups"]) {
+					var group = show["groups"][groupindex];
+					if (group["id"] == groupid) {
+						groupstring = group["time"] + " (" + group["desc"] + ")"
+						break;
+					}
+				}
+				groupstr.innerHTML = groupstring;
+			}
+		}
+
+
 		// resistance measurements
 		for (var i = 0; i < 8; i++) {
 			var res = document.getElementById(board+"_res"+i);
