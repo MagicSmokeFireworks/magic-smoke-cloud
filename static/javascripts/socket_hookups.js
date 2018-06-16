@@ -57,9 +57,7 @@ var get_channelstatus = function(board, channel, telemetry, show) {
 	return [channelstatus, channelstatus_status];
 };
 
-var socket = io();
-
-socket.on('fresh data', function(boardinfo, telemetry, predictions, show) {
+var fresh_data = function(boardinfo, telemetry, predictions, show) {
 	for (board in boardinfo) {
 		// reset telemetry timer
 		//var datatimer = document.getElementById(board+"_datatimer")
@@ -422,10 +420,6 @@ socket.on('fresh data', function(boardinfo, telemetry, predictions, show) {
 		showhwarmstatus.className = hwarm_class;
 		showhwarmstatus.innerHTML = hwarm_val;
 	}
-});
-
-
-socket.on('fresh predicts', function(boardinfo, predictions, telemetry, show) {
 
 	for (board in boardinfo) {
 
@@ -493,9 +487,9 @@ socket.on('fresh predicts', function(boardinfo, predictions, telemetry, show) {
 			channelstatus.innerHTML = channelstatus_array[0];
 		}*/
 	}
-});
+};
 
-socket.on('tick clock', function(show_clock_val, jump) {
+var tick_clock = function(show_clock_val, jump) {
 	var show_clock = document.getElementById("show_clock");
 	if (show_clock != null) {
 		show_clock.innerHTML = show_clock_val;
@@ -571,7 +565,16 @@ socket.on('tick clock', function(show_clock_val, jump) {
 			}
 		}
 	}
+};
+
+
+var socket = io();
+
+socket.on('fresh data', function(boardinfo, telemetry, predictions, show) {
+	fresh_data(boardinfo, telemetry, predictions, show);
 });
 
-
+socket.on('tick clock', function(show_clock_val, jump) {
+	tick_clock(show_clock_val, jump);
+});
 

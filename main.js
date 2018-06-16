@@ -46,7 +46,7 @@ var writeToClient = function(board_id, message) {
 	if (clientIP === '') {
         predictions[board_id].last_cmd_status = "noip";
 		console.log(board_id + ': no IP known');
-		io.emit('fresh predicts', boardinfo, predictions, telemetry, show);
+		io.emit('fresh data', boardinfo, telemetry, predictions, show);
 	}
 	else {
 		predictions[board_id].cmdrequests = parseInt(predictions[board_id].cmdrequests) + 1;
@@ -88,7 +88,6 @@ var writeToClient = function(board_id, message) {
 					}
 				}
 			}
-			io.emit('fresh predicts', boardinfo, predictions, telemetry, show);
 			io.emit('fresh data', boardinfo, telemetry, predictions, show);
 		});
 		client.on('error', function(err) {
@@ -224,7 +223,7 @@ var tickingClock = setInterval(function() {
 		io.emit('tick clock', show_clock.toFixed(1), false);
 	}
 	else {
-		io.emit('tick clock', show_clock.toFixed(1), true);
+		//io.emit('tick clock', show_clock.toFixed(1), true);
 	}
 }, 100);
 

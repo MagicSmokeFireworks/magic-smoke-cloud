@@ -205,4 +205,13 @@ html
 																		- showstatus_val = "ready"
 																		- var showstatus_class = "good_status"
 																	div(id=boardid+"_showstatus"+chnum class=showstatus_class)= showstatus_val
+				script.
+					var boardinfo = !{JSON.stringify(boardinfo)};
+					var telemetry = !{JSON.stringify(telemetry)};
+					var predictions = !{JSON.stringify(predictions)};
+					var show = !{JSON.stringify(show)};
+					var show_clock_val = "#{show_clock}";
+					fresh_data(boardinfo, telemetry, predictions, show);
+					tick_clock(show_clock_val, true);
+
 
