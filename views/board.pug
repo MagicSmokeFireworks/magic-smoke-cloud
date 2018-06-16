@@ -102,12 +102,7 @@ html
                                     td
                                         div(id=boardid+"_effect"+i)= show.boards[boardid].channels[i].effect
                                     td
-                                        - var groupid = show.boards[boardid].channels[i].group
-                                        - var groupstr = groupid
-                                        each group in show.groups
-                                            if group.id == groupid
-                                                - groupstr = group.time + " (" + group.desc + ")"
-                                        div(id=boardid+"_groupstr"+i)= groupstr
+                                        div(id=boardid+"_groupstr"+i)= show.boards[boardid].channels[i].group
 
                                     td
                                         div(class="normal_status" id=boardid+"_res"+i)= res
