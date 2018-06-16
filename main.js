@@ -506,15 +506,6 @@ app.get('/downloadshow', function(req, res) {
 	res.download(file);
 });
 
-//var server = app.listen(8080, function() {
-//
-//	var host = server.address().address;
-//	var port = server.address().port;
-//
-//	console.log("Listening at http://%s:%s", host, port);
-//
-//})
-
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 
