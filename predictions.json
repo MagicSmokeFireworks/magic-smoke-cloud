@@ -26,14 +26,14 @@
         "cmdrequests": "0", 
         "cmdresponses": "0", 
         "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open"
         ]
     }, 
     "af": {
@@ -63,14 +63,14 @@
         "cmdrequests": "0", 
         "cmdresponses": "0", 
         "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open"
         ]
     }, 
     "tts": {
@@ -100,14 +100,14 @@
         "cmdrequests": "0", 
         "cmdresponses": "0", 
         "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open"
         ]
     }, 
     "cb": {
@@ -137,14 +137,14 @@
         "cmdrequests": "0", 
         "cmdresponses": "0", 
         "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open"
         ]
     }, 
     "pos": {
@@ -174,14 +174,14 @@
         "cmdrequests": "0", 
         "cmdresponses": "0", 
         "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open"
         ]
     }, 
     "pop": {
@@ -211,14 +211,14 @@
         "cmdrequests": "0", 
         "cmdresponses": "0", 
         "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open"
         ]
     }, 
     "cd": {
@@ -248,14 +248,14 @@
         "cmdrequests": "0", 
         "cmdresponses": "0", 
         "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open"
         ]
     }, 
     "gc": {
@@ -285,14 +285,14 @@
         "cmdrequests": "0", 
         "cmdresponses": "0", 
         "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open"
         ]
     }, 
     "dbp": {
@@ -322,14 +322,14 @@
         "cmdrequests": "0", 
         "cmdresponses": "0", 
         "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open"
         ]
     }, 
     "spa": {
@@ -359,14 +359,14 @@
         "cmdrequests": "0", 
         "cmdresponses": "0", 
         "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open"
         ]
     }, 
     "dlj": {
@@ -396,14 +396,14 @@
         "cmdrequests": "0", 
         "cmdresponses": "0", 
         "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open"
         ]
     }, 
     "ll": {
@@ -433,14 +433,14 @@
         "cmdrequests": "0", 
         "cmdresponses": "0", 
         "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open"
         ]
     }, 
     "rd": {
@@ -470,14 +470,14 @@
         "cmdrequests": "0", 
         "cmdresponses": "0", 
         "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open"
         ]
     }, 
     "rf": {
@@ -507,14 +507,14 @@
         "cmdrequests": "0", 
         "cmdresponses": "0", 
         "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open"
         ]
     }, 
     "ta": {
@@ -544,14 +544,14 @@
         "cmdrequests": "0", 
         "cmdresponses": "0", 
         "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open"
         ]
     }, 
     "fs": {
@@ -581,14 +581,14 @@
         "cmdrequests": "0", 
         "cmdresponses": "0", 
         "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open"
         ]
     }, 
     "ba": {
@@ -618,14 +618,14 @@
         "cmdrequests": "0", 
         "cmdresponses": "0", 
         "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open"
         ]
     }, 
     "ooc": {
@@ -655,14 +655,14 @@
         "cmdrequests": "0", 
         "cmdresponses": "0", 
         "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open"
         ]
     }, 
     "jh": {
@@ -692,14 +692,14 @@
         "cmdrequests": "0", 
         "cmdresponses": "0", 
         "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open"
         ]
     }, 
     "ntb": {
@@ -729,14 +729,14 @@
         "cmdrequests": "0", 
         "cmdresponses": "0", 
         "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open"
         ]
     }, 
     "cr": {
@@ -766,14 +766,14 @@
         "cmdrequests": "0", 
         "cmdresponses": "0", 
         "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open"
         ]
     }, 
     "fag": {
@@ -803,14 +803,14 @@
         "cmdrequests": "0", 
         "cmdresponses": "0", 
         "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open"
         ]
     }, 
     "mm": {
@@ -840,14 +840,14 @@
         "cmdrequests": "0", 
         "cmdresponses": "0", 
         "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open"
         ]
     }, 
     "sm": {
@@ -877,14 +877,14 @@
         "cmdrequests": "0", 
         "cmdresponses": "0", 
         "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open"
         ]
     }, 
     "pitd": {
@@ -914,14 +914,14 @@
         "cmdrequests": "0", 
         "cmdresponses": "0", 
         "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open", 
+            "open"
         ]
     }
 }

@@ -47,68 +47,19 @@ html
                         tbody
                             tr
                                 td
-                                    - var connstatus = "Never Connected"
-                                    - var connstatus_class = "error_status"
-                                    if telemetry[boardid].connection == 'never'
-                                        - var connstatus = "Never Connected"
-                                        - var connstatus_class = "error_status"
-                                    else if telemetry[boardid].connection == 'inactive'
-                                        - var connstatus = "Connection Lost"
-                                        - var connstatus_class = "warning_status"
-                                    else
-                                        - var connstatus = "Connected"
-                                        - var connstatus_class = "normal_status"
-                                    div(class=connstatus_class id=boardid+"_connstatus")= connstatus
+                                    div(class="normal_status" id=boardid+"_connstatus")= telemetry[boardid].connection
 
                                 td
-                                    - var swarm_predict = "SW ARMED"
-                                    - var swarm_predict_class = "normal_status"
-                                    if predictions[boardid].swarm == 0
-                                        - swarm_predict = "SW DISARMED"
-                                    if predictions[boardid].swarm != telemetry[boardid].swarm
-                                        - swarm_predict_class = "warning_status"
-                                    div(class=swarm_predict_class id=boardid+"_swarm_predict")= swarm_predict
+                                    div(class="normal_status" id=boardid+"_swarm_predict")= predictions[boardid].swarm
 
                                 td
-                                    - var swarm = "No Data"
-                                    - var swarm_class = "error_status"
-                                    if telemetry[boardid].swarm == 0
-                                        - swarm = "SW DISARMED"
-                                    else if telemetry[boardid].swarm == 1
-                                        - swarm = "SW ARMED"
-                                    if telemetry[boardid].swarm == predictions[boardid].swarm
-                                        - swarm_class = "normal_status"
-                                    div(class=swarm_class id=boardid+"_swarm")= swarm
+                                    div(class="normal_status" id=boardid+"_swarm")= telemetry[boardid].swarm
 
                                 td
-                                    - var hwarm = "No Data"
-                                    - var hwarm_class = "error_status"
-                                    if telemetry[boardid].hwarm == 'DISARMED'
-                                        - hwarm = "HW DISARMED"
-                                        if telemetry[boardid].swarm == 1
-                                            - hwarm_class = "warning_status"
-                                        else
-                                            - hwarm_class = "normal_status"
-                                    else if telemetry[boardid].hwarm == 'ARMED'
-                                        - hwarm = "HW ARMED"
-                                        - hwarm_class = "normal_status"
-                                    div(class=hwarm_class id=boardid+"_hwarm")= hwarm
+                                    div(class="normal_status" id=boardid+"_hwarm")= telemetry[boardid].hwarm
 
                                 td
-                                    - var rssi = telemetry[boardid].rssi
-                                    - var rssi_class = "error_status"
-                                    if rssi != 'no data'
-                                        if rssi == 1
-                                            - rssi_class = "error_status"
-                                            - rssi = "WiFi Chip Error"
-                                        else if rssi == 2
-                                            - rssi_class = "error_status"
-                                            - rssi = "Time-out Error"
-                                        else if rssi < -60
-                                            - rssi_class = "warning_status"
-                                        else
-                                            - rssi_class = "normal_status"
-                                    div(class=rssi_class id=boardid+"_rssi")= rssi
+                                    div(class="normal_status" id=boardid+"_rssi")= telemetry[boardid].rssi
 
                     div(class="command_counts")
                         div
@@ -121,6 +72,14 @@ html
                             div(id=boardid+"_cmdcount")= telemetry[boardid].cmdcount
                             div= " Command(s) Counted."
 
+                    div(class="last_command")
+                        div
+                            div= "Last Command: "
+                            div(id=boardid+"_last_cmd" class="normal_status")= predictions[boardid].last_cmd
+                            div= " "
+                        div
+                            div= " Last Command Status: "
+                            div(id=boardid+"_last_cmd_status" class="normal_status")= predictions[boardid].last_cmd_status
                     hr
 
                     h3= "channels"
@@ -149,25 +108,13 @@ html
                                         div= groupstr
 
                                     td
-                                        - var res = telemetry[boardid].res[i]
-                                        - var res_class = "error_status"
-                                        if res != 'no data'
-                                            - res_class = "normal_status"
-                                        div(class=res_class id=boardid+"_res"+i)= res
-
-                                    td(id=boardid+"_res"+i+"_predict")= predictions[boardid].res[i]
-                                    td(id=boardid+"_firecount"+i+"_predict")= predictions[boardid].firecount[i]
-
+                                        div(class="normal_status" id=boardid+"_res"+i)= res
                                     td
-                                        - var firecount = telemetry[boardid].firecount[i]
-                                        - var firecount_class = "error_status"
-                                        if firecount != 'no data'
-                                            if firecount != predictions[boardid].firecount[i]
-                                                - firecount_class = "warning_status"
-                                            else
-                                                - firecount_class = "normal_status"
-                                        div(class=firecount_class id=boardid+"_firecount"+i)= firecount
-
+                                        div(class="normal_status" id=boardid+"_res"+i+"_predict")= predictions[boardid].res[i]
+                                    td
+                                        div(class="normal_status" id=boardid+"_firecount"+i+"_predict")= predictions[boardid].firecount[i]
+                                    td
+                                        div(class="normal_status" id=boardid+"_firecount"+i)= firecount
                                     td
                                         button(class="buttonsmall" onclick="clickFire(\""+boardid+"\",\""+i+"\")") Fire Channel #{ i }
 
@@ -192,4 +139,12 @@ html
                                 td= boardinfo[boardid].id
                                 td(id=boardid+"_firmver")= telemetry[boardid].firmver
                                 td(id=boardid+"_ip")= telemetry[boardid].ip
+
+    script.
+          var boardinfo = !{JSON.stringify(boardinfo)};
+          var telemetry = !{JSON.stringify(telemetry)};
+          var predictions = !{JSON.stringify(predictions)};
+          var show = !{JSON.stringify(show)};
+          fresh_data(boardinfo, telemetry, predictions, show);
+
 

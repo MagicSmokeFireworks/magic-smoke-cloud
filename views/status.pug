@@ -59,36 +59,19 @@ html
 									td
 										div(id=board.sname+"_connstatus" class="error_status")= telemetry[board.sname].connection
 									td
-										- var swarm = telemetry[board.sname].swarm
-										- var swarm_status = "error_status"
-										if swarm == 0
-											- swarm = "SW DISARMED"
-											- swarm_class = "warning_status"
-										else if swarm == 1
-											- swarm = "SW ARMED"
-											- swarm_class = "warning_status"
-										if telemetry[board.sname].swarm == predictions[board.sname].swarm
-											- swarm_class = "normal_status"
-										div(class=swarm_status id=board.sname+"_swarm")= swarm
-
-										- var hwarm = telemetry[board.sname].hwarm
-										- var hwarm_status = "error_status"
-										if hwarm == 0
-											- hwarm = "HW DISARMED"
-											- hwarm_class = "normal_status"
-										else if hwarm == 1
-											- hwarm = "HW ARMED"
-											- hwarm_class = "normal_status"
-										div(class=hwarm_status id=board.sname+"_hwarm")= hwarm
-
+										div(class="normal_status" id=board.sname+"_swarm")= telemetry[board.sname].swarm
+										div(class="normal_status" id=board.sname+"_hwarm")= telemetry[board.sname].hwarm
 									td
-										- var cmdstatus
-										- cmdstatus = get_cmdstatus(board.sname)
-										div(class=cmdstatus[1] id=board.sname+"_cmdstatus")= cmdstatus[0]
+										div(class="normal_status" id=board.sname+"_cmdstatus")= "unknown"
 
 									each i in [0,1,2,3,4,5,6,7]
 										td
-											- var channelstatus
-											- channelstatus = get_channelstatus(board.sname, i)
-											div(class=channelstatus[1] id=board.sname+"_channelstatus"+i)= channelstatus[0]
+											div(class="normal_status" id=board.sname+"_channelstatus"+i)= "unknown"
+
+	script.
+		var boardinfo = !{JSON.stringify(boardinfo)};
+		var telemetry = !{JSON.stringify(telemetry)};
+		var predictions = !{JSON.stringify(predictions)};
+		var show = !{JSON.stringify(show)};
+		fresh_data(boardinfo, telemetry, predictions, show);
 

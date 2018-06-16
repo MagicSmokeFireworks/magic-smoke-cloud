@@ -27,27 +27,31 @@ var get_channelstatus = function(board, channel, telemetry, show) {
 		}
 		else if (telemetry[board].firecount[channel] == 0) {
 			if (telemetry[board].res[channel] > 2500) {
-                                channelstatus = "no match?";
+                                channelstatus = "high imp";
                                 channelstatus_status = "warning_status";
                         }
                         else if (telemetry[board].res[channel] < 800) {
-                                channelstatus = "low imp match?";
+                                channelstatus = "low imp";
                                 channelstatus_status = "warning_status";
                         }
                         else {
-                                channelstatus = "good match imp";
+                                channelstatus = "good match";
                                 channelstatus_status = "good_status";
                         }
 		}
 		else {
 			if (telemetry[board].res[channel] > 2500) {
-                                channelstatus = "fired";
-                                channelstatus_status = "normal_status";
-                        }
-                        else {
-                                channelstatus = "fired. low imp?";
-                                channelstatus_status = "warning_status";
-                        }
+				channelstatus = "fired";
+				channelstatus_status = "normal_status";
+			}
+			else if (telemetry[board].res[channel] < 800) {
+				channelstatus = "fired low imp";
+				channelstatus_status = "warning_status";
+			}
+			else {
+				channelstatus = "fired match imp";
+				channelstatus_status = "error_status";
+			}
 		}
 	}
 	else {
@@ -308,6 +312,31 @@ var fresh_data = function(boardinfo, telemetry, predictions, show) {
 			var res = document.getElementById(board+"_res"+i);
 			if (res != null) {
 				res.innerHTML = telemetry[board]["res"][i];
+				if (telemetry[board]["res"][i] == "no data") {
+					res.className = "error_status";
+				}
+				else if (predictions[board]["res"][i] == "open") {
+					if (telemetry[board]["res"][i] > 2500) {
+						res.className = "normal_status";
+					}
+					else if (telemetry[board]["res"][i] < 800) {
+						res.className = "warning_status";
+					}
+					else {
+						res.className = "error_status";
+					}
+				}
+				else {
+					if (telemetry[board]["res"][i] > 2500) {
+						res.className = "warning_status";
+					}
+					else if (telemetry[board]["res"][i] < 800) {
+						res.className = "warning_status";
+					}
+					else {
+						res.className = "good_status";
+					}
+				}
 			}
 		}
 
@@ -316,6 +345,18 @@ var fresh_data = function(boardinfo, telemetry, predictions, show) {
 			var firecount = document.getElementById(board+"_firecount"+i);
 			if (firecount != null) {
 				firecount.innerHTML = telemetry[board]["firecount"][i];
+				if (telemetry[board]["firecount"][i] == "no data") {
+					firecount.className = "error_status";
+				}
+				else if (telemetry[board]["firecount"][i] < predictions[board]["firecount"][i]) {
+					firecount.className = "error_status";
+				}
+				else if (telemetry[board]["firecount"][i] < predictions[board]["trycount"][i]) {
+					firecount.className = "warning_status";
+				}
+				else {
+					firecount.className = "normal_status";
+				}
 			}
 		}
 
@@ -462,6 +503,31 @@ var fresh_data = function(boardinfo, telemetry, predictions, show) {
 		cmdstatus = document.getElementById(board+"_cmdstatus");
 		cmdstatus.className = cmdstatus_array[1];
 		cmdstatus.innerHTML = cmdstatus_array[0];*/
+
+		// last command
+		last_cmd = document.getElementById(board+"_last_cmd");
+		if (last_cmd != null) {
+			if (predictions[board].last_cmd == "0") {
+				last_cmd.innerHTML = "(none)";
+			}
+			else {
+				last_cmd.innerHTML = predictions[board].last_cmd;
+			}
+		}
+		last_cmd_status = document.getElementById(board+"_last_cmd_status");
+		if (last_cmd_status != null) {
+			last_cmd_status.innerHTML = predictions[board].last_cmd_status;
+			if (predictions[board].last_cmd_status == "repeated") {
+				last_cmd_status.className = "normal_status";
+			}
+			else if (predictions[board].last_cmd_status == "0") {
+				last_cmd_status.innerHTML = "(none)";
+				last_cmd_status.className = "normal_status";
+			}
+			else {
+				last_cmd_status.className = "error_status";
+			}
+		}
 
 		// resistance
 		for (var i = 0; i < 8; i++) {

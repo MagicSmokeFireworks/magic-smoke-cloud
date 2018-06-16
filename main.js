@@ -9,6 +9,18 @@ var telemetry = JSON.parse(contents);
 var contents = fs.readFileSync("predictions.json");
 var predictions = JSON.parse(contents);
 
+// populate resistance predictions with current show contents
+for (boardid in show.boards) {
+	for(var i = 0; i < 8; i++) {
+		if (show.boards[boardid].channels[i].group != "") {
+			predictions[boardid].res[i] = "match";
+		}
+		else {
+			predictions[boardid].res[i] = "open";
+		}
+	}
+}
+
 var express = require('express');
 var app = express();
 
@@ -85,6 +97,7 @@ var writeToClient = function(board_id, message) {
 					for( var i = 0; i < len; i++) {
 						var channel = channels[i];
 						predictions[board_id].firecount[channel] = parseInt(predictions[board_id].firecount[channel]) + 1;
+						predictions[board_id].res[channel] = "open";
 					}
 				}
 			}
@@ -95,64 +108,6 @@ var writeToClient = function(board_id, message) {
         	predictions[board_id].last_cmd_status = "error"; 
 		});
 	}
-};
-
-var get_cmdstatus = function(board) {
-	var cmdcount = telemetry[board].cmdcount;
-	var cmdcount_predict = predictions[board].cmdresponses;
-	var cmdstatus = "no data";
-	var cmdstatus_status = "error_status";
-	if (cmdcount != "no data") {
-		if (cmdcount == cmdcount_predict) {
-			cmdstatus = "good";
-			cmdstatus_status = "normal_status";
-		}
-		else {
-			cmdstatus = (cmdcount_predict - cmdcount) + " Lost";
-			cmdstatus_status = "warning_status";
-		}
-	}
-	return [cmdstatus, cmdstatus_status];
-};
-
-var get_channelstatus = function(board, channel) {
-	var channelstatus = "no data";
-	var channelstatus_status = "error_status";
-	if (show.boards[board].channels[channel].group != "") {
-		if (telemetry[board].firecount[channel] == 'no data') {
-			channelstatus = "no data";
-			channelstatus_status = "error_status";
-		}
-		else if (telemetry[board].firecount[channel] == 0) {
-			if (telemetry[board].res[channel] > 2500) {
-				channelstatus = "no match?";
-				channelstatus_status = "warning_status";
-			}
-			else if (telemetry[board].res[channel] < 800) {
-				channelstatus = "low imp match?";
-				channelstatus_status = "warning_status";
-			}
-			else {
-				channelstatus = "good match imp";
-				channelstatus_status = "good_status";
-			}
-		}
-		else {
-			if (telemetry[board].res[channel] > 2500) {
-				channelstatus = "fired";
-				channelstatus_status = "normal_status";
-			}
-			else {
-				channelstatus = "fired. low imp?";
-				channelstatus_status = "warning_status";
-			}
-		}
-	}
-	else {
-		channelstatus = "no config";
-		channelstatus_status = "normal_status";
-	}
-	return [channelstatus, channelstatus_status];
 };
 
 io.on('connection', function(socket){
@@ -172,9 +127,7 @@ app.get('/status', function(req, res) {
 		boardinfo: boardinfo,
 		show: show,
 		telemetry: telemetry,
-		predictions: predictions,
-		get_cmdstatus: get_cmdstatus,
-		get_channelstatus: get_channelstatus
+		predictions: predictions
 	});
 })
 
@@ -308,9 +261,7 @@ app.get('/board/:boardid', function(req, res) {
 		boardinfo: boardinfo,
 		show: show,
 		telemetry: telemetry,
-		predictions: predictions,
-		get_cmdstatus: get_cmdstatus,
-		get_channelstatus: get_channelstatus
+		predictions: predictions
 	});
 })
 
@@ -402,6 +353,12 @@ app.post('/configboards/:boardid', function(req, res) {
 	show.boards[boardid].location = req.body.location;
 	for(var i = 0; i < 8; i++) {
 		show.boards[boardid].channels[i].group = req.body["group[]"][i];
+		if (show.boards[boardid].channels[i].group != "") {
+			predictions[boardid].res[i] = "match";
+		}
+		else {
+			predictions[boardid].res[i] = "open";
+		}
 		show.boards[boardid].channels[i].effect = req.body["effect[]"][i];
 	}
 	var json = JSON.stringify(show);

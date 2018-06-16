@@ -298,6 +298,12 @@ nav ul li a:hover {
 	outline: 0;
 }
 
+.last_command div {
+	display: inline-block;
+	padding: 5px;
+	letter-spacing: .05em;
+}
+
 .command_counts div {
 	display: inline-block;
 	padding: 5px;
