@@ -28,20 +28,64 @@ app.use(bodyParser.urlencoded({ extended: false }));
 var db = null;
 var eventlog = null;
 
-var log_generic_event = function(event_doc) {
+var log_event = function(event_doc) {
+	event_doc["time"] = Date.now();
 	eventlog.insertOne(event_doc, function(err, r) {
 		assert.equal(null, err);
 		assert.equal(1, r.insertedCount);
 	});
 };
 
-var log_event = function(event_type) {
-	log_generic_event({"time": Date.now(), "event": event_type});
+var log_generic_event = function(eventstr) {
+	log_event({"event": eventstr});
 };
 
 var log_clock_event = function(clock_event) {
-	log_generic_event({"time": Date.now(), "event": "clock", "clock_event": clock_event, "clock_value": show_clock});
+	log_event({"event": "clock", "clock_event": clock_event, "clock_value": show_clock});
 };
+
+var log_unknown_status_event = function(unknown_board_id) {
+	log_event({"event": "unknown_id", "board_id": unknown_board_id});
+};
+
+var log_telemetry_event = function(board_id, sname, telemetry) {
+	// shallow copy of board telemetry
+	var eventdoc = Object.assign({}, telemetry);
+	eventdoc["event"] = "telemetry";
+	eventdoc["board_id"] = board_id;
+	eventdoc["sname"] = sname;
+	log_event(eventdoc);
+};
+
+var log_show_fire_group_event = function(group_time, group_id) {
+	log_event({"event": "show_firing_group", "group_time": group_time, "group_id": group_id});
+};
+
+var log_show_fire_board_event = function(group_time, group_id, board_id, channels) {
+	log_event({"event": "show_firing_board", "group_time": group_time, "group_id": group_id, "board_id": board_id, "channels": channels});
+};
+
+var log_man_fire_group_event = function(group_id) {
+	log_event({"event": "man_firing_group", "group_id": group_id});
+};
+
+var log_man_group_fire_board_event = function(group_id, board_id, channels) {
+	log_event({"event": "man_group_firing_board", "group_id": group_id, "board_id": board_id, "channels": channels});
+};
+
+var log_man_fire_event = function(board_id, channels) {
+	log_event({"event": "man_fire", "board_id": board_id, "channels": channels});
+};
+
+var log_man_board_event = function(eventstr, board_id) {
+	log_event({"event": eventstr, "board_id": board_id});
+};
+
+var log_command_event = function(conn_event, board_id, message, data, cmdnum) {
+	log_event({"event": "command", "conn_event": conn_event, "board_id": board_id, "message": message, "data": data, "cmdnum": cmdnum});
+};
+
+
 
 var populate_resistance_predictions = function() {
 	for (boardid in show.boards) {
@@ -57,6 +101,8 @@ var populate_resistance_predictions = function() {
 };
 populate_resistance_predictions();
 
+var commandnum = 0;
+
 var writeToClient = function(board_id, message) {
 	console.log(board_id);
 	console.log(message);
@@ -64,8 +110,9 @@ var writeToClient = function(board_id, message) {
 	var clientIP = '';
 	clientIP = telemetry[board_id].ip;
 	clientPort = telemetry[board_id].port;
-	console.log(clientIP);
-	console.log(clientPort);
+
+	commandnum += 1;
+	var thiscmdnum = commandnum;
 
 	if (message.startsWith("fire")) {
 		var channels = message.substring(4);
@@ -79,6 +126,7 @@ var writeToClient = function(board_id, message) {
 	if (clientIP === '') {
         predictions[board_id].last_cmd_status = "noip";
 		console.log(board_id + ': no IP known');
+		log_command_event("no_ip", board_id, message, "", thiscmdnum);
 		io.emit('fresh data', boardinfo, telemetry, predictions, show);
 	}
 	else {
@@ -87,11 +135,13 @@ var writeToClient = function(board_id, message) {
 		client.connect(clientPort, clientIP, function() {
         	predictions[board_id].last_cmd_status = "conn";
 			console.log(board_id + ': connected');
+			log_command_event("connected", board_id, message, "", thiscmdnum);
 			client.write(message);
 		});
 	
 		client.on('data', function(data) {
 			console.log(board_id + ': data: ' + data);
+			log_command_event("data", board_id, message, data.toString(), thiscmdnum);
 			if (data == message) {
 				console.log(board_id + ': command received');
         		predictions[board_id].last_cmd_status = "repeated";
@@ -100,6 +150,7 @@ var writeToClient = function(board_id, message) {
 		});
 		client.on('close', function() {
 			console.log(board_id + ': connection closed');
+			log_command_event("disconnected", board_id, message, "", thiscmdnum);
 			if (predictions[board_id].last_cmd_status == "conn") {
         		predictions[board_id].last_cmd_status = "error"; 
 			}
@@ -126,6 +177,7 @@ var writeToClient = function(board_id, message) {
 		});
 		client.on('error', function(err) {
 			console.log(board_id + ': error: ' + err.message);
+			log_command_event("error", board_id, message, err.message, thiscmdnum);
         	predictions[board_id].last_cmd_status = "error"; 
 		});
 	}
@@ -180,6 +232,8 @@ var tickingClock = setInterval(function() {
 				if (group_time < (show_clock + 0.09)) {
 					// fire group
 					var group_id = show.groups[i].id;
+					// log show firing this group
+					log_show_fire_group_event(group_time, group_id);
 					for(board_id in show.boards) {
 						var chch = "";
 						for(channel in show.boards[board_id].channels) {
@@ -188,6 +242,8 @@ var tickingClock = setInterval(function() {
 							}
 						}
 						if (chch != "") {
+							// log show firing this board
+							log_show_fire_board_event(group_time, group_id, board_id, chch);
 							writeToClient(board_id, 'fire'+chch);
 						}
 					}
@@ -240,6 +296,7 @@ app.post('/status', function(req, res) {
 	if (sname === "") {
 		console.log("Unknown board id sending status packet: " + req.headers.id);
 		res.end();
+		log_unknown_status_event(req.headers.id);
 	}
 	else {
 		timeouts[sname] = 0;
@@ -274,8 +331,9 @@ app.post('/status', function(req, res) {
 		telemetry[sname].cmdcount = req.headers.cc;
 		res.end();
 		io.emit('fresh data', boardinfo, telemetry, predictions, show);
+		log_telemetry_event(req.headers.id, sname, telemetry[sname]);
 	}
-})
+});
 
 app.get('/board/:boardid', function(req, res) {
 	res.render('board',
@@ -407,11 +465,16 @@ app.post('/arm', function(req, res) {
 	var board_id = req.query.id;
 	res.end();
 
+	// log manual arm board
+	log_man_board_event("man_arm", board_id);
 	writeToClient(board_id, 'arm');
 });
 
 app.post('/armall', function(req, res) {
+	// log manual arm all
+	log_generic_event("manual_arm_all");
     for(board in boardinfo) {
+		log_man_board_event("man_arm", board);
         writeToClient(board, 'arm');
     }
     res.end();
@@ -419,26 +482,30 @@ app.post('/armall', function(req, res) {
 });
 
 app.post('/disarm', function(req, res) {
-	console.log('disarm');
 	var board_id = req.query.id;
 	res.end();
 
+	// log manual disarm board
+	log_man_board_event("man_disarm", board_id);
 	writeToClient(board_id, 'disarm');
 });
 
-app.post('/identify', function(req, res) {
-	console.log('identify');
-	var board_id = req.query.id;
-	res.end();
-
-	writeToClient(board_id, 'identify');
-});
-
 app.post('/disarmall', function(req, res) {
+	// log manual disarm all
+	log_generic_event("manual_disarm_all");
     for(board in boardinfo) {
+		log_man_board_event("man_disarm", board);
         writeToClient(board, 'disarm');
     }
     res.end();
+});
+
+app.post('/identify', function(req, res) {
+	var board_id = req.query.id;
+	res.end();
+
+	log_man_board_event("man_identify", board_id);
+	writeToClient(board_id, 'identify');
 });
 
 app.post('/fire', function(req, res) {
@@ -446,11 +513,15 @@ app.post('/fire', function(req, res) {
 	var channels = req.query.channels;
 	res.end();
 
+	// log manual fire board channels
+	log_man_fire_event("man_fire", board_id, channels);
 	writeToClient(board_id, 'fire'+channels);
 });
 
 app.post('/firegroup', function(req, res) {
+	// log manual fire group
     var group_id = req.query.groupid;
+	log_man_fire_group_event(group_id);
 	for(board_id in show.boards) {
 		var chch = "";
 		for(channel in show.boards[board_id].channels) {
@@ -459,6 +530,8 @@ app.post('/firegroup', function(req, res) {
 			}
 		}
 		if (chch != "") {
+			// log manual group fire board channels
+			log_man_group_fire_board_event(group_id, board_id, chch);
         	writeToClient(board_id, 'fire'+chch);
 		}
     }
@@ -521,7 +594,7 @@ MongoClient.connect(mongoURL, function(err, client) {
 	console.log("Connected successfully to mongodb server");
 
 	db = client.db(dbName);
-	eventlog = db.collection('test2');
+	eventlog = db.collection('eventlog');
 
 	http.listen(8080, function(){
 		console.log("Listening on *:8080");
