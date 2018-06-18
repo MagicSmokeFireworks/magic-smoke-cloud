@@ -396,7 +396,9 @@ app.post('/configgroups', function(req, res) {
 	var desc = req.body["group_desc"];
 	add_group(time, desc);
 	var json = JSON.stringify(show);
-	fs.writeFile('show.json', json, 'utf8');
+	fs.writeFile('show.json', json, 'utf8', function(err) {
+		if (err) throw err;
+	});
 	res.redirect('/configgroups');
 	io.emit('fresh data', boardinfo, telemetry, predictions, show);
 });
@@ -410,7 +412,9 @@ app.post('/configgroupssave', function(req, res) {
 	delete_group(group_id);
 	splice_group(group_id, group_time, group_desc);
 	var json = JSON.stringify(show);
-	fs.writeFile('show.json', json, 'utf8');
+	fs.writeFile('show.json', json, 'utf8', function(err) {
+		if (err) throw err;
+	});
 	io.emit('fresh data', boardinfo, telemetry, predictions, show);
 });
 
@@ -419,7 +423,9 @@ app.post('/configgroupsdelete', function(req, res) {
 	res.end();
 	delete_group(group_id);
 	var json = JSON.stringify(show);
-	fs.writeFile('show.json', json, 'utf8');
+	fs.writeFile('show.json', json, 'utf8', function(err) {
+		if (err) throw err;
+	});
 	io.emit('fresh data', boardinfo, telemetry, predictions, show);
 });
 
@@ -446,7 +452,9 @@ app.post('/configboards/:boardid', function(req, res) {
 		show.boards[boardid].channels[i].effect = req.body["effect[]"][i];
 	}
 	var json = JSON.stringify(show);
-	fs.writeFile('show.json', json, 'utf8');
+	fs.writeFile('show.json', json, 'utf8', function(err) {
+		if (err) throw err;
+	});
 	res.redirect('/configboards/'+boardid);
 	io.emit('fresh data', boardinfo, telemetry, predictions, show);
 })
