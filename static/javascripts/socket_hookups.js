@@ -533,7 +533,7 @@ var fresh_data = function(boardinfo, telemetry, predictions, show) {
 		// last command
 		last_cmd = document.getElementById(board+"_last_cmd");
 		if (last_cmd != null) {
-			if (predictions[board].last_cmd == "0") {
+			if (predictions[board].last_cmd == "") {
 				last_cmd.innerHTML = "(none)";
 			}
 			else {
@@ -546,7 +546,7 @@ var fresh_data = function(boardinfo, telemetry, predictions, show) {
 			if (predictions[board].last_cmd_status == "repeated") {
 				last_cmd_status.className = "normal_status";
 			}
-			else if (predictions[board].last_cmd_status == "0") {
+			else if (predictions[board].last_cmd_status == "") {
 				last_cmd_status.innerHTML = "(none)";
 				last_cmd_status.className = "normal_status";
 			}

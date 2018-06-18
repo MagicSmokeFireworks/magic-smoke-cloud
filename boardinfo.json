@@ -148,6 +148,66 @@
 		"name": "Thirst Trap Selfie",
 		"sname": "tts",
 		"comments": ""
+	},
+	"mt": {
+		"id": "new0",
+		"name": "Moose Tracks",
+		"sname": "mt",
+		"comments": ""
+	},
+	"mor": {
+		"id": "new1",
+		"name": "Menu of Repression",
+		"sname": "mor",
+		"comments": ""
+	},
+	"tmc": {
+		"id": "new2",
+		"name": "Too Many Chromosomes",
+		"sname": "tmc",
+		"comments": ""
+	},
+	"dot": {
+		"id": "new3",
+		"name": "Drawn-out Transgressions",
+		"sname": "dot",
+		"comments": ""
+	},
+	"cow": {
+		"id": "new4",
+		"name": "Council of Worthlessness",
+		"sname": "cow",
+		"comments": ""
+	},
+	"pf": {
+		"id": "new5",
+		"name": "Panty Famine",
+		"sname": "pf",
+		"comments": ""
+	},
+	"sgv": {
+		"id": "new6",
+		"name": "Speculation Gone Viral",
+		"sname": "sgv",
+		"comments": ""
+	},
+	"ics": {
+		"id": "new7",
+		"name": "Internal Cavity Search",
+		"sname": "ics",
+		"comments": ""
+	},
+	"ws": {
+		"id": "new8",
+		"name": "Wage Slave",
+		"sname": "ws",
+		"comments": ""
+	},
+	"sos": {
+		"id": "new9",
+		"name": "Symphony of Squalor",
+		"sname": "sos",
+		"comments": ""
 	}
 }
 
