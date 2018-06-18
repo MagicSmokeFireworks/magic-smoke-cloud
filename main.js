@@ -1,4 +1,6 @@
 
+const { spawn, exec } = require('child_process');
+
 var fs = require("fs");
 var contents = fs.readFileSync("show.json");
 var show = JSON.parse(contents);
@@ -100,6 +102,14 @@ var populate_resistance_predictions = function() {
 	}
 };
 populate_resistance_predictions();
+
+var start_vlc = function(start_time) {
+	spawn('"C:\\Program Files\\VideoLan\\VLC\\vlc.exe"', ['C:\\cygwin64\\home\\broth\\audio-demo\\sna.mp3', '--start-time='+start_time.toString(), '--intf', 'dummy'], { shell: true });
+};
+
+var kill_vlc = function() {
+	exec('Taskkill /IM vlc.exe /F');
+};
 
 var commandnum = 0;
 
@@ -260,6 +270,7 @@ app.post('/startclock', function(req, res) {
 	res.end();
 	console.log('starting clock');
 	log_clock_event("start");
+	start_vlc(show_clock+0.5);
 });
 
 app.post('/stopclock', function(req, res) {
@@ -267,6 +278,7 @@ app.post('/stopclock', function(req, res) {
 	res.end();
 	console.log('stopping clock');
 	log_clock_event("stop");
+	kill_vlc();
 });
 
 app.post('/clockplus', function(req, res) {
