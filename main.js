@@ -582,7 +582,7 @@ app.post('/showupload', function(req, res) {
 			var contents = fs.readFileSync("show.json");
 			show = JSON.parse(contents);
 			populate_resistance_predictions();
-			res.redirect('/');
+			res.redirect('/config');
 			io.emit('fresh data', boardinfo, telemetry, predictions, show);
 		});
 	});
