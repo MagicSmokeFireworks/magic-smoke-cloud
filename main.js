@@ -557,6 +557,13 @@ app.post('/jumptogroup', function(req, res) {
 	res.end();
 });
 
+app.get('/config', function(req, res) {
+	res.render('config',
+	{
+		boardinfo: boardinfo
+	});
+});
+
 app.get('/', function(req, res) {
 	res.render('home',
 	{

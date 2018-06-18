@@ -13,6 +13,8 @@ html
 					li
 						a(href="/") home
 					li
+						a(href="/config") config
+					li
 						a(href="/status") status
 					li(class="dropdown")
 						a(href="#") boards
@@ -25,24 +27,6 @@ html
 			section(class="hero")
 				div(class="hero-content")
 
-					hr
-					table
-						tbody
-							tr(class="navlike")
-								td
-									a(href="/configgroups") Configure Groups
-								td(class="dropdown")
-									a(href="#") Configure Boards
-									div(class="dropdown-content")
-										each board in boardinfo
-											a(href="/configboards/"+board.sname) #{ board.name }
-
-					hr
-					form(action="showupload" method="post" enctype="multipart/form-data")
-						input(class="buttontiny" type="file" name="filetoupload")
-						input(class="buttontiny" type="submit" value="Upload a Show File")
-					hr
-					a(class="buttontiny" href="/downloadshow") Download Show File
 					hr
 					div
 						a(href="/status")

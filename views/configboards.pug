@@ -17,6 +17,8 @@ html
 					li
 						a(href="/") home
 					li
+						a(href="/") config
+					li
 						a(href="/status") status
 					li(class="dropdown")
 						a(href="#") boards
@@ -25,17 +27,21 @@ html
 								a(href="/board/"+board.sname) #{ board.name }
 					li
 						a(href="/show") show
-					li
-						a(href="/configgroups") groups
-					li(class="dropdown")
-						a(href="#") Configure Boards
-						div(class="dropdown-content")
-							each board in boardinfo
-								a(href="/configboards/"+board.sname) #{ board.name }
 		main
 			section(class="hero")
 				div(class="hero-content")
 
+					hr
+					table
+						tr(class="navlike")
+							td
+								a(href="/configgroups") configure groups
+							td
+							td(class="dropdown")
+								a(href="#") Configure Boards
+								div(class="dropdown-content")
+									each board in boardinfo
+										a(href="/configboards/"+board.sname) #{ board.name }
 					hr
 					h2= boardinfo[boardid].name
 
