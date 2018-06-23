@@ -91,6 +91,10 @@ html
 		main
 			section(class="hero")
 				div(class="show-hero")
+
+					audio(id='show_audio' preload='auto')
+						source(src='/show.wav' type='audio/wav')
+						source(src='/show.mp3' type='audio/mpeg')
 				
 					div(id="now_bar")
 						div(class="upcoming-group")= "Show Clock: " + show_clock

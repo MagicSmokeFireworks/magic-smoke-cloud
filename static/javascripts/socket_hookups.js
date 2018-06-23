@@ -668,5 +668,28 @@ socket.on('fresh data', function(boardinfo, telemetry, predictions, show) {
 
 socket.on('tick clock', function(show_clock_val, jump) {
 	tick_clock(show_clock_val, jump);
+
+	var show_audio_elem = document.getElementById("show_audio");
+	if (show_audio_elem != null) {
+		if (jump == true) {
+			show_audio_elem.currentTime = parseFloat(show_clock_val)+0.1;
+		}
+	}
+});
+
+socket.on('start clock', function(show_clock_val) {
+	var show_audio_elem = document.getElementById("show_audio");
+	if (show_audio_elem != null) {
+		//show_audio_elem.currentTime = show_clock_val;
+		show_audio_elem.play();
+	}
+});
+
+socket.on('stop clock', function(show_clock_val) {
+	var show_audio_elem = document.getElementById("show_audio");
+	if (show_audio_elem != null) {
+		show_audio_elem.currentTime = parseFloat(show_clock_val)+0.1;
+		show_audio_elem.pause();
+	}
 });
 

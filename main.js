@@ -259,6 +259,7 @@ app.post('/startclock', function(req, res) {
 	clock_running = true;
 	res.end();
 	console.log('starting clock');
+	io.emit('start clock', show_clock.toFixed(1));
 	log_clock_event("start");
 });
 
@@ -266,6 +267,7 @@ app.post('/stopclock', function(req, res) {
 	clock_running = false;
 	res.end();
 	console.log('stopping clock');
+	io.emit('stop clock', show_clock.toFixed(1));
 	log_clock_event("stop");
 });
 
