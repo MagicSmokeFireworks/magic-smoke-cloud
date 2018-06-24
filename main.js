@@ -337,6 +337,13 @@ app.post('/status', function(req, res) {
 	}
 });
 
+app.get('/boards', function(req, res) {
+	res.render('boards',
+	{
+		boardinfo: boardinfo
+	});
+});
+
 app.get('/board/:boardid', function(req, res) {
 	res.render('board',
 	{

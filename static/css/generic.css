@@ -173,7 +173,7 @@ nav ul li a:hover {
 }
 
 .button {
-	background-color: #1F1F1F;
+	background-color: rgba(31, 31, 31, 0.5);
 	border: 2px solid #4F4F4F;
 	border-radius: 20px;
 	color: white;
@@ -203,7 +203,7 @@ nav ul li a:hover {
 }
 
 .buttonsmall {
-	background-color: #1F1F1F;
+	background-color: rgba(31, 31, 31, 0.5);
 	border: 2px solid #4F4F4F;
 	border-radius: 17px;
 	color: white;
@@ -233,7 +233,7 @@ nav ul li a:hover {
 }
 
 .clockbutton {
-	background-color: #1F1F1F;
+	background-color: rgba(31, 31, 31, 0.5);
 	border: 2px solid #4F4F4F;
 	border-radius: 5px;
 	color: white;
@@ -267,7 +267,7 @@ nav ul li a:hover {
 }
 
 .buttontiny{
-	background-color: #1F1F1F;
+	background-color: rgba(31, 31, 31, 0.5);
 	border: 2px solid #4F4F4F;
 	border-radius: 17px;
 	color: white;
@@ -534,6 +534,19 @@ hr {
 	outline: none;
 	border-bottom: 1px solid white;
 	color: hotpink;
+}
+
+.boards_table {
+	border-collapse: collapse;
+}
+
+.boards_table thead th {
+	padding: 1em;
+}
+
+.boards_table tbody tr td {
+	padding: 1em;
+	border-top: 1px solid #111111;
 }
 
 .status_table {

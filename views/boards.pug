@@ -1,13 +1,13 @@
 html
 	head
-		title Magic Smoke
+		title= "Magic Smoke Boards"
 		link(rel='icon' href='/images/msmoke_logo.png')
 		link(href='/css/fading.css', rel='stylesheet')
 		link(href='/css/res_colors.css', rel='stylesheet')
 		link(href='/css/generic.css', rel='stylesheet')
 	body
 		header
-			h1= "Magic Smoke"
+			h1= "Magic Smoke Boards"
 			nav
 				ul
 					li
@@ -23,15 +23,29 @@ html
 								a(href="/board/"+board.sname) #{ board.name }
 					li
 						a(href="/show") show
+			
 		main
 			section(class="hero")
 				div(class="hero-content")
 
 					hr
-					div
-						a(href="/status")
-							img(src="/images/msmoke_logo.png")
-					hr
-					div.italics
-						h2.
-							I know it's illegal, but it's the weekend
+
+					table(class="boards_table")
+						thead
+							tr
+								th Board
+								th Config
+								th ID
+								th Short Name
+								th Comments
+						tbody
+							each board in boardinfo
+								tr
+									td
+										a(class="board_name" href="/board/"+board.sname) #{ board.name }
+									td
+										a(class="buttontiny" href="/configboards/"+board.sname) Configure #{ board.name }
+									td #{ board.id }
+									td #{ board.sname }
+									td #{ board.comments }
+
