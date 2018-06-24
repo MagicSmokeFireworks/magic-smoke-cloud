@@ -610,7 +610,7 @@ var tick_clock = function(show_clock_val, jump) {
 			countdown = countdown.toFixed(1);
 			var cdel = document.getElementById("countdown_"+groups[i].id);
 			var grouptable = document.getElementById("group_table_"+groups[i].id);
-			if (cdel != null) {
+			if ( (cdel != null) && (grouptable != null) ) {
 				if (countdown < 0) {
 					cdel.innerHTML = "T"+countdown;
 					var children = grouptable.getElementsByTagName('*');
@@ -673,6 +673,12 @@ socket.on('tick clock', function(show_clock_val, jump) {
 	if (show_audio_elem != null) {
 		if (jump == true) {
 			show_audio_elem.currentTime = parseFloat(show_clock_val)+0.1;
+		}
+		else {
+			if ( show_audio_elem.paused ) {
+				show_audio_elem.currentTime = parseFloat(show_clock_val)+0.1;
+				show_audio_elem.play();
+			}
 		}
 	}
 });
