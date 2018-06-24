@@ -11,16 +11,22 @@
 		"sname": "ba",
 		"comments": ""
 	},
-	"cb": {
-		"id": "4d0055000c51353532383735",
-		"name": "Clickbait",
-		"sname": "cb",
-		"comments": ""
-	},
 	"cd": {
 		"id": "41003a000f47353136383631",
 		"name": "Chubby Despot",
 		"sname": "cd",
+		"comments": ""
+	},
+	"cr": {
+		"id": "3b0039000647343339373536",
+		"name": "Clenched Ringpiece",
+		"sname": "cr",
+		"comments": "Bad battery LED."
+	},
+	"cb": {
+		"id": "4d0055000c51353532383735",
+		"name": "Clickbait",
+		"sname": "cb",
 		"comments": ""
 	},
 	"cm": {
@@ -29,11 +35,11 @@
 		"sname": "cm",
 		"comments": ""
 	},
-	"cr": {
-		"id": "3b0039000647343339373536",
-		"name": "Clenched Ringpiece",
-		"sname": "cr",
-		"comments": "Bad battery LED."
+	"cow": {
+		"id": "new4",
+		"name": "Council of Worthlessness",
+		"sname": "cow",
+		"comments": ""
 	},
 	"dbp": {
 		"id": "1f0033000c47353136383631",
@@ -47,10 +53,10 @@
 		"sname": "dlj",
 		"comments": "C1 exploded off the board. Vreg suspected failed."
 	},
-	"fag": {
-		"id": "3c002a001847353236343033",
-		"name": "Fucking Assballs Greg",
-		"sname": "fag",
+	"dot": {
+		"id": "new3",
+		"name": "Drawn-out Transgressions",
+		"sname": "dot",
 		"comments": ""
 	},
 	"fs": {
@@ -59,10 +65,22 @@
 		"sname": "fs",
 		"comments": ""
 	},
+	"fag": {
+		"id": "3c002a001847353236343033",
+		"name": "Fucking Assballs Greg",
+		"sname": "fag",
+		"comments": ""
+	},
 	"gc": {
 		"id": "35002b000f47353136383631",
 		"name": "Going Cyclic",
 		"sname": "gc",
+		"comments": ""
+	},
+	"ics": {
+		"id": "new7",
+		"name": "Internal Cavity Search",
+		"sname": "ics",
 		"comments": ""
 	},
 	"jh": {
@@ -77,11 +95,23 @@
 		"sname": "ll",
 		"comments": ""
 	},
+	"mor": {
+		"id": "new1",
+		"name": "Menu of Repression",
+		"sname": "mor",
+		"comments": ""
+	},
 	"mm": {
 		"id": "1f0032000a47353235303037",
 		"name": "Moist Molly",
 		"sname": "mm",
 		"comments": "So moist."
+	},
+	"mt": {
+		"id": "new0",
+		"name": "Moose Tracks",
+		"sname": "mt",
+		"comments": ""
 	},
 	"ntb": {
 		"id": "2d003e001847353236343033",
@@ -101,10 +131,10 @@
 		"sname": "pitd",
 		"comments": "Armed LED broken."
 	},
-	"pop": {
-		"id": "30002b001447353136383631",
-		"name": "Psychosis on Parade",
-		"sname": "pop",
+	"pf": {
+		"id": "new5",
+		"name": "Panty Famine",
+		"sname": "pf",
 		"comments": ""
 	},
 	"pos": {
@@ -113,16 +143,22 @@
 		"sname": "pos",
 		"comments": ""
 	},
-	"rd": {
-		"id": "440029000347343337373738",
-		"name": "Resplendent Deuce",
-		"sname": "rd",
+	"pop": {
+		"id": "30002b001447353136383631",
+		"name": "Psychosis on Parade",
+		"sname": "pop",
 		"comments": ""
 	},
 	"rf": {
 		"id": "3d0035001347353136383631",
 		"name": "Reciprocity Failure",
 		"sname": "rf",
+		"comments": ""
+	},
+	"rd": {
+		"id": "440029000347343337373738",
+		"name": "Resplendent Deuce",
+		"sname": "rd",
 		"comments": ""
 	},
 	"sm": {
@@ -137,28 +173,22 @@
 		"sname": "spa",
 		"comments": ""
 	},
-	"ta": {
-		"id": "300047001247353236343033",
-		"name": "Totes Amazeballs",
-		"sname": "ta",
-		"comments": "No working LEDs?"
+	"sgv": {
+		"id": "new6",
+		"name": "Speculation Gone Viral",
+		"sname": "sgv",
+		"comments": ""
+	},
+	"sos": {
+		"id": "new9",
+		"name": "Symphony of Squalor",
+		"sname": "sos",
+		"comments": ""
 	},
 	"tts": {
 		"id": "3b001d000c47343432313031",
 		"name": "Thirst Trap Selfie",
 		"sname": "tts",
-		"comments": ""
-	},
-	"mt": {
-		"id": "new0",
-		"name": "Moose Tracks",
-		"sname": "mt",
-		"comments": ""
-	},
-	"mor": {
-		"id": "new1",
-		"name": "Menu of Repression",
-		"sname": "mor",
 		"comments": ""
 	},
 	"tmc": {
@@ -167,46 +197,16 @@
 		"sname": "tmc",
 		"comments": ""
 	},
-	"dot": {
-		"id": "new3",
-		"name": "Drawn-out Transgressions",
-		"sname": "dot",
-		"comments": ""
-	},
-	"cow": {
-		"id": "new4",
-		"name": "Council of Worthlessness",
-		"sname": "cow",
-		"comments": ""
-	},
-	"pf": {
-		"id": "new5",
-		"name": "Panty Famine",
-		"sname": "pf",
-		"comments": ""
-	},
-	"sgv": {
-		"id": "new6",
-		"name": "Speculation Gone Viral",
-		"sname": "sgv",
-		"comments": ""
-	},
-	"ics": {
-		"id": "new7",
-		"name": "Internal Cavity Search",
-		"sname": "ics",
-		"comments": ""
+	"ta": {
+		"id": "300047001247353236343033",
+		"name": "Totes Amazeballs",
+		"sname": "ta",
+		"comments": "No working LEDs?"
 	},
 	"ws": {
 		"id": "new8",
 		"name": "Wage Slave",
 		"sname": "ws",
-		"comments": ""
-	},
-	"sos": {
-		"id": "new9",
-		"name": "Symphony of Squalor",
-		"sname": "sos",
 		"comments": ""
 	}
 }
