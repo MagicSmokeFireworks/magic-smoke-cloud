@@ -578,6 +578,15 @@ app.post('/showupload', function(req, res) {
 	form.parse(req, function(err, fields, files) {
 		console.log(files.filetoupload.path);
 		var oldpath = files.filetoupload.path;
+		try {
+			var tmpcontents = fs.readFileSync(oldpath);
+			JSON.parse(tmpcontents);
+		}
+		catch(error) {
+			console.error(error);
+			res.redirect('/config');
+			return;
+		}
 		var newpath = 'show.json';
 		fs.rename(oldpath, newpath, function (err) {
 			if (err) throw err;
