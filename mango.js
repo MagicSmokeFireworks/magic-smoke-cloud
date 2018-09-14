@@ -22,14 +22,42 @@ MongoClient.connect(url, function(err, client) {
 
 	var eventlog = [];
 
-	if (command == "dump") {
-		col.find({}).each(function(err, doc) {
+	if (command == "seed") {
+		if (repeat == "boards") {
+			// read boardinfo.json
+			var contents = fs.readFileSync("boardinfo.json");
+			var boardinfo = JSON.parse(contents);
+			// create board entries
+			db.collection('boards').deleteMany({}, function(err, r) {
+				assert.equal(null, err);
+				console.log(r.deletedCount);
+				
+				for (board in boardinfo) {
+					console.log(boardinfo[board]['name']);
+					var sname = boardinfo[board]['sname'];
+					var name = boardinfo[board]['name'];
+					var bid = boardinfo[board]['id'];
+					var comments = boardinfo[board]['comments'];
+					var blocation = "inactive";
+					var channels = [{"group":"", "effect":""},{"group":"", "effect":""},{"group":"", "effect":""},{"group":"", "effect":""},{"group":"", "effect":""},{"group":"", "effect":""},{"group":"", "effect":""},{"group":"", "effect":""}];
+					db.collection('boards').insertOne({sname: sname, name: name, id: bid, comments: comments, location: blocation, channels: channels}, function(err, r) {
+						assert.equal(null, err);
+						assert.equal(1, r.insertedCount);
+					}); 
+				}
+			});
+		}
+		else {
+			console.log("unknown seed");
+		}
+	}
+	else if (command == "dump") {
+		db.collection('eventlog').find({}).each(function(err, doc) {
 			if (doc) {
 				//console.log(doc);
 				eventlog.push(doc);
 			}
 			else {
-				client.close();
 				var json = JSON.stringify(eventlog);
 				fs.writeFile('eventlog.json', json, 'utf8', function(err) {
 					if (err) throw err;
@@ -41,20 +69,19 @@ MongoClient.connect(url, function(err, client) {
 	}
 	else if (command == "clean") {
 		if (repeat == "clean") {
-			col.deleteMany({}, function(err, r) {
+			db.collection('eventlog').deleteMany({}, function(err, r) {
 				assert.equal(null, err);
 				console.log(r.deletedCount);
-				client.close();
 			});
 		}
 		else {
 			console.log("no repeat");
-			client.close();
 		}
 	}
-	else {
+
+	var closeclient = setTimeout(function() {
 		client.close();
-	}
+	}, 2000);
 });
 
 
