@@ -40,6 +40,10 @@ var log_generic_event = function(eventstr) {
 	log_event({"event": eventstr});
 };
 
+var log_socket_event = function(socket_event, sid, handshake_time, issued, address, host, referer) {
+	log_event({"event": "socket", "socket_event": socket_event, "id": sid, "handshake_time": handshake_time, "issued": issued, "address": address, "host": host, "referer": referer});
+};
+
 var log_clock_event = function(clock_event) {
 	log_event({"event": "clock", "clock_event": clock_event, "clock_value": show_clock});
 };
@@ -184,9 +188,11 @@ var writeToClient = function(board_id, message) {
 };
 
 io.on('connection', function(socket){
-	console.log('a user connected');
+	console.log('A user connected');
+	log_socket_event('connection', socket.id, socket.handshake.time, socket.handshake.issued, socket.handshake.address, socket.handshake.headers.host, socket.handshake.headers.referer);
 	socket.on('disconnect', function(){
-		console.log('user disconnected');
+		console.log('A user disconnected');
+		log_socket_event('disconnect', socket.id, socket.handshake.time, socket.handshake.issued, socket.handshake.address, socket.handshake.headers.host, socket.handshake.headers.referer);
 	});
 });
 
@@ -222,41 +228,48 @@ var timeoutInterval = setInterval(function() {
 }, 100);
 
 var show_clock = 0;
-var clock_running = false;
-var tickingClock = setInterval(function() {
-	if (clock_running == true) {
-		show_clock = show_clock + 0.1;
-		for (var i = 0; i < show.groups.length; i++) {
-			var group_time = parseFloat(show.groups[i].time);
-			if (group_time > (show_clock - 0.09)) {
-				if (group_time < (show_clock + 0.09)) {
-					// fire group
-					var group_id = show.groups[i].id;
-					// log show firing this group
-					log_show_fire_group_event(group_time, group_id);
-					for(board_id in show.boards) {
-						var chch = "";
-						for(channel in show.boards[board_id].channels) {
-							if( show.boards[board_id].channels[channel].group == group_id ) {
-								chch = chch + channel;
-							}
+
+var showTickId = null;
+var relShowTime = 0;
+var startTime = 0;
+var showClock = function() {
+	relShowTime = relShowTime + 100;
+	var now = Date.now();
+	var delay = 100+relShowTime-(now-startTime);
+	showTickId = setTimeout(showClock, delay);
+	show_clock = show_clock + 0.1;
+	for (var i = 0; i < show.groups.length; i++) {
+		var group_time = parseFloat(show.groups[i].time);
+		if (group_time > (show_clock - 0.09)) {
+			if (group_time < (show_clock + 0.09)) {
+				// fire group
+				var group_id = show.groups[i].id;
+				// log show firing this group
+				log_show_fire_group_event(group_time, group_id);
+				for(board_id in show.boards) {
+					var chch = "";
+					for(channel in show.boards[board_id].channels) {
+						if( show.boards[board_id].channels[channel].group == group_id ) {
+							chch = chch + channel;
 						}
-						if (chch != "") {
-							// log show firing this board
-							log_show_fire_board_event(group_time, group_id, board_id, chch);
-							writeToClient(board_id, 'fire'+chch);
-						}
+					}
+					if (chch != "") {
+						// log show firing this board
+						log_show_fire_board_event(group_time, group_id, board_id, chch);
+						writeToClient(board_id, 'fire'+chch);
 					}
 				}
 			}
 		}
-		io.emit('tick clock', show_clock.toFixed(1), false);
-		log_clock_event("tick");
 	}
-}, 100);
+	io.emit('tick clock', show_clock.toFixed(1), true);
+	log_clock_event("tick");
+};
 
 app.post('/startclock', function(req, res) {
-	clock_running = true;
+	startTime = Date.now();
+	relShowTime = 0;
+	showTickId = setTimeout(showClock, 100);
 	res.end();
 	console.log('starting clock');
 	io.emit('start clock', show_clock.toFixed(1));
@@ -264,7 +277,7 @@ app.post('/startclock', function(req, res) {
 });
 
 app.post('/stopclock', function(req, res) {
-	clock_running = false;
+	clearTimeout(showTickId);
 	res.end();
 	console.log('stopping clock');
 	io.emit('stop clock', show_clock.toFixed(1));
