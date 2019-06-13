@@ -11,22 +11,16 @@
 		"sname": "ba",
 		"comments": ""
 	},
-	"cd": {
-		"id": "41003a000f47353136383631",
-		"name": "Chubby Despot",
-		"sname": "cd",
-		"comments": ""
-	},
-	"cr": {
-		"id": "3b0039000647343339373536",
-		"name": "Clenched Ringpiece",
-		"sname": "cr",
-		"comments": "Bad battery LED."
-	},
 	"cb": {
 		"id": "4d0055000c51353532383735",
 		"name": "Clickbait",
 		"sname": "cb",
+		"comments": ""
+	},
+	"cd": {
+		"id": "41003a000f47353136383631",
+		"name": "Chubby Despot",
+		"sname": "cd",
 		"comments": ""
 	},
 	"cm": {
@@ -36,9 +30,21 @@
 		"comments": ""
 	},
 	"cow": {
-		"id": "new4",
+		"id": "32001e000e47363433353735",
 		"name": "Council of Worthlessness",
 		"sname": "cow",
+		"comments": ""
+	},
+	"cr": {
+		"id": "3b0039000647343339373536",
+		"name": "Clenched Ringpiece",
+		"sname": "cr",
+		"comments": "Bad battery LED. Channel 2 non functional"
+	},
+	"dc": {
+		"id": "new1",
+		"name": "Dreary Clichegate",
+		"sname": "dc",
 		"comments": ""
 	},
 	"dbp": {
@@ -48,21 +54,15 @@
 		"comments": ""
 	},
 	"dlj": {
-		"id": "3e0026000a47353235303037",
+		"id": "4e0022000751353530373132",
 		"name": "Dr. Lee's Jubiration",
 		"sname": "dlj",
-		"comments": "C1 exploded off the board. Vreg suspected failed."
-	},
-	"dot": {
-		"id": "new3",
-		"name": "Drawn-out Transgressions",
-		"sname": "dot",
 		"comments": ""
 	},
-	"fs": {
-		"id": "230040000c47353136383631",
-		"name": "Fan Service",
-		"sname": "fs",
+	"dot": {
+		"id": "2c0044000547363332363639",
+		"name": "Drawn-out Transgressions",
+		"sname": "dot",
 		"comments": ""
 	},
 	"fag": {
@@ -71,14 +71,20 @@
 		"sname": "fag",
 		"comments": ""
 	},
+	"fs": {
+		"id": "230040000c47353136383631",
+		"name": "Fan Service",
+		"sname": "fs",
+		"comments": ""
+	},
 	"gc": {
-		"id": "35002b000f47353136383631",
+		"id": "330032000d47353136383631",
 		"name": "Going Cyclic",
 		"sname": "gc",
 		"comments": ""
 	},
 	"ics": {
-		"id": "new7",
+		"id": "45002a000b47363330353437",
 		"name": "Internal Cavity Search",
 		"sname": "ics",
 		"comments": ""
@@ -89,17 +95,17 @@
 		"sname": "jh",
 		"comments": ""
 	},
+	"lb": {
+		"id": "new4",
+		"name": "Lascivious Bulge",
+		"sname": "lb",
+		"comments": ""
+	},
 	"ll": {
 		"id": "2f001b001447353136383631",
 		"name": "Lipid Labia",
 		"sname": "ll",
-		"comments": ""
-	},
-	"mor": {
-		"id": "new1",
-		"name": "Menu of Repression",
-		"sname": "mor",
-		"comments": ""
+		"comments": "HW ARMED always looks enabled in server"
 	},
 	"mm": {
 		"id": "1f0032000a47353235303037",
@@ -107,8 +113,14 @@
 		"sname": "mm",
 		"comments": "So moist."
 	},
+	"mor": {
+		"id": "2f0027000b47363330353437",
+		"name": "Menu of Repression",
+		"sname": "mor",
+		"comments": ""
+	},
 	"mt": {
-		"id": "new0",
+		"id": "2b0022000c47363339343638",
 		"name": "Moose Tracks",
 		"sname": "mt",
 		"comments": ""
@@ -117,13 +129,19 @@
 		"id": "2d003e001847353236343033",
 		"name": "Not the Bees",
 		"sname": "ntb",
-		"comments": ""
+		"comments": "Channel 4 shows .6V vs. 2V when in standby. Appears functional"
 	},
 	"ooc": {
-		"id": "28001a001047353136383631",
+		"id": "45002b000b47363330353437",
 		"name": "Orgy of Cannibalism",
 		"sname": "ooc",
 		"comments": ""
+	},
+	"pf": {
+		"id": "2b0029000e47353136383631",
+		"name": "Panty Famine",
+		"sname": "pf",
+		"comments": "channel 0 non functional"
 	},
 	"pitd": {
 		"id": "3d0025000347353138383138",
@@ -131,10 +149,10 @@
 		"sname": "pitd",
 		"comments": "Armed LED broken."
 	},
-	"pf": {
-		"id": "new5",
-		"name": "Panty Famine",
-		"sname": "pf",
+	"pop": {
+		"id": "30002b001447353136383631",
+		"name": "Psychosis on Parade",
+		"sname": "pop",
 		"comments": ""
 	},
 	"pos": {
@@ -143,10 +161,10 @@
 		"sname": "pos",
 		"comments": ""
 	},
-	"pop": {
-		"id": "30002b001447353136383631",
-		"name": "Psychosis on Parade",
-		"sname": "pop",
+	"rd": {
+		"id": "440029000347343337373738",
+		"name": "Resplendent Deuce",
+		"sname": "rd",
 		"comments": ""
 	},
 	"rf": {
@@ -155,16 +173,28 @@
 		"sname": "rf",
 		"comments": ""
 	},
-	"rd": {
-		"id": "440029000347343337373738",
-		"name": "Resplendent Deuce",
-		"sname": "rd",
+	"sgv": {
+		"id": "350039000347363339343638",
+		"name": "Speculation Gone Viral",
+		"sname": "sgv",
+		"comments": ""
+	},
+	"siso": {
+		"id": "new2",
+		"name": "Spicy In Spicy Out",
+		"sname": "siso",
 		"comments": ""
 	},
 	"sm": {
-		"id": "2e0036001747353236343033",
+		"id": "290028001747353236343033",
 		"name": "Savage Mistress",
 		"sname": "sm",
+		"comments": "Tested 29-June-2018"
+	},
+	"sos": {
+		"id": "20002b001847343438323536",
+		"name": "Symphony of Squalor",
+		"sname": "sos",
 		"comments": ""
 	},
 	"spa": {
@@ -173,28 +203,10 @@
 		"sname": "spa",
 		"comments": ""
 	},
-	"sgv": {
-		"id": "new6",
-		"name": "Speculation Gone Viral",
-		"sname": "sgv",
-		"comments": ""
-	},
-	"sos": {
-		"id": "new9",
-		"name": "Symphony of Squalor",
-		"sname": "sos",
-		"comments": ""
-	},
-	"tts": {
-		"id": "3b001d000c47343432313031",
-		"name": "Thirst Trap Selfie",
-		"sname": "tts",
-		"comments": ""
-	},
-	"tmc": {
-		"id": "new2",
-		"name": "Too Many Chromosomes",
-		"sname": "tmc",
+	"su": {
+		"id": "new3",
+		"name": "Sexual Underbite",
+		"sname": "su",
 		"comments": ""
 	},
 	"ta": {
@@ -203,8 +215,26 @@
 		"sname": "ta",
 		"comments": "No working LEDs?"
 	},
+	"tmc": {
+		"id": "280028000c51353432383931",
+		"name": "Too Many Chromosomes",
+		"sname": "tmc",
+		"comments": ""
+	},
+	"tpp": {
+		"id": "new0",
+		"name": "Trite Platitude Police",
+		"sname": "tpp",
+		"comments": ""
+	},
+	"tts": {
+		"id": "3b001d000c47343432313031",
+		"name": "Thirst Trap Selfie",
+		"sname": "tts",
+		"comments": ""
+	},
 	"ws": {
-		"id": "new8",
+		"id": "2e003a000b47363339343638",
 		"name": "Wage Slave",
 		"sname": "ws",
 		"comments": ""

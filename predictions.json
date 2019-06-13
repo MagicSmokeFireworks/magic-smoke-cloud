@@ -1,4 +1,189 @@
 {
+    "su": {
+        "firecount": [
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0"
+        ], 
+        "cmdrequests": "0", 
+        "cmdresponses": "0", 
+        "last_cmd": "", 
+        "swarm": "0", 
+        "last_cmd_status": "", 
+        "res": [
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none"
+        ], 
+        "trycount": [
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0"
+        ]
+    }, 
+    "siso": {
+        "firecount": [
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0"
+        ], 
+        "cmdrequests": "0", 
+        "cmdresponses": "0", 
+        "last_cmd": "", 
+        "swarm": "0", 
+        "last_cmd_status": "", 
+        "res": [
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none"
+        ], 
+        "trycount": [
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0"
+        ]
+    }, 
+    "dc": {
+        "firecount": [
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0"
+        ], 
+        "cmdrequests": "0", 
+        "cmdresponses": "0", 
+        "last_cmd": "", 
+        "swarm": "0", 
+        "last_cmd_status": "", 
+        "res": [
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none"
+        ], 
+        "trycount": [
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0"
+        ]
+    }, 
+    "tpp": {
+        "firecount": [
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0"
+        ], 
+        "cmdrequests": "0", 
+        "cmdresponses": "0", 
+        "last_cmd": "", 
+        "swarm": "0", 
+        "last_cmd_status": "", 
+        "res": [
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none"
+        ], 
+        "trycount": [
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0"
+        ]
+    }, 
+    "lb": {
+        "firecount": [
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0"
+        ], 
+        "cmdrequests": "0", 
+        "cmdresponses": "0", 
+        "last_cmd": "", 
+        "swarm": "0", 
+        "last_cmd_status": "", 
+        "res": [
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none", 
+            "none"
+        ], 
+        "trycount": [
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0", 
+            "0"
+        ]
+    }, 
     "cm": {
         "firecount": [
             "0", 

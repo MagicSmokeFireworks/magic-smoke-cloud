@@ -1,5 +1,190 @@
 {
     "boards": {
+        "su": {
+            "channels": [
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }
+            ], 
+            "location": "inactive"
+        }, 
+        "siso": {
+            "channels": [
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }
+            ], 
+            "location": "inactive"
+        }, 
+        "lb": {
+            "channels": [
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }
+            ], 
+            "location": "inactive"
+        }, 
+        "dc": {
+            "channels": [
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }
+            ], 
+            "location": "inactive"
+        }, 
+        "tpp": {
+            "channels": [
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }, 
+                {
+                    "group": "", 
+                    "effect": ""
+                }
+            ], 
+            "location": "inactive"
+        }, 
         "cm": {
             "channels": [
                 {
