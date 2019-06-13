@@ -69,9 +69,39 @@ var fresh_data = function(boardinfo, telemetry, predictions, show) {
 		//	datatimer.innerHTML = "0";
 		//}
 	
+		// pid
+		var pid = document.getElementById(board+"_pid");
+		if (pid != null) {
+			pid.innerHTML = telemetry[board]["pid"];
+		}
+
+		// micros
+		var micros = document.getElementById(board+"_micros");
+		if (micros != null) {
+			micros.innerHTML = telemetry[board]["micros"];
+		}
+
+		// boot count
+		var bootcount = document.getElementById(board+"_bootcount");
+		if (bootcount != null) {
+			if (telemetry[board]["bootcount"] == "1") {
+				bootcount.className = "normal_status";
+			}
+			else {
+				bootcount.className = "error_status";
+			}
+			bootcount.innerHTML = telemetry[board]["bootcount"];
+		}
+
 		// firmware version
 		var firmver = document.getElementById(board+"_firmver");
 		if (firmver != null) {
+			if (telemetry[board]["firmver"] == "3.0") {
+				firmver.className = "normal_status";
+			}
+			else {
+				firmver.className = "error_status";
+			}
 			firmver.innerHTML = telemetry[board]["firmver"];
 		}
 

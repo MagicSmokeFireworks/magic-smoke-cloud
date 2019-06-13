@@ -40,6 +40,10 @@ var log_generic_event = function(eventstr) {
 	log_event({"event": eventstr});
 };
 
+var log_board_event = function(eventstr, board_id) {
+	log_event({"event": eventstr, "board_id": board_id});
+};
+
 var log_socket_event = function(socket_event, sid, handshake_time, issued, address, host, referer) {
 	log_event({"event": "socket", "socket_event": socket_event, "id": sid, "handshake_time": handshake_time, "issued": issued, "address": address, "host": host, "referer": referer});
 };
@@ -227,6 +231,28 @@ var timeoutInterval = setInterval(function() {
 	}
 }, 100);
 
+
+var syncIndex = 0;
+var syncInterval = function() {
+	boards = Object.keys(boardinfo);
+	board = boards[syncIndex];
+        var nowstr = Date.now().toString();
+	syncIndex++;
+	if (syncIndex >= boards.length) {
+		syncIndex = 0;
+	}
+	if (telemetry[board].ip === '') {
+		setTimeout(syncInterval, 5);
+	}
+	else {
+		//writeToClient(board, 'time'+nowstr.substring(0,nowstr.length-3));
+		writeToClient(board, 'high');
+		log_board_event('high', board);
+		setTimeout(syncInterval, 100);
+	}
+};
+
+
 var show_clock = 0;
 
 var showTickId = null;
@@ -324,6 +350,9 @@ app.post('/status', function(req, res) {
 			telemetry[sname].port = 23;
 		}
 		telemetry[sname].firmver = req.headers.fver;
+                telemetry[sname].bootcount = req.headers.bc;
+                telemetry[sname].pid = req.headers.pid;
+                telemetry[sname].micros = req.headers.micros;
 		telemetry[sname].swarm = req.headers.sw_arm;
 		telemetry[sname].hwarm = req.headers.hw_arm;
 		telemetry[sname].rssi = req.headers.wifi_rssi;
@@ -642,7 +671,10 @@ MongoClient.connect(mongoURL, function(err, client) {
 	db = client.db(dbName);
 	eventlog = db.collection('eventlog');
 
+	setTimeout(syncInterval, 200);
+
 	http.listen(8080, function(){
+	//http.listen(8080, '192.168.0.199', function(){
 		console.log("Listening on *:8080");
 	});
 

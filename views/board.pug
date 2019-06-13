@@ -131,12 +131,20 @@ html
                         thead
                             tr
                                 th ID
+                                th Packet ID
+                                th Packet Micros
+                                th Boot Count
                                 th Firmware Version
                                 th IP
                         tbody
                             tr
                                 td= boardinfo[boardid].id
-                                td(id=boardid+"_firmver")= telemetry[boardid].firmver
+                                td(id=boardid+"_pid")= boardinfo[boardid].pid
+                                td(id=boardid+"_micros")= boardinfo[boardid].micros
+                                td
+                                    div(class="normal_status" id=boardid+"_bootcount")= telemetry[boardid].bootcount
+                                td
+                                    div(class="normal_status" id=boardid+"_firmver")= telemetry[boardid].firmver
                                 td(id=boardid+"_ip")= telemetry[boardid].ip
 
     script.
