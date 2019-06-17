@@ -589,7 +589,7 @@ var fresh_data = function(boardinfo, telemetry, predictions, show) {
 		last_cmd_status = document.getElementById(board+"_last_cmd_status");
 		if (last_cmd_status != null) {
 			last_cmd_status.innerHTML = predictions[board].last_cmd_status;
-			if (predictions[board].last_cmd_status == "repeated") {
+			if (predictions[board].last_cmd_status == "good") {
 				last_cmd_status.className = "normal_status";
 			}
 			else if (predictions[board].last_cmd_status == "") {
