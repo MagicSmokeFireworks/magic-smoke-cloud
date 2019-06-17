@@ -69,15 +69,11 @@ var log_show_fire_group_event = function(group_time, group_id) {
 	log_event({"event": "show_firing_group", "group_time": group_time, "group_id": group_id});
 };
 
-var log_show_fire_board_event = function(group_time, group_id, board_id, channels) {
-	log_event({"event": "show_firing_board", "group_time": group_time, "group_id": group_id, "board_id": board_id, "channels": channels});
-};
-
 var log_man_fire_group_event = function(group_id) {
 	log_event({"event": "man_firing_group", "group_id": group_id});
 };
 
-var log_man_group_fire_board_event = function(group_id, board_id, channels) {
+var log_fire_board_event = function(group_id, board_id, channels) {
 	log_event({"event": "man_group_firing_board", "group_id": group_id, "board_id": board_id, "channels": channels});
 };
 
@@ -108,88 +104,6 @@ var populate_resistance_predictions = function() {
 	}
 };
 populate_resistance_predictions();
-
-var commandnum = 0;
-
-var writeToClient = function(board_id, message) {
-	console.log(board_id);
-	console.log(message);
-	predictions[board_id].last_cmd = message;
-	var clientIP = '';
-	clientIP = telemetry[board_id].ip;
-	clientPort = telemetry[board_id].port;
-
-	commandnum += 1;
-	var thiscmdnum = commandnum;
-
-	if (message.startsWith("fire")) {
-		var channels = message.substring(4);
-		var len = channels.length;
-		for( var i = 0; i < len; i++) {
-			var channel = channels[i];
-			predictions[board_id].trycount[channel] = parseInt(predictions[board_id].trycount[channel]) + 1;
-		}
-	}
-
-	if (clientIP === '') {
-        predictions[board_id].last_cmd_status = "noip";
-		console.log(board_id + ': no IP known');
-		log_command_event("no_ip", board_id, message, "", thiscmdnum);
-		io.emit('fresh data', boardinfo, telemetry, predictions, show);
-	}
-	else {
-		predictions[board_id].cmdrequests = parseInt(predictions[board_id].cmdrequests) + 1;
-		var client = new net.Socket();
-		client.connect(clientPort, clientIP, function() {
-        	predictions[board_id].last_cmd_status = "conn";
-			console.log(board_id + ': connected');
-			log_command_event("connected", board_id, message, "", thiscmdnum);
-			client.write(message);
-		});
-	
-		client.on('data', function(data) {
-			console.log(board_id + ': data: ' + data);
-			log_command_event("data", board_id, message, data.toString(), thiscmdnum);
-			if (data == message) {
-				console.log(board_id + ': command received');
-        		predictions[board_id].last_cmd_status = "repeated";
-			}
-			client.destroy();
-		});
-		client.on('close', function() {
-			console.log(board_id + ': connection closed');
-			log_command_event("disconnected", board_id, message, "", thiscmdnum);
-			if (predictions[board_id].last_cmd_status == "conn") {
-        		predictions[board_id].last_cmd_status = "error"; 
-			}
-			else if (predictions[board_id].last_cmd_status == "repeated") {
-				predictions[board_id].cmdresponses = parseInt(predictions[board_id].cmdresponses) + 1;
-				var last_cmd = predictions[board_id].last_cmd;
-				if (last_cmd == "disarm") {
-	        		predictions[board_id].swarm = 0;
-				}
-				else if (last_cmd == "arm") {
-	        		predictions[board_id].swarm = 1;
-				}
-				else if(last_cmd.startsWith("fire")) {
-					var channels = last_cmd.substring(4);
-					var len = channels.length;
-					for( var i = 0; i < len; i++) {
-						var channel = channels[i];
-						predictions[board_id].firecount[channel] = parseInt(predictions[board_id].firecount[channel]) + 1;
-						predictions[board_id].res[channel] = "open";
-					}
-				}
-			}
-			io.emit('fresh data', boardinfo, telemetry, predictions, show);
-		});
-		client.on('error', function(err) {
-			console.log(board_id + ': error: ' + err.message);
-			log_command_event("error", board_id, message, err.message, thiscmdnum);
-        	predictions[board_id].last_cmd_status = "error"; 
-		});
-	}
-};
 
 io.on('connection', function(socket){
 	console.log('A user connected');
@@ -222,33 +136,35 @@ for (board in boardinfo) {
 var timeoutInterval = setInterval(function() {
 	for (board in boardinfo) {
 		timeouts[board] = timeouts[board] + 0.1;
-		if (timeouts[board] > 4.0) {
+		if (timeouts[board] > 10.0) {
 			if (telemetry[board].connection == "active") {
 				telemetry[board].connection = "inactive";
 				io.emit('fresh data', boardinfo, telemetry, predictions, show);
 			}
 		}
 	}
-}, 100);
+}, 500);
 
 
 var syncIndex = 0;
 var syncInterval = function() {
+
 	boards = Object.keys(boardinfo);
 	board = boards[syncIndex];
-        var nowstr = Date.now().toString();
+    
 	syncIndex++;
 	if (syncIndex >= boards.length) {
 		syncIndex = 0;
 	}
+
 	if (telemetry[board].ip === '') {
 		setTimeout(syncInterval, 5);
 	}
 	else {
-		//writeToClient(board, 'time'+nowstr.substring(0,nowstr.length-3));
-		writeToClient(board, 'high');
-		log_board_event('high', board);
-		setTimeout(syncInterval, 100);
+		send_lowrate_command(board);
+		log_board_event('low', board);
+		//setTimeout(syncInterval, 100);
+		setTimeout(syncInterval, 5000); // FIXME
 	}
 };
 
@@ -272,19 +188,7 @@ var showClock = function() {
 				var group_id = show.groups[i].id;
 				// log show firing this group
 				log_show_fire_group_event(group_time, group_id);
-				for(board_id in show.boards) {
-					var chch = "";
-					for(channel in show.boards[board_id].channels) {
-						if( show.boards[board_id].channels[channel].group == group_id ) {
-							chch = chch + channel;
-						}
-					}
-					if (chch != "") {
-						// log show firing this board
-						log_show_fire_board_event(group_time, group_id, board_id, chch);
-						writeToClient(board_id, 'fire'+chch);
-					}
-				}
+				fire_by_group(group_id);
 			}
 		}
 	}
@@ -372,6 +276,14 @@ app.post('/status', function(req, res) {
 		telemetry[sname].firecount[5] = req.headers.fc5;
 		telemetry[sname].firecount[6] = req.headers.fc6;
 		telemetry[sname].firecount[7] = req.headers.fc7;
+		telemetry[sname].lastfiretime[0] = req.headers.lft0;
+		telemetry[sname].lastfiretime[1] = req.headers.lft1;
+		telemetry[sname].lastfiretime[2] = req.headers.lft2;
+		telemetry[sname].lastfiretime[3] = req.headers.lft3;
+		telemetry[sname].lastfiretime[4] = req.headers.lft4;
+		telemetry[sname].lastfiretime[5] = req.headers.lft5;
+		telemetry[sname].lastfiretime[6] = req.headers.lft6;
+		telemetry[sname].lastfiretime[7] = req.headers.lft7;
 		telemetry[sname].cmdcount = req.headers.cc;
 		res.end();
 		io.emit('fresh data', boardinfo, telemetry, predictions, show);
@@ -518,69 +430,181 @@ app.get('/show', function(req, res) {
 		telemetry: telemetry,
 		predictions: predictions
 	});
-})
-
-app.post('/arm', function(req, res) {
-	var board_id = req.query.id;
-	res.end();
-
-	// log manual arm board
-	log_man_board_event("man_arm", board_id);
-	writeToClient(board_id, 'arm');
 });
 
-app.post('/armall', function(req, res) {
-	// log manual arm all
-	log_generic_event("manual_arm_all");
-    for(board in boardinfo) {
-		log_man_board_event("man_arm", board);
-        writeToClient(board, 'arm');
-    }
-    res.end();
 
-});
 
-app.post('/disarm', function(req, res) {
-	var board_id = req.query.id;
-	res.end();
+var commandnum = 0;
 
-	// log manual disarm board
-	log_man_board_event("man_disarm", board_id);
-	writeToClient(board_id, 'disarm');
-});
+var writeToClient = function(board_id, message) {
+	console.log(board_id);
+	console.log(message);
+	
+	var clientIP = '';
+	clientIP = telemetry[board_id].ip;
+	clientPort = telemetry[board_id].port;
 
-app.post('/disarmall', function(req, res) {
-	// log manual disarm all
-	log_generic_event("manual_disarm_all");
-    for(board in boardinfo) {
-		log_man_board_event("man_disarm", board);
-        writeToClient(board, 'disarm');
-    }
-    res.end();
-});
+	commandnum += 1;
+	var thiscmdnum = commandnum;
 
-app.post('/identify', function(req, res) {
-	var board_id = req.query.id;
-	res.end();
 
-	log_man_board_event("man_identify", board_id);
-	writeToClient(board_id, 'identify');
-});
+	if (clientIP === '') {
+        predictions[board_id].last_cmd_status = "noip";
+		console.log(board_id + ': no IP known');
+		log_command_event("no_ip", board_id, message, "", thiscmdnum);
+		io.emit('fresh data', boardinfo, telemetry, predictions, show);
+	}
+	else {
+		predictions[board_id].cmdrequests = parseInt(predictions[board_id].cmdrequests) + 1;
 
-app.post('/fire', function(req, res) {
-	var board_id = req.query.id;
-	var channels = req.query.channels;
-	res.end();
+		var client = new net.Socket();
 
-	// log manual fire board channels
-	log_man_fire_event("man_fire", board_id, channels);
-	writeToClient(board_id, 'fire'+channels);
-});
+		client.setTimeout(5000);
 
-app.post('/firegroup', function(req, res) {
-	// log manual fire group
-    var group_id = req.query.groupid;
-	log_man_fire_group_event(group_id);
+		// CONNECT to board
+		client.connect(clientPort, clientIP, function() {
+        	predictions[board_id].last_cmd_status = "conn";
+			console.log(board_id + ': connected');
+			log_command_event("connected", board_id, message, "", thiscmdnum);
+			client.write(message);
+		});
+
+		// TIMEOUT
+		client.on('timeout', function() {
+			console.log(board_id + ': timeout');
+			log_command_event("timeout", board_id, message, "timeout", thiscmdnum);
+			client.destroy();
+		});
+	
+		// DATA from board
+		client.on('data', function(data) {
+			console.log(board_id + ': data: ' + data);
+			// TODO look in data for ontime/late, valid/invalid
+			timeouts[board_id] = 0;
+			log_command_event("data", board_id, message, data.toString(), thiscmdnum);
+			predictions[board_id].last_cmd_status = "data";
+			client.end();
+		});
+
+		// CLOSE
+		client.on('close', function() {
+			console.log(board_id + ': connection closed');
+			log_command_event("disconnected", board_id, message, "", thiscmdnum);
+
+			if (predictions[board_id].last_cmd_status == "conn") {
+        		predictions[board_id].last_cmd_status = "error"; 
+			}
+			else {
+				predictions[board_id].cmdresponses = parseInt(predictions[board_id].cmdresponses) + 1;
+				predictions[board_id].last_cmd_status = "good";
+			}
+			
+			io.emit('fresh data', boardinfo, telemetry, predictions, show);
+		});
+
+		// ERROR
+		client.on('error', function(err) {
+			console.log(board_id + ': error: ' + err.message);
+			log_command_event("error", board_id, message, err.message, thiscmdnum);
+        	predictions[board_id].last_cmd_status = "error";
+        	client.destroy();
+		});
+	}
+};
+
+
+// generic function to send formatted command
+var send_command = function(boardID, cmdID, chans) {
+	var nowstr = Date.now().toString();
+	writeToClient(boardID, '.'+cmdID+'.'+chans+'.'+nowstr.substring(0,nowstr.length-3));
+};
+
+
+// helper function for sending "low-rate" command
+var send_lowrate_command = function(boardID) {
+	predictions[boardID].last_cmd = "low-rate sync";
+	send_command(boardID, '2', '00');
+};
+
+// helper function for sending "high-rate" command
+var send_highrate_command = function(boardID) {
+	predictions[boardID].last_cmd = "high-rate sync";
+	send_command(boardID, '3', '00');
+};
+
+// helper function for sending "reset" command
+var send_reset_command = function(boardID) {
+	predictions[boardID].last_cmd = "reset";
+	send_command(boardID, '5', '00');
+};
+
+// helper function for sending "ping" command
+var send_ping_command = function(boardID) {
+	predictions[boardID].last_cmd = "ping";
+	send_command(boardID, '6', '00');
+};
+
+// helper function for sending "arm" command
+var send_arm_command = function(boardID) {
+	predictions[boardID].last_cmd = "arm";
+	predictions[boardID].swarm = 1;
+	send_command(boardID, '0', '00');
+};
+
+// helper function for sending "disarm" command
+var send_disarm_command = function(boardID) {
+	predictions[boardID].last_cmd = "disarm";
+	predictions[boardID].swarm = 0;
+	send_command(boardID, '1', '00');
+};
+
+// helper function for sending "identify" command
+var send_identify_command = function(boardID) {
+	predictions[boardID].last_cmd = "identify";
+	send_command(boardID, '4', '00');
+};
+
+// helper function for sending "fire" command
+var send_fire_command = function(boardID, chans) {
+	predictions[boardID].last_cmd = "fire."+chans;
+
+	// set channel trycount predictions
+	var chans_int = parseInt(chans, 16);
+	for (var i = 0; i < 8; i++) {
+		var bit = 1 << i;
+		if (bit & chans_int) {
+			predictions[boardID].trycount[i] = parseInt(predictions[boardID].trycount[i]) + 1;
+			if (predictions[boardID].swarm == 1) {
+				predictions[boardID].firecount[i] = parseInt(predictions[boardID].firecount[i]) + 1;
+				predictions[boardID].res[i] = "open";
+			}
+		}
+	}
+
+	send_command(boardID, '9', chans);
+};
+
+// helper function for firing by chan string
+var fire_by_string = function(boardID, chan_str) {
+	
+	var chan_bits = 0;
+
+	for (var i = 0; i < chan_str.length; i++) {
+		var chan_int = parseInt(chan_str.charAt(i));
+		var chan_bit = 1 << chan_int;
+		chan_bits |= chan_bit;
+	}
+
+	var chan_hex = chan_bits.toString(16).padStart(2,'0');
+
+	send_fire_command(boardID, chan_hex);
+};
+
+// helper function for firing by group ID
+var fire_by_group = function(groupID) {
+	// TODO determine boards and chans
+
+	// FIXME
 	for(board_id in show.boards) {
 		var chch = "";
 		for(channel in show.boards[board_id].channels) {
@@ -590,13 +614,100 @@ app.post('/firegroup', function(req, res) {
 		}
 		if (chch != "") {
 			// log manual group fire board channels
-			log_man_group_fire_board_event(group_id, board_id, chch);
-        	writeToClient(board_id, 'fire'+chch);
+			log_fire_board_event(group_id, board_id, chch);
+        	fire_by_string(board_id, chch);
 		}
     }
-    res.end();
+};
+
+
+// POST for requesting "reset" command
+app.post('/reset', function(req, res) {
+	var board_id = req.query.id;
+	res.end();
+	log_man_board_event("man_reset", board_id);
+	send_reset_command(board_id);
 });
 
+
+// POST for requesting "ping" command
+app.post('/ping', function(req, res) {
+	var board_id = req.query.id;
+	res.end();
+	log_man_board_event("man_ping", board_id);
+	send_ping_command(board_id);
+});
+
+
+// POST for requesting "arm" command
+app.post('/arm', function(req, res) {
+	var board_id = req.query.id;
+	res.end();
+	log_man_board_event("man_arm", board_id);
+	send_arm_command(board_id);
+});
+
+
+// POST for requesting "arm" command to ALL boards
+app.post('/armall', function(req, res) {
+	res.end();
+	log_generic_event("manual_arm_all");
+    for(board in boardinfo) {
+		log_man_board_event("man_arm", board);
+		send_arm_command(board_id);
+    }
+});
+
+
+// POST for requesting "disarm" command
+app.post('/disarm', function(req, res) {
+	var board_id = req.query.id;
+	res.end();
+	log_man_board_event("man_disarm", board_id);
+	send_disarm_command(board_id);
+});
+
+
+// POST for requesting "disarm" command to ALL boards
+app.post('/disarmall', function(req, res) {
+	res.end();
+	log_generic_event("manual_disarm_all");
+    for(board in boardinfo) {
+		log_man_board_event("man_disarm", board);
+        send_disarm_command(board_id);
+    }
+});
+
+
+// POST for requesting "identify" command
+app.post('/identify', function(req, res) {
+	var board_id = req.query.id;
+	res.end();
+	log_man_board_event("man_identify", board_id);
+	send_identify_command(board_id);
+});
+
+
+// POST for requesting manual "fire" command
+app.post('/fire', function(req, res) {
+	var board_id = req.query.id;
+	var channels = req.query.channels;
+	res.end();
+	log_man_fire_event("man_fire", board_id, channels);
+	fire_by_string(board_id, channels);
+});
+
+
+// POST for requesting "fire" command for all boards/channels in group
+app.post('/firegroup', function(req, res) {
+    var group_id = req.query.groupid;
+    res.end();
+	log_man_fire_group_event(group_id);
+	fire_by_group(group_id);
+});
+
+
+// POST for jumping show clock to group time
 app.post('/jumptogroup', function(req, res) {
 	var group_time = req.query.grouptime;
 	show_clock = parseFloat(group_time)-0.1;
@@ -607,6 +718,7 @@ app.post('/jumptogroup', function(req, res) {
 	log_clock_event("jump");
 	res.end();
 });
+
 
 app.get('/config', function(req, res) {
 	res.render('config',
@@ -676,6 +788,7 @@ MongoClient.connect(mongoURL, function(err, client) {
 	http.listen(8080, function(){
 	//http.listen(8080, '192.168.0.199', function(){
 		console.log("Listening on *:8080");
+		log_generic_event("server start");
 	});
 
 	//client.close();
