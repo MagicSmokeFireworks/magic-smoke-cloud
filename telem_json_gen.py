@@ -14,6 +14,10 @@ show['boards'] = {}
 for board_sname in boardinfo:
     telemetry[board_sname] = {}
     telemetry[board_sname]['firmver'] = 'no data'
+    telemetry[board_sname]['bootcount'] = 'no data'
+    telemetry[board_sname]['pid'] = 'no data'
+    telemetry[board_sname]['micros'] = 'no data'
+    telemetry[board_sname]['ptime'] = 'no data'
     telemetry[board_sname]['ip'] = ''
     telemetry[board_sname]['connection'] = 'never'
     telemetry[board_sname]['swarm'] = 'no data'
@@ -21,6 +25,7 @@ for board_sname in boardinfo:
     telemetry[board_sname]['rssi'] = 'no data'
     telemetry[board_sname]['cmdcount'] = 'no data'
     telemetry[board_sname]['firecount'] = ['no data']*8
+    telemetry[board_sname]['lastfiretime'] = ['no data']*8
     telemetry[board_sname]['res'] = ['no data']*8
 
     predictions[board_sname] = {}
@@ -43,6 +48,6 @@ with open('telemetry.json', 'w') as telemetry_json:
 with open('predictions.json', 'w') as predictions_json:
     json.dump(predictions, predictions_json, indent=4)
 
-with open('show.json', 'w') as show_json:
+with open('emptyshow.json', 'w') as show_json:
     json.dump(show, show_json, indent=4)
 

@@ -1,1482 +1,1482 @@
 {
-    "su": {
-        "firecount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ], 
-        "cmdrequests": "0", 
-        "cmdresponses": "0", 
-        "last_cmd": "", 
-        "swarm": "0", 
-        "last_cmd_status": "", 
-        "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
-        ], 
-        "trycount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ]
-    }, 
-    "siso": {
-        "firecount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ], 
-        "cmdrequests": "0", 
-        "cmdresponses": "0", 
-        "last_cmd": "", 
-        "swarm": "0", 
-        "last_cmd_status": "", 
-        "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
-        ], 
-        "trycount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ]
-    }, 
-    "dc": {
-        "firecount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ], 
-        "cmdrequests": "0", 
-        "cmdresponses": "0", 
-        "last_cmd": "", 
-        "swarm": "0", 
-        "last_cmd_status": "", 
-        "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
-        ], 
-        "trycount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ]
-    }, 
-    "tpp": {
-        "firecount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ], 
-        "cmdrequests": "0", 
-        "cmdresponses": "0", 
-        "last_cmd": "", 
-        "swarm": "0", 
-        "last_cmd_status": "", 
-        "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
-        ], 
-        "trycount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ]
-    }, 
-    "lb": {
-        "firecount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ], 
-        "cmdrequests": "0", 
-        "cmdresponses": "0", 
-        "last_cmd": "", 
-        "swarm": "0", 
-        "last_cmd_status": "", 
-        "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
-        ], 
-        "trycount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ]
-    }, 
-    "cm": {
-        "firecount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ], 
-        "cmdrequests": "0", 
-        "cmdresponses": "0", 
-        "last_cmd": "", 
-        "swarm": "0", 
-        "last_cmd_status": "", 
-        "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
-        ], 
-        "trycount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ]
-    }, 
     "af": {
-        "firecount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ], 
-        "cmdrequests": "0", 
-        "cmdresponses": "0", 
-        "last_cmd": "", 
-        "swarm": "0", 
-        "last_cmd_status": "", 
-        "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
-        ], 
+        "swarm": "0",
+        "last_cmd": "",
+        "last_cmd_status": "",
+        "cmdrequests": "0",
+        "cmdresponses": "0",
         "trycount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
             "0"
-        ]
-    }, 
-    "tts": {
+        ],
         "firecount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
             "0"
-        ], 
-        "cmdrequests": "0", 
-        "cmdresponses": "0", 
-        "last_cmd": "", 
-        "swarm": "0", 
-        "last_cmd_status": "", 
+        ],
         "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
             "none"
-        ], 
-        "trycount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
         ]
-    }, 
-    "cb": {
-        "firecount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ], 
-        "cmdrequests": "0", 
-        "cmdresponses": "0", 
-        "last_cmd": "", 
-        "swarm": "0", 
-        "last_cmd_status": "", 
-        "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
-        ], 
-        "trycount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ]
-    }, 
-    "pos": {
-        "firecount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ], 
-        "cmdrequests": "0", 
-        "cmdresponses": "0", 
-        "last_cmd": "", 
-        "swarm": "0", 
-        "last_cmd_status": "", 
-        "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
-        ], 
-        "trycount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ]
-    }, 
-    "pop": {
-        "firecount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ], 
-        "cmdrequests": "0", 
-        "cmdresponses": "0", 
-        "last_cmd": "", 
-        "swarm": "0", 
-        "last_cmd_status": "", 
-        "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
-        ], 
-        "trycount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ]
-    }, 
-    "cd": {
-        "firecount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ], 
-        "cmdrequests": "0", 
-        "cmdresponses": "0", 
-        "last_cmd": "", 
-        "swarm": "0", 
-        "last_cmd_status": "", 
-        "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
-        ], 
-        "trycount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ]
-    }, 
-    "sos": {
-        "firecount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ], 
-        "cmdrequests": "0", 
-        "cmdresponses": "0", 
-        "last_cmd": "", 
-        "swarm": "0", 
-        "last_cmd_status": "", 
-        "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
-        ], 
-        "trycount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ]
-    }, 
-    "gc": {
-        "firecount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ], 
-        "cmdrequests": "0", 
-        "cmdresponses": "0", 
-        "last_cmd": "", 
-        "swarm": "0", 
-        "last_cmd_status": "", 
-        "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
-        ], 
-        "trycount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ]
-    }, 
-    "dbp": {
-        "firecount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ], 
-        "cmdrequests": "0", 
-        "cmdresponses": "0", 
-        "last_cmd": "", 
-        "swarm": "0", 
-        "last_cmd_status": "", 
-        "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
-        ], 
-        "trycount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ]
-    }, 
-    "spa": {
-        "firecount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ], 
-        "cmdrequests": "0", 
-        "cmdresponses": "0", 
-        "last_cmd": "", 
-        "swarm": "0", 
-        "last_cmd_status": "", 
-        "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
-        ], 
-        "trycount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ]
-    }, 
-    "ntb": {
-        "firecount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ], 
-        "cmdrequests": "0", 
-        "cmdresponses": "0", 
-        "last_cmd": "", 
-        "swarm": "0", 
-        "last_cmd_status": "", 
-        "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
-        ], 
-        "trycount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ]
-    }, 
-    "dlj": {
-        "firecount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ], 
-        "cmdrequests": "0", 
-        "cmdresponses": "0", 
-        "last_cmd": "", 
-        "swarm": "0", 
-        "last_cmd_status": "", 
-        "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
-        ], 
-        "trycount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ]
-    }, 
-    "ll": {
-        "firecount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ], 
-        "cmdrequests": "0", 
-        "cmdresponses": "0", 
-        "last_cmd": "", 
-        "swarm": "0", 
-        "last_cmd_status": "", 
-        "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
-        ], 
-        "trycount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ]
-    }, 
-    "rd": {
-        "firecount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ], 
-        "cmdrequests": "0", 
-        "cmdresponses": "0", 
-        "last_cmd": "", 
-        "swarm": "0", 
-        "last_cmd_status": "", 
-        "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
-        ], 
-        "trycount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ]
-    }, 
-    "rf": {
-        "firecount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ], 
-        "cmdrequests": "0", 
-        "cmdresponses": "0", 
-        "last_cmd": "", 
-        "swarm": "0", 
-        "last_cmd_status": "", 
-        "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
-        ], 
-        "trycount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ]
-    }, 
-    "tmc": {
-        "firecount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ], 
-        "cmdrequests": "0", 
-        "cmdresponses": "0", 
-        "last_cmd": "", 
-        "swarm": "0", 
-        "last_cmd_status": "", 
-        "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
-        ], 
-        "trycount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ]
-    }, 
-    "pf": {
-        "firecount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ], 
-        "cmdrequests": "0", 
-        "cmdresponses": "0", 
-        "last_cmd": "", 
-        "swarm": "0", 
-        "last_cmd_status": "", 
-        "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
-        ], 
-        "trycount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ]
-    }, 
-    "ics": {
-        "firecount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ], 
-        "cmdrequests": "0", 
-        "cmdresponses": "0", 
-        "last_cmd": "", 
-        "swarm": "0", 
-        "last_cmd_status": "", 
-        "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
-        ], 
-        "trycount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ]
-    }, 
-    "ta": {
-        "firecount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ], 
-        "cmdrequests": "0", 
-        "cmdresponses": "0", 
-        "last_cmd": "", 
-        "swarm": "0", 
-        "last_cmd_status": "", 
-        "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
-        ], 
-        "trycount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ]
-    }, 
-    "fs": {
-        "firecount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ], 
-        "cmdrequests": "0", 
-        "cmdresponses": "0", 
-        "last_cmd": "", 
-        "swarm": "0", 
-        "last_cmd_status": "", 
-        "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
-        ], 
-        "trycount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ]
-    }, 
+    },
     "ba": {
-        "firecount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ], 
-        "cmdrequests": "0", 
-        "cmdresponses": "0", 
-        "last_cmd": "", 
-        "swarm": "0", 
-        "last_cmd_status": "", 
-        "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
-        ], 
+        "swarm": "0",
+        "last_cmd": "",
+        "last_cmd_status": "",
+        "cmdrequests": "0",
+        "cmdresponses": "0",
         "trycount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
             "0"
-        ]
-    }, 
-    "ooc": {
+        ],
         "firecount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
             "0"
-        ], 
-        "cmdrequests": "0", 
-        "cmdresponses": "0", 
-        "last_cmd": "", 
-        "swarm": "0", 
-        "last_cmd_status": "", 
+        ],
         "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
             "none"
-        ], 
-        "trycount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
         ]
-    }, 
-    "mor": {
+    },
+    "cb": {
+        "swarm": "0",
+        "last_cmd": "",
+        "last_cmd_status": "",
+        "cmdrequests": "0",
+        "cmdresponses": "0",
+        "trycount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
         "firecount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
             "0"
-        ], 
-        "cmdrequests": "0", 
-        "cmdresponses": "0", 
-        "last_cmd": "", 
-        "swarm": "0", 
-        "last_cmd_status": "", 
+        ],
         "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
             "none"
-        ], 
-        "trycount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
         ]
-    }, 
-    "jh": {
+    },
+    "cd": {
+        "swarm": "0",
+        "last_cmd": "",
+        "last_cmd_status": "",
+        "cmdrequests": "0",
+        "cmdresponses": "0",
+        "trycount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
         "firecount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
             "0"
-        ], 
-        "cmdrequests": "0", 
-        "cmdresponses": "0", 
-        "last_cmd": "", 
-        "swarm": "0", 
-        "last_cmd_status": "", 
+        ],
         "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
             "none"
-        ], 
-        "trycount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
         ]
-    }, 
-    "sgv": {
+    },
+    "cm": {
+        "swarm": "0",
+        "last_cmd": "",
+        "last_cmd_status": "",
+        "cmdrequests": "0",
+        "cmdresponses": "0",
+        "trycount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
         "firecount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
             "0"
-        ], 
-        "cmdrequests": "0", 
-        "cmdresponses": "0", 
-        "last_cmd": "", 
-        "swarm": "0", 
-        "last_cmd_status": "", 
+        ],
         "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
             "none"
-        ], 
-        "trycount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
         ]
-    }, 
-    "cr": {
-        "firecount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ], 
-        "cmdrequests": "0", 
-        "cmdresponses": "0", 
-        "last_cmd": "", 
-        "swarm": "0", 
-        "last_cmd_status": "", 
-        "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
-        ], 
-        "trycount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ]
-    }, 
-    "fag": {
-        "firecount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ], 
-        "cmdrequests": "0", 
-        "cmdresponses": "0", 
-        "last_cmd": "", 
-        "swarm": "0", 
-        "last_cmd_status": "", 
-        "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
-        ], 
-        "trycount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ]
-    }, 
+    },
     "cow": {
-        "firecount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ], 
-        "cmdrequests": "0", 
-        "cmdresponses": "0", 
-        "last_cmd": "", 
-        "swarm": "0", 
-        "last_cmd_status": "", 
-        "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
-        ], 
+        "swarm": "0",
+        "last_cmd": "",
+        "last_cmd_status": "",
+        "cmdrequests": "0",
+        "cmdresponses": "0",
         "trycount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
             "0"
-        ]
-    }, 
-    "mm": {
+        ],
         "firecount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
             "0"
-        ], 
-        "cmdrequests": "0", 
-        "cmdresponses": "0", 
-        "last_cmd": "", 
-        "swarm": "0", 
-        "last_cmd_status": "", 
+        ],
         "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
             "none"
-        ], 
-        "trycount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
         ]
-    }, 
-    "mt": {
+    },
+    "cr": {
+        "swarm": "0",
+        "last_cmd": "",
+        "last_cmd_status": "",
+        "cmdrequests": "0",
+        "cmdresponses": "0",
+        "trycount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
         "firecount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
             "0"
-        ], 
-        "cmdrequests": "0", 
-        "cmdresponses": "0", 
-        "last_cmd": "", 
-        "swarm": "0", 
-        "last_cmd_status": "", 
+        ],
         "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
             "none"
-        ], 
-        "trycount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
         ]
-    }, 
-    "sm": {
+    },
+    "dc": {
+        "swarm": "0",
+        "last_cmd": "",
+        "last_cmd_status": "",
+        "cmdrequests": "0",
+        "cmdresponses": "0",
+        "trycount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
         "firecount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
             "0"
-        ], 
-        "cmdrequests": "0", 
-        "cmdresponses": "0", 
-        "last_cmd": "", 
-        "swarm": "0", 
-        "last_cmd_status": "", 
+        ],
         "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
             "none"
-        ], 
-        "trycount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
         ]
-    }, 
-    "ws": {
+    },
+    "dbp": {
+        "swarm": "0",
+        "last_cmd": "",
+        "last_cmd_status": "",
+        "cmdrequests": "0",
+        "cmdresponses": "0",
+        "trycount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
         "firecount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
             "0"
-        ], 
-        "cmdrequests": "0", 
-        "cmdresponses": "0", 
-        "last_cmd": "", 
-        "swarm": "0", 
-        "last_cmd_status": "", 
+        ],
         "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
             "none"
-        ], 
-        "trycount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
         ]
-    }, 
-    "pitd": {
+    },
+    "dlj": {
+        "swarm": "0",
+        "last_cmd": "",
+        "last_cmd_status": "",
+        "cmdrequests": "0",
+        "cmdresponses": "0",
+        "trycount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
         "firecount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
             "0"
-        ], 
-        "cmdrequests": "0", 
-        "cmdresponses": "0", 
-        "last_cmd": "", 
-        "swarm": "0", 
-        "last_cmd_status": "", 
+        ],
         "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
             "none"
-        ], 
-        "trycount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
         ]
-    }, 
+    },
     "dot": {
-        "firecount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0"
-        ], 
-        "cmdrequests": "0", 
-        "cmdresponses": "0", 
-        "last_cmd": "", 
-        "swarm": "0", 
-        "last_cmd_status": "", 
-        "res": [
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none", 
-            "none"
-        ], 
+        "swarm": "0",
+        "last_cmd": "",
+        "last_cmd_status": "",
+        "cmdrequests": "0",
+        "cmdresponses": "0",
         "trycount": [
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
-            "0", 
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
             "0"
+        ],
+        "firecount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "res": [
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none"
+        ]
+    },
+    "fag": {
+        "swarm": "0",
+        "last_cmd": "",
+        "last_cmd_status": "",
+        "cmdrequests": "0",
+        "cmdresponses": "0",
+        "trycount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "firecount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "res": [
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none"
+        ]
+    },
+    "fs": {
+        "swarm": "0",
+        "last_cmd": "",
+        "last_cmd_status": "",
+        "cmdrequests": "0",
+        "cmdresponses": "0",
+        "trycount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "firecount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "res": [
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none"
+        ]
+    },
+    "gc": {
+        "swarm": "0",
+        "last_cmd": "",
+        "last_cmd_status": "",
+        "cmdrequests": "0",
+        "cmdresponses": "0",
+        "trycount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "firecount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "res": [
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none"
+        ]
+    },
+    "ics": {
+        "swarm": "0",
+        "last_cmd": "",
+        "last_cmd_status": "",
+        "cmdrequests": "0",
+        "cmdresponses": "0",
+        "trycount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "firecount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "res": [
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none"
+        ]
+    },
+    "jh": {
+        "swarm": "0",
+        "last_cmd": "",
+        "last_cmd_status": "",
+        "cmdrequests": "0",
+        "cmdresponses": "0",
+        "trycount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "firecount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "res": [
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none"
+        ]
+    },
+    "lb": {
+        "swarm": "0",
+        "last_cmd": "",
+        "last_cmd_status": "",
+        "cmdrequests": "0",
+        "cmdresponses": "0",
+        "trycount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "firecount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "res": [
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none"
+        ]
+    },
+    "ll": {
+        "swarm": "0",
+        "last_cmd": "",
+        "last_cmd_status": "",
+        "cmdrequests": "0",
+        "cmdresponses": "0",
+        "trycount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "firecount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "res": [
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none"
+        ]
+    },
+    "mm": {
+        "swarm": "0",
+        "last_cmd": "",
+        "last_cmd_status": "",
+        "cmdrequests": "0",
+        "cmdresponses": "0",
+        "trycount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "firecount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "res": [
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none"
+        ]
+    },
+    "mor": {
+        "swarm": "0",
+        "last_cmd": "",
+        "last_cmd_status": "",
+        "cmdrequests": "0",
+        "cmdresponses": "0",
+        "trycount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "firecount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "res": [
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none"
+        ]
+    },
+    "mt": {
+        "swarm": "0",
+        "last_cmd": "",
+        "last_cmd_status": "",
+        "cmdrequests": "0",
+        "cmdresponses": "0",
+        "trycount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "firecount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "res": [
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none"
+        ]
+    },
+    "ntb": {
+        "swarm": "0",
+        "last_cmd": "",
+        "last_cmd_status": "",
+        "cmdrequests": "0",
+        "cmdresponses": "0",
+        "trycount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "firecount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "res": [
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none"
+        ]
+    },
+    "ooc": {
+        "swarm": "0",
+        "last_cmd": "",
+        "last_cmd_status": "",
+        "cmdrequests": "0",
+        "cmdresponses": "0",
+        "trycount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "firecount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "res": [
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none"
+        ]
+    },
+    "pf": {
+        "swarm": "0",
+        "last_cmd": "",
+        "last_cmd_status": "",
+        "cmdrequests": "0",
+        "cmdresponses": "0",
+        "trycount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "firecount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "res": [
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none"
+        ]
+    },
+    "pitd": {
+        "swarm": "0",
+        "last_cmd": "",
+        "last_cmd_status": "",
+        "cmdrequests": "0",
+        "cmdresponses": "0",
+        "trycount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "firecount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "res": [
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none"
+        ]
+    },
+    "pop": {
+        "swarm": "0",
+        "last_cmd": "",
+        "last_cmd_status": "",
+        "cmdrequests": "0",
+        "cmdresponses": "0",
+        "trycount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "firecount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "res": [
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none"
+        ]
+    },
+    "pos": {
+        "swarm": "0",
+        "last_cmd": "",
+        "last_cmd_status": "",
+        "cmdrequests": "0",
+        "cmdresponses": "0",
+        "trycount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "firecount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "res": [
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none"
+        ]
+    },
+    "rd": {
+        "swarm": "0",
+        "last_cmd": "",
+        "last_cmd_status": "",
+        "cmdrequests": "0",
+        "cmdresponses": "0",
+        "trycount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "firecount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "res": [
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none"
+        ]
+    },
+    "rf": {
+        "swarm": "0",
+        "last_cmd": "",
+        "last_cmd_status": "",
+        "cmdrequests": "0",
+        "cmdresponses": "0",
+        "trycount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "firecount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "res": [
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none"
+        ]
+    },
+    "sgv": {
+        "swarm": "0",
+        "last_cmd": "",
+        "last_cmd_status": "",
+        "cmdrequests": "0",
+        "cmdresponses": "0",
+        "trycount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "firecount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "res": [
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none"
+        ]
+    },
+    "siso": {
+        "swarm": "0",
+        "last_cmd": "",
+        "last_cmd_status": "",
+        "cmdrequests": "0",
+        "cmdresponses": "0",
+        "trycount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "firecount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "res": [
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none"
+        ]
+    },
+    "sm": {
+        "swarm": "0",
+        "last_cmd": "",
+        "last_cmd_status": "",
+        "cmdrequests": "0",
+        "cmdresponses": "0",
+        "trycount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "firecount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "res": [
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none"
+        ]
+    },
+    "sos": {
+        "swarm": "0",
+        "last_cmd": "",
+        "last_cmd_status": "",
+        "cmdrequests": "0",
+        "cmdresponses": "0",
+        "trycount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "firecount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "res": [
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none"
+        ]
+    },
+    "spa": {
+        "swarm": "0",
+        "last_cmd": "",
+        "last_cmd_status": "",
+        "cmdrequests": "0",
+        "cmdresponses": "0",
+        "trycount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "firecount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "res": [
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none"
+        ]
+    },
+    "su": {
+        "swarm": "0",
+        "last_cmd": "",
+        "last_cmd_status": "",
+        "cmdrequests": "0",
+        "cmdresponses": "0",
+        "trycount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "firecount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "res": [
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none"
+        ]
+    },
+    "ta": {
+        "swarm": "0",
+        "last_cmd": "",
+        "last_cmd_status": "",
+        "cmdrequests": "0",
+        "cmdresponses": "0",
+        "trycount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "firecount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "res": [
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none"
+        ]
+    },
+    "tmc": {
+        "swarm": "0",
+        "last_cmd": "",
+        "last_cmd_status": "",
+        "cmdrequests": "0",
+        "cmdresponses": "0",
+        "trycount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "firecount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "res": [
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none"
+        ]
+    },
+    "tpp": {
+        "swarm": "0",
+        "last_cmd": "",
+        "last_cmd_status": "",
+        "cmdrequests": "0",
+        "cmdresponses": "0",
+        "trycount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "firecount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "res": [
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none"
+        ]
+    },
+    "tts": {
+        "swarm": "0",
+        "last_cmd": "",
+        "last_cmd_status": "",
+        "cmdrequests": "0",
+        "cmdresponses": "0",
+        "trycount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "firecount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "res": [
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none"
+        ]
+    },
+    "ws": {
+        "swarm": "0",
+        "last_cmd": "",
+        "last_cmd_status": "",
+        "cmdrequests": "0",
+        "cmdresponses": "0",
+        "trycount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "firecount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "res": [
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none"
         ]
     }
 }
