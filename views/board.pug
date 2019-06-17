@@ -39,6 +39,8 @@ html
                         button(class="button" onclick="clickIdentify(\""+boardid+"\")") Identify
                         button(class="button" onclick="clickArm(\""+boardid+"\")") Arm
                         button(class="button" onclick="clickDisarm(\""+boardid+"\")") Disarm
+                        button(class="button" onclick="clickPing(\""+boardid+"\")") Ping
+                        button(class="button" onclick="clickReset(\""+boardid+"\")") Reset
                     table
                         thead
                             tr
@@ -96,6 +98,7 @@ html
                                 th Resistance Predict
                                 th Fire Commands Sent
                                 th Fire Commands Received
+                                th Last Fire Time
                                 th
                         tbody
                             each i in [0,1,2,3,4,5,6,7]
@@ -114,6 +117,8 @@ html
                                         div(class="normal_status" id=boardid+"_firecount"+i+"_predict")= predictions[boardid].firecount[i]
                                     td
                                         div(class="normal_status" id=boardid+"_firecount"+i)= firecount
+                                    td
+                                        div(class="normal_status" id=boardid+"_lastfiretime"+i)= lastfiretime
                                     td
                                         button(class="buttonsmall" onclick="clickFire(\""+boardid+"\",\""+i+"\")") Fire Channel #{ i }
 

@@ -20,6 +20,20 @@ var jumpToGroup = function(group) {
 	xhttp.send();
 };
 
+var clickReset = function(id) {
+        var xhttp;
+        xhttp = new XMLHttpRequest();
+        xhttp.open("POST", "/reset?id="+id, true);
+        xhttp.send();
+};
+
+var clickPing = function(id) {
+        var xhttp;
+        xhttp = new XMLHttpRequest();
+        xhttp.open("POST", "/ping?id="+id, true);
+        xhttp.send();
+};
+
 var clickArm = function(id) {
         var xhttp;
         xhttp = new XMLHttpRequest();
