@@ -416,6 +416,22 @@ var fresh_data = function(boardinfo, telemetry, predictions, show) {
 			}
 		}
 
+		// last fire times
+		for (var i = 0; i < 8; i++) {
+			var lastfiretime = document.getElementById(board+"_lastfiretime"+i);
+			if (lastfiretime != null) {
+				var epoch = new Date(0);
+				var lft_secs = parseInt(telemetry[board]["lastfiretime"][i]);
+				if (lft_secs == 0) {
+					lastfiretime.innerHTML = "";
+				}
+				else {
+					epoch.setSeconds(lft_secs);
+					lastfiretime.innerHTML = epoch.toISOString();
+				}
+			}
+		}
+
 		// channel status
 		for (var i = 0; i < 8; i++) {
 			var channelstatus_array = get_channelstatus(board, i, telemetry, show);
