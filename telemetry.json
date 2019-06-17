@@ -1,5 +1,6 @@
 {
     "af": {
+        "rate": "low",
         "firmver": "no data",
         "bootcount": "no data",
         "pid": "no data",
@@ -43,6 +44,7 @@
         ]
     },
     "ba": {
+        "rate": "low",
         "firmver": "no data",
         "bootcount": "no data",
         "pid": "no data",
@@ -86,6 +88,7 @@
         ]
     },
     "cb": {
+        "rate": "low",
         "firmver": "no data",
         "bootcount": "no data",
         "pid": "no data",
@@ -129,6 +132,7 @@
         ]
     },
     "cd": {
+        "rate": "low",
         "firmver": "no data",
         "bootcount": "no data",
         "pid": "no data",
@@ -172,6 +176,7 @@
         ]
     },
     "cm": {
+        "rate": "low",
         "firmver": "no data",
         "bootcount": "no data",
         "pid": "no data",
@@ -215,6 +220,7 @@
         ]
     },
     "cow": {
+        "rate": "low",
         "firmver": "no data",
         "bootcount": "no data",
         "pid": "no data",
@@ -258,6 +264,7 @@
         ]
     },
     "cr": {
+        "rate": "low",
         "firmver": "no data",
         "bootcount": "no data",
         "pid": "no data",
@@ -301,6 +308,7 @@
         ]
     },
     "dc": {
+        "rate": "low",
         "firmver": "no data",
         "bootcount": "no data",
         "pid": "no data",
@@ -344,6 +352,7 @@
         ]
     },
     "dbp": {
+        "rate": "low",
         "firmver": "no data",
         "bootcount": "no data",
         "pid": "no data",
@@ -387,6 +396,7 @@
         ]
     },
     "dlj": {
+        "rate": "low",
         "firmver": "no data",
         "bootcount": "no data",
         "pid": "no data",
@@ -430,6 +440,7 @@
         ]
     },
     "dot": {
+        "rate": "low",
         "firmver": "no data",
         "bootcount": "no data",
         "pid": "no data",
@@ -473,6 +484,7 @@
         ]
     },
     "fag": {
+        "rate": "low",
         "firmver": "no data",
         "bootcount": "no data",
         "pid": "no data",
@@ -516,6 +528,7 @@
         ]
     },
     "fs": {
+        "rate": "low",
         "firmver": "no data",
         "bootcount": "no data",
         "pid": "no data",
@@ -559,6 +572,7 @@
         ]
     },
     "gc": {
+        "rate": "low",
         "firmver": "no data",
         "bootcount": "no data",
         "pid": "no data",
@@ -602,6 +616,7 @@
         ]
     },
     "ics": {
+        "rate": "low",
         "firmver": "no data",
         "bootcount": "no data",
         "pid": "no data",
@@ -645,6 +660,7 @@
         ]
     },
     "jh": {
+        "rate": "low",
         "firmver": "no data",
         "bootcount": "no data",
         "pid": "no data",
@@ -688,6 +704,7 @@
         ]
     },
     "lb": {
+        "rate": "low",
         "firmver": "no data",
         "bootcount": "no data",
         "pid": "no data",
@@ -731,6 +748,7 @@
         ]
     },
     "ll": {
+        "rate": "low",
         "firmver": "no data",
         "bootcount": "no data",
         "pid": "no data",
@@ -774,6 +792,7 @@
         ]
     },
     "mm": {
+        "rate": "low",
         "firmver": "no data",
         "bootcount": "no data",
         "pid": "no data",
@@ -817,6 +836,7 @@
         ]
     },
     "mor": {
+        "rate": "low",
         "firmver": "no data",
         "bootcount": "no data",
         "pid": "no data",
@@ -860,6 +880,7 @@
         ]
     },
     "mt": {
+        "rate": "low",
         "firmver": "no data",
         "bootcount": "no data",
         "pid": "no data",
@@ -903,6 +924,7 @@
         ]
     },
     "ntb": {
+        "rate": "low",
         "firmver": "no data",
         "bootcount": "no data",
         "pid": "no data",
@@ -946,6 +968,7 @@
         ]
     },
     "ooc": {
+        "rate": "low",
         "firmver": "no data",
         "bootcount": "no data",
         "pid": "no data",
@@ -989,6 +1012,7 @@
         ]
     },
     "pf": {
+        "rate": "low",
         "firmver": "no data",
         "bootcount": "no data",
         "pid": "no data",
@@ -1032,6 +1056,7 @@
         ]
     },
     "pitd": {
+        "rate": "low",
         "firmver": "no data",
         "bootcount": "no data",
         "pid": "no data",
@@ -1075,6 +1100,7 @@
         ]
     },
     "pop": {
+        "rate": "low",
         "firmver": "no data",
         "bootcount": "no data",
         "pid": "no data",
@@ -1118,6 +1144,7 @@
         ]
     },
     "pos": {
+        "rate": "low",
         "firmver": "no data",
         "bootcount": "no data",
         "pid": "no data",
@@ -1161,6 +1188,7 @@
         ]
     },
     "rd": {
+        "rate": "low",
         "firmver": "no data",
         "bootcount": "no data",
         "pid": "no data",
@@ -1204,6 +1232,7 @@
         ]
     },
     "rf": {
+        "rate": "low",
         "firmver": "no data",
         "bootcount": "no data",
         "pid": "no data",
@@ -1247,6 +1276,7 @@
         ]
     },
     "sgv": {
+        "rate": "low",
         "firmver": "no data",
         "bootcount": "no data",
         "pid": "no data",
@@ -1290,6 +1320,7 @@
         ]
     },
     "siso": {
+        "rate": "low",
         "firmver": "no data",
         "bootcount": "no data",
         "pid": "no data",
@@ -1333,6 +1364,7 @@
         ]
     },
     "sm": {
+        "rate": "low",
         "firmver": "no data",
         "bootcount": "no data",
         "pid": "no data",
@@ -1376,6 +1408,7 @@
         ]
     },
     "sos": {
+        "rate": "low",
         "firmver": "no data",
         "bootcount": "no data",
         "pid": "no data",
@@ -1419,6 +1452,7 @@
         ]
     },
     "spa": {
+        "rate": "low",
         "firmver": "no data",
         "bootcount": "no data",
         "pid": "no data",
@@ -1462,6 +1496,7 @@
         ]
     },
     "su": {
+        "rate": "low",
         "firmver": "no data",
         "bootcount": "no data",
         "pid": "no data",
@@ -1505,6 +1540,7 @@
         ]
     },
     "ta": {
+        "rate": "low",
         "firmver": "no data",
         "bootcount": "no data",
         "pid": "no data",
@@ -1548,6 +1584,7 @@
         ]
     },
     "tmc": {
+        "rate": "low",
         "firmver": "no data",
         "bootcount": "no data",
         "pid": "no data",
@@ -1591,6 +1628,7 @@
         ]
     },
     "tpp": {
+        "rate": "low",
         "firmver": "no data",
         "bootcount": "no data",
         "pid": "no data",
@@ -1634,6 +1672,7 @@
         ]
     },
     "tts": {
+        "rate": "low",
         "firmver": "no data",
         "bootcount": "no data",
         "pid": "no data",
@@ -1677,6 +1716,7 @@
         ]
     },
     "ws": {
+        "rate": "low",
         "firmver": "no data",
         "bootcount": "no data",
         "pid": "no data",

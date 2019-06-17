@@ -13,6 +13,7 @@ show['boards'] = {}
 
 for board_sname in boardinfo:
     telemetry[board_sname] = {}
+    telemetry[board_sname]['rate'] = 'low'
     telemetry[board_sname]['firmver'] = 'no data'
     telemetry[board_sname]['bootcount'] = 'no data'
     telemetry[board_sname]['pid'] = 'no data'

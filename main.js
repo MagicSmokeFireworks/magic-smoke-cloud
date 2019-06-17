@@ -146,25 +146,76 @@ var timeoutInterval = setInterval(function() {
 }, 500);
 
 
-var syncIndex = 0;
-var syncInterval = function() {
+var syncIndexLow = 0;
+var syncIntervalLow = function() {
 
 	boards = Object.keys(boardinfo);
-	board = boards[syncIndex];
+	board = boards[syncIndexLow];
     
-	syncIndex++;
-	if (syncIndex >= boards.length) {
-		syncIndex = 0;
+	syncIndexLow++;
+	if (syncIndexLow >= boards.length) {
+		syncIndexLow = 0;
 	}
 
 	if (telemetry[board].ip === '') {
-		setTimeout(syncInterval, 5);
+		setTimeout(syncIntervalLow, 5);
+	}
+	else if (telemetry[board].rate != "low") {
+		setTimeout(syncIntervalLow, 5);
 	}
 	else {
 		send_lowrate_command(board);
 		log_board_event('low', board);
-		//setTimeout(syncInterval, 100);
-		setTimeout(syncInterval, 5000); // FIXME
+		setTimeout(syncIntervalLow, 500);
+	}
+};
+
+
+var syncIndexHigh = 0;
+var syncIntervalHigh = function() {
+
+	boards = Object.keys(boardinfo);
+	board = boards[syncIndexHigh];
+    
+	syncIndexHigh++;
+	if (syncIndexHigh >= boards.length) {
+		syncIndexHigh = 0;
+	}
+
+	if (telemetry[board].ip === '') {
+		setTimeout(syncIntervalHigh, 5);
+	}
+	else if (telemetry[board].rate == "low") {
+		setTimeout(syncIntervalHigh, 5);
+	}
+	else {
+		send_highrate_command(board);
+		log_board_event('high', board);
+		setTimeout(syncIntervalHigh, 100);
+	}
+};
+
+
+var set_high_rate = function(idx) {
+	// set boards in the next 3 groups (if exist) to high-rate status
+	for (var i = idx; i < idx+3; i++) {
+		if (i < show.groups.length) {
+			for (board_id in show.boards) {
+				for (channel in show.boards[board_id].channels) {
+					if (show.boards[board_id].channels[channel].group == show.groups[i].id) {
+						telemetry[board_id].rate = "next_high";
+					}
+				}
+			}
+		}
+	}
+
+	for (board_id in show.boards) {
+		if (telemetry[board_id].rate == "next_high") {
+			telemetry[board_id].rate = "high";
+		} else {
+			telemetry[board_id].rate = "low";
+		}
 	}
 };
 
@@ -189,6 +240,7 @@ var showClock = function() {
 				// log show firing this group
 				log_show_fire_group_event(group_time, group_id);
 				fire_by_group(group_id);
+				set_high_rate(i);
 			}
 		}
 	}
@@ -204,6 +256,7 @@ app.post('/startclock', function(req, res) {
 	console.log('starting clock');
 	io.emit('start clock', show_clock.toFixed(1));
 	log_clock_event("start");
+	set_high_rate(0);
 });
 
 app.post('/stopclock', function(req, res) {
@@ -470,15 +523,30 @@ var writeToClient = function(board_id, message) {
 		client.on('timeout', function() {
 			console.log(board_id + ': timeout');
 			log_command_event("timeout", board_id, message, "timeout", thiscmdnum);
+			predictions[board_id].last_cmd_status = "timeout";
 			client.destroy();
 		});
 	
 		// DATA from board
 		client.on('data', function(data) {
-			// TODO look in data for ontime/late, valid/invalid
+			var data_str = data.toString().trim();
+			if (data_str.startsWith(message)) {
+				if (data_str.endsWith(".1.1")) {
+					predictions[board_id].last_cmd_status = "ontime and valid";
+				}
+				else if (data_str.endsWith(".0.0")) {
+					predictions[board_id].last_cmd_status = "late";
+				}
+				else if (data_str.endsWith(".1.0")) {
+					predictions[board_id].last_cmd_status = "invalid";
+				}
+				else {
+					predictions[board_id].last_cmd_status = "data error";
+				}
+			}
+			
 			timeouts[board_id] = 0;
-			log_command_event("data", board_id, message, data.toString(), thiscmdnum);
-			predictions[board_id].last_cmd_status = "data";
+			log_command_event("data", board_id, message, data_str, thiscmdnum);
 			client.end();
 		});
 
@@ -486,12 +554,12 @@ var writeToClient = function(board_id, message) {
 		client.on('close', function() {
 			log_command_event("disconnected", board_id, message, "", thiscmdnum);
 
-			if (predictions[board_id].last_cmd_status == "conn") {
-        		predictions[board_id].last_cmd_status = "error"; 
-			}
-			else {
+			if (predictions[board_id].last_cmd_status == "ontime and valid") {
 				predictions[board_id].cmdresponses = parseInt(predictions[board_id].cmdresponses) + 1;
 				predictions[board_id].last_cmd_status = "good";
+			}
+			else if (predictions[board_id].last_cmd_status == "conn") {
+				predictions[board_id].last_cmd_status = "error";
 			}
 			
 			io.emit('fresh data', boardinfo, telemetry, predictions, show);
@@ -646,7 +714,7 @@ app.post('/armall', function(req, res) {
 	log_generic_event("manual_arm_all");
     for(board in boardinfo) {
 		log_man_board_event("man_arm", board);
-		send_arm_command(board_id);
+		send_arm_command(board);
     }
 });
 
@@ -666,7 +734,7 @@ app.post('/disarmall', function(req, res) {
 	log_generic_event("manual_disarm_all");
     for(board in boardinfo) {
 		log_man_board_event("man_disarm", board);
-        send_disarm_command(board_id);
+        send_disarm_command(board);
     }
 });
 
@@ -775,7 +843,8 @@ MongoClient.connect(mongoURL, function(err, client) {
 	db = client.db(dbName);
 	eventlog = db.collection('eventlog');
 
-	setTimeout(syncInterval, 200);
+	setTimeout(syncIntervalLow, 500);
+	setTimeout(syncIntervalHigh, 100);
 
 	http.listen(8080, function(){
 	//http.listen(8080, '192.168.0.199', function(){
@@ -785,5 +854,4 @@ MongoClient.connect(mongoURL, function(err, client) {
 
 	//client.close();
 });
-
 
