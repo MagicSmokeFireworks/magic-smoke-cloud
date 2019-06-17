@@ -437,8 +437,6 @@ app.get('/show', function(req, res) {
 var commandnum = 0;
 
 var writeToClient = function(board_id, message) {
-	console.log(board_id);
-	console.log(message);
 	
 	var clientIP = '';
 	clientIP = telemetry[board_id].ip;
@@ -450,7 +448,6 @@ var writeToClient = function(board_id, message) {
 
 	if (clientIP === '') {
         predictions[board_id].last_cmd_status = "noip";
-		console.log(board_id + ': no IP known');
 		log_command_event("no_ip", board_id, message, "", thiscmdnum);
 		io.emit('fresh data', boardinfo, telemetry, predictions, show);
 	}
@@ -459,12 +456,12 @@ var writeToClient = function(board_id, message) {
 
 		var client = new net.Socket();
 
+		// command connection timeout after 5 seconds
 		client.setTimeout(5000);
 
 		// CONNECT to board
 		client.connect(clientPort, clientIP, function() {
         	predictions[board_id].last_cmd_status = "conn";
-			console.log(board_id + ': connected');
 			log_command_event("connected", board_id, message, "", thiscmdnum);
 			client.write(message);
 		});
@@ -478,7 +475,6 @@ var writeToClient = function(board_id, message) {
 	
 		// DATA from board
 		client.on('data', function(data) {
-			console.log(board_id + ': data: ' + data);
 			// TODO look in data for ontime/late, valid/invalid
 			timeouts[board_id] = 0;
 			log_command_event("data", board_id, message, data.toString(), thiscmdnum);
@@ -488,7 +484,6 @@ var writeToClient = function(board_id, message) {
 
 		// CLOSE
 		client.on('close', function() {
-			console.log(board_id + ': connection closed');
 			log_command_event("disconnected", board_id, message, "", thiscmdnum);
 
 			if (predictions[board_id].last_cmd_status == "conn") {
@@ -602,19 +597,16 @@ var fire_by_string = function(boardID, chan_str) {
 
 // helper function for firing by group ID
 var fire_by_group = function(groupID) {
-	// TODO determine boards and chans
-
-	// FIXME
 	for(board_id in show.boards) {
 		var chch = "";
 		for(channel in show.boards[board_id].channels) {
-			if( show.boards[board_id].channels[channel].group == group_id ) {
+			if( show.boards[board_id].channels[channel].group == groupID ) {
 				chch = chch + channel;
 			}
 		}
 		if (chch != "") {
 			// log manual group fire board channels
-			log_fire_board_event(group_id, board_id, chch);
+			log_fire_board_event(groupID, board_id, chch);
         	fire_by_string(board_id, chch);
 		}
     }
