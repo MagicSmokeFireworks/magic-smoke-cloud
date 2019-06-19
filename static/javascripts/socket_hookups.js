@@ -1,20 +1,19 @@
 
 var get_cmdstatus = function(board, telemetry, predictions) {
-	var cmdcount = telemetry[board].cmdcount;
-        var cmdcount_predict = predictions[board].cmdresponses;
-        var cmdstatus = "no data";
-        var cmdstatus_status = "error_status";
-        if (cmdcount != "no data") {
-                if (cmdcount == cmdcount_predict) {
-                        cmdstatus = "good";
-                        cmdstatus_status = "normal_status";
-                }
-                else {
-                        cmdstatus = (cmdcount_predict - cmdcount) + " Lost";
-                        cmdstatus_status = "warning_status";
-                }
-        }
-        return [cmdstatus, cmdstatus_status];
+	var lcs = predictions[board].last_cmd_status;
+	var lcs_status = "error_status";
+	if (lcs != "no data") {
+		if (lcs == "good") {
+			lcs_status = "good_status";
+		}
+		else if (lcs == "conn") {
+			lcs_status = "warning_status";
+		}
+		else {
+			lcs_status = "error_status";
+		}
+	}
+	return [lcs, lcs_status];
 };
 
 var get_channelstatus = function(board, channel, telemetry, show) {
