@@ -146,54 +146,30 @@ var timeoutInterval = setInterval(function() {
 }, 500);
 
 
-var syncIndexLow = 0;
-var syncIntervalLow = function() {
+var syncIndex = 0;
+var syncInterval = function() {
 
 	boards = Object.keys(boardinfo);
-	board = boards[syncIndexLow];
+	board = boards[syncIndex];
     
-	syncIndexLow++;
-	if (syncIndexLow >= boards.length) {
-		syncIndexLow = 0;
+	syncIndex++;
+	if (syncIndex >= boards.length) {
+		syncIndex = 0;
 	}
 
 	if (telemetry[board].ip === '') {
-		setTimeout(syncIntervalLow, 5);
 	}
 	else if (telemetry[board].rate != "low") {
-		setTimeout(syncIntervalLow, 5);
+		send_highrate_command(board);
+		log_board_event('high', board);
 	}
 	else {
 		send_lowrate_command(board);
 		log_board_event('low', board);
-		setTimeout(syncIntervalLow, 500);
 	}
+	setTimeout(syncInterval, 250);
 };
 
-
-var syncIndexHigh = 0;
-var syncIntervalHigh = function() {
-
-	boards = Object.keys(boardinfo);
-	board = boards[syncIndexHigh];
-    
-	syncIndexHigh++;
-	if (syncIndexHigh >= boards.length) {
-		syncIndexHigh = 0;
-	}
-
-	if (telemetry[board].ip === '') {
-		setTimeout(syncIntervalHigh, 5);
-	}
-	else if (telemetry[board].rate == "low") {
-		setTimeout(syncIntervalHigh, 5);
-	}
-	else {
-		send_highrate_command(board);
-		log_board_event('high', board);
-		setTimeout(syncIntervalHigh, 100);
-	}
-};
 
 
 var set_high_rate = function(idx) {
@@ -310,6 +286,7 @@ app.post('/status', function(req, res) {
                 telemetry[sname].bootcount = req.headers.bc;
                 telemetry[sname].pid = req.headers.pid;
                 telemetry[sname].micros = req.headers.micros;
+                telemetry[sname].ptime = req.headers.ptime;
 		telemetry[sname].swarm = req.headers.sw_arm;
 		telemetry[sname].hwarm = req.headers.hw_arm;
 		telemetry[sname].rssi = req.headers.wifi_rssi;
@@ -843,8 +820,7 @@ MongoClient.connect(mongoURL, function(err, client) {
 	db = client.db(dbName);
 	eventlog = db.collection('eventlog');
 
-	setTimeout(syncIntervalLow, 500);
-	setTimeout(syncIntervalHigh, 100);
+	setTimeout(syncInterval, 500);
 
 	http.listen(8080, function(){
 	//http.listen(8080, '192.168.0.199', function(){
