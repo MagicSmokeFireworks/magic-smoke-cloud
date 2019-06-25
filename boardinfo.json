@@ -11,6 +11,12 @@
 		"sname": "ba",
 		"comments": ""
 	},
+	"bf": {
+		"id": "1d0025001647363335343834",
+		"name": "Blockchain Fanboy",
+		"sname": "bf",
+		"comments": ""
+	},
 	"cb": {
 		"id": "4d0055000c51353532383735",
 		"name": "Clickbait",
@@ -41,10 +47,22 @@
 		"sname": "cr",
 		"comments": "Bad battery LED. Channel 2 non functional"
 	},
+	"ep": {
+		"id": "35001e001447363336383438",
+		"name": "Esoteric Panic",
+		"sname": "ep",
+		"comments": ""
+	},
 	"dc": {
-		"id": "new1",
+		"id": "2a002c001047363336383437",
 		"name": "Dreary Clichegate",
 		"sname": "dc",
+		"comments": ""
+	},
+	"docn": {
+		"id": "510041001851373237343331",
+		"name": "Denigator of Cheap Snacks",
+		"sname": "docn",
 		"comments": ""
 	},
 	"dbp": {
@@ -63,6 +81,12 @@
 		"id": "2c0044000547363332363639",
 		"name": "Drawn-out Transgressions",
 		"sname": "dot",
+		"comments": ""
+	},
+	"dwi": {
+		"id": "37005b001851373237343331",
+		"name": "Drinking While Inebriated",
+		"sname": "dwi",
 		"comments": ""
 	},
 	"fag": {
@@ -95,8 +119,14 @@
 		"sname": "jh",
 		"comments": ""
 	},
+	"kc": {
+		"id": "310040001147353136383631",
+		"name": "Kemble Cup",
+		"sname": "kc",
+		"comments": ""
+	},
 	"lb": {
-		"id": "new4",
+		"id": "2f002e001247363336383437",
 		"name": "Lascivious Bulge",
 		"sname": "lb",
 		"comments": ""
@@ -180,7 +210,7 @@
 		"comments": ""
 	},
 	"siso": {
-		"id": "new2",
+		"id": "36005a001851373237343331",
 		"name": "Spicy In Spicy Out",
 		"sname": "siso",
 		"comments": ""
@@ -204,7 +234,7 @@
 		"comments": ""
 	},
 	"su": {
-		"id": "new3",
+		"id": "2d0034001247363336383437",
 		"name": "Sexual Underbite",
 		"sname": "su",
 		"comments": ""
@@ -219,12 +249,6 @@
 		"id": "280028000c51353432383931",
 		"name": "Too Many Chromosomes",
 		"sname": "tmc",
-		"comments": ""
-	},
-	"tpp": {
-		"id": "new0",
-		"name": "Trite Platitude Police",
-		"sname": "tpp",
 		"comments": ""
 	},
 	"tts": {
