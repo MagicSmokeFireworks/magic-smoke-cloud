@@ -75,6 +75,43 @@
                 }
             ]
         },
+        "bf": {
+            "location": "inactive",
+            "channels": [
+                {
+                    "group": "",
+                    "effect": ""
+                },
+                {
+                    "group": "",
+                    "effect": ""
+                },
+                {
+                    "group": "",
+                    "effect": ""
+                },
+                {
+                    "group": "",
+                    "effect": ""
+                },
+                {
+                    "group": "",
+                    "effect": ""
+                },
+                {
+                    "group": "",
+                    "effect": ""
+                },
+                {
+                    "group": "",
+                    "effect": ""
+                },
+                {
+                    "group": "",
+                    "effect": ""
+                }
+            ]
+        },
         "cb": {
             "location": "inactive",
             "channels": [
@@ -260,7 +297,81 @@
                 }
             ]
         },
+        "ep": {
+            "location": "inactive",
+            "channels": [
+                {
+                    "group": "",
+                    "effect": ""
+                },
+                {
+                    "group": "",
+                    "effect": ""
+                },
+                {
+                    "group": "",
+                    "effect": ""
+                },
+                {
+                    "group": "",
+                    "effect": ""
+                },
+                {
+                    "group": "",
+                    "effect": ""
+                },
+                {
+                    "group": "",
+                    "effect": ""
+                },
+                {
+                    "group": "",
+                    "effect": ""
+                },
+                {
+                    "group": "",
+                    "effect": ""
+                }
+            ]
+        },
         "dc": {
+            "location": "inactive",
+            "channels": [
+                {
+                    "group": "",
+                    "effect": ""
+                },
+                {
+                    "group": "",
+                    "effect": ""
+                },
+                {
+                    "group": "",
+                    "effect": ""
+                },
+                {
+                    "group": "",
+                    "effect": ""
+                },
+                {
+                    "group": "",
+                    "effect": ""
+                },
+                {
+                    "group": "",
+                    "effect": ""
+                },
+                {
+                    "group": "",
+                    "effect": ""
+                },
+                {
+                    "group": "",
+                    "effect": ""
+                }
+            ]
+        },
+        "docn": {
             "location": "inactive",
             "channels": [
                 {
@@ -372,6 +483,43 @@
             ]
         },
         "dot": {
+            "location": "inactive",
+            "channels": [
+                {
+                    "group": "",
+                    "effect": ""
+                },
+                {
+                    "group": "",
+                    "effect": ""
+                },
+                {
+                    "group": "",
+                    "effect": ""
+                },
+                {
+                    "group": "",
+                    "effect": ""
+                },
+                {
+                    "group": "",
+                    "effect": ""
+                },
+                {
+                    "group": "",
+                    "effect": ""
+                },
+                {
+                    "group": "",
+                    "effect": ""
+                },
+                {
+                    "group": "",
+                    "effect": ""
+                }
+            ]
+        },
+        "dwi": {
             "location": "inactive",
             "channels": [
                 {
@@ -557,6 +705,43 @@
             ]
         },
         "jh": {
+            "location": "inactive",
+            "channels": [
+                {
+                    "group": "",
+                    "effect": ""
+                },
+                {
+                    "group": "",
+                    "effect": ""
+                },
+                {
+                    "group": "",
+                    "effect": ""
+                },
+                {
+                    "group": "",
+                    "effect": ""
+                },
+                {
+                    "group": "",
+                    "effect": ""
+                },
+                {
+                    "group": "",
+                    "effect": ""
+                },
+                {
+                    "group": "",
+                    "effect": ""
+                },
+                {
+                    "group": "",
+                    "effect": ""
+                }
+            ]
+        },
+        "kc": {
             "location": "inactive",
             "channels": [
                 {
@@ -1334,43 +1519,6 @@
             ]
         },
         "tmc": {
-            "location": "inactive",
-            "channels": [
-                {
-                    "group": "",
-                    "effect": ""
-                },
-                {
-                    "group": "",
-                    "effect": ""
-                },
-                {
-                    "group": "",
-                    "effect": ""
-                },
-                {
-                    "group": "",
-                    "effect": ""
-                },
-                {
-                    "group": "",
-                    "effect": ""
-                },
-                {
-                    "group": "",
-                    "effect": ""
-                },
-                {
-                    "group": "",
-                    "effect": ""
-                },
-                {
-                    "group": "",
-                    "effect": ""
-                }
-            ]
-        },
-        "tpp": {
             "location": "inactive",
             "channels": [
                 {
