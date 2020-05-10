@@ -73,6 +73,43 @@
             "none"
         ]
     },
+    "bf": {
+        "swarm": "0",
+        "last_cmd": "",
+        "last_cmd_status": "",
+        "cmdrequests": "0",
+        "cmdresponses": "0",
+        "trycount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "firecount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "res": [
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none"
+        ]
+    },
     "cb": {
         "swarm": "0",
         "last_cmd": "",
@@ -258,7 +295,81 @@
             "none"
         ]
     },
+    "ep": {
+        "swarm": "0",
+        "last_cmd": "",
+        "last_cmd_status": "",
+        "cmdrequests": "0",
+        "cmdresponses": "0",
+        "trycount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "firecount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "res": [
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none"
+        ]
+    },
     "dc": {
+        "swarm": "0",
+        "last_cmd": "",
+        "last_cmd_status": "",
+        "cmdrequests": "0",
+        "cmdresponses": "0",
+        "trycount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "firecount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "res": [
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none"
+        ]
+    },
+    "docn": {
         "swarm": "0",
         "last_cmd": "",
         "last_cmd_status": "",
@@ -370,6 +481,43 @@
         ]
     },
     "dot": {
+        "swarm": "0",
+        "last_cmd": "",
+        "last_cmd_status": "",
+        "cmdrequests": "0",
+        "cmdresponses": "0",
+        "trycount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "firecount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "res": [
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none"
+        ]
+    },
+    "dwi": {
         "swarm": "0",
         "last_cmd": "",
         "last_cmd_status": "",
@@ -555,6 +703,43 @@
         ]
     },
     "jh": {
+        "swarm": "0",
+        "last_cmd": "",
+        "last_cmd_status": "",
+        "cmdrequests": "0",
+        "cmdresponses": "0",
+        "trycount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "firecount": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+        ],
+        "res": [
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none"
+        ]
+    },
+    "kc": {
         "swarm": "0",
         "last_cmd": "",
         "last_cmd_status": "",
@@ -1332,43 +1517,6 @@
         ]
     },
     "tmc": {
-        "swarm": "0",
-        "last_cmd": "",
-        "last_cmd_status": "",
-        "cmdrequests": "0",
-        "cmdresponses": "0",
-        "trycount": [
-            "0",
-            "0",
-            "0",
-            "0",
-            "0",
-            "0",
-            "0",
-            "0"
-        ],
-        "firecount": [
-            "0",
-            "0",
-            "0",
-            "0",
-            "0",
-            "0",
-            "0",
-            "0"
-        ],
-        "res": [
-            "none",
-            "none",
-            "none",
-            "none",
-            "none",
-            "none",
-            "none",
-            "none"
-        ]
-    },
-    "tpp": {
         "swarm": "0",
         "last_cmd": "",
         "last_cmd_status": "",

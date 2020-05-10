@@ -351,7 +351,95 @@
             "no data"
         ]
     },
+    "ep": {
+        "rate": "low",
+        "firmver": "no data",
+        "bootcount": "no data",
+        "pid": "no data",
+        "micros": "no data",
+        "ptime": "no data",
+        "ip": "",
+        "connection": "never",
+        "swarm": "no data",
+        "hwarm": "no data",
+        "rssi": "no data",
+        "cmdcount": "no data",
+        "firecount": [
+            "no data",
+            "no data",
+            "no data",
+            "no data",
+            "no data",
+            "no data",
+            "no data",
+            "no data"
+        ],
+        "lastfiretime": [
+            "no data",
+            "no data",
+            "no data",
+            "no data",
+            "no data",
+            "no data",
+            "no data",
+            "no data"
+        ],
+        "res": [
+            "no data",
+            "no data",
+            "no data",
+            "no data",
+            "no data",
+            "no data",
+            "no data",
+            "no data"
+        ]
+    },
     "dc": {
+        "rate": "low",
+        "firmver": "no data",
+        "bootcount": "no data",
+        "pid": "no data",
+        "micros": "no data",
+        "ptime": "no data",
+        "ip": "",
+        "connection": "never",
+        "swarm": "no data",
+        "hwarm": "no data",
+        "rssi": "no data",
+        "cmdcount": "no data",
+        "firecount": [
+            "no data",
+            "no data",
+            "no data",
+            "no data",
+            "no data",
+            "no data",
+            "no data",
+            "no data"
+        ],
+        "lastfiretime": [
+            "no data",
+            "no data",
+            "no data",
+            "no data",
+            "no data",
+            "no data",
+            "no data",
+            "no data"
+        ],
+        "res": [
+            "no data",
+            "no data",
+            "no data",
+            "no data",
+            "no data",
+            "no data",
+            "no data",
+            "no data"
+        ]
+    },
+    "docn": {
         "rate": "low",
         "firmver": "no data",
         "bootcount": "no data",
@@ -483,50 +571,6 @@
             "no data"
         ]
     },
-    "docn": {
-        "rate": "low",
-        "firmver": "no data",
-        "bootcount": "no data",
-        "pid": "no data",
-        "micros": "no data",
-        "ptime": "no data",
-        "ip": "",
-        "connection": "never",
-        "swarm": "no data",
-        "hwarm": "no data",
-        "rssi": "no data",
-        "cmdcount": "no data",
-        "firecount": [
-            "no data",
-            "no data",
-            "no data",
-            "no data",
-            "no data",
-            "no data",
-            "no data",
-            "no data"
-        ],
-        "lastfiretime": [
-            "no data",
-            "no data",
-            "no data",
-            "no data",
-            "no data",
-            "no data",
-            "no data",
-            "no data"
-        ],
-        "res": [
-            "no data",
-            "no data",
-            "no data",
-            "no data",
-            "no data",
-            "no data",
-            "no data",
-            "no data"
-        ]
-    },
     "dot": {
         "rate": "low",
         "firmver": "no data",
@@ -572,50 +616,6 @@
         ]
     },
     "dwi": {
-        "rate": "low",
-        "firmver": "no data",
-        "bootcount": "no data",
-        "pid": "no data",
-        "micros": "no data",
-        "ptime": "no data",
-        "ip": "",
-        "connection": "never",
-        "swarm": "no data",
-        "hwarm": "no data",
-        "rssi": "no data",
-        "cmdcount": "no data",
-        "firecount": [
-            "no data",
-            "no data",
-            "no data",
-            "no data",
-            "no data",
-            "no data",
-            "no data",
-            "no data"
-        ],
-        "lastfiretime": [
-            "no data",
-            "no data",
-            "no data",
-            "no data",
-            "no data",
-            "no data",
-            "no data",
-            "no data"
-        ],
-        "res": [
-            "no data",
-            "no data",
-            "no data",
-            "no data",
-            "no data",
-            "no data",
-            "no data",
-            "no data"
-        ]
-    },
-    "ep": {
         "rate": "low",
         "firmver": "no data",
         "bootcount": "no data",
